@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "NotoSans-Regular";
+  src: url("../fonts/NotoSans-Regular.woff") format("woff"),
+       url("../fonts/NotoSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("../fonts/OpenSans-Regular.woff") format("woff"),
+       url("../fonts/OpenSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+// Mobile fonts
+@font-face {
+  font-family: "SFProDisplay-Medium";
+  src: url("../fonts/SFProDisplay-Medium.woff") format("woff"),
+       url("../fonts/SFProDisplay-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SFProDisplay-Regular";
+  src: url("../fonts/SFProDisplay-Regular.woff") format("woff"),
+       url("../fonts/SFProDisplay-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
