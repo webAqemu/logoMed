@@ -168,11 +168,28 @@ body {
     max-width: 432px;
     width: 100%; }
   .preview__img {
-    width: 60%;
+    width: 63%;
     position: absolute;
     top: -40px;
     right: -50px;
     z-index: -1; }
+  .preview__advantages {
+    list-style: none;
+    padding: 0;
+    margin: 70px 0 0; }
+  .preview__advantage {
+    margin: 25px 0;
+    max-width: 520px;
+    width: 100%;
+    display: flex;
+    align-items: center; }
+    .preview__advantage:nth-child(2) {
+      margin-top: -10px; }
+      .preview__advantage:nth-child(2) .preview__icon {
+        margin-left: 0; }
+  .preview__icon {
+    margin-left: 6px;
+    margin-right: 30px; }
 
 .important {
   background: linear-gradient(135deg, #5ba4e5 0%, #7384fe 100%); }

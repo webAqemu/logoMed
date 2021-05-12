@@ -54,11 +54,34 @@
     width: 100%;
   }
   &__img {
-    width: 60%;
+    width: 63%;
     position: absolute;
     top: -40px;
     right: -50px;
     z-index: -1;
+  }
+  // about.html
+  &__advantages {
+    list-style: none;
+    padding: 0;
+    margin: 70px 0 0;
+  }
+  &__advantage {
+    margin: 25px 0;
+    max-width: 520px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    &:nth-child(2) {
+      margin-top: -10px;
+      & .preview__icon {
+        margin-left: 0;
+      }
+    }
+  }
+  &__icon {
+    margin-left: 6px;
+    margin-right: 30px;
   }
 }
 
