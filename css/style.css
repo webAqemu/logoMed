@@ -40,6 +40,7 @@ a {
   text-decoration: none; }
 
 body {
+  overflow-x: hidden;
   background-color: white;
   font-family: "OpenSans-Regular", sans-serif;
   font-weight: 400;
@@ -142,10 +143,18 @@ body {
   margin-left: 55px; }
 
 .header-start__link {
-  color: #444444; }
+  color: #444444;
+  transition: all 0.3s; }
+  .header-start__link:hover {
+    color: #68a9fe; }
 
 .preview {
   margin: 140px 0 300px; }
+  .preview.about-preview .preview__inner {
+    padding-bottom: 200px; }
+    .preview.about-preview .preview__inner .preview__img {
+      top: auto;
+      bottom: -60px; }
   .preview__inner {
     position: relative;
     display: flex;
@@ -404,6 +413,9 @@ body {
       box-shadow: none;
       cursor: pointer; }
 
+.about-specialists + .app {
+  margin-top: 0; }
+
 .steps {
   margin-top: 250px; }
   .steps__inner {
@@ -411,14 +423,25 @@ body {
     width: calc(100% + 20px);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap; }
+    .steps__inner + .steps__inner {
+      margin-top: 150px;
+      margin-bottom: 260px; }
   .steps__item {
     margin: 0 10px;
     max-width: 400px;
     width: 100%; }
+  .steps__img {
+    margin: 0 10px 0 -5%;
+    width: calc(50%); }
+  .steps__desc {
+    max-width: calc(50% - 20px);
+    width: 100%;
+    margin: 0 10px; }
 
 .app {
-  margin-top: 250px;
+  margin-top: 200px;
   position: relative;
   padding: 180px 0 200px; }
   .app::after {
@@ -448,8 +471,8 @@ body {
     .app__wrapper::before {
       content: "";
       position: absolute;
-      left: -35%;
-      top: 20%;
+      left: -50%;
+      top: 25%;
       width: 560px;
       height: 560px;
       border-radius: 100%;
@@ -465,6 +488,8 @@ body {
       border-radius: 100%;
       background-color: #fed1f1;
       z-index: -1; }
+  .app__img {
+    margin-right: 70px; }
 
 .start-footer__list {
   position: relative;
@@ -482,4 +507,54 @@ body {
     margin-left: auto; }
 
 .start-footer__link {
-  color: #000000; }
+  color: #7d7d7d; }
+
+.accordion {
+  margin-top: 220px; }
+  .accordion__title {
+    margin-left: 50%; }
+  .accordion__inner {
+    margin-top: 100px; }
+  .accordion__item {
+    padding: 40px 0 0;
+    border-top: 1px solid #7d7d7d;
+    cursor: pointer; }
+    .accordion__item.active {
+      padding: 40px 0; }
+      .accordion__item.active .accordion__question::before {
+        transform: rotate(45deg); }
+      .accordion__item.active .accordion__question::after {
+        transform: rotate(135deg); }
+      .accordion__item.active .accordion__text {
+        height: 120px; }
+    .accordion__item:nth-last-child(1) {
+      border-bottom: 1px solid #7d7d7d; }
+  .accordion__question {
+    pointer-events: none;
+    position: relative;
+    margin-bottom: 40px; }
+    .accordion__question::before {
+      content: "";
+      position: absolute;
+      right: 20px;
+      width: 5px;
+      height: 45px;
+      background-color: #fe9393;
+      transition: all 0.3s; }
+    .accordion__question::after {
+      content: "";
+      position: absolute;
+      right: 20px;
+      width: 5px;
+      height: 45px;
+      background-color: #fe9393;
+      transition: all 0.3s;
+      transform: rotate(90deg); }
+  .accordion__text {
+    pointer-events: none;
+    transition: all 0.3s;
+    height: 0;
+    overflow: hidden; }
+
+.accordion + .about-specialists {
+  margin-top: 200px; }

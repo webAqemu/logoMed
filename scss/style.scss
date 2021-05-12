@@ -22,11 +22,22 @@
   }
   &__link {
     color: $text;
+    transition: all 0.3s;
+    &:hover {
+      color: $blue;
+    }
   }
 }
 
 .preview {
   margin: 140px 0 300px;
+  &.about-preview &__inner {
+    padding-bottom: 200px;
+    & .preview__img {
+      top: auto;
+      bottom: -60px;
+    }
+  }
   &__inner {
     position: relative;
     display: flex;
@@ -344,6 +355,9 @@
     }
   }
 }
+.about-specialists + .app {
+  margin-top: 0;
+}
 .steps {
   margin-top: 250px;
   &__inner {
@@ -351,16 +365,31 @@
     width: calc(100% + 20px);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
+    & + & {
+      margin-top: 150px;
+      margin-bottom: 260px;
+    }
   }
   &__item {
     margin: 0 10px;
     max-width: 400px;
     width: 100%;
   }
+  // about.html
+  &__img {
+    margin: 0 10px 0 -5%;
+    width: calc(50%);
+  }
+  &__desc {
+    max-width: calc(50% - 20px);
+    width: 100%;
+    margin: 0 10px;
+  }
 }
 .app {
-  margin-top: 250px;
+  margin-top: 200px;
   position: relative;
   padding: 180px 0 200px;
   &::after {
@@ -394,8 +423,8 @@
     &::before {
       content: "";
       position: absolute;
-      left: -35%;
-      top: 20%;
+      left: -50%;
+      top: 25%;
       width: 560px;
       height: 560px;
       border-radius: 100%;
@@ -413,6 +442,9 @@
       background-color: $pink;
       z-index: -1;
     }
+  }
+  &__img {
+    margin-right: 70px;
   }
 }
 .start-footer {
@@ -434,6 +466,69 @@
     }
   }
   &__link {
-    color: #000000;
+    color: $light-text;
   }
+}
+
+.accordion {
+  margin-top: 220px;
+  &__title {
+    margin-left: 50%;
+  }
+  &__inner {
+    margin-top: 100px;
+  }
+  &__item {
+    padding: 40px 0 0;
+    border-top: 1px solid $light-text;
+    cursor: pointer;
+    &.active {
+      padding: 40px 0;
+      .accordion__question::before {
+        transform: rotate(45deg);
+      }
+      .accordion__question::after {
+        transform: rotate(135deg);
+      }
+      .accordion__text {
+        height: 120px;
+      }
+    }
+    &:nth-last-child(1) {
+      border-bottom: 1px solid $light-text;
+    }
+  }
+  &__question {
+    pointer-events: none;
+    position: relative;
+    margin-bottom: 40px;
+    &::before {
+      content: "";
+      position: absolute;
+      right: 20px;
+      width: 5px;
+      height: 45px;
+      background-color: $peach;
+      transition: all 0.3s;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      right: 20px;
+      width: 5px;
+      height: 45px;
+      background-color: $peach;
+      transition: all 0.3s;
+      transform: rotate(90deg);
+    }
+  }
+  &__text {
+    pointer-events: none;
+    transition: all 0.3s;
+    height: 0;
+    overflow: hidden;
+  }
+}
+.accordion + .about-specialists {
+  margin-top: 200px;
 }

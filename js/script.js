@@ -16,5 +16,12 @@ $(".about-specialists__slider").slick({
   dots: true,
   arrows: false,
 });
-
 document.querySelectorAll(".about-specialists__slider .slick-dots li button").forEach((btn) => (btn.innerHTML = ""));
+
+// accordion
+
+document.querySelector(".accordion__inner").addEventListener("click", function (e) {
+  if (e.target.classList.contains("accordion__item")) {
+    e.target.classList.toggle("active");
+  }
+});
