@@ -1,19 +1,20 @@
 // Colors
-$bg: #F9FCFF;
-$blue: #68A9FE;
-$yellow: #FFC95A;
-$white: #FFFFFF;
+$bg: #f9fcff;
+$blue: #68a9fe;
+$yellow: #ffc95a;
+$white: #ffffff;
 $text: #444444;
 $title: #141414;
-$peach: #FE9393;
-$light-text: #7D7D7D;
+$peach: #fe9393;
+$light-text: #7d7d7d;
+$pink: #fed1f1;
 
 // Gradients
 @mixin main-gradient {
-  background: linear-gradient(135deg, #5BA4E5 0%, #7384FE 100%);
+  background: linear-gradient(135deg, #5ba4e5 0%, #7384fe 100%);
 }
 @mixin pink-gradient {
-  background: linear-gradient(90deg, #FAD0C4 0%, #FAD0C4 1%, #FFD1FF 100%);
+  background: linear-gradient(90deg, #fad0c4 0%, #fad0c4 1%, #ffd1ff 100%);
 }
 
 // Box-shadows
@@ -21,8 +22,8 @@ $light-text: #7D7D7D;
   filter: drop-shadow(0px 0px 10px rgba(175, 196, 255, 0.8));
 }
 @mixin pink-shadow {
-  filter: drop-shadow(0px 0px 15px #FE9393);
+  filter: drop-shadow(0px 0px 15px #fe9393);
 }
 @mixin extra-shadow {
-  filter: drop-shadow(0px 0px 15px #7C9AF2);
+  filter: drop-shadow(0px 0px 15px #7c9af2);
 }

@@ -1,21 +1,21 @@
-html{
-	box-sizing: border-box;
+html {
+  box-sizing: border-box;
 }
 *,
 *::before,
 *::after {
-	box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 html,
 body {
-	height: 100%;
-	position: relative;
-	overflow-x: hidden;
+  position: relative;
+  padding: 0;
+  margin: 0;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 body {
@@ -24,6 +24,12 @@ body {
   font-weight: 400;
   font-size: 28px;
   line-height: 1.4;
+}
+
+.container {
+  max-width: 1360px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
 
 .title {
@@ -62,4 +68,53 @@ body {
   font-family: "OpenSans-Regular", sans-serif;
   font-weight: 400;
   font-size: 20px;
+}
+
+.main-btn {
+  display: flex;
+  width: fit-content;
+  position: relative;
+  transition: all 0.3s;
+  border-radius: 50px 50px 50px 50px / 25px 25px 25px 25px;
+  & span {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: fit-content;
+    color: $white;
+  }
+  &--inactive {
+    opacity: 0.5;
+  }
+  & svg path {
+    transition: fill 0.3s;
+  }
+  &:hover {
+    @include blue-shadow;
+    & svg path {
+      fill: url(#gradient);
+    }
+  }
+}
+
+.black-btn {
+  display: flex;
+  width: fit-content;
+  position: relative;
+  transition: all 0.3s;
+  & span {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: fit-content;
+    color: $white;
+  }
+  &--inactive {
+    opacity: 0.5;
+  }
+  &:hover {
+    @include extra-shadow;
+  }
 }
