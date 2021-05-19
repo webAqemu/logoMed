@@ -19,9 +19,22 @@ $(".about-specialists__slider").slick({
 document.querySelectorAll(".about-specialists__slider .slick-dots li button").forEach((btn) => (btn.innerHTML = ""));
 
 // accordion
+if (document.querySelector(".accordion__inner")) {
+  document.querySelector(".accordion__inner").addEventListener("click", function (e) {
+    if (e.target.classList.contains("accordion__item")) {
+      e.target.classList.toggle("active");
+    }
+  });
+}
 
-document.querySelector(".accordion__inner").addEventListener("click", function (e) {
-  if (e.target.classList.contains("accordion__item")) {
-    e.target.classList.toggle("active");
+// login form
+document.querySelector(".login__inner").addEventListener("click", function (e) {
+  if (e.target.classList.contains("login__forgot-link")) {
+    document.querySelector(".login__window.active").classList.remove("active");
+    document.querySelector(".login__window--recover").classList.add("active");
+  }
+  if (e.target.classList.contains("login__back")) {
+    document.querySelector(".login__window.active").classList.remove("active");
+    document.querySelector(".login__window").classList.add("active");
   }
 });
