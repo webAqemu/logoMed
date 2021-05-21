@@ -45,8 +45,10 @@ const uploadFiles = {}; // сюда сохраняем загруженные ф
 let filesCount = 0;
 document.querySelector("#file").addEventListener("change", function (e) {
   filesCount++;
+  // 1) находим загруженный файл и добавляем его в наш объект
   uploadFiles[filesCount] = e.target.files[0];
   console.log(uploadFiles);
+  // 2) заплняем инпут в новом айтеме и в целом подргружаем новый айтем
   const fileName = e.srcElement.files[0].name;
   const filesList = document.querySelector(".reg__file-list");
   console.log(e);
@@ -58,7 +60,6 @@ document.querySelector("#file").addEventListener("change", function (e) {
   `;
   filesList.insertAdjacentHTML("beforeend", html);
   const filesInputs = document.querySelectorAll(".reg__file-name");
-  //document.querySelector(".ttt").srcElement.files[0] = e.srcElement.files[0];
   filesInputs[filesInputs.length - 1].value = fileName;
 });
 // удаление файла из интерфейса и объекта
