@@ -23,7 +23,7 @@ body {
   background-color: white;
   font-family: "OpenSans-Regular", sans-serif;
   font-weight: 400;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 1.4;
   color: $text;
 }
@@ -90,12 +90,16 @@ body {
     top: 50%;
     width: fit-content;
     color: $white;
+    pointer-events: none;
   }
   &--inactive {
     opacity: 0.5;
+    pointer-events: none;
   }
+  & svg,
   & svg path {
     transition: fill 0.3s;
+    pointer-events: none;
   }
   &:hover {
     @include blue-shadow;

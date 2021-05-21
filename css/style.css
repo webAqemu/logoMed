@@ -44,7 +44,7 @@ body {
   background-color: white;
   font-family: "OpenSans-Regular", sans-serif;
   font-weight: 400;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 1.4;
   color: #444444; }
 
@@ -104,11 +104,15 @@ body {
     left: 50%;
     top: 50%;
     width: fit-content;
-    color: #ffffff; }
+    color: #ffffff;
+    pointer-events: none; }
   .main-btn--inactive {
-    opacity: 0.5; }
+    opacity: 0.5;
+    pointer-events: none; }
+  .main-btn svg,
   .main-btn svg path {
-    transition: fill 0.3s; }
+    transition: fill 0.3s;
+    pointer-events: none; }
   .main-btn:hover {
     filter: drop-shadow(0px 0px 10px rgba(175, 196, 255, 0.8)); }
     .main-btn:hover svg path {
@@ -568,7 +572,7 @@ body {
   margin-top: 200px; }
 
 .login {
-  height: 100vh;
+  min-height: 100vh;
   margin-top: -136px;
   padding-top: 136px;
   background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%); }
@@ -637,3 +641,237 @@ body {
     color: #68a9fe;
     margin-top: 30px;
     cursor: pointer; }
+
+.reg {
+  min-height: 100vh;
+  margin-top: -136px;
+  padding-top: 136px;
+  background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%); }
+  .reg__inner {
+    margin-top: 100px;
+    width: 100%;
+    display: flex; }
+  .reg__tabs-btns {
+    background-image: url(../img/reg-icons/reg-steps-bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    max-width: 315px;
+    width: 100%;
+    height: 690px;
+    list-style: none;
+    padding: 40px 45px;
+    margin: 0; }
+  .reg__tabs-btn {
+    margin-bottom: 23px; }
+    .reg__tabs-btn-text {
+      margin-top: 10px;
+      color: #7d7d7d;
+      transition: all 0.3s;
+      position: relative; }
+      .reg__tabs-btn-text::after {
+        content: "";
+        width: 25px;
+        height: 18px;
+        background-image: url(../img/reg-icons/reg-icon-step-complete.svg);
+        position: absolute;
+        right: 0;
+        top: 5px;
+        opacity: 0; }
+    .reg__tabs-btn.active .reg__tabs-btn-text {
+      color: #444444; }
+    .reg__tabs-btn.active .reg__tabs-icon {
+      background-color: #fe9393; }
+      .reg__tabs-btn.active .reg__tabs-icon svg path {
+        fill: #ffffff; }
+    .reg__tabs-btn.complete .reg__tabs-btn-text::after {
+      opacity: 1;
+      transition: all 1s; }
+  .reg__tabs-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s; }
+    .reg__tabs-icon svg path {
+      transition: all 0.3s; }
+  .reg__wrapper {
+    background-image: url(../img/reg-icons/reg-content-bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    max-width: 1000px;
+    width: 100%;
+    height: 690px;
+    margin-left: 30px;
+    padding: 50px 45px; }
+  .reg__steps-count {
+    margin-bottom: 20px; }
+  .reg__tabs-content {
+    display: none; }
+    .reg__tabs-content.active {
+      display: block; }
+  .reg__tabs-content .reg__desc {
+    max-width: 675px;
+    width: 100%;
+    margin-bottom: 40px; }
+  .reg__social {
+    display: inline-block;
+    margin-bottom: 40px; }
+  .reg__icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-left: 25px;
+    margin-bottom: -8px;
+    text-decoration: none; }
+  .reg__form {
+    width: 100%; }
+  .reg__input {
+    padding: 10px 24px;
+    border: 1px solid #444444;
+    color: #444444;
+    font-size: 20px;
+    outline-color: #7d7d7d;
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
+    margin-bottom: 40px; }
+    .reg__input::placeholder {
+      color: #7d7d7d; }
+    .reg__input--name {
+      max-width: 730px;
+      width: 100%; }
+    .reg__input--phone, .reg__input--mail {
+      max-width: 267px;
+      width: 100%;
+      margin-right: 40px; }
+    .reg__input--mail {
+      margin-right: 160px; }
+    .reg__input--weight, .reg__input--height {
+      max-width: 115px;
+      width: 100%;
+      margin-right: 40px; }
+  .reg__label {
+    position: relative;
+    padding-right: 45px;
+    margin-left: 15px;
+    opacity: 0.7;
+    font-size: 24px; }
+    .reg__label::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 4px solid #68a9fe;
+      border-radius: 100%;
+      top: 10px;
+      right: 25px;
+      opacity: 0.7;
+      cursor: pointer; }
+    .reg__label--adds::after {
+      right: auto;
+      left: 10px; }
+  .reg__radio {
+    opacity: 0;
+    margin: 0 -50px 0 0; }
+    .reg__radio-desc {
+      margin-right: 30px; }
+  .reg__radio:checked + .reg__label::after,
+  .reg__radio:checked + .reg__label {
+    opacity: 1; }
+  .reg__wrapper-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .reg__btn {
+    font-size: 20px; }
+  .reg__adds-text {
+    position: relative;
+    padding-left: 30px; }
+    .reg__adds-text::before {
+      content: "";
+      width: 13px;
+      height: 10px;
+      position: absolute;
+      left: 1.5px;
+      top: 8px;
+      background-image: url(../img/reg-icons/done-arrow-adds.svg);
+      opacity: 0;
+      transition: all 0.3s; }
+    .reg__adds-text::after {
+      content: "";
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      left: 1px;
+      top: 6px;
+      border: 1px solid #68a9fe;
+      cursor: pointer; }
+  .reg__checkbox {
+    margin: 0 -20px 0 0;
+    opacity: 0; }
+  .reg__checkbox:checked + .reg__adds-text::before {
+    opacity: 1; }
+  .reg__pass {
+    color: #68a9fe;
+    cursor: pointer; }
+    .reg__pass--false {
+      opacity: 0.5;
+      pointer-events: none; }
+  .reg__file-wrapper {
+    position: relative;
+    padding-left: 50px;
+    width: fit-content; }
+  .reg__file-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    left: 0;
+    top: 0;
+    opacity: 0; }
+  .reg__file-label {
+    color: #68a9fe; }
+    .reg__file-label::before {
+      content: "";
+      position: absolute;
+      cursor: pointer;
+      left: 0;
+      top: -1px;
+      height: 32px;
+      width: 32px;
+      background-image: url(../img/reg-icons/reg-add-file.svg); }
+  .reg__file-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 50px -10px 70px;
+    max-width: 800px;
+    width: 100%;
+    height: 250px;
+    overflow: auto; }
+  .reg__file-item {
+    display: flex;
+    align-items: flex-end;
+    margin: 0 10px 30px; }
+  .reg__file-icon {
+    cursor: pointer; }
+  .reg__file-name {
+    padding: 10px 24px;
+    border: 1px solid #444444;
+    border-radius: 10px;
+    color: #444444;
+    font-size: 20px;
+    outline-color: #68a9fe;
+    border: 1px solid #bdbdbd;
+    max-width: 300px;
+    width: 100%;
+    margin-left: 20px; }
+    .reg__file-name::placeholder {
+      color: #7d7d7d; }
+  .reg__file-formats {
+    color: #7d7d7d; }

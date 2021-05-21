@@ -28,13 +28,72 @@ if (document.querySelector(".accordion__inner")) {
 }
 
 // login form
-document.querySelector(".login__inner").addEventListener("click", function (e) {
-  if (e.target.classList.contains("login__forgot-link")) {
-    document.querySelector(".login__window.active").classList.remove("active");
-    document.querySelector(".login__window--recover").classList.add("active");
+if (document.querySelector(".login__inner")) {
+  document.querySelector(".login__inner").addEventListener("click", function (e) {
+    if (e.target.classList.contains("login__forgot-link")) {
+      document.querySelector(".login__window.active").classList.remove("active");
+      document.querySelector(".login__window--recover").classList.add("active");
+    }
+    if (e.target.classList.contains("login__back")) {
+      document.querySelector(".login__window.active").classList.remove("active");
+      document.querySelector(".login__window").classList.add("active");
+    }
+  });
+}
+// загрузка файлов в регистрации пациента (2-ой шаг)
+const uploadFiles = {}; // сюда сохраняем загруженные файлы
+let filesCount = 0;
+document.querySelector("#file").addEventListener("change", function (e) {
+  filesCount++;
+  uploadFiles[filesCount] = e.target.files[0];
+  console.log(uploadFiles);
+  const fileName = e.srcElement.files[0].name;
+  const filesList = document.querySelector(".reg__file-list");
+  console.log(e);
+  const html = `
+  <div class="reg__file-item" data-file="${filesCount}">
+      <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+      <input type="text" class="reg__file-name" placeholder="Введите название файла" />
+  </div>
+  `;
+  filesList.insertAdjacentHTML("beforeend", html);
+  const filesInputs = document.querySelectorAll(".reg__file-name");
+  //document.querySelector(".ttt").srcElement.files[0] = e.srcElement.files[0];
+  filesInputs[filesInputs.length - 1].value = fileName;
+});
+// удаление файла из интерфейса и объекта
+document.querySelector(".reg__file-list").addEventListener("click", function (e) {
+  if (e.target.classList.contains("reg__file-icon")) {
+    const item = e.target.parentElement;
+    const itemID = e.target.parentElement.dataset.file;
+    delete uploadFiles[itemID];
+    item.remove();
   }
-  if (e.target.classList.contains("login__back")) {
-    document.querySelector(".login__window.active").classList.remove("active");
-    document.querySelector(".login__window").classList.add("active");
+});
+
+// делаем динамический счетчик шагов
+const stepsCount = function (curStep) {
+  document.querySelector(".reg__steps-cur").innerHTML = curStep;
+};
+
+// добавляем функционал для кнопки Далее и Пропустить шаг
+document.querySelector(".reg__wrapper").addEventListener("click", function (e) {
+  if (e.target.classList.contains("reg__btn") || e.target.classList.contains("reg__pass")) {
+    // переходим на новый шаг
+    const curStep = e.target.parentElement.parentElement.parentElement;
+    const newTab = +curStep.dataset.tab + 1;
+    curStep.classList.remove("active");
+    console.log(newTab);
+    console.log(e.target.parentElement.parentElement);
+    document.querySelector(`.reg__tabs-content[data-tab="${newTab}"]`).classList.add("active");
+    stepsCount(newTab);
+    // добавляем класс active нужному шагу справа
+    document.querySelector(".reg__tabs-btn.active").classList.remove("active");
+    document.querySelector(`.reg__tabs-btn[data-tab="${newTab}"]`).classList.add("active");
+  }
+  // добавляем класс complete справа для выполненного таба
+  if (e.target.classList.contains("reg__btn")) {
+    const curStep = e.target.parentElement.parentElement.parentElement.dataset.tab;
+    document.querySelector(`.reg__tabs-btn[data-tab="${curStep}"]`).classList.add("complete");
   }
 });
