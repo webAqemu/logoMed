@@ -738,6 +738,8 @@ body {
     text-decoration: none; }
   .reg__form {
     width: 100%; }
+    .reg__form--doctor .reg__input--mail {
+      margin-right: 40px; }
   .reg__input {
     padding: 10px 24px;
     border: 1px solid #444444;
@@ -746,28 +748,48 @@ body {
     outline-color: #7d7d7d;
     border: 1px solid #bdbdbd;
     border-radius: 10px;
-    margin-bottom: 40px; }
+    margin-bottom: 40px;
+    font-family: "OpenSans-Regular", sans-serif;
+    font-weight: 400; }
     .reg__input::placeholder {
       color: #7d7d7d; }
-    .reg__input--name {
+    .reg__input--name, .reg__input--tags {
       max-width: 730px;
       width: 100%; }
-    .reg__input--phone, .reg__input--mail {
+    .reg__input--phone, .reg__input--mail, .reg__input--special, .reg__input--grade {
       max-width: 267px;
       width: 100%;
       margin-right: 40px; }
     .reg__input--mail {
       margin-right: 160px; }
-    .reg__input--weight, .reg__input--height {
+    .reg__input--weight, .reg__input--height, .reg__input--exp {
       max-width: 115px;
       width: 100%;
       margin-right: 40px; }
+  .reg__textarea {
+    max-width: 730px;
+    width: 100%;
+    min-height: 160px;
+    max-height: fit-content;
+    resize: none;
+    padding: 10px 24px;
+    border: 1px solid #444444;
+    color: #444444;
+    font-size: 20px;
+    outline-color: #7d7d7d;
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    font-family: "OpenSans-Regular", sans-serif;
+    font-weight: 400; }
+    .reg__textarea::placeholder {
+      color: #7d7d7d; }
   .reg__label {
     position: relative;
     padding-right: 45px;
-    margin-left: 15px;
     opacity: 0.7;
-    font-size: 24px; }
+    font-size: 24px;
+    pointer-events: none; }
     .reg__label::after {
       content: "";
       position: absolute;
@@ -778,17 +800,20 @@ body {
       top: 10px;
       right: 25px;
       opacity: 0.7;
-      cursor: pointer; }
+      pointer-events: none; }
     .reg__label--adds::after {
       right: auto;
       left: 10px; }
   .reg__radio {
     opacity: 0;
-    margin: 0 -50px 0 0; }
+    margin: 0 -60px 0 0;
+    cursor: pointer;
+    width: 40px;
+    height: 20px; }
     .reg__radio-desc {
       margin-right: 30px; }
-  .reg__radio:checked + .reg__label::after,
-  .reg__radio:checked + .reg__label {
+  .reg__radio:focus + .reg__label::after,
+  .reg__radio:focus + .reg__label {
     opacity: 1; }
   .reg__wrapper-footer {
     display: flex;
@@ -865,7 +890,8 @@ body {
     margin: 50px -10px 50px;
     max-width: 800px;
     width: 100%;
-    height: 250px;
+    height: fit-content;
+    max-height: 250px;
     overflow: auto; }
   .reg__file-item {
     display: flex;
