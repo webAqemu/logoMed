@@ -646,7 +646,10 @@ body {
   min-height: 100vh;
   margin-top: -136px;
   padding-top: 136px;
-  background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%); }
+  background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
+  /*3 step*/
+  /*4 step*/
+  /*5 step*/ }
   .reg__inner {
     margin-top: 100px;
     width: 100%;
@@ -663,26 +666,29 @@ body {
     padding: 40px 45px;
     margin: 0; }
   .reg__tabs-btn {
-    margin-bottom: 23px; }
+    margin-bottom: 23px;
+    cursor: pointer; }
     .reg__tabs-btn-text {
       margin-top: 10px;
       color: #7d7d7d;
       transition: all 0.3s;
-      position: relative; }
+      position: relative;
+      pointer-events: none; }
       .reg__tabs-btn-text::after {
         content: "";
         width: 25px;
         height: 18px;
         background-image: url(../img/reg-icons/reg-icon-step-complete.svg);
+        background-repeat: no-repeat;
         position: absolute;
-        right: 0;
+        right: -10px;
         top: 5px;
         opacity: 0; }
-    .reg__tabs-btn.active .reg__tabs-btn-text {
+    .reg__tabs-btn.active .reg__tabs-btn-text, .reg__tabs-btn:hover .reg__tabs-btn-text {
       color: #444444; }
-    .reg__tabs-btn.active .reg__tabs-icon {
+    .reg__tabs-btn.active .reg__tabs-icon, .reg__tabs-btn:hover .reg__tabs-icon {
       background-color: #fe9393; }
-      .reg__tabs-btn.active .reg__tabs-icon svg path {
+      .reg__tabs-btn.active .reg__tabs-icon svg path, .reg__tabs-btn:hover .reg__tabs-icon svg path {
         fill: #ffffff; }
     .reg__tabs-btn.complete .reg__tabs-btn-text::after {
       opacity: 1;
@@ -695,6 +701,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: none;
     transition: all 0.3s; }
     .reg__tabs-icon svg path {
       transition: all 0.3s; }
@@ -707,7 +714,8 @@ body {
     width: 100%;
     height: 690px;
     margin-left: 30px;
-    padding: 50px 45px; }
+    padding: 50px 45px;
+    position: relative; }
   .reg__steps-count {
     margin-bottom: 20px; }
   .reg__tabs-content {
@@ -715,7 +723,7 @@ body {
     .reg__tabs-content.active {
       display: block; }
   .reg__tabs-content .reg__desc {
-    max-width: 675px;
+    max-width: 680px;
     width: 100%;
     margin-bottom: 40px; }
   .reg__social {
@@ -785,8 +793,11 @@ body {
   .reg__wrapper-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between; }
-  .reg__btn {
+    justify-content: space-between;
+    position: absolute;
+    width: calc(100% - 90px);
+    bottom: 50px; }
+  .reg__btn, .reg__btn--finish {
     font-size: 20px; }
   .reg__adds-text {
     position: relative;
@@ -825,6 +836,8 @@ body {
     position: relative;
     padding-left: 50px;
     width: fit-content; }
+    .reg__file-wrapper.hidden {
+      display: none; }
   .reg__file-input {
     position: absolute;
     width: 100%;
@@ -846,10 +859,10 @@ body {
       background-image: url(../img/reg-icons/reg-add-file.svg); }
   .reg__file-list {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: 50px -10px 70px;
+    margin: 50px -10px 50px;
     max-width: 800px;
     width: 100%;
     height: 250px;
@@ -875,3 +888,114 @@ body {
       color: #7d7d7d; }
   .reg__file-formats {
     color: #7d7d7d; }
+  .reg__form-analyze {
+    margin-top: 25px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap; }
+  .reg__analyze {
+    margin-bottom: 30px;
+    display: inline-block;
+    width: 45%; }
+    .reg__analyze-desc {
+      margin-bottom: 20px; }
+    .reg__analyze-item {
+      display: flex;
+      align-items: center; }
+    .reg__analyze-name {
+      display: inline-block;
+      font-size: 20px;
+      margin-left: 20px; }
+  .reg__recomendations {
+    display: flex;
+    align-items: flex-start;
+    width: 100%; }
+  .reg__meals {
+    display: inline-block;
+    max-width: 270px;
+    width: 100%; }
+    .reg__meals-title {
+      margin-bottom: 25px; }
+    .reg__meals-item {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 30px; }
+    .reg__meals-img {
+      height: 68px;
+      width: 68px;
+      background-color: #d8d8d8;
+      border-radius: 5px;
+      margin-right: 20px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover; }
+    .reg__meals-desc {
+      margin-bottom: 5px; }
+    .reg__meals-link {
+      color: #68a9fe; }
+      .reg__meals-link svg {
+        margin-left: 10px; }
+  .reg__buds {
+    display: inline-block;
+    margin: 0 auto; }
+    .reg__buds-title {
+      margin: 0 0 25px 27px; }
+    .reg__buds-item {
+      position: relative;
+      display: inline-block;
+      max-width: 220px;
+      width: 100%;
+      text-align: center; }
+    .reg__buds-img {
+      width: 160px;
+      height: 160px;
+      background-color: #d8d8d8;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      border-radius: 5px;
+      margin: 0 auto 15px; }
+    .reg__buds-price {
+      position: absolute;
+      top: 15px;
+      right: -10px; }
+      .reg__buds-price span {
+        margin-right: 5px; }
+  .reg__slider {
+    position: relative;
+    margin-left: -5px;
+    margin-right: -45px; }
+    .reg__slider::after {
+      content: "";
+      height: 100%;
+      width: 20%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.7) 60%);
+      position: absolute;
+      top: 0;
+      right: 0; }
+  .reg__doctor {
+    position: relative;
+    max-width: 380px;
+    width: 380px;
+    background: #ffffff;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 25px 30px;
+    margin: 5px 30px 5px 5px; }
+    .reg__doctor-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      background-color: #d8d8d8; }
+    .reg__doctor-name {
+      margin: 10px 0; }
+    .reg__doctor-desc {
+      margin-bottom: 25px; }
+    .reg__doctor-link {
+      font-size: 16px; }
+    .reg__doctor-rating {
+      position: absolute;
+      top: 40px;
+      right: 30px; }
+      .reg__doctor-rating svg + svg {
+        margin-left: 10px; }
