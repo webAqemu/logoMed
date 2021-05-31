@@ -141,3 +141,82 @@ if (document.querySelector(".reg")) {
     infinity: false,
   });
 }
+
+// accordeon for general (client profile sub-accordeon)
+document.querySelector(".general__tabs-btns").addEventListener("click", function (e) {
+  if (e.target.classList.contains("general__tabs-btn")) {
+    const generalTabId = e.target.dataset.general;
+    document.querySelector(".general__tabs-content.active").classList.remove("active");
+    document.querySelector(".general__tabs-btn.active").classList.remove("active");
+
+    e.target.classList.add("active");
+    document.querySelector(`.general__tabs-content[data-general="${generalTabId}"]`).classList.add("active");
+  }
+});
+
+// загрузка файлов в создании новой болезни
+if (document.querySelector(".general")) {
+  // загрузка файлов в регистрации пациента (2-ой шаг)
+  const uploadFilesDisease = {}; // сюда сохраняем загруженные файлы
+  let filesCount = 0;
+  document.querySelector("#file").addEventListener("change", function (e) {
+    filesCount++;
+    // 1) находим загруженный файл и добавляем его в наш объект
+    uploadFilesDisease[filesCount] = e.target.files[0];
+    console.log(uploadFilesDisease);
+    // 2) заплняем инпут в новом айтеме и в целом подргружаем новый айтем
+    const fileName = e.srcElement.files[0].name;
+    const filesList = document.querySelector(".general__file-list");
+    console.log(e);
+    const html = `
+  <div class="general__file-item" data-file="${filesCount}">
+      <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+      <span class="general__file-name"/>
+  </div>
+  `;
+    filesList.insertAdjacentHTML("beforeend", html);
+    const filesInputs = document.querySelectorAll(".general__file-name");
+    filesInputs[filesInputs.length - 1].innerHTML = fileName;
+  });
+
+  // удаление файла из интерфейса и объекта
+  document.querySelector(".general__file-list").addEventListener("click", function (e) {
+    if (e.target.classList.contains("reg__file-icon")) {
+      const item = e.target.parentElement;
+      const itemID = e.target.parentElement.dataset.file;
+      delete uploadFilesSecondStep[itemID];
+      item.remove();
+    }
+  });
+
+  // закрытие и создание новой истории по кнопкам
+  document.getElementById("newHistory").addEventListener("click", () => {
+    document.querySelector(".general__form--new").classList.add("active");
+    document.getElementById("cancelNewHistory").classList.add("active");
+  });
+  document.getElementById("cancelNewHistory").addEventListener("click", () => {
+    document.querySelector(".general__form--new").classList.remove("active");
+    document.getElementById("cancelNewHistory").classList.remove("active");
+  });
+  // аккордеон для историй болезни
+  document.querySelectorAll(".general__history-name").forEach((history) => {
+    history.addEventListener("click", function () {
+      this.parentElement.classList.toggle("active");
+    });
+  });
+
+  // кастомизация календаря
+  $(".tasks__datepicker").datepicker({
+    showOtherMonths: false,
+    weekends: [0],
+  });
+
+  const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+  const prevMonth = document.querySelector(".prevMonth");
+  const nextMonth = document.querySelector(".nextMonth");
+  //////////////////////////////////////
+  document.querySelectorAll(`.datepicker--cell-day`).forEach((date) => {
+    if (date.dataset.date < 10) date.innerHTML = `0 ${date.dataset.date}`;
+  });
+  /////////////////////////////////////
+}
