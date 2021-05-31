@@ -211,12 +211,51 @@ if (document.querySelector(".general")) {
     weekends: [0],
   });
 
-  const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-  const prevMonth = document.querySelector(".prevMonth");
-  const nextMonth = document.querySelector(".nextMonth");
-  //////////////////////////////////////
-  document.querySelectorAll(`.datepicker--cell-day`).forEach((date) => {
-    if (date.dataset.date < 10) date.innerHTML = `0 ${date.dataset.date}`;
+  // переключение на все задачи по ссылке
+  document.querySelector("#allTasks").addEventListener("click", function () {
+    document.querySelector(".tabs__item.active").classList.remove("active");
+    document.querySelector(".general__tabs-content.active").classList.remove("active");
+    document.querySelector(".general__tabs-btns.active").classList.remove("active");
+    document.querySelector(".tasks__all").classList.add("active");
+    document.querySelector(".tasks__tabs-btn[data-tasks='1']").classList.add("active");
+    document.querySelector(".tasks__list[data-tasks='1']").classList.add("active");
   });
-  /////////////////////////////////////
+
+  // табы для задача (сегодня, на неделю)
+  document.querySelector(".tasks__all").addEventListener("click", function (e) {
+    if (e.target.classList.contains("tasks__tabs-btn")) {
+      const curTab = e.target.dataset.tasks;
+      document.querySelector(".tasks__tabs-btn.active").classList.remove("active");
+      e.target.classList.add("active");
+      document.querySelector(".tasks__list.active").classList.remove("active");
+      document.querySelector(`.tasks__list[data-tasks="${curTab}"]`).classList.add("active");
+    }
+  });
+
+  // после нажатия на все задачи убираем active у вкладки общее, и после при клике на
+  // различные главные табы по кд убираем классы у tasks__all
+  document.querySelector(".tabs__list").addEventListener("click", function (e) {
+    if (e.target.classList.contains("tabs__item")) {
+      const curTab = e.target.dataset.tab;
+      // убираем старые классы а так же классы у tasks__all
+      if (document.querySelector(".tabs__item.active")) {
+        document.querySelector(".tabs__item.active").classList.remove("active");
+        document.querySelector(".content-block__inner.active").classList.remove("active");
+      }
+      if (document.querySelector(".tasks__all.active")) {
+        document.querySelector(".tasks__all.active").classList.remove("active");
+        document.querySelector(".tasks__tabs-btn.active").classList.remove("active");
+        document.querySelector(".tasks__list.active").classList.remove("active");
+      }
+
+      e.target.classList.add("active");
+      const newContent = document.querySelector(`.content-block__inner[data-tab="${curTab}"]`);
+      newContent.classList.add("active");
+      if (newContent.querySelector(".general__tabs-btns")) {
+        newContent.querySelector(".general__tabs-btns").classList.add("active");
+        newContent.querySelector('.general__tabs-btn[data-general="1"]').classList.add("active");
+        newContent.querySelector('.general__tabs-content[data-general="1"]').classList.add("active");
+      }
+    }
+  });
 }

@@ -75,6 +75,11 @@ body {
   font-size: 20px;
 }
 
+.inactive {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .main-btn {
   display: flex;
   width: fit-content;
@@ -129,5 +134,26 @@ body {
   }
   &:hover {
     @include extra-shadow;
+  }
+}
+
+.pink-btn {
+  display: flex;
+  width: fit-content;
+  position: relative;
+  transition: all 0.3s;
+  & span {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: fit-content;
+    color: $white;
+  }
+  &--inactive {
+    opacity: 0.5;
+  }
+  &:hover {
+    @include pink-shadow;
   }
 }

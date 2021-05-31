@@ -1313,6 +1313,9 @@
     & svg {
       margin-right: 15px;
     }
+    & span {
+      pointer-events: none;
+    }
   }
 }
 
@@ -1321,10 +1324,16 @@
     background-color: $bg;
     padding: 30px 0 140px;
     &__inner {
+      display: none;
+      &.active {
+        display: block;
+      }
       &--general {
-        display: flex;
         align-items: flex-start;
         justify-content: space-between;
+        &.active {
+          display: flex;
+        }
       }
     }
   }
@@ -1358,6 +1367,10 @@
       margin-bottom: 60px;
       display: flex;
       align-items: center;
+      display: none;
+      &.active {
+        display: flex;
+      }
     }
     &-btn {
       cursor: pointer;
@@ -1424,12 +1437,12 @@
   }
   &__symptom {
     display: inline-block;
-    max-width: 445px;
+    max-width: 439px;
     width: 100%;
     margin-bottom: 30px;
     position: relative;
     &:nth-child(odd) {
-      max-width: 340px;
+      max-width: 320px;
     }
     &:nth-last-child(1) {
       margin-bottom: 0;
@@ -1688,7 +1701,7 @@
     border: none;
     padding: 0;
     margin: 25px auto 15px;
-    color: $blue;
+    color: $text;
     transition: all 0.3s;
     & div {
       position: absolute;
@@ -1708,11 +1721,20 @@
       }
     }
     &--cancel,
-    &--rec {
+    &--rec,
+    &--doctor {
       margin: 0 0 15px;
     }
     &:nth-last-child(2) {
       margin-top: 30px;
+    }
+    &--pink {
+      margin-top: 10px;
+      float: left;
+    }
+    &--inactive {
+      opacity: 0.5;
+      pointer-events: none;
     }
   }
   &__datepicker {
@@ -1823,6 +1845,7 @@
     padding-bottom: 40px;
     margin-bottom: 40px;
     border-bottom: 1px solid #f1f1f1;
+    position: relative;
   }
 
   &__date {
@@ -1853,5 +1876,81 @@
   }
   &__timer {
     margin-bottom: 30px;
+  }
+  &__today {
+    color: $light-text;
+    margin-left: 30px;
+  }
+  &__close {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    color: $light-text;
+  }
+  &__tabs-btn {
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 80px;
+    color: $light-text;
+    &.active {
+      color: $text;
+    }
+    & + & {
+      margin-left: 100px;
+    }
+  }
+  &__list {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+  &__all {
+    display: none;
+    &.active {
+      display: block;
+    }
+    .tasks__item {
+      padding-bottom: 120px;
+      margin-top: 40px;
+      &:nth-last-child(1) {
+        border: none;
+      }
+    }
+    .tasks__time {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: $blue;
+      &.inactive {
+        color: $light-text;
+      }
+    }
+    .tasks__timer {
+      position: absolute;
+      top: 35px;
+      right: 0;
+      color: $blue;
+    }
+    .tasks__btn {
+      float: left;
+      margin-top: 10px;
+      &--cancel {
+        margin-left: 40px;
+      }
+      &--doctor {
+        margin-left: 40px;
+      }
+    }
+    .tasks__date {
+      position: absolute;
+      padding: 0;
+      top: 0;
+      right: 0;
+      color: $text;
+      &::before {
+        display: none;
+      }
+    }
   }
 }
