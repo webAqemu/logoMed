@@ -240,8 +240,8 @@ if (document.querySelector(".general")) {
       // убираем старые классы а так же классы у tasks__all
       if (document.querySelector(".tabs__item.active")) {
         document.querySelector(".tabs__item.active").classList.remove("active");
-        document.querySelector(".content-block__inner.active").classList.remove("active");
       }
+      document.querySelector(".content-block__inner.active").classList.remove("active");
       if (document.querySelector(".tasks__all.active")) {
         document.querySelector(".tasks__all.active").classList.remove("active");
         document.querySelector(".tasks__tabs-btn.active").classList.remove("active");

@@ -148,6 +148,7 @@
 }
 
 .specialists {
+  background-color: #ffffff;
   &__inner {
     list-style: none;
     display: flex;
@@ -393,6 +394,7 @@
   }
 }
 .app {
+  background-color: #ffffff;
   margin-top: 200px;
   position: relative;
   padding: 180px 0 200px;
@@ -405,7 +407,7 @@
     right: 0;
     top: 0;
     @include pink-gradient;
-    z-index: -2;
+    z-index: 1;
   }
   &__inner {
     display: flex;
@@ -433,7 +435,7 @@
       height: 560px;
       border-radius: 100%;
       background-color: $pink;
-      z-index: -1;
+      z-index: 2;
     }
     &::after {
       content: "";
@@ -444,11 +446,13 @@
       height: 395px;
       border-radius: 100%;
       background-color: $pink;
-      z-index: -1;
+      z-index: 2;
     }
   }
   &__img {
     margin-right: 70px;
+    position: relative;
+    z-index: 100;
   }
 }
 .start-footer {
@@ -1131,8 +1135,8 @@
     padding: 16px 25px 18px;
     width: 265px;
     margin: 0 0px 0 40px;
-    background-image: url(../img/search-border.svg);
-    background-position: center;
+    border: 1px solid $white;
+    border-radius: 10px;
     font-size: 20px;
     outline: none;
     &::placeholder {
@@ -1224,6 +1228,46 @@
   &__name {
     margin-right: 15px;
     color: $white;
+  }
+  &--dark {
+    & .logo__icon {
+      content: url(../img/logo.svg);
+      width: 180px;
+    }
+    & .header__search {
+      border-color: $blue;
+      color: $text;
+
+      &::placeholder {
+        color: $text;
+      }
+    }
+
+    & .header__link {
+      color: $text;
+    }
+
+    &__profile {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-bottom: 10px;
+      margin-bottom: -10px;
+      cursor: pointer;
+      overflow: hidden;
+      &-link {
+        display: block;
+        text-decoration: none;
+        color: $text;
+        transition: all 0.3s;
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
+    & .header__name {
+      color: $text;
+    }
   }
 }
 
@@ -1693,7 +1737,6 @@
   }
   &__btn {
     display: flex;
-    width: 200px;
     position: relative;
     transition: all 0.3s;
     cursor: pointer;
@@ -1703,23 +1746,6 @@
     margin: 25px auto 15px;
     color: $text;
     transition: all 0.3s;
-    & div {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      left: 50%;
-      top: 50%;
-      width: fit-content;
-      pointer-events: none;
-    }
-    & path {
-      transition: all 0.3s;
-    }
-    &:hover {
-      color: $white;
-      & path {
-        fill: $blue;
-      }
-    }
     &--cancel,
     &--rec,
     &--doctor {
@@ -1952,5 +1978,435 @@
         display: none;
       }
     }
+  }
+}
+
+.tests {
+  &__upload {
+    display: inline-block;
+    padding: 50px 55px 45px;
+    background-image: url(../img/tests-upload-bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    position: relative;
+    margin-bottom: 30px;
+  }
+  &__input {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+  &__label {
+    pointer-events: none;
+    color: $blue;
+    padding-right: 50px;
+    position: relative;
+    &::after {
+      content: "";
+      width: 32px;
+      height: 32px;
+      background-image: url(../img/reg-icons/reg-add-file.svg);
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &__card {
+    background-image: url(../img/tests-card-bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    margin-top: 30px;
+    padding: 50px 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  &__desc {
+    position: relative;
+    padding-right: 55px;
+    padding-bottom: 120px;
+    border-right: 1px solid #e7e7e7;
+  }
+  &__date {
+    color: $light-text;
+    margin-bottom: 50px;
+  }
+  &__title {
+    margin-bottom: 25px;
+  }
+  &__from {
+    color: $light-text;
+    margin-bottom: 30px;
+  }
+  &__download {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-image: url(../img/tests-download.svg);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: auto;
+  }
+  &__btns {
+    display: flex;
+    max-width: 425px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+  }
+
+  &__stats {
+    padding: 0;
+    margin: 0 0 0 15px;
+    list-style: none;
+    max-width: 680px;
+    width: 100%;
+  }
+
+  &__item {
+    margin: 15px 0;
+    display: flex;
+    width: 100%;
+    & span {
+      width: 33.333333%;
+      &:nth-child(1) {
+        color: $title;
+      }
+      &:nth-last-child(1) {
+        width: 240px;
+      }
+    }
+    &.bold {
+      font-weight: 600;
+    }
+    &--title {
+      color: $light-text;
+      margin-bottom: 30px;
+      & span:nth-child(1) {
+        color: $light-text;
+      }
+    }
+  }
+}
+
+.article {
+  display: inline-block;
+  max-width: 430px;
+  width: 100%;
+  height: 430px;
+  background-image: url(../img/article-bg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  &__desc {
+    padding: 0 30px;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+  &__title {
+    margin: 25px 0 15px;
+  }
+  &__add {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    & span {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background-image: url(../img/star-32-grey.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: all 0.3s;
+    }
+  }
+  &__checkbox {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+  &__checkbox:checked + span {
+    background-image: url(../img/star-32-yellow.svg);
+  }
+}
+
+.bud {
+  margin-top: 30px;
+  padding: 30px 50px;
+  background-color: $white;
+  background-image: url(../img/bud-img.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  min-height: 375px;
+  height: fit-content;
+  position: relative;
+  &__title {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding-right: 40px;
+    position: relative;
+  }
+  &__add {
+    position: absolute;
+    right: 0;
+    top: -5px;
+
+    & span {
+      display: inline-block;
+      height: 24px;
+      width: 24px;
+      background-image: url(../img/star-24-grey.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: all 0.3s;
+    }
+  }
+  &__checkbox {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+  &__checkbox:checked + span {
+    background-image: url(../img/star-24-yellow.svg);
+  }
+  &__stats {
+    margin-bottom: 20px;
+    color: $light-text;
+  }
+  &__price {
+    font-size: 32px;
+    line-height: 32px;
+    color: $title;
+  }
+  &__btn {
+    position: absolute;
+    left: 50px;
+    bottom: 30px;
+  }
+}
+
+.empty {
+  padding: 70px 50px 170px;
+  background-image: url(../img/recomendation-empty-bg.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  position: relative;
+  margin-bottom: 100px;
+  &::after {
+    content: "";
+    position: absolute;
+    right: 50px;
+    top: 70px;
+    width: 505px;
+    height: 351px;
+    background-image: url(../img/recommendations-empty-img.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &__text {
+    max-width: 625px;
+    width: 100%;
+    margin: 25px 0 60px;
+  }
+  &__form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 860px;
+    width: 100%;
+  }
+  &__input {
+    outline: none;
+    max-width: 615px;
+    width: 100%;
+    font-size: 20px;
+    color: $text;
+    padding: 9px 16px 11px;
+    border: 1px solid #68a9fe;
+    border-radius: 10px;
+    &::placeholder {
+      font-size: 20px;
+      color: $light-text;
+    }
+  }
+  &__btn {
+    z-index: 2;
+    color: $white;
+  }
+}
+.recommendations,
+.useful {
+  &__item {
+    margin-top: 60px;
+    & + & {
+      margin-left: 10px;
+    }
+  }
+  &__more {
+    margin: 40px 0 100px;
+  }
+  &__buds {
+    &:nth-child(1) {
+      margin-bottom: 65px;
+    }
+  }
+}
+
+.recommendations {
+  &__doctors {
+    margin-bottom: 120px;
+    padding: 55px 50px;
+    background-image: url(../img/recommendations-doctors-bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    min-height: 580px;
+    height: fit-content;
+    position: relative;
+  }
+  &__desc {
+    padding-right: 150px;
+    border-right: 1px solid #e7e7e7;
+  }
+  &__date {
+    margin-bottom: 40px;
+  }
+  &__subtitle {
+    display: inline-block;
+    margin-bottom: 25px;
+    padding-right: 40px;
+    position: relative;
+  }
+  &__add {
+    position: absolute;
+    right: 0;
+    top: -15px;
+    & span {
+      display: inline-block;
+      height: 24px;
+      width: 24px;
+      background-image: url(../img/star-24-grey.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: all 0.3s;
+    }
+  }
+  &__checkbox {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+  &__checkbox:checked + span {
+    background-image: url(../img/star-24-yellow.svg);
+  }
+  &__text {
+    max-width: 600px;
+    width: 100%;
+  }
+  &__btn-read {
+    position: absolute;
+    bottom: 55px;
+    left: 50px;
+  }
+  &__comments {
+    max-width: 415px;
+    width: 100%;
+    position: relative;
+  }
+  &__from {
+    margin-bottom: 40px;
+  }
+  &__to {
+    color: $light-text;
+    position: absolute;
+    left: 0px;
+    bottom: 10px;
+  }
+}
+
+.useful {
+  &__buds {
+    margin-top: 100px;
+  }
+}
+
+.search {
+  padding-top: 125px;
+  &__title {
+    margin: 115px 0 40px;
+  }
+  &__form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 860px;
+    width: 100%;
+  }
+  &__input {
+    outline: none;
+    max-width: 615px;
+    width: 100%;
+    font-size: 20px;
+    color: $text;
+    padding: 9px 16px 11px;
+    border: 1px solid #68a9fe;
+    border-radius: 10px;
+    &::placeholder {
+      font-size: 20px;
+      color: $light-text;
+    }
+  }
+  &__btn {
+    z-index: 2;
+    color: $white;
+  }
+  &__options {
+    padding: 0;
+    margin: 55px -20px;
+    list-style: none;
+    display: flex;
+    padding-bottom: 100px;
+  }
+  &__option {
+    padding: 0;
+    margin: 0 20px;
+  }
+  & .specialists {
+    padding-bottom: 200px;
+  }
+  & .specialists__title {
+    padding-top: 100px;
+  }
+  & .about-specialists {
+    margin-top: 0;
   }
 }
