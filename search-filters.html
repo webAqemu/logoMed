@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>logo-med</title>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="./css/datepicker.min.css" />
+    <link rel="stylesheet" href="./css/nouislider.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script defer src="./js/datepicker.js"></script>
+    <script defer src="./js/nouislider.min.js"></script>
+    <script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script defer src="./js/script.js"></script>
+  </head>
+  <body>
+    <header class="header header--dark">
+      <div class="container">
+        <div class="header__inner">
+          <a class="logo" href="./index.html">
+            <img src="./img/logo-white.svg" alt="logo" class="logo__icon" />
+          </a>
+          <input type="text" class="header__search" placeholder="Поиск по сайту" />
+          <nav class="header__nav">
+            <ul class="header__list">
+              <li class="header__item"><a href="#" class="header__link title-h3">Поиск врача</a></li>
+              <li class="header__item"><a href="#" class="header__link title-h3">Мои задачи</a></li>
+            </ul>
+          </nav>
+          <div class="header__profile">
+            <div class="header__img" style="background-image: url(./img/profile-img.png)"></div>
+            <div class="header__name title-h3">Константинопольский К. К.</div>
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L6.5 7L12 1" stroke="#68a9fe" stroke-linecap="round" />
+            </svg>
+            <ul class="header__profile-menu">
+              <li class="header__profile-item"><a href="#" class="header__profile-link">О клинике</a></li>
+              <li class="header__profile-item"><a href="#" class="header__profile-link">Статьи</a></li>
+              <li class="header__profile-item"><a href="#" class="header__profile-link">Контакты клиники</a></li>
+              <li class="header__profile-item"><a href="#" class="header__profile-link">Редактировать профиль</a></li>
+              <li class="header__profile-item"><a href="#" class="header__profile-link">Выйти</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="search">
+        <div class="container">
+          <div class="search__title title">Поиск специалиста</div>
+          <div class="search__form">
+            <input type="text" class="search__input" placeholder="Начните вводить специальность" />
+            <button class="search__btn btn">Найти врача</button>
+          </div>
+          <div class="search__inner">
+            <div class="search__filters">
+              <span class="search__subtitle subtitle">Фильтры</span>
+              <span class="search__reset">Сбросить</span>
+              <div class="search__item">
+                <div class="search__item-title">Цена за прием</div>
+                <div class="search__range">
+                  <span class="search__input-from">
+                    <input type="text" />
+                    <span>от</span>
+                  </span>
+                  <span class="search__input-to">
+                    <input type="text" />
+                    <span>до</span>
+                  </span>
+                  <span>руб.</span>
+                </div>
+                <div class="search__price-slider" id="price"></div>
+              </div>
+              <div class="search__item">
+                <div class="search__item-title">Стаж</div>
+                <div class="search__checkbox">
+                  <input type="checkbox" name="" id="" data-doctor="exp1To5" />
+                  <span>1 – 5 лет</span>
+                </div>
+                <div class="search__checkbox">
+                  <input type="checkbox" name="" id="" data-doctor="exp5To10" />
+                  <span>5 – 10 лет</span>
+                </div>
+                <div class="search__checkbox">
+                  <input type="checkbox" name="" id="" data-doctor="expMore10" />
+                  <span>Больше 10 лет</span>
+                </div>
+              </div>
+              <div class="search__item">
+                <div class="search__item-title">Пол</div>
+                <div class="search__checkbox">
+                  <input type="checkbox" name="" id="" data-doctor="male" />
+                  <span>Мужчина</span>
+                </div>
+                <div class="search__checkbox">
+                  <input type="checkbox" name="" id="" data-doctor="female" />
+                  <span>Женщина</span>
+                </div>
+              </div>
+              <div class="search__item">
+                <div class="search__item-title">Возраст</div>
+                <div class="search__checkbox">
+                  <input type="checkbox" name="" id="" data-doctor="ageLess30" />
+                  <span>До 30 лет</span>
+                </div>
+                <div class="search__checkbox">
+                  <input type="checkbox" name="" id="" data-doctor="age30To50" />
+                  <span>30 — 50 лет</span>
+                </div>
+                <div class="search__checkbox">
+                  <input type="checkbox" name="" id="" data-doctor="ageMore50" />
+                  <span>Старше 50 лет</span>
+                </div>
+              </div>
+              <button class="search__filter-btn btn btn--stroke">
+                <span>Применить</span>
+              </button>
+            </div>
+            <div class="search__results">
+              <div class="search__sort">
+                <span>Сортировать по популярности</span>
+              </div>
+              <div class="search__card exp5To10 female age30To50" data-price="1500" data-exp="7" data-sex="female" data-age="32">
+                <div class="search__card-img" style="background-image: url(./img/about-specialists.png)"></div>
+                <div class="search__card-rating">
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                </div>
+                <span class="search__card-name subtitle">Панова Елизавета Александровна</span>
+                <span class="search__card-price">От 1500 руб</span>
+                <div class="search__card-stats">
+                  <span class="search__card-stat">Хирург</span>
+                  <span class="search__card-stat">Стаж 7 лет</span>
+                  <a href="#" class="search__card-stat reviews">37 отзывов</a>
+                </div>
+                <div class="search__card-timetable">
+                  <span class="search__card-days">пн — пт</span>
+                  <span class="search__card-time">10:00 — 19:00</span>
+                </div>
+                <div class="search__card-title">О себе</div>
+                <div class="search__card-text">Диагностирую, предупреждаю и лечу патологии головного и спинного мозга, нервных окончаний и заболеваний влияющих на нервную систему. Окончила Московский государственный университет имени...</div>
+                <a href="#" class="search__card-more">Читать полностью</a>
+                <button class="search__card-btn btn">Записаться</button>
+              </div>
+              <div class="search__card expMore10 female age30To50" data-price="4500" data-exp="20" data-sex="female" data-age="32">
+                <div class="search__card-img" style="background-image: url(./img/about-specialists.png)"></div>
+                <div class="search__card-rating">
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                </div>
+                <span class="search__card-name subtitle">Панова Елизавета Александровна</span>
+                <span class="search__card-price">От 4500 руб</span>
+                <div class="search__card-stats">
+                  <span class="search__card-stat">Хирург</span>
+                  <span class="search__card-stat">Стаж 20 лет</span>
+                  <a href="#" class="search__card-stat reviews">37 отзывов</a>
+                </div>
+                <div class="search__card-timetable">
+                  <span class="search__card-days">пн — пт</span>
+                  <span class="search__card-time">10:00 — 19:00</span>
+                </div>
+                <div class="search__card-title">О себе</div>
+                <div class="search__card-text">Диагностирую, предупреждаю и лечу патологии головного и спинного мозга, нервных окончаний и заболеваний влияющих на нервную систему. Окончила Московский государственный университет имени...</div>
+                <a href="#" class="search__card-more">Читать полностью</a>
+                <button class="search__card-btn btn">Записаться</button>
+              </div>
+              <div class="search__card expMore10 female age30To50" data-price="2500" data-exp="15" data-sex="female" data-age="32">
+                <div class="search__card-img" style="background-image: url(./img/about-specialists.png)"></div>
+                <div class="search__card-rating">
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                </div>
+                <span class="search__card-name subtitle">Панова Елизавета Александровна</span>
+                <span class="search__card-price">От 2500 руб</span>
+                <div class="search__card-stats">
+                  <span class="search__card-stat">Хирург</span>
+                  <span class="search__card-stat">Стаж 15 лет</span>
+                  <a href="#" class="search__card-stat reviews">37 отзывов</a>
+                </div>
+                <div class="search__card-timetable">
+                  <span class="search__card-days">пн — пт</span>
+                  <span class="search__card-time">10:00 — 19:00</span>
+                </div>
+                <div class="search__card-title">О себе</div>
+                <div class="search__card-text">Диагностирую, предупреждаю и лечу патологии головного и спинного мозга, нервных окончаний и заболеваний влияющих на нервную систему. Окончила Московский государственный университет имени...</div>
+                <a href="#" class="search__card-more">Читать полностью</a>
+                <button class="search__card-btn btn">Записаться</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

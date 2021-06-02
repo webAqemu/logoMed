@@ -142,20 +142,19 @@ if (document.querySelector(".reg")) {
   });
 }
 
-// accordeon for general (client profile sub-accordeon)
-document.querySelector(".general__tabs-btns").addEventListener("click", function (e) {
-  if (e.target.classList.contains("general__tabs-btn")) {
-    const generalTabId = e.target.dataset.general;
-    document.querySelector(".general__tabs-content.active").classList.remove("active");
-    document.querySelector(".general__tabs-btn.active").classList.remove("active");
-
-    e.target.classList.add("active");
-    document.querySelector(`.general__tabs-content[data-general="${generalTabId}"]`).classList.add("active");
-  }
-});
-
-// загрузка файлов в создании новой болезни
 if (document.querySelector(".general")) {
+  // accordeon for general (client profile sub-accordeon)
+  document.querySelector(".general__tabs-btns").addEventListener("click", function (e) {
+    if (e.target.classList.contains("general__tabs-btn")) {
+      const generalTabId = e.target.dataset.general;
+      document.querySelector(".general__tabs-content.active").classList.remove("active");
+      document.querySelector(".general__tabs-btn.active").classList.remove("active");
+
+      e.target.classList.add("active");
+      document.querySelector(`.general__tabs-content[data-general="${generalTabId}"]`).classList.add("active");
+    }
+  });
+  // загрузка файлов в создании новой болезни
   // загрузка файлов в регистрации пациента (2-ой шаг)
   const uploadFilesDisease = {}; // сюда сохраняем загруженные файлы
   let filesCount = 0;
@@ -259,3 +258,85 @@ if (document.querySelector(".general")) {
     }
   });
 }
+// слайдер цен для поиска врачей по нужной стоимости
+const priceSlider = document.getElementById("price");
+
+noUiSlider.create(priceSlider, {
+  start: [0, 5000],
+  behaviour: "snap",
+  connect: true,
+  range: {
+    min: 0,
+    max: 5000,
+  },
+  format: {
+    to: function (value) {
+      return parseInt(value);
+    },
+    from: function (value) {
+      return parseInt(value);
+    },
+  },
+});
+// собираем данные со слайдеров при изменении значения на них
+const priceFrom = document.querySelector(".search__input-from input");
+const priceTo = document.querySelector(".search__input-to input");
+[priceFrom.value, priceTo.value] = [0, 5000];
+priceSlider.noUiSlider.on("slide", function (value) {
+  [priceFrom.value, priceTo.value] = value;
+});
+// изменяем слайдер при изменении значений инпутов
+document.addEventListener("keyup", function () {
+  priceSlider.noUiSlider.set([priceFrom.value, priceTo.value]);
+});
+const filterResults = function () {
+  // проверяем фильтры
+  let filters = {
+    exp1To5: false,
+    exp5To10: false,
+    expMore10: false,
+    male: false,
+    female: false,
+    ageLess30: false,
+    age30To50: false,
+    ageMore50: false,
+  };
+  document.querySelectorAll(".search__checkbox input").forEach((box) => {
+    if (box.checked) {
+      filters[box.dataset.doctor] = true;
+    }
+  });
+  // создаем нужный селектор
+  let curCards = ".search__card";
+  for (filter in filters) {
+    if (filters[filter] == true) {
+      curCards += "." + filter;
+    }
+  }
+  // убираем все карточки
+  document.querySelectorAll(".search__card").forEach((card) => card.classList.add("hidden"));
+  // показываем нужные карточки
+  document.querySelectorAll(curCards).forEach((card) => {
+    // проверяем выбранную диапазон цен
+    if (card.dataset.price > priceFrom.value && card.dataset.price < priceTo.value) card.classList.remove("hidden");
+  });
+};
+
+// обнуление фильтров
+document.querySelector(".search__reset").addEventListener("click", () => {
+  // показываем всех докторов
+  document.querySelectorAll(".search__card.hidden").forEach((card) => {
+    card.classList.remove("hidden");
+  });
+  // обнуляем фильтры
+  $("input[type=checkbox]").prop("checked", false);
+  // обнуляем слайдер и цену
+  priceSlider.noUiSlider.set([0, 5000]);
+  [priceFrom.value, priceTo.value] = [0, 5000];
+});
+
+// фильтрация по нажатию на кнопку
+document.querySelector(".search__filter-btn").addEventListener("click", function (e) {
+  e.preventDefault();
+  filterResults();
+});

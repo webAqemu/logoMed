@@ -2102,14 +2102,15 @@
 
 .article {
   display: inline-block;
-  max-width: 430px;
+  max-width: 425px;
   width: 100%;
-  height: 430px;
+  height: 425px;
   background-image: url(../img/article-bg.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
+  margin: 0 7px;
   &__desc {
     padding: 0 30px;
     margin-bottom: 30px;
@@ -2117,6 +2118,7 @@
   }
   &__title {
     margin: 25px 0 15px;
+    color: $title;
   }
   &__add {
     position: absolute;
@@ -2143,6 +2145,29 @@
   }
   &__checkbox:checked + span {
     background-image: url(../img/star-32-yellow.svg);
+  }
+  &--big {
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #fff;
+    max-width: 870px;
+    width: 100%;
+    background-image: url(../img/article-big-image.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: 550px 0px;
+    position: relative;
+    margin: 0 4px;
+    padding: 40px 30px;
+    & .article__title {
+      max-width: 370px;
+      width: 100%;
+      margin: 0 0 15px;
+    }
+    & .article__text {
+      max-width: 465px;
+      width: 100%;
+    }
   }
 }
 
@@ -2361,6 +2386,11 @@
 
 .search {
   padding-top: 125px;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
   &__title {
     margin: 115px 0 40px;
   }
@@ -2408,5 +2438,336 @@
   }
   & .about-specialists {
     margin-top: 0;
+  }
+  &__inner {
+    margin-top: 120px;
+  }
+  &__filters {
+    max-width: 315px;
+    width: 100%;
+  }
+  &__subtitle {
+    display: inline-block;
+    margin: 0 40px 25px 0;
+  }
+  &__reset {
+    cursor: pointer;
+    color: $light-text;
+  }
+  &__item {
+    width: 100%;
+    background-image: url(../img/search-filter-bg.png);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 25px 30px;
+    margin-bottom: 30px;
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &-title {
+      font-size: 24px;
+      color: $title;
+      margin-bottom: 20px;
+    }
+  }
+  &__checkbox {
+    position: relative;
+    margin-bottom: 10px;
+    & input {
+      cursor: pointer;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      &:checked + span {
+        color: $text;
+      }
+      &:checked + span::before {
+        border-color: $peach;
+      }
+      &:checked + span::after {
+        opacity: 1;
+      }
+    }
+    & span {
+      position: relative;
+      padding-left: 30px;
+      color: $light-text;
+      transition: all 0.3s;
+
+      &::before {
+        content: " ";
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        left: 0;
+        top: 6px;
+        border: 1px solid $light-text;
+        transition: all 0.3s;
+      }
+      &::after {
+        content: " ";
+        position: absolute;
+        left: 1px;
+        top: 6px;
+        width: 13px;
+        height: 13px;
+        background-image: url(../img/symptom-checked-icon.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: all 0.3s;
+      }
+    }
+  }
+  &__filter-btn {
+    color: $text;
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &__price-slider {
+    max-width: 220px;
+    width: 100%;
+  }
+
+  &__input-from,
+  &__input-to {
+    position: relative;
+    & input {
+      outline: none;
+      width: 80px;
+      border: none;
+      box-shadow: none;
+      font-size: 20px;
+      padding: 0 0 3px 30px;
+      color: $text;
+      border-bottom: 2px solid $blue;
+      margin-right: 15px;
+    }
+    span {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  //noUiSlider
+  .noUi-handle {
+    top: -10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    border: none;
+    box-shadow: none;
+    @include main-gradient;
+  }
+  .noUi-handle::before,
+  .noUi-handle::after {
+    display: none;
+  }
+  .noUi-target {
+    margin-top: 40px;
+    height: 4px;
+    border: none;
+    box-shadow: none;
+    background-color: #f1f1f1;
+  }
+  .noUi-connects {
+    height: 4px;
+  }
+  .noUi-connect {
+    height: 4px;
+    background-color: $blue;
+  }
+
+  &__card {
+    max-width: 1000px;
+    width: 100%;
+    background-image: url(../img/search-card-bg.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 55px 40px 55px 175px;
+    margin-bottom: 30px;
+    position: relative;
+    &.hidden {
+      display: none;
+    }
+
+    &-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 100%;
+      overflow: hidden;
+      background-position: center top;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 40px;
+      left: 40px;
+    }
+    &-rating {
+      position: absolute;
+      top: 155px;
+      left: 30px;
+      display: flex;
+    }
+    &-star {
+      width: 14px;
+      height: 14px;
+      background-image: url(../img/star-14-yellow.svg);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      & + & {
+        margin-left: 9px;
+      }
+    }
+    &-name {
+      display: inline-block;
+      margin: 0 50px 15px 0;
+    }
+    &-price {
+      font-size: 32px;
+      color: $blue;
+    }
+    &-stats {
+      display: flex;
+      margin-bottom: 15px;
+    }
+    &-stat {
+      display: inline-block;
+      font-size: 24px;
+      & + & {
+        margin-left: 35px;
+      }
+      &.reviews {
+        color: $peach;
+      }
+    }
+    &-timetable {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    &-title {
+      font-size: 24px;
+      color: $title;
+      margin-bottom: 15px;
+    }
+    &-text {
+      max-width: 650px;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    &-more {
+      display: inline-block;
+      color: $blue;
+      margin-bottom: 50px;
+    }
+  }
+  &__sort {
+    padding: 12px 0 22px;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    & span {
+      display: inline-block;
+      margin-left: auto;
+    }
+  }
+}
+
+.articles {
+  padding: 120px 0;
+
+  &__forYou {
+    margin-top: 125px;
+    display: flex;
+  }
+  &__col {
+    max-width: 850px;
+    width: 100%;
+    &:nth-last-child(1) {
+      max-width: 516px;
+    }
+  }
+  &__text {
+    max-width: 650px;
+    width: 100%;
+    margin: 40px 0 60px;
+  }
+  &__form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 860px;
+    width: 100%;
+  }
+  &__input {
+    outline: none;
+    max-width: 585px;
+    width: 100%;
+    font-size: 20px;
+    color: $text;
+    padding: 9px 16px 11px;
+    border: 1px solid #68a9fe;
+    border-radius: 10px;
+    &::placeholder {
+      font-size: 20px;
+      color: $light-text;
+    }
+  }
+  &__btn {
+    margin-left: 30px;
+  }
+  &__tags {
+    font-size: 24px;
+    margin-right: 40px;
+  }
+  &__reload {
+    cursor: pointer;
+    font-size: 20px;
+    color: $blue;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+  }
+  &__tags-list {
+    margin: 0 -10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  &__tag {
+    display: inline-block;
+    text-align: center;
+    margin: 20px 10px 0;
+    background-image: url(../img/about-specialists-service-bg.png);
+    background-size: 110% 110%;
+    background-position: center;
+    min-width: 155px;
+    padding: 8px 10px 12px;
+    color: $peach;
+  }
+  &__recommendations {
+    margin: 120px 0 100px;
+  }
+  &__all {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: calc(100% + 14px);
+    margin: 0 -7px;
+  }
+  &__item {
+    margin-top: 50px;
   }
 }
