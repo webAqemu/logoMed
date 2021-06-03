@@ -225,9 +225,9 @@
     color: #000000;
   }
   &__arrow {
-    background-color: $blue;
+    background-color: $peach;
     border-radius: 50%;
-    border: 1px solid $blue;
+    border: 1px solid $peach;
     box-shadow: none;
     width: 40px;
     height: 40px;
@@ -250,7 +250,7 @@
     &:hover {
       background-color: $white;
       & svg path {
-        stroke: $blue;
+        stroke: $peach;
       }
     }
   }
@@ -279,6 +279,14 @@
     max-width: 660px;
     width: 100%;
     max-height: 744px;
+  }
+  &__slide {
+    outline: none;
+    transition: all 0.5s;
+    opacity: 0;
+    &.slick-current {
+      opacity: 1;
+    }
   }
   &__item {
     min-height: 744px;
@@ -322,7 +330,7 @@
     width: calc(100% + 20px);
   }
   &__service {
-    margin: 0 10px;
+    margin: 3px 10px;
     background-image: url(../img/about-specialists-service-bg.png);
     background-size: 100% 100%;
     min-width: 155px;
@@ -330,7 +338,7 @@
     color: $peach;
     &:nth-child(1),
     &:nth-child(2) {
-      margin: 0 20px;
+      margin: 3px 20px;
     }
   }
   .slick-dots {
@@ -1316,6 +1324,10 @@
       fill: $white;
     }
   }
+  &__timetable {
+    color: $white;
+    margin-top: 30px;
+  }
 }
 
 .tabs {
@@ -1326,6 +1338,12 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    &--small {
+      justify-content: flex-start;
+      & .tabs__item + .tabs__item {
+        margin-left: 20px;
+      }
+    }
   }
   &__item {
     cursor: pointer;
@@ -1365,8 +1383,13 @@
 
 .content {
   &-block {
+    min-height: 100vh;
+    max-height: fit-content;
     background-color: $bg;
     padding: 30px 0 140px;
+    .container {
+      position: relative;
+    }
     &__inner {
       display: none;
       &.active {
@@ -1379,6 +1402,11 @@
           display: flex;
         }
       }
+    }
+    &__fixed {
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
 }
@@ -2024,6 +2052,8 @@
     background-position: center;
     margin-top: 30px;
     padding: 50px 45px;
+  }
+  &__wrapper {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -2057,7 +2087,7 @@
   }
   &__btns {
     display: flex;
-    max-width: 425px;
+    max-width: 445px;
     width: 100%;
     justify-content: space-between;
     align-items: center;
@@ -2094,6 +2124,291 @@
       color: $light-text;
       margin-bottom: 30px;
       & span:nth-child(1) {
+        color: $light-text;
+      }
+    }
+  }
+  &__add {
+    cursor: pointer;
+    color: $peach;
+    position: relative;
+    padding-right: 30px;
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 10px;
+      width: 11px;
+      height: 6px;
+      background-image: url(../img/tests-add-arrow-down.png);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: all 0.3s;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      height: 0;
+      overflow: hidden;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      transition: all 0.3s;
+    }
+    &.active {
+      &::after {
+        transform: rotate(180deg);
+      }
+      ul {
+        height: 60px;
+      }
+    }
+    &-option {
+      color: $text;
+      transition: all 0.3s;
+      &:hover {
+        color: $peach;
+      }
+    }
+  }
+  &__meals {
+    display: none;
+    margin-top: 60px;
+    align-items: flex-start;
+    justify-content: space-between;
+    &.active {
+      display: flex;
+    }
+    &-wrapper:nth-last-child(1) {
+      max-width: 660px;
+      width: 100%;
+    }
+    &-title {
+      margin-bottom: 30px;
+    }
+    &-choosed {
+      display: inline-block;
+      position: relative;
+      margin-bottom: 40px;
+      max-width: 500px;
+      width: 100%;
+    }
+    &-input {
+      outline: none;
+      width: 500px;
+      font-size: 20px;
+      color: $text;
+      padding: 9px 25px 11px;
+      border: 1px solid $blue;
+      border-radius: 10px;
+      &::placeholder {
+        font-size: 20px;
+        color: $light-text;
+      }
+    }
+    &-list {
+      display: none;
+      padding: 10px 25px;
+      margin: 0;
+      list-style: none;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      background-color: #fff;
+      z-index: 10;
+      &.active {
+        display: block;
+      }
+    }
+    &-option {
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        color: $blue;
+      }
+    }
+    &-subtitle {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    &-item {
+      display: block;
+      width: fit-content;
+      font-size: 24px;
+      color: $blue;
+      position: relative;
+      padding-right: 20px;
+      margin-bottom: 15px;
+      & .delete {
+        cursor: pointer;
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        width: 16px;
+        height: 16px;
+        background-image: url(../img/meals-option-close.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+    }
+    &-save {
+      margin-top: 60px;
+    }
+    &-textarea {
+      display: inline-block;
+      max-width: 660px;
+      width: 100%;
+      min-height: 230px;
+      height: fit-content;
+      border: 1px solid $blue;
+      border-radius: 10px;
+      padding: 15px;
+      font-size: 20px;
+      color: $text;
+      resize: none;
+      outline: none;
+      &::placeholder {
+        color: $light-text;
+        font-size: 20px;
+      }
+    }
+  }
+  &__analyzes {
+    position: relative;
+    display: none;
+    margin-top: 60px;
+    &.active {
+      display: block;
+    }
+    &-title {
+      margin-bottom: 25px;
+    }
+    &-choosed {
+      display: inline-block;
+      position: relative;
+      margin-bottom: 40px;
+      cursor: pointer;
+      span {
+        display: inline-block;
+        outline: none;
+        width: 500px;
+        font-size: 20px;
+        color: $light-text;
+        padding: 9px 25px 11px;
+        border: 1px solid $blue;
+        border-radius: 10px;
+      }
+      ul {
+        padding: 10px 25px;
+        background-color: #fff;
+        z-index: 100;
+        margin: 0;
+        list-style: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 100%;
+        display: none;
+        &.active {
+          display: block;
+        }
+      }
+    }
+    &-option {
+      cursor: pointer;
+      transition: all 0.3s;
+      padding: 5px 0;
+      &:hover {
+        color: $blue;
+      }
+    }
+    &-list {
+      display: none;
+      flex-wrap: wrap;
+      padding: 0;
+      list-style: none;
+      &.active {
+        display: flex;
+      }
+    }
+    &-item {
+      width: 33.3333%;
+      position: relative;
+      margin-bottom: 10px;
+      & input {
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 10;
+        width: 70%;
+        height: 100%;
+        opacity: 0;
+        &:checked + span {
+          color: $text;
+        }
+        &:checked + span::before {
+          border-color: $peach;
+        }
+        &:checked + span::after {
+          opacity: 1;
+        }
+      }
+      & span {
+        position: relative;
+        padding-left: 30px;
+        color: $light-text;
+        transition: all 0.3s;
+
+        &::before {
+          content: " ";
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          left: 0;
+          top: 6px;
+          border: 1px solid $light-text;
+          transition: all 0.3s;
+        }
+        &::after {
+          content: " ";
+          position: absolute;
+          left: 1px;
+          top: 6px;
+          width: 13px;
+          height: 13px;
+          background-image: url(../img/symptom-checked-icon.svg);
+          background-size: cover;
+          background-repeat: no-repeat;
+          opacity: 0;
+          transition: all 0.3s;
+        }
+      }
+    }
+    &-btn {
+      margin-bottom: 50px;
+    }
+    &-selected {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding-top: 5px;
+      padding-left: 150px;
+      max-width: 600px;
+      width: 100%;
+      div {
+        font-size: 24px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      span {
+        margin: 0 12.5px 8px;
+        display: inline-block;
         color: $light-text;
       }
     }
@@ -2769,5 +3084,418 @@
   }
   &__item {
     margin-top: 50px;
+  }
+}
+
+.doctor {
+  &__tabs {
+    &-btns {
+      padding: 0;
+      margin: 0 0 75px 0;
+      font-size: 24px;
+      list-style: none;
+      display: flex;
+    }
+    &-btn {
+      cursor: pointer;
+      color: $light-text;
+      transition: all 0.3s;
+      &.active,
+      &:hover {
+        color: $text;
+      }
+    }
+    &-btn + &-btn {
+      margin-left: 100px;
+    }
+    &-content {
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
+  }
+  &__aside {
+    max-width: 430px;
+    width: 100%;
+    background-image: url(../img/doctor-aside-bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    position: relative;
+    padding: 180px 40px 75px;
+    &-img {
+      width: 245px;
+      height: 245px;
+      border-radius: 100%;
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -122px;
+    }
+    &-btn {
+      margin: 0 auto 55px;
+    }
+    &-name {
+      margin-bottom: 25px;
+    }
+    &-stat {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    &-title {
+      margin: 50px 0 25px;
+    }
+    &-rating {
+      padding: 0;
+      margin: 50px 0 25px;
+      list-style: none;
+      display: flex;
+    }
+    &-star {
+      width: 24px;
+      height: 24px;
+      background-image: url(../img/star-24-yellow.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      & + & {
+        margin-left: 15px;
+      }
+    }
+  }
+  &__info {
+    background-image: url(../img/doctor-content-bg.png);
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 60px 50px;
+    max-width: 895px;
+    width: 100%;
+    &-about {
+      margin-bottom: 55px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid #f1f1f1;
+    }
+    &-title {
+      margin-bottom: 30px;
+    }
+    &-text {
+      max-width: 755px;
+      width: 100%;
+      margin: 0 0 25px 0;
+      padding: 0;
+      &:nth-last-child(1) {
+        margin: 0;
+      }
+    }
+    &-slider::after {
+      content: "";
+      height: 100%;
+      width: 85px;
+      background: linear-gradient(270deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    &-slide {
+      margin-right: 30px;
+    }
+    .slick-dots {
+      list-style: none;
+      padding: 0;
+      margin: 40px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      li + li {
+        margin-left: 25px;
+      }
+      .slick-active button {
+        background-color: $peach;
+      }
+    }
+    button[role="tab"] {
+      cursor: pointer;
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      margin: 0;
+      border-radius: 100%;
+      background-color: $blue;
+      border: none;
+      box-shadow: none;
+    }
+  }
+  &__reviews {
+    background-image: url(../img/doctor-content-bg.png);
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding: 60px 50px;
+    max-width: 895px;
+    width: 100%;
+    &-title {
+      display: inline-block;
+      position: relative;
+      padding-right: 35px;
+      & span {
+        font-size: 20px;
+        color: $peach;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+    &-item {
+      margin-top: 25px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #f1f1f1;
+      position: relative;
+      &:nth-last-child(1) {
+        border: none;
+      }
+    }
+    &-img {
+      width: 55px;
+      height: 55px;
+      border-radius: 100%;
+      background-position: center top;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 10px;
+      left: 0;
+    }
+    &-name {
+      margin-left: 80px;
+      margin-bottom: 5px;
+    }
+    &-date {
+      color: $light-text;
+      margin-left: 80px;
+      margin-bottom: 15px;
+    }
+    &-rating {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    &-star {
+      width: 24px;
+      height: 24px;
+      background-image: url(../img/star-24-yellow.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      & + & {
+        margin-left: 15px;
+      }
+    }
+    &-text {
+      max-width: 690px;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    &-more {
+      color: $blue;
+    }
+  }
+  &__requests {
+    &-title {
+      margin-bottom: 15px;
+    }
+    &-item {
+      margin-top: 40px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid #f1f1f1;
+      position: relative;
+      &:nth-last-child(1) {
+        border: none;
+        padding-bottom: 0;
+      }
+    }
+    &-name {
+      margin-bottom: 25px;
+    }
+    &-date {
+      color: $light-text;
+      position: absolute;
+      right: 0;
+      top: 10px;
+    }
+    &-client {
+      color: $title;
+      margin-bottom: 30px;
+    }
+    &-text {
+      max-width: 665px;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+    &-more {
+      color: $blue;
+    }
+    &-btns {
+      margin-top: 30px;
+      display: flex;
+      width: 100%;
+    }
+    &-btn + &-btn {
+      margin-left: 25px;
+    }
+  }
+  &__clients {
+    position: relative;
+    &-title {
+      margin-bottom: 70px;
+    }
+    &-view {
+      position: absolute;
+      right: 0;
+      top: 10px;
+      color: $light-text;
+      span {
+        cursor: pointer;
+        display: none;
+        padding-right: 30px;
+        &::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 7px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+        }
+        &.active {
+          display: block;
+        }
+      }
+      & .block::after {
+        background-image: url(../img/doctor-clients-view-block.svg);
+        width: 14px;
+        height: 14px;
+      }
+      & .list::after {
+        background-image: url(../img/doctor-clients-view-list.svg);
+        width: 17px;
+        height: 11px;
+        top: 9px;
+      }
+    }
+    &-wrapper {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    &-item {
+      transition: all 0.3s;
+      width: 100%;
+      padding-left: 95px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+      position: relative;
+      &:nth-last-child(1) {
+        border: none;
+        margin-bottom: 0;
+      }
+      &.block {
+        display: inline-block;
+        background-image: url(../img/doctor-clients-item-block-bg.png);
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        padding: 30px;
+        max-width: 380px;
+        width: 100%;
+        min-height: 380px;
+        height: fit-content;
+        border: none;
+        .doctor__clients-img {
+          position: relative;
+          height: 90px;
+          width: 90px;
+          margin-bottom: 15px;
+        }
+        .doctor__clients-stats {
+          display: none;
+        }
+        .doctor__clients-next {
+          position: absolute;
+          display: inline-block;
+          right: auto;
+          top: auto;
+          left: 30px;
+          bottom: 30px;
+          font-size: 24px;
+          & div {
+            text-align: left;
+          }
+        }
+        .doctor__clients-cancel {
+          top: 30px;
+          bottom: auto;
+          right: 30px;
+        }
+      }
+    }
+    &-img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 65px;
+      width: 65px;
+      border-radius: 100%;
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+    &-name {
+      color: $title;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    &-text {
+      margin-bottom: 15px;
+    }
+    &-next {
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 24px;
+      & div {
+        text-align: right;
+        font-size: 20px;
+        margin-bottom: 5px;
+      }
+    }
+    &-date {
+      color: $blue;
+    }
+    &-time {
+      color: $blue;
+      margin-left: 15px;
+    }
+    &-cancel {
+      color: $light-text;
+      position: absolute;
+      bottom: 25px;
+      right: 0;
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      font-size: 20px;
+    }
   }
 }

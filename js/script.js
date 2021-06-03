@@ -211,26 +211,29 @@ if (document.querySelector(".general")) {
   });
 
   // переключение на все задачи по ссылке
-  document.querySelector("#allTasks").addEventListener("click", function () {
-    document.querySelector(".tabs__item.active").classList.remove("active");
-    document.querySelector(".general__tabs-content.active").classList.remove("active");
-    document.querySelector(".general__tabs-btns.active").classList.remove("active");
-    document.querySelector(".tasks__all").classList.add("active");
-    document.querySelector(".tasks__tabs-btn[data-tasks='1']").classList.add("active");
-    document.querySelector(".tasks__list[data-tasks='1']").classList.add("active");
-  });
+  if (document.querySelector(".tasks__all")) {
+    document.querySelector("#allTasks").addEventListener("click", function () {
+      document.querySelector(".tabs__item.active").classList.remove("active");
+      document.querySelector(".general__tabs-content.active").classList.remove("active");
+      document.querySelector(".general__tabs-btns.active").classList.remove("active");
+      document.querySelector(".tasks__all").classList.add("active");
+      document.querySelector(".tasks__tabs-btn[data-tasks='1']").classList.add("active");
+      document.querySelector(".tasks__list[data-tasks='1']").classList.add("active");
+    });
 
-  // табы для задача (сегодня, на неделю)
-  document.querySelector(".tasks__all").addEventListener("click", function (e) {
-    if (e.target.classList.contains("tasks__tabs-btn")) {
-      const curTab = e.target.dataset.tasks;
-      document.querySelector(".tasks__tabs-btn.active").classList.remove("active");
-      e.target.classList.add("active");
-      document.querySelector(".tasks__list.active").classList.remove("active");
-      document.querySelector(`.tasks__list[data-tasks="${curTab}"]`).classList.add("active");
-    }
-  });
-
+    // табы для задача (сегодня, на неделю)
+    document.querySelector(".tasks__all").addEventListener("click", function (e) {
+      if (e.target.classList.contains("tasks__tabs-btn")) {
+        const curTab = e.target.dataset.tasks;
+        document.querySelector(".tasks__tabs-btn.active").classList.remove("active");
+        e.target.classList.add("active");
+        document.querySelector(".tasks__list.active").classList.remove("active");
+        document.querySelector(`.tasks__list[data-tasks="${curTab}"]`).classList.add("active");
+      }
+    });
+  }
+}
+if (document.querySelector(".tabs__list")) {
   // после нажатия на все задачи убираем active у вкладки общее, и после при клике на
   // различные главные табы по кд убираем классы у tasks__all
   document.querySelector(".tabs__list").addEventListener("click", function (e) {
@@ -258,85 +261,181 @@ if (document.querySelector(".general")) {
     }
   });
 }
-// слайдер цен для поиска врачей по нужной стоимости
-const priceSlider = document.getElementById("price");
+if (document.getElementById("price")) {
+  // слайдер цен для поиска врачей по нужной стоимости
+  const priceSlider = document.getElementById("price");
 
-noUiSlider.create(priceSlider, {
-  start: [0, 5000],
-  behaviour: "snap",
-  connect: true,
-  range: {
-    min: 0,
-    max: 5000,
-  },
-  format: {
-    to: function (value) {
-      return parseInt(value);
+  noUiSlider.create(priceSlider, {
+    start: [0, 5000],
+    behaviour: "snap",
+    connect: true,
+    range: {
+      min: 0,
+      max: 5000,
     },
-    from: function (value) {
-      return parseInt(value);
+    format: {
+      to: function (value) {
+        return parseInt(value);
+      },
+      from: function (value) {
+        return parseInt(value);
+      },
     },
-  },
-});
-// собираем данные со слайдеров при изменении значения на них
-const priceFrom = document.querySelector(".search__input-from input");
-const priceTo = document.querySelector(".search__input-to input");
-[priceFrom.value, priceTo.value] = [0, 5000];
-priceSlider.noUiSlider.on("slide", function (value) {
-  [priceFrom.value, priceTo.value] = value;
-});
-// изменяем слайдер при изменении значений инпутов
-document.addEventListener("keyup", function () {
-  priceSlider.noUiSlider.set([priceFrom.value, priceTo.value]);
-});
-const filterResults = function () {
-  // проверяем фильтры
-  let filters = {
-    exp1To5: false,
-    exp5To10: false,
-    expMore10: false,
-    male: false,
-    female: false,
-    ageLess30: false,
-    age30To50: false,
-    ageMore50: false,
-  };
-  document.querySelectorAll(".search__checkbox input").forEach((box) => {
-    if (box.checked) {
-      filters[box.dataset.doctor] = true;
-    }
   });
-  // создаем нужный селектор
-  let curCards = ".search__card";
-  for (filter in filters) {
-    if (filters[filter] == true) {
-      curCards += "." + filter;
-    }
-  }
-  // убираем все карточки
-  document.querySelectorAll(".search__card").forEach((card) => card.classList.add("hidden"));
-  // показываем нужные карточки
-  document.querySelectorAll(curCards).forEach((card) => {
-    // проверяем выбранную диапазон цен
-    if (card.dataset.price > priceFrom.value && card.dataset.price < priceTo.value) card.classList.remove("hidden");
-  });
-};
-
-// обнуление фильтров
-document.querySelector(".search__reset").addEventListener("click", () => {
-  // показываем всех докторов
-  document.querySelectorAll(".search__card.hidden").forEach((card) => {
-    card.classList.remove("hidden");
-  });
-  // обнуляем фильтры
-  $("input[type=checkbox]").prop("checked", false);
-  // обнуляем слайдер и цену
-  priceSlider.noUiSlider.set([0, 5000]);
+  // собираем данные со слайдеров при изменении значения на них
+  const priceFrom = document.querySelector(".search__input-from input");
+  const priceTo = document.querySelector(".search__input-to input");
   [priceFrom.value, priceTo.value] = [0, 5000];
-});
+  priceSlider.noUiSlider.on("slide", function (value) {
+    [priceFrom.value, priceTo.value] = value;
+  });
+  // изменяем слайдер при изменении значений инпутов
+  document.addEventListener("keyup", function () {
+    priceSlider.noUiSlider.set([priceFrom.value, priceTo.value]);
+  });
 
-// фильтрация по нажатию на кнопку
-document.querySelector(".search__filter-btn").addEventListener("click", function (e) {
-  e.preventDefault();
-  filterResults();
-});
+  const filterResults = function () {
+    // проверяем фильтры
+    let filters = {
+      exp1To5: false,
+      exp5To10: false,
+      expMore10: false,
+      male: false,
+      female: false,
+      ageLess30: false,
+      age30To50: false,
+      ageMore50: false,
+    };
+    document.querySelectorAll(".search__checkbox input").forEach((box) => {
+      if (box.checked) {
+        filters[box.dataset.doctor] = true;
+      }
+    });
+    // создаем нужный селектор
+    let curCards = ".search__card";
+    for (filter in filters) {
+      if (filters[filter] == true) {
+        curCards += "." + filter;
+      }
+    }
+    // убираем все карточки
+    document.querySelectorAll(".search__card").forEach((card) => card.classList.add("hidden"));
+    // показываем нужные карточки
+    document.querySelectorAll(curCards).forEach((card) => {
+      // проверяем выбранную диапазон цен
+      if (card.dataset.price > priceFrom.value && card.dataset.price < priceTo.value) card.classList.remove("hidden");
+    });
+  };
+
+  // обнуление фильтров
+  document.querySelector(".search__reset").addEventListener("click", () => {
+    // показываем всех докторов
+    document.querySelectorAll(".search__card.hidden").forEach((card) => {
+      card.classList.remove("hidden");
+    });
+    // обнуляем фильтры
+    $("input[type=checkbox]").prop("checked", false);
+    // обнуляем слайдер и цену
+    priceSlider.noUiSlider.set([0, 5000]);
+    [priceFrom.value, priceTo.value] = [0, 5000];
+  });
+
+  // фильтрация по нажатию на кнопку
+  document.querySelector(".search__filter-btn").addEventListener("click", function (e) {
+    e.preventDefault();
+    filterResults();
+  });
+}
+
+if (document.querySelector(".doctor__info")) {
+  $(".doctor__info-slider").slick({
+    infinite: false,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    dots: true,
+    arrows: false,
+    variableWidth: true,
+  });
+  document.querySelectorAll(".slick-dots button").forEach((btn) => (btn.innerHTML = " "));
+  // accordeon for doctor-info
+  document.querySelector(".doctor__tabs-btns").addEventListener("click", function (e) {
+    if (e.target.classList.contains("doctor__tabs-btn")) {
+      const infoTabId = e.target.dataset.info;
+      document.querySelector(".doctor__tabs-content.active").classList.remove("active");
+      document.querySelector(".doctor__tabs-btn.active").classList.remove("active");
+
+      e.target.classList.add("active");
+      document.querySelector(`.doctor__tabs-content[data-info="${infoTabId}"]`).classList.add("active");
+    }
+  });
+  // block or list view for doctor__clients
+  document.querySelector(".doctor__clients-view").addEventListener("click", function (e) {
+    if (e.target.classList.contains("block")) {
+      e.target.classList.remove("active");
+      document.querySelector(".doctor__clients-view .list").classList.add("active");
+      document.querySelectorAll(".doctor__clients-item").forEach((client) => {
+        client.classList.add("block");
+      });
+    }
+    if (e.target.classList.contains("list")) {
+      e.target.classList.remove("active");
+      document.querySelector(".doctor__clients-view .block").classList.add("active");
+      document.querySelectorAll(".doctor__clients-item").forEach((client) => {
+        client.classList.remove("block");
+      });
+    }
+  });
+}
+
+if (document.querySelector(".tests__add")) {
+  // выбираем что назаначить пациенту
+  document.querySelector(".tests__add").addEventListener("click", function (e) {
+    document.querySelector(".tests__add").classList.toggle("active");
+    if (e.target.classList.contains("tests__add-option")) {
+      document.querySelector(".tests__add span").innerHTML = e.target.innerHTML;
+      e.target.closest(".tests__card").querySelector("div.active").classList.remove("active");
+      document.querySelector(`div[data-add="${e.target.dataset.add}"]`).classList.add("active");
+    }
+  });
+  // добавляем рекомендации по питанию
+  document.querySelector(".tests__meals-choosed").addEventListener("click", function (e) {
+    document.querySelector(".tests__meals-list").classList.toggle("active");
+    if (e.target.classList.contains("tests__meals-option")) {
+      document.querySelector(".tests__meals-input").value = e.target.innerHTML;
+      const recommendation = `<div class="tests__meals-item">${e.target.innerHTML}<span class="delete"></span></div>`;
+      document.querySelector(".tests__meals-recommendations").insertAdjacentHTML("beforeend", recommendation);
+      document.querySelector(".tests__meals-input").value = "";
+    }
+  });
+  // добавляем рекомендацию не из списка а по нажатию Enter
+  document.querySelector(".tests__meals-input").addEventListener("keyup", function (e) {
+    if (e.key === "Enter") {
+      document.querySelector(".tests__meals-list").classList.remove("active");
+      const recommendation = `<div class="tests__meals-item">${document.querySelector(".tests__meals-input").value}<span class="delete"></span></div>`;
+      document.querySelector(".tests__meals-recommendations").insertAdjacentHTML("beforeend", recommendation);
+      document.querySelector(".tests__meals-input").value = "";
+    }
+  });
+  // удаляем элементы при нажатии на крестик
+  document.querySelector(".tests__meals-recommendations").addEventListener("click", function (e) {
+    if (e.target.classList.contains("delete")) {
+      e.target.parentElement.remove();
+    }
+  });
+  // выбор анализов
+  document.querySelector(".tests__analyzes-choosed").addEventListener("click", function (e) {
+    document.querySelector(".tests__analyzes-choosed ul").classList.toggle("active");
+    if (e.target.classList.contains("tests__analyzes-option")) {
+      document.querySelector(".tests__analyzes-choosed span").innerHTML = e.target.innerHTML;
+      document.querySelector(`.tests__analyzes-list.active`).classList.remove("active");
+      document.querySelector(`.tests__analyzes-list[data-analyze="${e.target.dataset.analyze}"]`).classList.add("active");
+    }
+  });
+  // добавляем Назначено при выборе ckeckbox
+  document.querySelector(".tests__analyzes-btn").addEventListener("click", function (e) {
+    document.querySelectorAll(".tests__analyzes-selected span").forEach((span) => span.remove());
+    document.querySelectorAll(".tests__analyzes-checkbox:checked").forEach((box) => {
+      document.querySelector(".tests__analyzes-selected").insertAdjacentHTML("beforeend", `<span>${box.parentElement.querySelector("span").innerHTML}</span>`);
+    });
+  });
+}
