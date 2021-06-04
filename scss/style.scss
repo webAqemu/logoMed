@@ -632,6 +632,7 @@
     width: 100%;
   }
   &__back {
+    display: inline-block;
     font-size: 14px;
     color: $blue;
     margin-top: 30px;
@@ -654,7 +655,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
-    max-width: 315px;
+    max-width: 300px;
     width: 100%;
     height: 690px;
     list-style: none;
@@ -735,7 +736,7 @@
     }
   }
   &__tabs-content &__desc {
-    max-width: 680px;
+    max-width: 710px;
     width: 100%;
     margin-bottom: 40px;
   }
@@ -763,7 +764,7 @@
     border: 1px solid $text;
     color: $text;
     font-size: 20px;
-    outline-color: $light-text;
+    outline: none;
     border: 1px solid #bdbdbd;
     border-radius: 10px;
     margin-bottom: 40px;
@@ -795,6 +796,9 @@
       width: 100%;
       margin-right: 40px;
     }
+  }
+  &__msd.inactive {
+    color: $light-text;
   }
   &__textarea {
     max-width: 730px;
@@ -849,8 +853,11 @@
       margin-right: 30px;
     }
   }
+
   &__radio:checked + &__label::after,
-  &__radio:checked + &__label {
+  &__radio:checked + &__label,
+  &__radio:hover + &__label::after,
+  &__radio:hover + &__label {
     opacity: 1;
   }
 
@@ -1015,6 +1022,7 @@
       margin-bottom: 25px;
     }
     &-item {
+      position: relative;
       display: flex;
       align-items: flex-end;
       margin-bottom: 30px;
@@ -1038,6 +1046,13 @@
         margin-left: 10px;
       }
     }
+    &-link--all {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
   }
   &__buds {
     display: inline-block;
@@ -1051,6 +1066,7 @@
       max-width: 220px;
       width: 100%;
       text-align: center;
+      color: $text;
     }
     &-img {
       width: 160px;
@@ -1100,6 +1116,9 @@
       height: 60px;
       border-radius: 100%;
       background-color: #d8d8d8;
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
     }
     &-name {
       margin: 10px 0;
@@ -1117,6 +1136,13 @@
       & svg + svg {
         margin-left: 10px;
       }
+    }
+    &-profile {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
     }
   }
 }
@@ -1304,7 +1330,6 @@
     }
   }
   &__btn {
-    display: inline-block;
     position: relative;
     color: $white;
     transition: all 0.3s;
@@ -1448,6 +1473,7 @@
       cursor: pointer;
       color: $light-text;
       transition: all 0.3s;
+      width: max-content;
       & + & {
         margin-left: 100px;
       }
@@ -1489,7 +1515,7 @@
     margin: 55px 0 24px;
   }
   &__symptoms {
-    margin: 40px 0;
+    margin: 40px -50px 40px 0;
     padding-bottom: 45px;
     border-bottom: 1px solid #f1f1f1;
     &:nth-last-child(1) {
@@ -1514,7 +1540,8 @@
     margin-bottom: 30px;
     position: relative;
     &:nth-child(odd) {
-      max-width: 320px;
+      max-width: 314px;
+      margin-right: 10px;
     }
     &:nth-last-child(1) {
       margin-bottom: 0;
@@ -1605,6 +1632,14 @@
   &__input-label {
     display: block;
     margin-bottom: 10px;
+  }
+  &__input-wrapper {
+    position: relative;
+    span {
+      position: absolute;
+      bottom: 36px;
+      left: 20px;
+    }
   }
   &__disease {
     &-text {
@@ -2417,15 +2452,22 @@
 
 .article {
   display: inline-block;
-  max-width: 425px;
+  max-width: 420px;
   width: 100%;
-  height: 425px;
+  height: 420px;
   background-image: url(../img/article-bg.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  margin: 0 7px;
+  margin: 0 2px;
+  &__img {
+    width: 100%;
+    height: 160px;
+    background-image: url(../img/article-image.png);
+    -webkit-mask-image: url(../img/MaskGroup.svg);
+    mask-image: url(../img/MaskGroup.svg);
+  }
   &__desc {
     padding: 0 30px;
     margin-bottom: 30px;
@@ -2458,7 +2500,8 @@
     height: 100%;
     opacity: 0;
   }
-  &__checkbox:checked + span {
+  &__checkbox:checked + span,
+  &__checkbox:hover + span {
     background-image: url(../img/star-32-yellow.svg);
   }
   &--big {
@@ -2483,6 +2526,9 @@
       max-width: 465px;
       width: 100%;
     }
+  }
+  svg {
+    width: 100%;
   }
 }
 
@@ -2557,16 +2603,17 @@
   &::after {
     content: "";
     position: absolute;
-    right: 50px;
-    top: 70px;
-    width: 505px;
-    height: 351px;
+    right: 20px;
+    top: 130px;
+    width: 460px;
+    height: 328px;
     background-image: url(../img/recommendations-empty-img.svg);
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 100% 100%;
   }
   &__text {
-    max-width: 625px;
+    max-width: 640px;
     width: 100%;
     margin: 25px 0 60px;
   }
@@ -2600,9 +2647,6 @@
 .useful {
   &__item {
     margin-top: 60px;
-    & + & {
-      margin-left: 10px;
-    }
   }
   &__more {
     margin: 40px 0 100px;

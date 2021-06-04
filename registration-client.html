@@ -106,7 +106,7 @@
             <div class="reg__wrapper">
               <div class="reg__steps-count subtitle">Шаг <span class="reg__steps-cur">1</span> из <span class="reg__steps-last">5</span></div>
               <div class="reg__tabs-content active" data-tab="1">
-                <p class="reg__desc btn-text">Заполните данные анкеты, и мы подберем рекомендации. Следующие шаги можно пропускать и возвращаться к ним позже.</p>
+                <p class="reg__desc btn-text">Заполните данные анкеты, и мы подберем рекомендации. Следующие&nbsp;шаги можно пропускать и возвращаться к ним позже.</p>
                 <span class="reg__social">Войти через соцсети</span>
                 <a class="reg__icon" href="#" style="background-image: url(./img/facebook-icon.svg)"></a>
                 <a class="reg__icon" href="#" style="background-image: url(./img/vk-icon.svg)"></a>
@@ -122,7 +122,7 @@
                   <label for="male" class="reg__label reg__label--inactive">М</label>
                   <input type="radio" class="reg__radio" id="female" value="female" name="sex" />
                   <label for="female" class="reg__label reg__label--inactive">Ж</label>
-                  <span class="reg__msd">Нормальный индекс массы тела</span>
+                  <span class="reg__msd inactive">Нормальный индекс массы тела</span>
                   <div class="reg__wrapper-footer" data-tab="1">
                     <button class="reg__btn btn btn--inactive">
                       <span>Далее</span>
@@ -178,21 +178,21 @@
                       <label for="file" class="reg__file-label btn-text">Загрузить файл</label>
                     </div>
                   </div>
-
-                  <div class="reg__wrapper-footer" data-tab="3">
-                    <button class="reg__btn btn">
-                      <span>Далее</span>
-                    </button>
-                    <span class="reg__pass btn-text">Пропустить шаг</span>
-                  </div>
                 </form>
+                <div class="reg__wrapper-footer" data-tab="3">
+                  <button class="reg__btn btn">
+                    <span>Далее</span>
+                  </button>
+                  <span class="reg__pass btn-text">Пропустить шаг</span>
+                </div>
               </div>
               <div class="reg__tabs-content" data-tab="4">
-                <p class="reg__desc btn-text">Мы сформировали для вас рекомендации по питанию и БАДам. Они появятся в вашем личном кабинете!</p>
+                <p class="reg__desc btn-text">Мы сформировали для вас рекомендации по питанию и БАДам. Они&nbsp;появятся в вашем личном кабинете!</p>
                 <div class="reg__recomendations">
                   <div class="reg__meals">
                     <h3 class="reg__meals-title title-h3">Питание</h3>
                     <div class="reg__meals-item">
+                      <a href="#" class="reg__meals-link--all"></a>
                       <div class="reg__meals-img"></div>
                       <div class="reg__meals-wrapper">
                         <h3 class="reg__meals-desc title-h3">Стол №8</h3>
@@ -205,6 +205,7 @@
                       </div>
                     </div>
                     <div class="reg__meals-item">
+                      <a href="#" class="reg__meals-link--all"></a>
                       <div class="reg__meals-img"></div>
                       <div class="reg__meals-wrapper">
                         <h3 class="reg__meals-desc title-h3">Стол №8</h3>
@@ -219,16 +220,16 @@
                   </div>
                   <div class="reg__buds">
                     <h3 class="reg__buds-title title-h3">БАДы</h3>
-                    <div class="reg__buds-item">
+                    <a href="#" class="reg__buds-item">
                       <div class="reg__buds-img"></div>
                       <div class="reg__buds-desc btn-text">DOCTORWELL super echinacea</div>
                       <div class="reg__buds-price title-h3"><span>789</span>&#8381;</div>
-                    </div>
-                    <div class="reg__buds-item">
+                    </a>
+                    <a href="#" class="reg__buds-item">
                       <div class="reg__buds-img"></div>
                       <div class="reg__buds-desc btn-text">KWC curcumin & amino acids</div>
                       <div class="reg__buds-price title-h3"><span>3 680</span>&#8381;</div>
-                    </div>
+                    </a>
                   </div>
                 </div>
                 <div class="reg__wrapper-footer" data-tab="4">
@@ -239,11 +240,12 @@
                 </div>
               </div>
               <div class="reg__tabs-content" data-tab="5">
-                <p class="reg__desc btn-text">Отлично! Вы заполнили анкету. Остальное сможете заполнить в личном кабинете. Вы можете выбрать специалиста для консультации.</p>
+                <p class="reg__desc btn-text">Отлично! Вы заполнили анкету. Остальное сможете заполнить в&nbsp;личном&nbsp;кабинете. Вы можете выбрать специалиста для консультации.</p>
                 <div class="reg__slider">
                   <div class="reg__slide">
                     <div class="reg__doctor">
-                      <div class="reg__doctor-img"></div>
+                      <a href="./doctor-profile-for-client.html" class="reg__doctor-profile"></a>
+                      <div class="reg__doctor-img" style="background-image: url(../img/doctor-aside-img.png)"></div>
                       <div class="reg__doctor-name title-h3">Панова Е. В.</div>
                       <div class="reg__doctor-desc btn-text">Абдоминальная хирургия</div>
                       <a href="#" class="reg__btn btn reg__doctor-link">
@@ -270,7 +272,8 @@
                   </div>
                   <div class="reg__slide">
                     <div class="reg__doctor">
-                      <div class="reg__doctor-img"></div>
+                      <a href="./doctor-profile-for-client.html" class="reg__doctor-profile"></a>
+                      <div class="reg__doctor-img" style="background-image: url(../img/doctor-aside-img.png)"></div>
                       <div class="reg__doctor-name title-h3">Панова Е. В.</div>
                       <div class="reg__doctor-desc btn-text">Абдоминальная хирургия</div>
                       <a href="#" class="reg__btn btn reg__doctor-link">
@@ -297,7 +300,8 @@
                   </div>
                   <div class="reg__slide">
                     <div class="reg__doctor">
-                      <div class="reg__doctor-img"></div>
+                      <a href="./doctor-profile-for-client.html" class="reg__doctor-profile"></a>
+                      <div class="reg__doctor-img" style="background-image: url(../img/doctor-aside-img.png)"></div>
                       <div class="reg__doctor-name title-h3">Панова Е. В.</div>
                       <div class="reg__doctor-desc btn-text">Абдоминальная хирургия</div>
                       <a href="#" class="reg__btn btn reg__doctor-link">
@@ -324,7 +328,8 @@
                   </div>
                   <div class="reg__slide">
                     <div class="reg__doctor">
-                      <div class="reg__doctor-img"></div>
+                      <a href="./doctor-profile-for-client.html" class="reg__doctor-profile"></a>
+                      <div class="reg__doctor-img" style="background-image: url(../img/doctor-aside-img.png)"></div>
                       <div class="reg__doctor-name title-h3">Панова Е. В.</div>
                       <div class="reg__doctor-desc btn-text">Абдоминальная хирургия</div>
                       <a href="#" class="reg__btn btn reg__doctor-link">
@@ -351,7 +356,7 @@
                   </div>
                 </div>
                 <div class="reg__wrapper-footer" data-tab="5">
-                  <a href="#" class="reg__btn--finish btn">
+                  <a href="./client-profile.html" class="reg__btn--finish btn">
                     <span>Закончить!</span>
                   </a>
                 </div>
@@ -363,7 +368,6 @@
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="./js/squircley.js"></script>
     <script src="./js/script.js"></script>
   </body>
 </html>

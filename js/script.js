@@ -42,6 +42,43 @@ if (document.querySelector(".login__inner")) {
 }
 
 if (document.querySelector(".reg")) {
+  // рассче индекса массы тела
+  document.addEventListener("keyup", function () {
+    const msd = document.querySelector(".reg__msd");
+    const weight = document.querySelector(".reg__input--weight");
+    const height = document.querySelector(".reg__input--height");
+    if (weight.value && height.value) {
+      let msdNum = weight.value / (height.value / 100) ** 2;
+      msd.classList.remove("inactive");
+      switch (true) {
+        case msdNum < 16.5:
+          msd.innerHTML = "Выраженный дефицит массы";
+          break;
+        case msdNum >= 16.5 && msdNum < 18.5:
+          msd.innerHTML = "	Недостаточная масса тела";
+          break;
+        case msdNum >= 18.5 && msdNum < 25:
+          msd.innerHTML = "Нормальный индекс массы тела";
+          break;
+        case msdNum >= 25 && msdNum < 30:
+          msd.innerHTML = "Избыточная масса тела";
+          break;
+        case msdNum >= 30 && msdNum < 35:
+          msd.innerHTML = "Ожирение первой степени";
+          break;
+        case msdNum >= 35 && msdNum < 40:
+          msd.innerHTML = "Ожирение второй степени";
+          break;
+        case msdNum >= 40:
+          msd.innerHTML = "Ожирение третьей степени ";
+          break;
+      }
+      console.log(msdNum);
+    } else {
+      msd.innerHTML = "Нормальный индекс массы тела";
+      msd.classList.add("inactive");
+    }
+  });
   // загрузка файлов в регистрации пациента (2-ой шаг)
   const uploadFilesSecondStep = {}; // сюда сохраняем загруженные файлы
   let filesCount = 0;
@@ -110,7 +147,6 @@ if (document.querySelector(".reg")) {
   });
 
   // добавляем функционал для кнопки Далее и Пропустить шаг
-  console.log("kk");
   document.querySelector(".reg__wrapper").addEventListener("click", function (e) {
     if (e.target.classList.contains("reg__btn") || e.target.classList.contains("reg__pass")) {
       // переходим на новый шаг
@@ -209,6 +245,39 @@ if (document.querySelector(".general")) {
     showOtherMonths: false,
     weekends: [0],
   });
+
+  // динамичный инпут с мл. и раз
+  const inputElements = document.querySelectorAll(".general__input");
+
+  inputElements.forEach((input) =>
+    input.addEventListener("input", () => {
+      const width = getTextWidth(input.value, "24px arial");
+      input.parentElement.querySelector("span").style.left = width + 15 + "px";
+    })
+  );
+
+  function updateSuffix() {
+    const width = getTextWidth(input.value, "20px arial");
+    console.log(this);
+    this.parentElement.querySelector("span").style.left = width + "px";
+  }
+  function getTextWidth(text, font) {
+    // re-use canvas object for better performance
+    var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+    var context = canvas.getContext("2d");
+    context.font = font;
+    var metrics = context.measureText(text);
+    return metrics.width;
+  }
+
+  // при каком либо изменении историии болезни убираем класс у кнопки Применить
+  const historyInputs = document.querySelectorAll(".general__form .general__input");
+  historyInputs.forEach((input) =>
+    input.addEventListener("input", () => {
+      input.parentElement.querySelector(".general__save").classList.remove("btn--inactive");
+    })
+  );
+  console.log(historyInputs);
 
   // переключение на все задачи по ссылке
   if (document.querySelector(".tasks__all")) {
