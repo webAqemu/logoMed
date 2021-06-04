@@ -3173,7 +3173,7 @@
     background-position: center;
     background-size: 100% 100%;
     position: relative;
-    padding: 180px 40px 75px;
+    padding: 180px 40px 275px;
     &-img {
       width: 245px;
       height: 245px;
@@ -3215,6 +3215,18 @@
       & + & {
         margin-left: 15px;
       }
+    }
+    &-change {
+      color: $blue;
+      border: none;
+      box-shadow: none;
+      position: absolute;
+      bottom: 55px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      background-color: transparent;
+      font-size: 20px;
     }
   }
   &__info {

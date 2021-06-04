@@ -2750,7 +2750,7 @@ textarea::placeholder {
   background-position: center;
   background-size: 100% 100%;
   position: relative;
-  padding: 180px 40px 75px; }
+  padding: 180px 40px 275px; }
   .doctor__aside-img {
     width: 245px;
     height: 245px;
@@ -2785,6 +2785,17 @@ textarea::placeholder {
     background-position: center; }
     .doctor__aside-star + .doctor__aside-star {
       margin-left: 15px; }
+  .doctor__aside-change {
+    color: #68a9fe;
+    border: none;
+    box-shadow: none;
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background-color: transparent;
+    font-size: 20px; }
 
 .doctor__info {
   background-image: url(../img/doctor-content-bg.png);
