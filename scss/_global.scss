@@ -28,14 +28,19 @@ body {
   color: $text;
 }
 
-main {
+.main {
   background-color: $bg;
+  &--white {
+    background-color: #fff;
+  }
 }
-.header-start + main {
+.header-start + .main {
   background-color: transparent;
 }
 input,
-textarea {
+textarea,
+input::placeholder,
+textarea::placeholder {
   font-family: "OpenSans-Regular", sans-serif;
   font-weight: 400;
 }
@@ -144,6 +149,9 @@ textarea {
     &:hover {
       box-shadow: none;
       background-image: url(../img/stroke-white-btn-200-hover.svg);
+      & span {
+        color: $text;
+      }
     }
   }
 }

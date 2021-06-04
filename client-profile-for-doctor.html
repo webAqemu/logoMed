@@ -419,7 +419,7 @@
                     <textarea class="tests__meals-textarea" placeholder="Введите здесь комментарий для пациента"></textarea>
                   </div>
                 </div>
-                <div class="tests__analyzes active" data-add="2">
+                <div class="tests__analyzes" data-add="2">
                   <div class="tests__analyzes-title subtitle">Отметьте анализы для сдачи</div>
                   <div class="tests__analyzes-selected">
                     <div>Назначено:</div>
@@ -598,9 +598,13 @@
                       <a href="#" class="tests__btn btn">
                         <span>Динамика</span>
                       </a>
-                      <a href="#" class="tests__meals">
+                      <span href="#" class="tests__add">
                         <span>Назначить анализы</span>
-                      </a>
+                        <ul>
+                          <li class="tests__add-option" data-add="1">Назначить питание</li>
+                          <li class="tests__add-option" data-add="2">Назначить анализы</li>
+                        </ul>
+                      </span>
                     </div>
                   </div>
                   <ul class="tests__stats">
@@ -655,6 +659,196 @@
                       <span>208,3 - 428,4 мкмоль/л</span>
                     </li>
                   </ul>
+                </div>
+                <div class="tests__meals" data-add="1">
+                  <div class="tests__meals-wrapper">
+                    <div class="tests__meals-title subtitle">Назначить питание</div>
+                    <div class="tests__meals-options">
+                      <div class="tests__meals-choosed">
+                        <input type="text" class="tests__meals-input" placeholder="Выберите питание из списка или введите" />
+                        <ul class="tests__meals-list">
+                          <li class="tests__meals-option">Стол №5</li>
+                          <li class="tests__meals-option">Стол №6</li>
+                          <li class="tests__meals-option">Стол №7</li>
+                          <li class="tests__meals-option">Стол №8</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="tests__meals-subtitle">Вы рекомендуете:</div>
+                    <div class="tests__meals-recommendations"></div>
+                    <button class="tests__meals-save btn">Сохранить</button>
+                  </div>
+                  <div class="tests__meals-wrapper">
+                    <div class="tests__meals-title subtitle">Комментарий к рекомендации</div>
+                    <textarea class="tests__meals-textarea" placeholder="Введите здесь комментарий для пациента"></textarea>
+                  </div>
+                </div>
+                <div class="tests__analyzes" data-add="2">
+                  <div class="tests__analyzes-title subtitle">Отметьте анализы для сдачи</div>
+                  <div class="tests__analyzes-selected">
+                    <div>Назначено:</div>
+                    <span>Общий анализ крови</span>
+                    <span>Цитомегаловирус</span>
+                    <span>Железо</span>
+                    <span>Общий анализ крови</span>
+                  </div>
+                  <span href="#" class="tests__analyzes-choosed">
+                    <span>Отображать анализы крови</span>
+                    <ul>
+                      <li class="tests__analyzes-option" data-analyze="1">Отображать анализы крови</li>
+                      <li class="tests__analyzes-option" data-analyze="2">Отображать анализы мочи</li>
+                    </ul>
+                  </span>
+                  <ul class="tests__analyzes-list active" data-analyze="1">
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Общий анализ крови</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Биохимический анализ крови</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Железо</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Глюкоза</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Холестерин</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Натрий</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Хлор</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Цитомегаловирус</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Онкомаркеры</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Аллоиммунные антитела</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>АЧТВ</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Протромбин</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Резус-принадлежность</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Группа крови</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Rh (C, E,  c, e), Kell — фенотипирование</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Тромбиновое время</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Фибриноген</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>D-димер</span>
+                    </li>
+                  </ul>
+                  <ul class="tests__analyzes-list" data-analyze="2">
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Биохимический анализ крови</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Общий анализ крови</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Железо</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Глюкоза</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Холестерин</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Натрий</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Хлор</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Цитомегаловирус</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Онкомаркеры</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Аллоиммунные антитела</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>АЧТВ</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Протромбин</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Резус-принадлежность</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Группа крови</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Rh (C, E,  c, e), Kell — фенотипирование</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Тромбиновое время</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>Фибриноген</span>
+                    </li>
+                    <li class="tests__analyzes-item">
+                      <input type="checkbox" name="" id="" class="tests__analyzes-checkbox" />
+                      <span>D-димер</span>
+                    </li>
+                  </ul>
+
+                  <button class="tests__analyzes-btn btn"><span>Динамика</span></button>
                 </div>
               </div>
             </div>

@@ -178,6 +178,67 @@ if (document.querySelector(".reg")) {
   });
 }
 
+if (document.querySelector(".appointment")) {
+  // загрузка файлов в регистрации пациента (2-ой шаг)
+  const uploadFilesSecondStep = {}; // сюда сохраняем загруженные файлы
+  let filesCount = 0;
+  document.querySelector("#file").addEventListener("change", function (e) {
+    filesCount++;
+    // 1) находим загруженный файл и добавляем его в наш объект
+    uploadFilesSecondStep[filesCount] = e.target.files[0];
+    console.log(uploadFilesSecondStep);
+    // 2) заплняем инпут в новом айтеме и в целом подргружаем новый айтем
+    const fileName = e.srcElement.files[0].name;
+    const filesList = document.querySelector(".reg__file-list");
+    console.log(e);
+    const html = `
+  <div class="reg__file-item" data-file="${filesCount}">
+      <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+      <input type="text" class="reg__file-name" placeholder="Введите название файла" />
+  </div>
+  `;
+    filesList.insertAdjacentHTML("beforeend", html);
+    const filesInputs = document.querySelectorAll(".reg__file-name");
+    filesInputs[filesInputs.length - 1].value = fileName;
+  });
+
+  // удаление файла из интерфейса и объекта
+  document.querySelector(".reg__file-list").addEventListener("click", function (e) {
+    if (e.target.classList.contains("reg__file-icon")) {
+      const item = e.target.parentElement;
+      const itemID = e.target.parentElement.dataset.file;
+      delete uploadFilesSecondStep[itemID];
+      item.remove();
+    }
+  });
+  $(".appointment__datepicker").datepicker({
+    showOtherMonths: false,
+    weekends: [0],
+  });
+  $(".appointment__month[data-date='2'] .appointment__datepicker").datepicker({
+    showOtherMonths: false,
+    weekends: [0],
+  });
+  // активация календарей
+  document.querySelector(".appointment__wrapper").addEventListener("mousedown", function (e) {
+    if (e.target.classList.contains("datepicker--cell-day")) {
+      // показываем время
+      if (document.querySelector(".appointment__month.active")) {
+        document.querySelector(".appointment__month.active").classList.remove("active");
+      }
+      document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"`).classList.add("active");
+      // заполняем нужной датой
+      const day = e.target.innerHTML;
+      const monthsList = ["Янаварь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+      const daysOfWeekList = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+      const month = monthsList[+e.target.dataset.month + 1];
+      const dayOfWeek = daysOfWeekList[+e.target.dataset.date % 7];
+      console.log(e.target);
+      document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"] .appointment__days-title`).innerHTML = month + " " + day + ", " + dayOfWeek;
+      console.log(month, dayOfWeek, day);
+    }
+  });
+}
 if (document.querySelector(".general")) {
   // accordeon for general (client profile sub-accordeon)
   document.querySelector(".general__tabs-btns").addEventListener("click", function (e) {
@@ -458,14 +519,18 @@ if (document.querySelector(".doctor__info")) {
 
 if (document.querySelector(".tests__add")) {
   // выбираем что назаначить пациенту
-  document.querySelector(".tests__add").addEventListener("click", function (e) {
-    document.querySelector(".tests__add").classList.toggle("active");
-    if (e.target.classList.contains("tests__add-option")) {
-      document.querySelector(".tests__add span").innerHTML = e.target.innerHTML;
-      e.target.closest(".tests__card").querySelector("div.active").classList.remove("active");
-      document.querySelector(`div[data-add="${e.target.dataset.add}"]`).classList.add("active");
-    }
-  });
+  document.querySelectorAll(".tests__add").forEach((add) =>
+    add.addEventListener("click", function (e) {
+      add.classList.toggle("active");
+      if (e.target.classList.contains("tests__add-option")) {
+        add.querySelector(" span").innerHTML = e.target.innerHTML;
+        if (e.target.closest(".tests__card").querySelector("div.active")) {
+          e.target.closest(".tests__card").querySelector("div.active").classList.remove("active");
+        }
+        add.closest(".tests__card").querySelector(`div[data-add="${e.target.dataset.add}"]`).classList.add("active");
+      }
+    })
+  );
   // добавляем рекомендации по питанию
   document.querySelector(".tests__meals-choosed").addEventListener("click", function (e) {
     document.querySelector(".tests__meals-list").classList.toggle("active");
@@ -506,5 +571,50 @@ if (document.querySelector(".tests__add")) {
     document.querySelectorAll(".tests__analyzes-checkbox:checked").forEach((box) => {
       document.querySelector(".tests__analyzes-selected").insertAdjacentHTML("beforeend", `<span>${box.parentElement.querySelector("span").innerHTML}</span>`);
     });
+  });
+}
+
+if (document.querySelector(".appointment")) {
+  document.querySelector(".appointment").addEventListener("click", function (e) {
+    const curTab = +e.target.dataset.tab;
+    if (e.target.classList.contains("appointment__tabs-btn")) {
+      document.querySelector(".appointment__tabs-btn.active").classList.remove("active");
+      e.target.classList.add("active");
+      document.querySelector(".appointment__tabs-content.active").classList.remove("active");
+      document.querySelector(`.appointment__tabs-content[data-tab="${curTab}"]`).classList.add("active");
+    }
+    if (e.target.classList.contains("appointment__btn--next")) {
+      switch (curTab) {
+        case 5:
+          document.querySelector(".appointment__tabs-btn.active").classList.remove("active");
+          document.querySelector(".appointment__tabs-content.active").classList.remove("active");
+          document.querySelector(".appointment__tabs").classList.remove("active");
+          document.querySelector(".appointment__date").classList.add("active");
+          document.querySelector(".appointment__tabs").classList.remove("active");
+          document.querySelector(".appointment__date").classList.add("active");
+          break;
+        case 6:
+          document.querySelector(".appointment__tabs").classList.remove("active");
+          document.querySelector(".appointment__date").classList.remove("active");
+          document.querySelector(".appointment__finish").classList.add("active");
+          document.querySelector(".appointment__finish-title").classList.add("active");
+          document.querySelector(".appointment__preview").classList.remove("active");
+          document.querySelector(".appointment").classList.add("appointment--blue");
+          break;
+        default:
+          document.querySelector(".appointment__tabs-btn.active").classList.remove("active");
+          document.querySelector(".appointment__tabs-content.active").classList.remove("active");
+          document.querySelector(`.appointment__tabs-btn[data-tab="${curTab}"]`).classList.add("complete");
+          document.querySelector(`.appointment__tabs-btn[data-tab="${curTab + 1}"]`).classList.add("active");
+          document.querySelector(`.appointment__tabs-content[data-tab="${curTab + 1}"]`).classList.add("active");
+          break;
+      }
+    }
+    if (e.target.classList.contains("appointment__return")) {
+      document.querySelector(".appointment__tabs").classList.add("active");
+      document.querySelector(".appointment__date").classList.remove("active");
+      document.querySelector(".appointment__tabs-btn[data-tab='5']").classList.add("active");
+      document.querySelector(".appointment__tabs-content[data-tab='5']").classList.add("active");
+    }
   });
 }
