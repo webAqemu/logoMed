@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>logo-med</title>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="./css/datepicker.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script defer src="./js/datepicker.js"></script>
+    <script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script defer src="./js/script.js"></script>
+  </head>
+  <body>
+    <header class="header header--dark">
+      <div class="container">
+        <div class="header__inner">
+          <a class="logo" href="./index.html">
+            <img src="./img/logo-white.svg" alt="logo" class="logo__icon" />
+          </a>
+          <input type="text" class="header__search" placeholder="Поиск по сайту" />
+          <nav class="header__nav">
+            <ul class="header__list">
+              <li class="header__item"><a href="#" class="header__link title-h3">Поиск врача</a></li>
+              <li class="header__item"><a href="#" class="header__link title-h3">Мои задачи</a></li>
+            </ul>
+          </nav>
+          <div class="header__profile">
+            <div class="header__img" style="background-image: url(./img/profile-img.png)"></div>
+            <div class="header__name title-h3">Константинопольский К. К.</div>
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L6.5 7L12 1" stroke="#68a9fe" stroke-linecap="round" />
+            </svg>
+            <ul class="header__profile-menu">
+              <li class="header__profile-item"><a href="#" class="header__profile-link">О клинике</a></li>
+              <li class="header__profile-item"><a href="#" class="header__profile-link">Статьи</a></li>
+              <li class="header__profile-item"><a href="#" class="header__profile-link">Контакты клиники</a></li>
+              <li class="header__profile-item"><a href="#" class="header__profile-link">Редактировать профиль</a></li>
+              <li class="header__profile-item"><a href="#" class="header__profile-link">Выйти</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main--white">
+      <div class="contacts">
+        <div class="container">
+          <div class="contacts__title title">Контакты клиники</div>
+          <div class="contacts__inner">
+            <div class="contacts__info">
+              <div class="contacts__text">По регионам</div>
+              <a href="tel:88009877766" class="contacts__phone subtitle">8 800 987 77 66</a>
+              <div class="contacts__text">По Москве</div>
+              <a href="tel:88009877766" class="contacts__phone subtitle">8 800 987 77 66</a>
+              <div class="contacts__text">По любым обращениям</div>
+              <a href="mailto:logo.med@gmail.com" class="contacts__mail subtitle">logo.med@gmail.com</a>
+              <address class="contacts__address subtitle">Москва, ул. Вагоноремонтная, 22</address>
+            </div>
+
+            <div class="contacts__map" id="map">
+
+                <iframe width="650" height="400" src="https://maps.google.com/maps?width=650&amp;height=400&amp;hl=en&amp;q=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D1%83%D0%BB.%20%D0%92%D0%B0%D0%B3%D0%BE%D0%BD%D0%BE%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82%D0%BD%D0%B0%D1%8F%2C%2022+(%D0%9D%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)&amp;ie=UTF8&amp;t=&amp;z=16&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+              </div>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contacts__contact">
+        <div class="container">
+          
+          <div class="contacts__contact-inner">
+            <form action="" class="contacts__form">
+              <div class="contacts__title title">Мы всегда на связи</div>
+          <div class="contacts__desc">Принимаем на почту любые обращения, отвечаем в течение 2 – 3 рабочих дней.</div>
+              <div class="contacts__form-choose">
+                <span>Выберите тему обращения или оставьте так</span>
+                <ul class="contacts__form-list">
+                  <li class="contacts__form-item">Вариант 1</li>
+                  <li class="contacts__form-item">Вариант 2</li>
+                </ul>
+              </div>
+              <textarea class="contacts__form-textarea" placeholder="Комментарий"></textarea>
+              <button class="contacts__form-btn btn">Отправить</button>
+            </form>
+            <div class="contacts__img" style="background-image: url(./img/contacts-img.svg);"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

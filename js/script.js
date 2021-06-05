@@ -618,3 +618,22 @@ if (document.querySelector(".appointment")) {
     }
   });
 }
+
+if (document.querySelector(".contacts")) {
+  document.querySelector(".contacts__form-choose").addEventListener("click", function (e) {
+    document.querySelector(".contacts__form-list").classList.toggle("active");
+    if (e.target.classList.contains("contacts__form-item")) {
+      document.querySelector(".contacts__form-choose span").innerHTML = e.target.innerHTML;
+    }
+  });
+}
+if (document.querySelector(".docs")) {
+  document.querySelector(".docs").addEventListener("click", function (e) {
+    if (e.target.classList.contains("docs__accordeon-title")) {
+      if (document.querySelector(".docs__accordeon-item.active")) {
+        document.querySelector(".docs__accordeon-item.active").classList.remove("active");
+      }
+      e.target.parentElement.classList.add("active");
+    }
+  });
+}

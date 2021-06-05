@@ -56,12 +56,14 @@ body {
 .header-start + .main {
   background-color: transparent; }
 
+address,
 input,
 textarea,
 input::placeholder,
 textarea::placeholder {
   font-family: "OpenSans-Regular", sans-serif;
-  font-weight: 400; }
+  font-weight: 400;
+  font-style: normal; }
 
 .container {
   max-width: 1360px;
@@ -3445,3 +3447,227 @@ textarea::placeholder {
     margin-bottom: 15px; }
   .appointment__finish-text {
     margin-bottom: 120px; }
+
+.contacts {
+  padding: 220px 0 80px;
+  background: #f9fcff; }
+  .contacts__title {
+    margin-bottom: 5px; }
+  .contacts__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+  .contacts__info {
+    display: inline-block;
+    max-width: 530px;
+    width: 100%; }
+  .contacts__text {
+    margin-bottom: 5px; }
+  .contacts__desc {
+    display: inline-block;
+    max-width: 470px;
+    width: 100%;
+    margin-bottom: 40px; }
+  .contacts__phone, .contacts__mail {
+    color: #68a9fe;
+    display: inline-block;
+    margin-bottom: 25px; }
+  .contacts__map {
+    display: inline-block;
+    max-width: 650px;
+    width: 100%; }
+  .contacts__contact {
+    padding-bottom: 130px; }
+    .contacts__contact-inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-top: 30px; }
+  .contacts__form {
+    max-width: 550px;
+    width: 100%; }
+    .contacts__form-choose {
+      width: 100%;
+      padding: 8px 25px 12px;
+      border: 1px solid #68a9fe;
+      border-radius: 10px;
+      position: relative;
+      margin-bottom: 40px; }
+    .contacts__form span {
+      color: #7d7d7d; }
+    .contacts__form-list {
+      padding: 10px 25px;
+      margin: 0;
+      position: absolute;
+      left: 0;
+      top: 50px;
+      width: 100%;
+      list-style: none;
+      background-color: #fff;
+      display: none; }
+      .contacts__form-list.active {
+        display: block; }
+    .contacts__form-item {
+      color: #7d7d7d;
+      padding: 10px 0;
+      cursor: pointer;
+      transition: all 0.3s; }
+      .contacts__form-item:hover {
+        color: #444444; }
+    .contacts__form-textarea {
+      outline: none;
+      width: 100%;
+      border: 1px solid #68a9fe;
+      border-radius: 10px;
+      padding: 15px;
+      color: #444444;
+      font-size: 20px;
+      min-height: 170px;
+      height: fit-content;
+      resize: none; }
+      .contacts__form-textarea::placeholder {
+        color: #7d7d7d;
+        font-size: 20px; }
+    .contacts__form-btn {
+      margin-top: 50px; }
+  .contacts__img {
+    width: 580px;
+    height: 560px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; }
+
+.docs {
+  padding: 220px 0 120px;
+  background: #f9fcff; }
+  .docs__title {
+    margin-bottom: 70px; }
+  .docs__accordeon-item {
+    padding: 35px 0 40px;
+    border-top: 1px solid #d3d3d3; }
+    .docs__accordeon-item:nth-last-child(1) {
+      border-bottom: 1px solid #d3d3d3; }
+    .docs__accordeon-item .docs__accordeon-text {
+      transition: all 0.3s;
+      height: 0;
+      overflow: hidden;
+      margin-top: 0; }
+    .docs__accordeon-item.active .docs__accordeon-text {
+      height: 350px;
+      margin-top: 70px; }
+    .docs__accordeon-item.active .docs__accordeon-title::after {
+      background-color: #68a9fe; }
+    .docs__accordeon-item.active .docs__accordeon-title::before {
+      opacity: 0; }
+  .docs__accordeon-title {
+    cursor: pointer;
+    position: relative; }
+    .docs__accordeon-title::after {
+      content: "";
+      width: 40px;
+      height: 5px;
+      background-color: #fe9393;
+      position: absolute;
+      right: 20px;
+      top: 17px;
+      transition: all 0.3s; }
+    .docs__accordeon-title::before {
+      content: "";
+      width: 40px;
+      height: 5px;
+      background-color: #fe9393;
+      position: absolute;
+      right: 20px;
+      top: 17px;
+      transform: rotate(90deg);
+      transition: all 0.3s; }
+  .docs__accordeon-text {
+    margin-top: 70px;
+    max-width: 1185px; }
+    .docs__accordeon-text p {
+      margin: 0;
+      padding: 0; }
+    .docs__accordeon-text a {
+      color: #444444; }
+  .docs__accordeon-file {
+    display: inline-block;
+    margin-top: 70px;
+    padding-left: 70px;
+    position: relative; }
+    .docs__accordeon-file::before {
+      content: "";
+      width: 48px;
+      height: 52px;
+      background-image: url(../img/reg-icons/reg-file-icon.svg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      left: 0;
+      top: -20px; }
+
+.art {
+  padding-bottom: 120px;
+  padding-top: 120px; }
+  .art:nth-child(1) {
+    padding-top: 220px; }
+  .art:nth-child(odd) {
+    background: #f9fcff; }
+  .art__doctor {
+    display: flex;
+    margin-bottom: 25px; }
+    .art__doctor-img {
+      height: 55px;
+      width: 55px;
+      border-radius: 100%;
+      margin-right: 25px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat; }
+    .art__doctor-name {
+      font-size: 24px;
+      margin-bottom: 5px; }
+    .art__doctor-special {
+      color: #7d7d7d; }
+  .art__title {
+    margin-bottom: 15px; }
+  .art__date {
+    color: #7d7d7d; }
+  .art__img {
+    margin-top: 50px;
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 50px; }
+  .art__text {
+    margin-bottom: 30px;
+    max-width: 910px; }
+  .art__add {
+    margin-top: 80px;
+    position: relative;
+    display: inline-block; }
+    .art__add input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer; }
+    .art__add span {
+      pointer-events: none;
+      padding-left: 55px;
+      color: #68a9fe;
+      position: relative; }
+      .art__add span::before {
+        content: "";
+        width: 32px;
+        height: 32px;
+        background-image: url(../img/star-32-grey.svg);
+        background-repeat: no-repeat;
+        position: absolute;
+        left: 0;
+        top: -2px;
+        transition: all 0.3s; }
+    .art__add input:hover + span::before,
+    .art__add input:checked + span::before {
+      background-image: url(../img/star-32-yellow.svg); }
