@@ -645,10 +645,13 @@ if (document.querySelector(".docs")) {
 if (document.querySelector(".popup")) {
   document.querySelector(".popup__notice").addEventListener("click", function (e) {
     if (e.target.classList.contains("popup__btn")) {
-      const curTub = +e.target.dataset.popup;
-      if (curTub != 3) {
+      const curTab = e.target.dataset.popup;
+      if (curTab == "add") {
         e.target.closest(".popup__slide").classList.remove("active");
-        document.querySelector(`.popup__slide[data-popup="${curTub + 1}"]`).classList.add("active");
+        document.querySelector(`.popup__slide[data-popup="3"]`).classList.add("active");
+      } else if (+curTab != 2) {
+        e.target.closest(".popup__slide").classList.remove("active");
+        document.querySelector(`.popup__slide[data-popup="${+curTab + 1}"]`).classList.add("active");
       } else {
         document.querySelector(".popup__notice").classList.remove("active");
         document.querySelector(".layer").classList.remove("active");
