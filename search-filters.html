@@ -202,5 +202,58 @@
         </div>
       </div>
     </main>
+    <div class="layer active"></div>
+    <div class="popup popup__notice active">
+      <div class="popup__slide popup__slide--first active" data-popup="1">
+        <div class="popup__title subtitle">Уточняем!</div>
+        <p class="popup__text">Вы уверены, что хотите записаться к Пановой Е. А.?</p>
+        <p class="popup__text">24 апреля, суббота 16:30 — 17:00</p>
+        <p class="popup__text">Первичная консультация</p>
+        <button class="popup__btn btn" data-popup="1">
+          <span>Да, продолжить</span>
+        </button>
+      </div>
+      <div class="popup__slide" data-popup="2">
+        <div class="popup__title subtitle">Уточняем!</div>
+        <p class="popup__subtitle title-h3">Это все ваши жалобы, верно?</p>
+        <p class="popup__text">Ваши жалобы:</p>
+        <p class="popup__text popup__text--light">Чувствую постоянную усталость. Все болит, ничего не помогает! Проекция на подвижные оси характеризует курс. Курс нелинеен. Будем, как и раньше, предполагать, что погрешность изготовления зависима.</p>
+        <p class="popup__text">Симптомы:</p>
+        <span class="popup__symptom popup__text--light">Слабость</span>
+        <span class="popup__symptom popup__text--light">Сухость кожи</span>
+        <span class="popup__symptom popup__text--light">Снижение энергии</span>
+        <span class="popup__symptom popup__text--light">Одышка</span>
+        <div class="popup__btns">
+          <button class="popup__btn btn" data-popup="2">
+            <span>Да, продолжить</span>
+          </button>
+          <button class="popup__btn btn btn--stroke">
+            <span>Добавить жалобы</span>
+          </button>
+        </div>
+      </div>
+      <div class="popup__slide popup__slide--third" data-popup="3">
+        <div class="popup__title subtitle">Добавить жалобы к записи</div>
+        <p class="popup__text popup__text--dark">Ваши жалобы:</p>
+        <textarea class="popup__textarea" placeholder="Оставьте комментарий с жалобами"></textarea>
+        <p class="popup__text popup__text--dark">Ваши жалобы:</p>
+        <div class="contacts__form-choose">
+          <span>Выберите симптомы из списка</span>
+          <ul class="contacts__form-list">
+            <li class="contacts__form-item">Вариант 1</li>
+            <li class="contacts__form-item">Вариант 2</li>
+          </ul>
+        </div>
+        <div class="popup__btns">
+          <button class="popup__btn btn" data-popup="3">
+            <span>Далее</span>
+          </button>
+          <button class="popup__btn btn btn--stroke">
+            <span>Заполнить анкету</span>
+          </button>
+        </div>
+      </div>
+      <div class="popup__close"></div>
+    </div>
   </body>
 </html>

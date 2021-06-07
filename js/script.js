@@ -9,6 +9,7 @@ $(".symptoms__inner").slick({
   <path d="M0.830078 1.04492L7.15137 7.36621L0.830078 13.6875" stroke="white" stroke-linecap="round"/>
   </svg></button>`,
 });
+
 $(".about-specialists__slider").slick({
   infinite: true,
   slidesToShow: 1,
@@ -16,6 +17,7 @@ $(".about-specialists__slider").slick({
   dots: true,
   arrows: false,
 });
+
 document.querySelectorAll(".about-specialists__slider .slick-dots li button").forEach((btn) => (btn.innerHTML = ""));
 
 // accordion
@@ -239,6 +241,7 @@ if (document.querySelector(".appointment")) {
     }
   });
 }
+
 if (document.querySelector(".general")) {
   // accordeon for general (client profile sub-accordeon)
   document.querySelector(".general__tabs-btns").addEventListener("click", function (e) {
@@ -363,6 +366,7 @@ if (document.querySelector(".general")) {
     });
   }
 }
+
 if (document.querySelector(".tabs__list")) {
   // после нажатия на все задачи убираем active у вкладки общее, и после при клике на
   // различные главные табы по кд убираем классы у tasks__all
@@ -391,6 +395,7 @@ if (document.querySelector(".tabs__list")) {
     }
   });
 }
+
 if (document.getElementById("price")) {
   // слайдер цен для поиска врачей по нужной стоимости
   const priceSlider = document.getElementById("price");
@@ -619,21 +624,43 @@ if (document.querySelector(".appointment")) {
   });
 }
 
-if (document.querySelector(".contacts")) {
+if (document.querySelector(".contacts") || document.querySelector(".popup")) {
   document.querySelector(".contacts__form-choose").addEventListener("click", function (e) {
+    document.querySelector(".contacts__form-choose").classList.toggle("active");
     document.querySelector(".contacts__form-list").classList.toggle("active");
     if (e.target.classList.contains("contacts__form-item")) {
       document.querySelector(".contacts__form-choose span").innerHTML = e.target.innerHTML;
     }
   });
 }
+
 if (document.querySelector(".docs")) {
   document.querySelector(".docs").addEventListener("click", function (e) {
     if (e.target.classList.contains("docs__accordeon-title")) {
-      if (document.querySelector(".docs__accordeon-item.active")) {
-        document.querySelector(".docs__accordeon-item.active").classList.remove("active");
-      }
-      e.target.parentElement.classList.add("active");
+      e.target.parentElement.classList.toggle("active");
     }
+  });
+}
+
+if (document.querySelector(".popup")) {
+  document.querySelector(".popup__notice").addEventListener("click", function (e) {
+    if (e.target.classList.contains("popup__btn")) {
+      const curTub = +e.target.dataset.popup;
+      if (curTub != 3) {
+        e.target.closest(".popup__slide").classList.remove("active");
+        document.querySelector(`.popup__slide[data-popup="${curTub + 1}"]`).classList.add("active");
+      } else {
+        document.querySelector(".popup__notice").classList.remove("active");
+        document.querySelector(".layer").classList.remove("active");
+      }
+    }
+    if (e.target.classList.contains("popup__close")) {
+      document.querySelector(".popup__notice").classList.remove("active");
+      document.querySelector(".layer").classList.remove("active");
+    }
+  });
+  document.querySelector(".layer").addEventListener("click", function (e) {
+    document.querySelector(".popup__notice").classList.remove("active");
+    document.querySelector(".layer").classList.remove("active");
   });
 }
