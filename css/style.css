@@ -417,6 +417,7 @@ textarea::placeholder {
       justify-content: center;
       max-width: 100%; }
     .preview__title {
+      margin-bottom: 0;
       text-align: center;
       max-width: 250px; }
     .preview__text {
@@ -703,7 +704,7 @@ textarea::placeholder {
     max-width: 555px;
     width: calc(100% + 20px); }
   .about-specialists__service {
-    margin: 3px 10px;
+    margin: 10px;
     background-image: url(../img/about-specialists-service-bg.png);
     background-size: 100% 100%;
     min-width: 155px;
@@ -712,7 +713,7 @@ textarea::placeholder {
     .about-specialists__service:nth-child(1) {
       margin: 3px 10px 3px 30px; }
     .about-specialists__service:nth-child(2) {
-      margin: 3px 30px 3px 10px; }
+      margin: 10px 30px 10px 10px; }
   .about-specialists .slick-dots {
     padding: 0;
     list-style: none;
@@ -806,7 +807,19 @@ textarea::placeholder {
     .about-specialists__about {
       max-width: 305px;
       width: 100%;
-      margin: 20px auto 0; } }
+      margin: 20px auto 0; }
+    .about-specialists .slick-dots li {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .about-specialists .slick-dots li.slick-active button {
+        border: 3px solid #68a9fe;
+        background-color: white; }
+    .about-specialists .slick-dots li button {
+      width: 10px;
+      height: 10px;
+      border: 2px solid #e3eaff;
+      padding: 0; } }
 
 .steps {
   margin-top: 250px; }
@@ -934,7 +947,9 @@ textarea::placeholder {
     .app__desc {
       z-index: 10; }
     .app__title {
-      margin-bottom: 570px; }
+      text-align: center;
+      max-width: 445px;
+      margin: 0 auto 540px; }
     .app__btns {
       flex-direction: column; }
     .app__wrapper {
@@ -1132,7 +1147,8 @@ textarea::placeholder {
     background: transparent;
     color: #7d7d7d;
     padding: 9px 24px 11px;
-    outline-color: #bdbdbd; }
+    outline: none;
+    box-shadow: none; }
     .login__input::placeholder {
       color: #7d7d7d; }
     .login__input + .login__input {
@@ -1804,7 +1820,6 @@ textarea::placeholder {
   padding: 0;
   margin: 110px 0 0;
   display: flex;
-  justify-content: space-between;
   width: 100%; }
   .tabs__list--small {
     justify-content: flex-start; }
@@ -1821,7 +1836,8 @@ textarea::placeholder {
   color: #ffffff;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  margin-right: 50px; }
   .tabs__item::before {
     content: "";
     position: absolute;
@@ -1839,6 +1855,8 @@ textarea::placeholder {
     margin-right: 15px; }
   .tabs__item span {
     pointer-events: none; }
+  .tabs__item:nth-last-child(1) {
+    margin-right: 0; }
 
 .content-block {
   min-height: 100vh;
@@ -1931,7 +1949,8 @@ textarea::placeholder {
     .general__symptoms--more {
       display: flex;
       align-items: flex-start;
-      justify-content: space-between; }
+      justify-content: space-between;
+      margin-right: 0; }
   .general__symptom {
     display: inline-block;
     max-width: 439px;
@@ -1968,8 +1987,8 @@ textarea::placeholder {
       margin: 0;
       list-style: none;
       position: absolute;
-      right: 0;
-      top: 30px;
+      left: -33px;
+      top: 35px;
       border: 1px solid #68a9fe;
       border-radius: 10px;
       background-color: white;
@@ -2597,7 +2616,11 @@ textarea::placeholder {
       display: block; }
   .tests__meals-option {
     cursor: pointer;
-    transition: all 0.3s; }
+    transition: all 0.3s;
+    padding: 5px 17px; }
+    .tests__meals-option:nth-child(1) {
+      padding-top: 15px;
+      border-top: 1px solid #68a9fe; }
     .tests__meals-option:hover {
       color: #68a9fe; }
   .tests__meals-subtitle {
@@ -3275,6 +3298,8 @@ textarea::placeholder {
   .articles__forYou {
     margin-top: 125px;
     display: flex; }
+    .articles__forYou .articles__col:nth-child(1) {
+      max-width: 100%; }
   .articles__col {
     max-width: 850px;
     width: 100%; }
@@ -4159,6 +4184,32 @@ textarea::placeholder {
       transition: all 0.3s; }
       .contacts__form-item:hover {
         color: #444444; }
+    .contacts__form-list {
+      display: none;
+      margin: 0;
+      list-style: none;
+      position: absolute;
+      left: -1px;
+      width: calc(100% + 2px);
+      background-color: #fff;
+      z-index: 10;
+      top: 84%;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border: 1px solid #68a9fe;
+      border-top: none;
+      padding: 10px 8px 30px; }
+      .contacts__form-list.active {
+        display: block; }
+    .contacts__form-item {
+      cursor: pointer;
+      transition: all 0.3s;
+      padding: 5px 17px; }
+      .contacts__form-item:nth-child(1) {
+        padding-top: 15px;
+        border-top: 1px solid #68a9fe; }
+      .contacts__form-item:hover {
+        color: #68a9fe; }
     .contacts__form-textarea {
       outline: none;
       width: 100%;

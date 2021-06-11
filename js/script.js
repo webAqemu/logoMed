@@ -16,14 +16,6 @@ $(".about-specialists__slider").slick({
   slidesToScroll: 1,
   dots: true,
   arrows: false,
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        dots: false,
-      },
-    },
-  ],
 });
 
 document.querySelectorAll(".about-specialists__slider .slick-dots li button").forEach((btn) => (btn.innerHTML = ""));
