@@ -23,8 +23,8 @@
           <input type="text" class="header__search" placeholder="Поиск по сайту" />
           <nav class="header__nav">
             <ul class="header__list">
-              <li class="header__item"><a href="#" class="header__link title-h3">Поиск врача</a></li>
-              <li class="header__item"><a href="#" class="header__link title-h3">Мои задачи</a></li>
+              <li class="header__item"><a href="./search.html" class="header__link title-h3">Поиск врача</a></li>
+              <li class="header__item"><a href="./client-profile.html" class="header__link title-h3">Мои задачи</a></li>
             </ul>
           </nav>
           <div class="header__profile">
@@ -34,11 +34,11 @@
               <path d="M1 1L6.5 7L12 1" stroke="white" stroke-linecap="round" />
             </svg>
             <ul class="header__profile-menu">
-              <li class="header__profile-item"><a href="#" class="header__profile-link">О клинике</a></li>
-              <li class="header__profile-item"><a href="#" class="header__profile-link">Статьи</a></li>
-              <li class="header__profile-item"><a href="#" class="header__profile-link">Контакты клиники</a></li>
+              <li class="header__profile-item"><a href="./about.html" class="header__profile-link">О клинике</a></li>
+              <li class="header__profile-item"><a href="./articles.html" class="header__profile-link">Статьи</a></li>
+              <li class="header__profile-item"><a href="./contacts.html" class="header__profile-link">Контакты клиники</a></li>
               <li class="header__profile-item"><a href="#" class="header__profile-link">Редактировать профиль</a></li>
-              <li class="header__profile-item"><a href="#" class="header__profile-link">Выйти</a></li>
+              <li class="header__profile-item"><a href="./login.html" class="header__profile-link">Выйти</a></li>
             </ul>
           </div>
         </div>
@@ -147,6 +147,15 @@
                   <div class="general__symptom">
                     <input type="checkbox" class="general__checkbox" />
                     <label for="" class="general__checkbox-label">Сухость кожи</label>
+                    <div class="general__symptom-choose">
+                      <span></span>
+                      <ul class="general__symptom-list">
+                        <li class="general__symptom-item">Голова</li>
+                        <li class="general__symptom-item">Руки</li>
+                        <li class="general__symptom-item">Локти</li>
+                        <li class="general__symptom-item">Лицо</li>
+                      </ul>
+                    </div>
                   </div>
                   <div class="general__symptom">
                     <input type="checkbox" class="general__checkbox" />
@@ -294,40 +303,68 @@
                   <div class="general__history-name title-h3">Геморрагический гастрит</div>
                   <div class="general__history-date">С 20.06.2017</div>
                   <form action="" class="general__form">
-                    <input type="text" class="general__input general__input--disease general__input--disease-name" placeholder="Введите название диагноза" />
                     <label for="" class="general__disease-label">1. В течение какого времени считаете себя больным?</label>
-                    <textarea type="text" class="general__input general__input--disease" placeholder="Введите дату начала болезни и дату окончания"></textarea>
+                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Введите дату начала болезни и дату окончания">26.04.2016 — 10.06.2021</textarea> -->
+                    <div class="general__disease-desc">26.04.2016 — 10.06.2021</div>
                     <label for="" class="general__disease-label">2. Когда, где и при каких обстоятельствах заболели впервые?</label>
-                    <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь"></textarea>
+                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</textarea> -->
+                    <div class="general__disease-desc">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</div>
                     <label for="" class="general__disease-label">3. С каких ощущений началось заболевание?</label>
-                    <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь"></textarea>
+                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</textarea> -->
+                    <div class="general__disease-desc">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</div>
                     <label for="" class="general__disease-label">4. Первое обращение к врачу, результаты исследований, диагноз заболевания, лечение и его эффективность.</label>
-                    <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь"></textarea>
+                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де-нола и омепразола становится легче. Пил месяц по 3 раза в день</textarea> -->
+                    <div class="general__disease-desc">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де&nbsp;-&nbsp;нола и омепразола становится легче. Пил месяц по 3 раза в день</div>
                     <label for="" class="general__disease-label">5. Последующее течение заболевания.</label>
-                    <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь"></textarea>
-                    <button class="general__save btn btn--inactive btn-text">
+                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</textarea> -->
+                    <div class="general__disease-desc">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</div>
+                    <div class="general__file-list">
+                      <div class="general__file-item" data-file="-">
+                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+                        <span class="general__file-name">Гастроскопия.png</span>
+                      </div>
+                      <div class="general__file-item" data-file="-">
+                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+                        <span class="general__file-name">Анализ на хеликобактер.png</span>
+                      </div>
+                    </div>
+                    <!-- <button class="general__save btn btn--inactive btn-text">
                       <span>Сохранить</span>
-                    </button>
+                    </button> -->
                   </form>
                 </div>
                 <div class="general__history">
                   <div class="general__history-name title-h3">Геморрагический гастрит</div>
                   <div class="general__history-date">С 20.06.2017</div>
                   <form action="" class="general__form">
-                    <input type="text" class="general__input general__input--disease general__input--disease-name" placeholder="Введите название диагноза" />
                     <label for="" class="general__disease-label">1. В течение какого времени считаете себя больным?</label>
-                    <textarea type="text" class="general__input general__input--disease" placeholder="Введите дату начала болезни и дату окончания"></textarea>
+                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Введите дату начала болезни и дату окончания">26.04.2016 — 10.06.2021</textarea> -->
+                    <div class="general__disease-desc">26.04.2016 — 10.06.2021</div>
                     <label for="" class="general__disease-label">2. Когда, где и при каких обстоятельствах заболели впервые?</label>
-                    <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь"></textarea>
+                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</textarea> -->
+                    <div class="general__disease-desc">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</div>
                     <label for="" class="general__disease-label">3. С каких ощущений началось заболевание?</label>
-                    <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь"></textarea>
+                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</textarea> -->
+                    <div class="general__disease-desc">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</div>
                     <label for="" class="general__disease-label">4. Первое обращение к врачу, результаты исследований, диагноз заболевания, лечение и его эффективность.</label>
-                    <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь"></textarea>
+                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де-нола и омепразола становится легче. Пил месяц по 3 раза в день</textarea> -->
+                    <div class="general__disease-desc">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де&nbsp;-&nbsp;нола и омепразола становится легче. Пил месяц по 3 раза в день</div>
                     <label for="" class="general__disease-label">5. Последующее течение заболевания.</label>
-                    <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь"></textarea>
-                    <button class="general__save btn btn--inactive btn-text">
+                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</textarea> -->
+                    <div class="general__disease-desc">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</div>
+                    <div class="general__file-list">
+                      <div class="general__file-item" data-file="-">
+                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+                        <span class="general__file-name">Гастроскопия.png</span>
+                      </div>
+                      <div class="general__file-item" data-file="-">
+                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+                        <span class="general__file-name">Анализ на хеликобактер.png</span>
+                      </div>
+                    </div>
+                    <!-- <button class="general__save btn btn--inactive btn-text">
                       <span>Сохранить</span>
-                    </button>
+                    </button> -->
                   </form>
                 </div>
               </div>
@@ -650,7 +687,7 @@
                     </div>
                   </div>
                   <div class="recommendations__text">Основной принцип — частое и дробное питание, в идеале — каждые три-четыре часа малыми порциями. Все блюда должны быть теплыми. Масло используется только как заправка к готовой еде; разрешены супы без мяса (молочные, овощные и с крупой), но их лучше протирать.</div>
-                  <a href="#" class="recommendations__btn-read btn btn--shadow">Читать статью</a>
+                  <a href="./art.html" class="recommendations__btn-read btn btn--shadow">Читать статью</a>
                 </div>
                 <div class="recommendations__comments">
                   <div class="recommendations__from">Назначил гастроэнтеролог Капустин А. Г.</div>

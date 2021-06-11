@@ -27,3 +27,8 @@ $pink: #fed1f1;
 @mixin extra-shadow {
   filter: drop-shadow(0px 0px 15px #7c9af2);
 }
+
+@mixin mobileBold {
+  font-family: "SFProDisplay-Medium", sans-serif;
+  font-weight: 500;
+}

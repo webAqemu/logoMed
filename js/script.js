@@ -16,9 +16,30 @@ $(".about-specialists__slider").slick({
   slidesToScroll: 1,
   dots: true,
   arrows: false,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        dots: false,
+      },
+    },
+  ],
 });
 
 document.querySelectorAll(".about-specialists__slider .slick-dots li button").forEach((btn) => (btn.innerHTML = ""));
+
+if (document.querySelector(".header-start")) {
+  document.querySelector(".header-start").addEventListener("click", function (e) {
+    const mobileMenu = document.querySelector(".header-start__nav.mobile");
+    const bg = document.querySelector(".layer-start");
+    if (e.target.classList.contains("burger")) {
+      e.target.classList.toggle("active");
+      mobileMenu.classList.toggle("active");
+      bg.classList.toggle("active");
+      document.querySelector("body").classList.toggle("active");
+    }
+  });
+}
 
 // accordion
 if (document.querySelector(".accordion__inner")) {
@@ -270,7 +291,7 @@ if (document.querySelector(".general")) {
     const html = `
   <div class="general__file-item" data-file="${filesCount}">
       <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-      <span class="general__file-name"/>
+      <span class="general__file-name"></span>
   </div>
   `;
     filesList.insertAdjacentHTML("beforeend", html);
@@ -341,8 +362,25 @@ if (document.querySelector(".general")) {
       input.parentElement.querySelector(".general__save").classList.remove("btn--inactive");
     })
   );
-  console.log(historyInputs);
 
+  // добавляем воозможность выбрать уточнение для жалобы (список)
+  document.querySelector(".general__symptoms").addEventListener("click", function (e) {
+    if (e.target.classList.contains("general__symptom-choose")) {
+      e.target.classList.toggle("active");
+    }
+    if (e.target.classList.contains("general__symptom-item")) {
+      e.target.closest(".general__symptom-choose").classList.toggle("active");
+      e.target.closest(".general__symptom-choose").querySelector("span").innerHTML = e.target.innerHTML;
+    }
+  });
+  // делаем резиновые textarea
+  /*   document.querySelectorAll('textarea[data-resize="resize"]').forEach((area) => {
+    area.style.height = area.scrollHeight + "px";
+    console.log("fgfg");
+    area.addEventListener("input", () => {
+      area.style.height = area.scrollHeight + "px";
+    });
+  }); */
   // переключение на все задачи по ссылке
   if (document.querySelector(".tasks__all")) {
     document.querySelector("#allTasks").addEventListener("click", function () {
@@ -538,6 +576,7 @@ if (document.querySelector(".tests__add")) {
   );
   // добавляем рекомендации по питанию
   document.querySelector(".tests__meals-choosed").addEventListener("click", function (e) {
+    document.querySelector(".tests__meals-choosed").classList.toggle("active");
     document.querySelector(".tests__meals-list").classList.toggle("active");
     if (e.target.classList.contains("tests__meals-option")) {
       document.querySelector(".tests__meals-input").value = e.target.innerHTML;
@@ -549,6 +588,7 @@ if (document.querySelector(".tests__add")) {
   // добавляем рекомендацию не из списка а по нажатию Enter
   document.querySelector(".tests__meals-input").addEventListener("keyup", function (e) {
     if (e.key === "Enter") {
+      document.querySelector(".tests__meals-choosed").classList.remove("active");
       document.querySelector(".tests__meals-list").classList.remove("active");
       const recommendation = `<div class="tests__meals-item">${document.querySelector(".tests__meals-input").value}<span class="delete"></span></div>`;
       document.querySelector(".tests__meals-recommendations").insertAdjacentHTML("beforeend", recommendation);
@@ -620,6 +660,12 @@ if (document.querySelector(".appointment")) {
       document.querySelector(".appointment__date").classList.remove("active");
       document.querySelector(".appointment__tabs-btn[data-tab='5']").classList.add("active");
       document.querySelector(".appointment__tabs-content[data-tab='5']").classList.add("active");
+      document.querySelector(".appointment__month.active").classList.remove("active");
+    }
+    if (document.querySelector(".hasDiagnose:checked")) {
+      document.querySelector(".hasDiagnoseInput").classList.add("active");
+    } else {
+      document.querySelector(".hasDiagnoseInput").classList.remove("active");
     }
   });
 }
