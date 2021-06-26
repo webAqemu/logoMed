@@ -27,7 +27,38 @@
               <li class="header__item"><a href="./client-profile.html" class="header__link title-h3">Мои задачи</a></li>
             </ul>
           </nav>
-          <div class="header__profile">
+          <button class="notification__open notification__open--blue mobileOnly"></button>
+          <div class="notification mobileOnly">
+            <div class="notification__title title-h3">Уведомления</div>
+            <button class="notification__close"></button>
+            <div class="notification__activate">
+              <input type="checkbox" name="notification" id="notification" checked />
+              <label for="notification">Включены</label>
+            </div>
+            <ul class="notification__list">
+              <li class="notification__item active">
+                <div class="notification__date">Сегодня, 26.06.2021</div>
+                <div class="notification__name title-h3">Назначены рекомендации</div>
+                <div class="notification__doctor">Назначил врач Петрова Н. Ю.</div>
+              </li>
+              <li class="notification__item active">
+                <div class="notification__date">Сегодня, 26.06.2021</div>
+                <div class="notification__name title-h3">Назначены анализы</div>
+                <div class="notification__doctor">Назначил врач Петрова Н. Ю.</div>
+              </li>
+              <li class="notification__item">
+                <div class="notification__date">Сегодня, 26.06.2021</div>
+                <div class="notification__name title-h3">Предстоящая консультация</div>
+                <div class="notification__doctor">Врач Красильников Ю. Ю. 15:00 – 15:30</div>
+              </li>
+            </ul>
+
+            <button class="notification__cancel">Отметить все как прочитанное</button>
+          </div>
+          <button class="header__burger burger burger--main">
+            <span></span>
+          </button>
+          <nav class="header__profile">
             <div class="header__img" style="background-image: url(./img/profile-img.png)"></div>
             <div class="header__name title-h3">Константинопольский К. К.</div>
             <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,10 +71,11 @@
               <li class="header__profile-item"><a href="#" class="header__profile-link">Редактировать профиль</a></li>
               <li class="header__profile-item"><a href="./login.html" class="header__profile-link">Выйти</a></li>
             </ul>
-          </div>
+          </nav>
         </div>
       </div>
     </header>
+    <div class="layer-header"></div>
     <main class="main--white">
       <div class="docs">
         <div class="container">
@@ -95,7 +127,7 @@
               <div class="contacts__title title">Мы всегда на связи</div>
               <div class="contacts__desc">Принимаем на почту любые обращения, отвечаем в течение 2 – 3 рабочих дней.</div>
               <div class="contacts__form-choose">
-                <span>Выберите тему обращения или оставьте так</span>
+                <span>Выберите тему или оставьте так</span>
                 <ul class="contacts__form-list">
                   <li class="contacts__form-item">Вариант 1</li>
                   <li class="contacts__form-item">Вариант 2</li>
@@ -104,7 +136,7 @@
               <textarea class="contacts__form-textarea" placeholder="Комментарий"></textarea>
               <button class="contacts__form-btn btn">Отправить</button>
             </form>
-            <div class="contacts__img" style="background-image: url(./img/contacts-img.svg)"></div>
+            <img class="contacts__img" src="./img/contacts-img.svg" />
           </div>
         </div>
       </div>

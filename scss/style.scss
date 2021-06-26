@@ -6414,20 +6414,39 @@
 .contacts {
   padding: 220px 0 80px;
   background: $bg;
+  @include r {
+    padding: 135px 0 30px;
+    background-color: white;
+  }
+
   &__title {
     margin-bottom: 25px;
+    @include r {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
   }
 
   &__inner {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
+
+    @include r {
+      justify-content: flex-start;
+      flex-direction: column;
+    }
   }
 
   &__info {
     display: inline-block;
     max-width: 530px;
     width: 100%;
+
+    @include r {
+      max-width: 100%;
+      margin-bottom: 25px;
+    }
   }
 
   &__text {
@@ -6448,10 +6467,19 @@
     margin-bottom: 25px;
   }
 
+  &__address {
+    @include r {
+      font-size: 17px;
+    }
+  }
+
   &__map {
     display: inline-block;
     max-width: 650px;
     width: 100%;
+    @include r {
+      height: 330px;
+    }
   }
 
   &__contact {
@@ -6461,6 +6489,10 @@
       align-items: flex-end;
       justify-content: space-between;
       padding-top: 30px;
+
+      @include r {
+        flex-direction: column-reverse;
+      }
     }
   }
 
@@ -6475,6 +6507,9 @@
       position: relative;
       margin-bottom: 40px;
       cursor: pointer;
+      @include r {
+        margin-bottom: 25px;
+      }
       &::after {
         content: "";
         position: absolute;
@@ -6491,6 +6526,10 @@
 
       &.active::after {
         transform: rotate(180deg);
+      }
+
+      @include r {
+        padding: 12px 15px 14px;
       }
     }
 
@@ -6576,29 +6615,45 @@
     }
     &-btn {
       margin-top: 50px;
+      @include r {
+        margin-top: 30px;
+      }
     }
   }
 
   &__img {
     width: 580px;
-    height: 560px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    @include r {
+      max-width: calc(100% - 100px);
+      width: 100%;
+      height: auto;
+      margin: 0 auto 25px;
+    }
   }
 }
 
 .docs {
   padding: 220px 0 120px;
   background: $bg;
+  @include r {
+    padding: 135px 0 30px;
+    background-color: white;
+  }
   &__title {
     margin-bottom: 70px;
+    @include r {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
   }
 
   &__accordeon {
     &-item {
       padding: 35px 0 40px;
       border-top: 1px solid #d3d3d3;
+      @include r {
+        padding: 25px 0 30px;
+      }
       &:nth-last-child(1) {
         border-bottom: 1px solid #d3d3d3;
       }
@@ -6611,8 +6666,8 @@
       }
 
       &.active .docs__accordeon-text {
-        height: 350px;
-        margin-top: 70px;
+        height: auto;
+        margin-top: 30px;
       }
 
       &.active .docs__accordeon-title {
@@ -6620,6 +6675,7 @@
           background-color: $blue;
         }
         &::before {
+          transform: rotate(45deg);
           opacity: 0;
         }
       }
@@ -6637,6 +6693,11 @@
         right: 20px;
         top: 17px;
         transition: all 0.3s;
+        @include r {
+          top: 10px;
+          width: 16px;
+          height: 2px;
+        }
       }
       &::before {
         content: "";
@@ -6648,6 +6709,15 @@
         top: 17px;
         transform: rotate(90deg);
         transition: all 0.3s;
+        @include r {
+          top: 10px;
+          width: 16px;
+          height: 2px;
+        }
+      }
+
+      @include r {
+        font-size: 17px;
       }
     }
 
@@ -6680,6 +6750,17 @@
         position: absolute;
         left: 0;
         bottom: 10px;
+        @include r {
+          width: 40px;
+          height: 40px;
+          bottom: auto;
+          top: 5px;
+        }
+      }
+
+      @include r {
+        margin-top: 30px;
+        color: $light-text;
       }
     }
   }

@@ -765,7 +765,7 @@ if (document.querySelector(".appointment")) {
   });
 }
 
-if (document.querySelector(".contacts") || document.querySelector(".popup")) {
+if (document.querySelector(".contacts__contact") || document.querySelector(".popup")) {
   document.querySelector(".contacts__form-choose").addEventListener("click", function (e) {
     document.querySelector(".contacts__form-choose").classList.toggle("active");
     document.querySelector(".contacts__form-list").classList.toggle("active");
