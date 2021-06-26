@@ -20,10 +20,11 @@ $(".about-specialists__slider").slick({
 
 document.querySelectorAll(".about-specialists__slider .slick-dots li button").forEach((btn) => (btn.innerHTML = ""));
 
+// burger menu in start pages
 if (document.querySelector(".header-start")) {
   document.querySelector(".header-start").addEventListener("click", function (e) {
     const mobileMenu = document.querySelector(".header-start__nav.mobile");
-    const bg = document.querySelector(".layer-start");
+    const bg = document.querySelector(".layer-header");
     if (e.target.classList.contains("burger")) {
       e.target.classList.toggle("active");
       mobileMenu.classList.toggle("active");
@@ -53,6 +54,27 @@ if (document.querySelector(".login__inner")) {
       document.querySelector(".login__window.active").classList.remove("active");
       document.querySelector(".login__window").classList.add("active");
     }
+  });
+}
+
+// burger on other pages
+if (document.querySelector(".burger--main")) {
+  const burger = document.querySelector(".burger");
+  const bg = document.querySelector(".layer-header");
+  const menu = document.querySelector(".header__profile");
+  const notificationBtn = document.querySelector(".notification__open");
+  const notificationClose = document.querySelector(".notification__close");
+  const notificationList = document.querySelector(".notification");
+  burger.addEventListener("click", function () {
+    burger.classList.toggle("active");
+    menu.classList.toggle("active");
+    bg.classList.toggle("active");
+  });
+  notificationBtn.addEventListener("click", function () {
+    notificationList.classList.add("active");
+  });
+  notificationClose.addEventListener("click", function () {
+    notificationList.classList.remove("active");
   });
 }
 
@@ -105,11 +127,13 @@ if (document.querySelector(".reg")) {
     // 2) заплняем инпут в новом айтеме и в целом подргружаем новый айтем
     const fileName = e.srcElement.files[0].name;
     const filesList = document.querySelector(".reg__file-list");
+    const fileWidth = window.innerWidth > 768 ? (fileName.length + 1) * 14 : (fileName.length + 1) * 9;
     console.log(e);
     const html = `
   <div class="reg__file-item" data-file="${filesCount}">
       <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-      <input type="text" class="reg__file-name" placeholder="Введите название файла" />
+      <input type="text" class="reg__file-name" placeholder="Введите название файла" style="width: ${fileWidth}px"/>
+      <button class="reg__file-del"></button>  
   </div>
   `;
     filesList.insertAdjacentHTML("beforeend", html);
@@ -117,9 +141,12 @@ if (document.querySelector(".reg")) {
     filesInputs[filesInputs.length - 1].value = fileName;
   });
 
+  //max-width: 300px;
+  //width: 100%;
+
   // удаление файла из интерфейса и объекта
   document.querySelector(".reg__file-list").addEventListener("click", function (e) {
-    if (e.target.classList.contains("reg__file-icon")) {
+    if (e.target.classList.contains("reg__file-del")) {
       const item = e.target.parentElement;
       const itemID = e.target.parentElement.dataset.file;
       delete uploadFilesSecondStep[itemID];
@@ -159,6 +186,18 @@ if (document.querySelector(".reg")) {
       document.querySelector(`.reg__tabs-content[data-tab="${dataTab}"]`).classList.add("active");
       document.querySelector(`.reg__tabs-btn[data-tab="${dataTab}"]`).classList.add("active");
     }
+
+    // возвращение к предыдущему шагу в мобилке
+    const curStep = document.querySelector(".reg__tabs-content.active");
+    if (e.target.classList.contains("reg__back")) {
+      const curStepNum = +curStep.dataset.tab;
+      curStep.classList.remove("active");
+      if (!(curStepNum == 1)) {
+        console.log(curStepNum);
+        document.querySelector(`.reg__tabs-content[data-tab="${curStepNum - 1}"]`).classList.add("active");
+        stepsCount(curStepNum - 1);
+      }
+    }
   });
 
   // добавляем функционал для кнопки Далее и Пропустить шаг
@@ -190,7 +229,28 @@ if (document.querySelector(".reg")) {
     arrows: false,
     variableWidth: true,
     infinity: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          dots: true,
+          variableWidth: false,
+        },
+      },
+    ],
   });
+
+  // слайдер для мобильных бадов
+  if (window.innerWidth < 768) {
+    $(".reg__buds-list").slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      variableWidth: true,
+      infinity: false,
+    });
+  }
 }
 
 if (document.querySelector(".appointment")) {
@@ -365,20 +425,29 @@ if (document.querySelector(".general")) {
       e.target.closest(".general__symptom-choose").querySelector("span").innerHTML = e.target.innerHTML;
     }
   });
-  // делаем резиновые textarea
-  /*   document.querySelectorAll('textarea[data-resize="resize"]').forEach((area) => {
-    area.style.height = area.scrollHeight + "px";
-    console.log("fgfg");
-    area.addEventListener("input", () => {
-      area.style.height = area.scrollHeight + "px";
-    });
-  }); */
+
   // переключение на все задачи по ссылке
   if (document.querySelector(".tasks__all")) {
     document.querySelector("#allTasks").addEventListener("click", function () {
       document.querySelector(".tabs__item.active").classList.remove("active");
       document.querySelector(".general__tabs-content.active").classList.remove("active");
       document.querySelector(".general__tabs-btns.active").classList.remove("active");
+      document.querySelector(".tasks__all").classList.add("active");
+      document.querySelector(".tasks__tabs-btn[data-tasks='1']").classList.add("active");
+      document.querySelector(".tasks__list[data-tasks='1']").classList.add("active");
+    });
+    // переключение на мобилке
+    document.querySelector(".tasksMobile").addEventListener("click", function () {
+      if (document.querySelector(".tabs__item.active")) {
+        document.querySelector(".tabs__item.active").classList.remove("active");
+      }
+      document.querySelector(".content-block__inner.active").classList.remove("active");
+      document.querySelector(".content-block__inner--general").classList.add("active");
+      if (document.querySelector(".general__tabs-content.active")) {
+        document.querySelector(".general__tabs-content.active").classList.remove("active");
+        document.querySelector(".general__tabs-btns.active").classList.remove("active");
+      }
+
       document.querySelector(".tasks__all").classList.add("active");
       document.querySelector(".tasks__tabs-btn[data-tasks='1']").classList.add("active");
       document.querySelector(".tasks__list[data-tasks='1']").classList.add("active");
@@ -393,6 +462,32 @@ if (document.querySelector(".general")) {
         document.querySelector(".tasks__list.active").classList.remove("active");
         document.querySelector(`.tasks__list[data-tasks="${curTab}"]`).classList.add("active");
       }
+    });
+  }
+
+  if (window.innerWidth < 768) {
+    // аккордеон для жалоб на мобилке
+    document.querySelector(".general__tabs-content[data-general='2']").addEventListener("click", function (e) {
+      if (e.target.classList.contains("general__symptoms-subtitle")) {
+        document.querySelector(`.general__symptoms[data-symptom="${e.target.dataset.symptom}"]`).classList.toggle("active");
+        e.target.classList.toggle("active");
+      }
+    });
+    // слайдер анализов на мобилке
+    $(".tests__list").slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      infinite: true,
+      dots: true,
+      arrows: false,
+    });
+    // слайдер бадов на мобилке
+    $(".recommendations__buds-list").slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      infinite: true,
+      dots: true,
+      arrows: false,
     });
   }
 }
@@ -419,6 +514,8 @@ if (document.querySelector(".tabs__list")) {
       newContent.classList.add("active");
       if (newContent.querySelector(".general__tabs-btns")) {
         newContent.querySelector(".general__tabs-btns").classList.add("active");
+        newContent.querySelectorAll(".general__tabs-btn").forEach((btn) => btn.classList.remove("active"));
+        newContent.querySelectorAll(".general__tabs-content").forEach((content) => content.classList.remove("active"));
         newContent.querySelector('.general__tabs-btn[data-general="1"]').classList.add("active");
         newContent.querySelector('.general__tabs-content[data-general="1"]').classList.add("active");
       }
@@ -514,12 +611,18 @@ if (document.getElementById("price")) {
 
 if (document.querySelector(".doctor__info")) {
   $(".doctor__info-slider").slick({
-    infinite: false,
+    infinity: false,
     slidesToShow: 4,
     slidesToScroll: 4,
     dots: true,
     arrows: false,
     variableWidth: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: "unslick",
+      },
+    ],
   });
   document.querySelectorAll(".slick-dots button").forEach((btn) => (btn.innerHTML = " "));
   // accordeon for doctor-info

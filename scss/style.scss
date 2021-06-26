@@ -1,4 +1,5 @@
 @import "fonts";
+@import "reset";
 @import "vars";
 @import "global";
 
@@ -69,8 +70,7 @@
         font-size: 17px;
       }
       &__btns {
-        position: absolute;
-        bottom: 45px;
+        margin: auto 25px 0 0;
         a {
           margin-bottom: 25px;
         }
@@ -115,6 +115,26 @@
     background-color: $blue;
     transition: all 0.3s;
   }
+  &--dark {
+    span,
+    &::before,
+    &::after {
+      background-color: $text;
+    }
+  }
+  &--white {
+    span,
+    &::before,
+    &::after {
+      background-color: white;
+    }
+    &.active {
+      &::after,
+      &::before {
+        background-color: $blue;
+      }
+    }
+  }
   &.active {
     span {
       opacity: 0;
@@ -145,7 +165,7 @@
     width: 126px;
     display: flex;
     img {
-      width: 100%;
+      width: 100% !important;
     }
   }
 }
@@ -158,7 +178,8 @@
     &__nav {
       display: none;
       &.mobile {
-        display: block;
+        display: flex;
+        flex-direction: column;
       }
     }
 
@@ -1394,10 +1415,37 @@
   padding-top: 136px;
   background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
 
+  @include r {
+    min-height: auto;
+    padding-bottom: 40px;
+  }
+
   &__inner {
     margin-top: 100px;
     width: 100%;
     display: flex;
+    @include r {
+      flex-direction: column;
+      margin-top: 30px;
+    }
+  }
+
+  &__back {
+    margin-right: auto;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 12px;
+      width: 8px;
+      background-image: url(../img/reg-icons/reg-arrow-back-mobile.svg);
+      background-size: cover;
+    }
   }
 
   &__tabs-btns {
@@ -1411,6 +1459,10 @@
     list-style: none;
     padding: 40px 45px;
     margin: 0;
+
+    @include r {
+      display: none;
+    }
   }
 
   &__tabs-btn {
@@ -1478,16 +1530,28 @@
     margin-left: 30px;
     padding: 50px 45px;
     position: relative;
+    overflow-x: hidden;
+    @include r {
+      margin-left: 0;
+      height: 100%;
+      padding: 40px 30px;
+    }
   }
 
   &__steps-count {
     margin-bottom: 20px;
+    @include r {
+      text-align: center;
+    }
   }
 
   &__tabs-content {
-    display: none;
+    height: 0;
+    overflow: hidden;
+    position: relative;
     &.active {
-      display: block;
+      height: calc(100% - 61px);
+      overflow: visible;
     }
   }
 
@@ -1495,11 +1559,17 @@
     max-width: 710px;
     width: 100%;
     margin-bottom: 40px;
+    @include r {
+      text-align: center;
+    }
   }
 
   &__social {
     display: inline-block;
     margin-bottom: 40px;
+    @include r {
+      display: none;
+    }
   }
 
   &__icon {
@@ -1509,16 +1579,142 @@
     margin-left: 25px;
     margin-bottom: -8px;
     text-decoration: none;
+    @include r {
+      display: none;
+    }
   }
 
   &__form {
     width: 100%;
-    &--doctor .reg__input--mail {
-      margin-right: 40px;
+    &--doctor {
+      .reg__input--mail {
+        margin-right: 40px;
+      }
+
+      .reg__sex {
+        @include r {
+          position: absolute;
+          display: inline-block;
+          width: fit-content;
+          margin: 0;
+          bottom: 170px;
+          left: 135px;
+        }
+      }
     }
   }
 
   &__input {
+    color: $text;
+    font-size: 20px;
+    margin-bottom: 40px;
+    display: inline-block;
+    position: relative;
+    @include r {
+      font-size: 16px;
+    }
+    input {
+      width: 100%;
+      padding: 10px 25px;
+      border: 1px solid $text;
+      outline: none;
+      border: 1px solid #bdbdbd;
+      border-radius: 10px;
+    }
+
+    input:focus,
+    input:valid {
+      border-color: $blue;
+    }
+
+    input:focus + label,
+    input:valid + label {
+      top: -15px;
+      left: 0;
+    }
+    &--name {
+      max-width: 730px;
+      width: 100%;
+      label {
+        @include r {
+          font-size: 14px;
+        }
+      }
+    }
+    &--tags {
+      max-width: 730px;
+      width: 100%;
+    }
+    &--phone,
+    &--mail,
+    &--special,
+    &--grade {
+      max-width: 267px;
+      width: 100%;
+      margin-right: 40px;
+      @include r {
+        max-width: 100%;
+        margin-right: 0;
+      }
+    }
+    &--mail {
+      margin-right: 160px;
+      @include r {
+        margin-right: 0;
+      }
+    }
+    &--weight,
+    &--height,
+    &--exp {
+      max-width: 115px;
+      width: 100%;
+      margin-right: 40px;
+      @include r {
+        margin-right: 30px;
+      }
+    }
+
+    &--height {
+      @include r {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    transform: translateY(-50%);
+    color: $light-text;
+    transition: all 0.3s;
+  }
+
+  &__form-line {
+    position: relative;
+    @include r {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+  }
+
+  &__msd {
+    @include r {
+      position: absolute;
+      top: 65px;
+    }
+  }
+
+  &__msd.inactive {
+    color: $light-text;
+  }
+
+  &__textarea {
+    max-width: 730px;
+    width: 100%;
+    height: 160px;
+    resize: none;
     padding: 10px 24px;
     border: 1px solid $text;
     color: $text;
@@ -1531,63 +1727,36 @@
     font-weight: 400;
     &::placeholder {
       color: $light-text;
+      max-width: 480px;
     }
-    &--name,
-    &--tags {
-      max-width: 730px;
-      width: 100%;
+
+    &:focus {
+      border-color: $blue;
     }
-    &--phone,
-    &--mail,
-    &--special,
-    &--grade {
-      max-width: 267px;
-      width: 100%;
-      margin-right: 40px;
-    }
-    &--mail {
-      margin-right: 160px;
-    }
-    &--weight,
-    &--height,
-    &--exp {
-      max-width: 115px;
-      width: 100%;
-      margin-right: 40px;
+
+    @include r {
+      height: 210px;
+      font-size: 16px;
     }
   }
 
-  &__msd.inactive {
-    color: $light-text;
-  }
-
-  &__textarea {
-    max-width: 730px;
-    width: 100%;
-    min-height: 160px;
-    max-height: fit-content;
-    resize: none;
-    padding: 10px 24px;
-    border: 1px solid $text;
-    color: $text;
-    font-size: 20px;
-    outline-color: $light-text;
-    border: 1px solid #bdbdbd;
-    border-radius: 10px;
-    margin-bottom: 40px;
-    font-family: "OpenSans-Regular", sans-serif;
-    font-weight: 400;
-    &::placeholder {
-      color: $light-text;
+  &__sex {
+    display: inline-block;
+    margin-right: 25px;
+    @include r {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
     }
   }
 
-  &__label {
+  &__radio-label {
     position: relative;
-    padding-right: 45px;
+    padding-right: 25px;
     opacity: 0.7;
     font-size: 24px;
     pointer-events: none;
+    transition: all 0.3s;
     &::after {
       content: "";
       position: absolute;
@@ -1595,10 +1764,12 @@
       height: 16px;
       border: 4px solid $blue;
       border-radius: 100%;
-      top: 10px;
-      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
       opacity: 0.7;
       pointer-events: none;
+      transition: all 0.3s;
     }
     &--adds::after {
       right: auto;
@@ -1607,21 +1778,22 @@
   }
 
   &__radio {
-    opacity: 0;
-    margin: 0 -60px 0 0;
-    cursor: pointer;
-    width: 40px;
-    height: 20px;
-    &-desc {
-      margin-right: 30px;
+    position: relative;
+    display: inline-block;
+    margin-left: 30px;
+    input {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
     }
-  }
-
-  &__radio:checked + &__label::after,
-  &__radio:checked + &__label,
-  &__radio:hover + &__label::after,
-  &__radio:hover + &__label {
-    opacity: 1;
+    input:checked + label::after,
+    input:checked + label,
+    input:hover + label::after,
+    input:hover + label {
+      opacity: 1;
+    }
   }
 
   &__wrapper-footer {
@@ -1629,8 +1801,15 @@
     align-items: center;
     justify-content: space-between;
     position: absolute;
-    width: calc(100% - 90px);
-    bottom: 50px;
+    width: 100%;
+    bottom: 0;
+    @include r {
+      position: relative;
+      bottom: auto;
+      width: 100%;
+      justify-content: center;
+      flex-direction: column;
+    }
   }
 
   &__btn,
@@ -1662,6 +1841,10 @@
       border: 1px solid $blue;
       cursor: pointer;
     }
+
+    @include r {
+      display: none;
+    }
   }
 
   &__checkbox {
@@ -1679,13 +1862,20 @@
     &--false {
       opacity: 0.5;
       pointer-events: none;
+      @include r {
+        opacity: 1;
+        color: $title;
+      }
+    }
+    @include r {
+      margin-top: 25px;
     }
   }
 
   &__file {
     &-wrapper {
       position: relative;
-      padding-left: 50px;
+      padding: 6px 0px 6px 50px;
       width: fit-content;
       &.hidden {
         display: none;
@@ -1727,12 +1917,17 @@
       height: fit-content;
       max-height: 250px;
       overflow: auto;
+      @include r {
+        margin: 25px -10px;
+      }
     }
 
     &-item {
+      position: relative;
       display: flex;
       align-items: flex-end;
       margin: 0 10px 30px;
+      padding-top: 10px;
     }
 
     &-icon {
@@ -1747,16 +1942,70 @@
       font-size: 20px;
       outline-color: $blue;
       border: 1px solid #bdbdbd;
-      max-width: 300px;
-      width: 100%;
+
       margin-left: 20px;
       &::placeholder {
         color: $light-text;
+      }
+
+      @include r {
+        padding-left: 0;
+        font-size: 17px;
+        border: none;
+        pointer-events: none;
+      }
+    }
+
+    &-del {
+      width: 16px;
+      height: 16px;
+      background-image: url(../img/reg-icons/reg-delete-file-icon.svg);
+      position: absolute;
+      top: 0;
+      left: 40px;
+      @include r {
+        left: auto;
+        right: 0;
       }
     }
 
     &-formats {
       color: $light-text;
+      @include r {
+        display: none;
+      }
+    }
+
+    &Link {
+      &-wrapper {
+        @include r {
+          margin: 25px 0 30px;
+          display: flex !important;
+          flex-direction: column-reverse;
+        }
+      }
+      &-input {
+        padding: 10px 24px;
+        color: $text;
+        font-size: 16px;
+        outline: none;
+        border: 1px solid #bdbdbd;
+        border-radius: 10px;
+        font-family: "OpenSans-Regular", sans-serif;
+        font-weight: 400;
+        width: 100%;
+        &::placeholder {
+          color: $light-text;
+        }
+      }
+      &-label {
+        color: $light-text;
+        margin-bottom: 15px;
+      }
+    }
+
+    &-list-text {
+      @include mobileBold;
     }
   }
 
@@ -1772,6 +2021,9 @@
     margin-bottom: 30px;
     display: inline-block;
     width: 45%;
+    @include r {
+      width: 100%;
+    }
     &-desc {
       margin-bottom: 20px;
     }
@@ -1779,12 +2031,19 @@
     &-item {
       display: flex;
       align-items: center;
+      @include r {
+        margin-left: -10px;
+      }
     }
 
     &-name {
       display: inline-block;
       font-size: 20px;
       margin-left: 20px;
+
+      @include r {
+        font-size: 17px;
+      }
     }
   }
 
@@ -1793,12 +2052,18 @@
     display: flex;
     align-items: flex-start;
     width: 100%;
+    @include r {
+      display: block;
+    }
   }
 
   &__meals {
     display: inline-block;
     max-width: 270px;
     width: 100%;
+    @include r {
+      display: block;
+    }
     &-title {
       margin-bottom: 25px;
     }
@@ -1844,8 +2109,32 @@
   &__buds {
     display: inline-block;
     margin: 0 auto;
+    @include r {
+      display: block;
+      margin: 0 0 40px;
+    }
     &-title {
       margin: 0 0 25px 27px;
+      @include r {
+        margin-left: 0;
+      }
+    }
+
+    &-wrapper {
+      display: inline-block;
+    }
+
+    &-list {
+      @include r {
+      }
+    }
+
+    .slick-list {
+      margin-left: -15px;
+    }
+
+    .slick-slide {
+      margin-left: 15px;
     }
 
     &-item {
@@ -1855,6 +2144,14 @@
       width: 100%;
       text-align: center;
       color: $text;
+      @include r {
+        padding: 10px 45px 30px;
+        max-width: 270px;
+        width: 270px;
+        height: 232px;
+        background-image: url(../img/reg-icons/bud-bg-mobile.svg);
+        background-size: cover;
+      }
     }
 
     &-img {
@@ -1866,6 +2163,10 @@
       background-size: cover;
       border-radius: 5px;
       margin: 0 auto 15px;
+      @include r {
+        width: 120px;
+        height: 120px;
+      }
     }
 
     &-price {
@@ -1874,6 +2175,12 @@
       right: -10px;
       & span {
         margin-right: 5px;
+      }
+
+      @include r {
+        position: static;
+        top: auto;
+        right: auto;
       }
     }
   }
@@ -1891,6 +2198,16 @@
       position: absolute;
       top: 0;
       right: 0;
+      @include r {
+        display: none;
+      }
+    }
+
+    @include r {
+      margin-right: 0;
+      margin-left: 0;
+      width: 100%;
+      margin-bottom: 50px;
     }
   }
 
@@ -1903,6 +2220,15 @@
     border-radius: 10px;
     padding: 25px 30px;
     margin: 5px 30px 5px 5px;
+    @include r {
+      max-width: 400px;
+      width: 100%;
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin: 0px auto;
+    }
     &-img {
       width: 60px;
       height: 60px;
@@ -1919,6 +2245,10 @@
 
     &-desc {
       margin-bottom: 25px;
+      @include r {
+        text-align: center;
+        margin-bottom: 10px;
+      }
     }
 
     &-link {
@@ -1929,8 +2259,27 @@
       position: absolute;
       top: 40px;
       right: 30px;
-      & svg + svg {
+      display: flex;
+      @include r {
+        position: static;
+        margin-bottom: 30px;
+      }
+    }
+
+    &-star {
+      width: 24px;
+      height: 24px;
+      background-image: url(../img/reg-icons/reg-star-icon.svg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      & + & {
         margin-left: 10px;
+      }
+
+      @include r {
+        width: 16px;
+        height: 16px;
       }
     }
 
@@ -1940,6 +2289,29 @@
       height: 100%;
       left: 0;
       top: 0;
+    }
+  }
+  .slick-dots {
+    display: flex;
+    justify-content: center;
+    & li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &.slick-active button {
+        border: 3px solid #68a9fe;
+        background-color: white;
+      }
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+    & li button {
+      width: 10px;
+      height: 10px;
+      border: 2px solid #e3eaff;
+      border-radius: 100%;
+      padding: 0;
     }
   }
 }
@@ -1958,6 +2330,9 @@
     margin-top: 65px;
     display: flex;
     align-items: center;
+    @include r {
+      justify-content: space-between;
+    }
   }
 
   &__search {
@@ -1975,10 +2350,16 @@
     &::placeholder {
       color: $white;
     }
+    @include r {
+      display: none;
+    }
   }
 
   &__nav {
     margin: 0 auto;
+    @include r {
+      display: none;
+    }
   }
 
   &__list {
@@ -2004,6 +2385,27 @@
     margin-bottom: -10px;
     cursor: pointer;
     overflow: hidden;
+    @include r {
+      flex-direction: column;
+      align-items: flex-start;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 65px 30px;
+      min-height: 450px;
+      height: 100vh;
+      background-color: white;
+      width: 310px;
+      z-index: 10;
+      svg {
+        display: none;
+      }
+      transition: all 0.3s;
+      transform: translateX(100%);
+    }
+    &.active {
+      transform: translateX(0);
+    }
     &:hover {
       overflow: visible;
       & .header__profile-menu {
@@ -2028,6 +2430,19 @@
       border-top-right-radius: 0;
       opacity: 0;
 
+      @include r {
+        opacity: 1;
+        box-shadow: none;
+        border-radius: 0;
+        position: static;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        height: 100%;
+        margin-right: -30px;
+        width: calc(100% + 30px);
+      }
+
       &::after {
         content: "";
         position: absolute;
@@ -2038,11 +2453,29 @@
         clip-path: polygon(100% 0, 0 100%, 100% 100%);
         background-color: $white;
         box-shadow: 0px 2px 14px rgba(79, 79, 79, 0.5);
+        @include r {
+          display: none;
+        }
+      }
+    }
+
+    &-item {
+      padding-right: 30px;
+    }
+
+    .header__profile-item:last-child {
+      @include r {
+        margin-top: auto;
+        border-top: none;
       }
     }
 
     &-item + &-item {
       margin-top: 15px;
+      @include r {
+        padding-top: 15px;
+        border-top: 1px solid #f1f1f1;
+      }
     }
 
     &-link {
@@ -2058,17 +2491,27 @@
 
   &__img {
     width: 55px;
-    height: 55px;
+    min-height: 55px;
     border-radius: 100%;
     background-repeat: no-repeat;
     background-position: center top;
     background-size: cover;
     margin-right: 25px;
+    @include r {
+      margin-right: auto;
+      margin-bottom: 15px;
+    }
   }
 
   &__name {
     margin-right: 15px;
     color: $white;
+    @include r {
+      font-size: 17px;
+      margin-right: 0;
+      color: $text;
+      margin-bottom: 30px;
+    }
   }
 
   &--dark {
@@ -2114,22 +2557,194 @@
   }
 }
 
+.notification {
+  &__open {
+    width: 12.5px;
+    height: 16px;
+    background-image: url(../img/notification-icon.svg);
+    background-size: cover;
+    margin-left: auto;
+    margin-right: 25px;
+    &--blue {
+      background-image: url(../img/notification-icon--blue.svg);
+    }
+  }
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 65px 15px;
+  background-color: white;
+  height: 100vh;
+  z-index: 12;
+  transform: translateX(100%);
+  transition: all 0.3s;
+  &.active {
+    transform: translateX(0);
+  }
+
+  &__close {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    right: 15px;
+    top: 65px;
+    &::before {
+      content: "";
+      position: absolute;
+      left: -2px;
+      top: 6px;
+      width: 17px;
+      height: 2px;
+      background-color: $blue;
+      transform: rotate(-45deg);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: -2px;
+      top: 6px;
+      width: 17px;
+      height: 2px;
+      background-color: $blue;
+      transform: rotate(45deg);
+    }
+  }
+
+  &__title {
+    margin-bottom: 15px;
+  }
+
+  &__activate {
+    position: relative;
+    margin-bottom: 40px;
+    label {
+      display: inline-block;
+      height: 24px;
+      padding-right: 65px;
+      position: relative;
+      color: $light-text;
+      cursor: pointer;
+      &::before {
+        content: "";
+        width: 50px;
+        height: 24px;
+        border-radius: 30px;
+        background: #f1f1f1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transition: all 0.3s;
+      }
+      &::after {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        background-color: white;
+        position: absolute;
+        right: 28px;
+        top: 2px;
+        transition: all 0.3s;
+      }
+    }
+
+    input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+
+    input:checked + label {
+      &::before {
+        background: $blue;
+      }
+      &::after {
+        right: 2px;
+      }
+    }
+  }
+
+  &__list {
+    margin-bottom: 25px;
+  }
+
+  &__item {
+    position: relative;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #f1f1f1;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 16px;
+      width: 16px;
+      border-radius: 100%;
+      background-color: $grey;
+    }
+
+    &.active::before {
+      background-color: $peach;
+    }
+
+    &:not(:first-child) {
+      margin-top: 25px;
+    }
+  }
+
+  &__date {
+    line-height: 1;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    color: $light-text;
+  }
+
+  &__name {
+    margin-bottom: 15px;
+  }
+
+  &__doctor {
+    color: $light-text;
+  }
+
+  &__cancel {
+    color: $blue;
+  }
+}
+
 .menu {
   min-height: 685px;
   background: linear-gradient(97.21deg, #48c6ef 0.97%, #6f86d6 99.06%);
   padding: 245px 0 20px;
   display: flex;
   flex-direction: column;
+  @include r {
+    min-height: auto;
+    padding: 140px 0 0;
+  }
   &__person {
     color: $white;
     margin-bottom: 30px;
+    @include r {
+      display: flex;
+      flex-direction: column-reverse;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
   }
 
   &__facts {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 65px 0;
+    margin-bottom: 65px;
     display: flex;
+
+    @include r {
+      margin-bottom: 40px;
+    }
   }
 
   &__item {
@@ -2138,27 +2753,25 @@
     margin: 0;
     & + & {
       margin-left: 55px;
+      @include r {
+        margin-left: 20px;
+      }
     }
+    @include r {
+      font-size: 17px;
+    }
+  }
+
+  &__btns {
+    display: flex;
   }
 
   &__btn {
     position: relative;
     color: $white;
     transition: all 0.3s;
-    & div {
-      position: absolute;
-      left: 25px;
-      top: 45%;
-      transform: translateY(-50%);
-    }
-    & path {
-      transition: all 0.3s;
-    }
-    &:hover div {
-      color: $text;
-    }
-    &:hover path {
-      fill: $white;
+    &:not(:first-child) {
+      margin-left: 25px;
     }
   }
 
@@ -2170,9 +2783,7 @@
 
 .tabs {
   &__list {
-    list-style: none;
-    padding: 0;
-    margin: 110px 0 0;
+    margin-top: 110px;
     display: flex;
     width: 100%;
     &--small {
@@ -2180,6 +2791,17 @@
       & .tabs__item + .tabs__item {
         margin-left: 20px;
       }
+    }
+
+    @include r {
+      width: calc(100% + 10px);
+      margin-left: -10px;
+      margin-top: 50px;
+      overflow-x: scroll;
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+      -ms-overflow-style: none;
     }
   }
 
@@ -2212,32 +2834,41 @@
     }
     & svg {
       margin-right: 15px;
+      @include r {
+        display: none;
+      }
     }
     & span {
       pointer-events: none;
     }
 
-    margin-right: 50px;
-    &:nth-last-child(1) {
-      margin-right: 0;
+    &:not(:last-child) {
+      margin-right: 50px;
+    }
+
+    @include r {
+      min-width: auto;
+      padding: 5px 10px;
     }
   }
 }
 
 .content {
   &-block {
-    min-height: 100vh;
-    max-height: fit-content;
     background-color: $bg;
     padding: 30px 0 140px;
+    @include r {
+      padding: 30px 0 60px;
+    }
     .container {
       position: relative;
     }
 
     &__inner {
-      display: none;
+      height: 0;
+      overflow: hidden;
       &.active {
-        display: block;
+        height: auto;
       }
       &--general {
         align-items: flex-start;
@@ -2252,6 +2883,10 @@
       position: absolute;
       top: 0;
       right: 0;
+      @include r {
+        width: 100%;
+        padding: 30px;
+      }
     }
   }
 }
@@ -2264,6 +2899,13 @@
   max-width: 895px;
   width: 100%;
   padding: 50px;
+
+  @include r {
+    padding: 20px 20px 70px;
+    background-image: none;
+    background-color: white;
+    border-radius: 30px;
+  }
   &__form--new {
     height: 0;
     overflow: hidden;
@@ -2285,10 +2927,15 @@
     &-btns {
       margin-bottom: 60px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       display: none;
       &.active {
         display: flex;
+      }
+
+      @include r {
+        flex-wrap: wrap;
+        margin-bottom: 20px;
       }
     }
 
@@ -2299,10 +2946,27 @@
       width: max-content;
       & + & {
         margin-left: 100px;
+        @include r {
+          margin-left: 0;
+        }
       }
       &:hover,
       &.active {
         color: $text;
+        @include r {
+          width: auto;
+          color: white;
+          background-color: $blue;
+        }
+      }
+      @include r {
+        padding: 8px 15px 10px;
+        border-radius: 30px;
+        font-size: 17px;
+        &:not(:last-child) {
+          margin-bottom: 15px;
+          margin-right: 15px;
+        }
       }
     }
   }
@@ -2311,12 +2975,6 @@
     &--inline {
       display: inline-block;
     }
-  }
-
-  &__stats {
-    list-style: none;
-    padding: 0;
-    margin: 0;
   }
 
   &__stat {
@@ -2333,6 +2991,15 @@
       max-width: 285px;
       width: 100%;
       margin-right: 15px;
+      @include r {
+        max-width: fit-content;
+      }
+    }
+    &-value {
+      @include r {
+        margin-left: auto;
+        text-align: right;
+      }
     }
   }
 
@@ -2348,6 +3015,9 @@
       border: none;
       padding-bottom: 0;
       margin-bottom: 0;
+      @include r {
+        border-bottom: 1px solid #f1f1f1;
+      }
     }
     &--man .general__symptom {
       display: block;
@@ -2358,6 +3028,45 @@
       align-items: flex-start;
       justify-content: space-between;
       margin-right: 0;
+
+      @include r {
+        flex-wrap: wrap;
+      }
+    }
+
+    @include r {
+      height: 0;
+      overflow: hidden;
+      margin: 0 0 40px;
+      padding-bottom: 0;
+      &.active {
+        padding-bottom: 45px;
+        height: auto;
+      }
+    }
+
+    &-subtitle {
+      position: relative;
+      @include r {
+        cursor: pointer;
+        margin-bottom: 30px;
+        &::after {
+          content: "";
+          width: 18px;
+          height: 11px;
+          position: absolute;
+          right: 0;
+          top: 10px;
+          background-image: url(../img/general-symptom-arrow-down.svg);
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          transition: all 0.3s;
+        }
+        &.active::after {
+          transform: rotate(180deg);
+        }
+      }
     }
   }
 
@@ -2392,6 +3101,10 @@
       }
       &.active .general__symptom-list {
         display: block;
+      }
+
+      @include r {
+        display: none;
       }
     }
 
@@ -2457,7 +3170,8 @@
       content: "";
       position: absolute;
       left: 0;
-      top: 5px;
+      top: 50%;
+      transform: translateY(-50%);
       width: 16px;
       height: 16px;
       border: 1px solid $light-text;
@@ -2467,7 +3181,8 @@
       content: "";
       position: absolute;
       left: 1px;
-      top: 6px;
+      top: 50%;
+      transform: translateY(-50%);
       width: 13px;
       height: 13px;
       background-image: url(../img/symptom-checked-icon.svg);
@@ -2484,6 +3199,11 @@
     width: 100%;
     &:nth-child(2) .general__input {
       max-width: 125px;
+    }
+    @include r {
+      & + & {
+        margin-top: 30px;
+      }
     }
   }
 
@@ -2502,7 +3222,6 @@
     outline: none;
     &::placeholder {
       color: $light-text;
-      font-size: 20px;
     }
     &--disease {
       max-width: 615px;
@@ -2512,6 +3231,11 @@
       &-name {
         min-height: auto;
       }
+    }
+
+    @include r {
+      font-size: 17px;
+      margin-bottom: 0;
     }
   }
 
@@ -2572,9 +3296,48 @@
       background-repeat: no-repeat;
       background-position: center;
     }
+
+    @include r {
+      top: auto;
+      right: auto;
+      &--add {
+        color: white;
+        text-align: center;
+        position: relative;
+        width: 100%;
+        padding: 17px 31px 17px 15px;
+        border-radius: 10px;
+        background-color: $blue;
+        margin: 30px 0;
+        &::after {
+          background-image: none;
+          width: 17px;
+          height: 3px;
+          background-color: white;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 25%;
+        }
+
+        &::before {
+          content: "";
+          width: 3px;
+          height: 17px;
+          background-color: white;
+          position: absolute;
+          right: 0;
+          top: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          right: calc(25% + 7px);
+        }
+      }
+    }
     &--cancel {
+      position: absolute;
       opacity: 0;
       transition: all 0.3s;
+      right: 0;
       top: 165px;
       color: $light-text;
       &::after {
@@ -2583,6 +3346,24 @@
       &.active {
         opacity: 1;
       }
+      @include r {
+        font-size: 0;
+        width: 16px;
+        height: 16px;
+        padding: 0;
+        top: 240px;
+        &::after {
+          width: 16px;
+          height: 16px;
+          background-image: url(../img/reg-icons/reg-delete-file-icon.svg);
+        }
+      }
+    }
+  }
+
+  .reg__file-wrapper {
+    @include r {
+      display: none;
     }
   }
 
@@ -2651,7 +3432,7 @@
         opacity: 0;
       }
       & .general__form {
-        height: 870px;
+        height: auto;
       }
     }
   }
@@ -2762,6 +3543,10 @@
   max-width: 430px;
   width: 100%;
   margin-left: 35px;
+  @include r {
+    display: none;
+  }
+
   &__title {
     margin-bottom: 25px;
   }
@@ -2796,14 +3581,19 @@
     color: $light-text;
   }
 
+  &__btns {
+    display: flex;
+
+    @include r {
+      flex-direction: column;
+    }
+  }
+
   &__btn {
     display: flex;
     position: relative;
     transition: all 0.3s;
     cursor: pointer;
-    background-color: transparent;
-    border: none;
-    padding: 0;
     margin: 25px auto 15px;
     color: $text;
     transition: all 0.3s;
@@ -2817,7 +3607,6 @@
     }
     &--pink {
       margin-top: 10px;
-      float: left;
     }
     &--inactive {
       opacity: 0.5;
@@ -2897,16 +3686,38 @@
     color: $light-text;
   }
 
+  &__tabs-btns {
+    margin-bottom: 80px;
+    @include r {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+  }
+
   &__tabs-btn {
     cursor: pointer;
     display: inline-block;
-    margin-bottom: 80px;
     color: $light-text;
+    transition: all 0.3s;
     &.active {
       color: $text;
+      @include r {
+        color: white;
+        background-color: $blue;
+      }
     }
     & + & {
       margin-left: 100px;
+      @include r {
+        margin-left: 0;
+      }
+    }
+
+    @include r {
+      padding: 8px 35px 10px;
+      border-radius: 30px;
+      font-size: 17px;
     }
   }
 
@@ -2924,7 +3735,7 @@
     }
 
     .tasks__item {
-      padding-bottom: 120px;
+      padding-bottom: 40px;
       margin-top: 40px;
       &:nth-last-child(1) {
         border: none;
@@ -2939,6 +3750,10 @@
       &.inactive {
         color: $light-text;
       }
+
+      @include r {
+        position: static;
+      }
     }
 
     .tasks__timer {
@@ -2946,16 +3761,22 @@
       top: 35px;
       right: 0;
       color: $blue;
+      @include r {
+        position: static;
+      }
     }
 
     .tasks__btn {
-      float: left;
       margin-top: 10px;
       &--cancel {
         margin-left: 40px;
       }
       &--doctor {
         margin-left: 40px;
+      }
+
+      @include r {
+        margin-left: 0;
       }
     }
 
@@ -2982,6 +3803,14 @@
     background-position: center;
     position: relative;
     margin-bottom: 30px;
+    @include r {
+      background-image: none;
+      background-color: white;
+      border-radius: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
   }
 
   &__input {
@@ -3008,6 +3837,11 @@
       top: 0;
       right: 0;
     }
+    @include r {
+      &::after {
+        top: -5px;
+      }
+    }
   }
 
   &__card {
@@ -3017,8 +3851,18 @@
     background-position: center;
     margin-top: 30px;
     padding: 50px 45px;
+    @include r {
+      background-image: none;
+      background-color: white;
+      border-radius: 30px;
+      padding: 35px 15px;
+    }
     &--flex {
       display: flex;
+      align-items: stretch;
+      @include r {
+        flex-direction: column;
+      }
     }
   }
 
@@ -3031,22 +3875,41 @@
   &__desc {
     position: relative;
     padding-right: 55px;
-    padding-bottom: 120px;
     border-right: 1px solid #e7e7e7;
+    display: flex;
+    flex-direction: column;
+
+    @include r {
+      padding-right: 0;
+      border-right: none;
+      padding-bottom: 35px;
+      margin-bottom: 35px;
+      border-bottom: 1px solid #f1f1f1;
+    }
   }
 
   &__date {
     color: $light-text;
     margin-bottom: 50px;
+    @include r {
+      margin-bottom: 10px;
+    }
   }
 
   &__title {
     margin-bottom: 25px;
+    @include r {
+      margin-bottom: 15px;
+    }
   }
 
   &__from {
     color: $light-text;
     margin-bottom: 30px;
+    @include r {
+      margin-bottom: 25px;
+      font-size: 17px;
+    }
   }
 
   &__download {
@@ -3057,7 +3920,10 @@
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-    margin-bottom: auto;
+    @include r {
+      width: 32px;
+      margin-bottom: 45px;
+    }
   }
 
   &__btns {
@@ -3066,23 +3932,39 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
-    left: 0;
-    bottom: 20px;
+    margin-top: auto;
+    @include r {
+      max-width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__btn:not(:last-child) {
+    margin-bottom: 15px;
   }
 
   &__stats {
-    padding: 0;
     margin: 0 0 0 15px;
-    list-style: none;
     max-width: 680px;
     width: 100%;
+    @include r {
+      max-width: 100%;
+      margin: 0;
+    }
   }
 
   &__item {
     margin: 15px 0;
     display: flex;
     width: 100%;
+    @include r {
+      margin: 0;
+      padding: 10px 0;
+      &:not(:last-child) {
+        border-bottom: 1px solid #f1f1f1;
+      }
+    }
     & span {
       width: 33.333333%;
       &:nth-child(1) {
@@ -3091,6 +3973,15 @@
       &:nth-last-child(1) {
         width: 240px;
       }
+      @include r {
+        width: 50%;
+        &:nth-child(3n) {
+          display: none;
+        }
+        &:nth-child(even) {
+          text-align: right;
+        }
+      }
     }
     &.bold {
       font-weight: 600;
@@ -3098,8 +3989,10 @@
     &--title {
       color: $light-text;
       margin-bottom: 30px;
-      & span:nth-child(1) {
-        color: $light-text;
+
+      @include r {
+        margin-bottom: 0;
+        padding-bottom: 20px;
       }
     }
   }
@@ -3483,23 +4376,50 @@
   background-position: center;
   position: relative;
   margin: 0 2px;
+  @include r {
+    background-image: none;
+    background-color: white;
+    border-radius: 30px;
+    height: auto;
+    max-width: 400px;
+    margin: 0;
+  }
   &__img {
     width: 100%;
     height: 160px;
     background-image: url(../img/article-image.png);
     -webkit-mask-image: url(../img/MaskGroup.svg);
     mask-image: url(../img/MaskGroup.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    @include r {
+      height: 90px;
+      mask-image: none;
+      -webkit-mask-image: none;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+    }
   }
 
   &__desc {
     padding: 0 30px;
-    margin-bottom: 30px;
+    margin: 25px 0 30px;
     width: 100%;
+    @include r {
+      margin: 0;
+      padding: 25px 15px;
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &__title {
-    margin: 25px 0 15px;
+    margin-bottom: 15px;
     color: $title;
+    @include r {
+      font-size: 17px;
+    }
   }
 
   &__add {
@@ -3508,12 +4428,38 @@
     left: 30px;
     & span {
       display: inline-block;
-      width: 32px;
+      width: 152px;
       height: 32px;
       background-image: url(../img/star-32-grey.svg);
       background-repeat: no-repeat;
-      background-position: center;
+      background-position: top left;
+      background-size: auto 100%;
+      padding-right: 110px;
       transition: all 0.3s;
+      @include r {
+        width: 144px;
+        height: 24px;
+        &::after {
+          content: "В избранное";
+          font-size: 16px;
+          color: $blue;
+          position: absolute;
+          right: 0px;
+          top: 50%;
+          width: 100px;
+          transform: translateY(-50%);
+          pointer-events: none;
+          transition: color 0.3s;
+        }
+      }
+    }
+
+    @include r {
+      margin-top: 20px;
+      position: relative;
+      bottom: auto;
+      left: auto;
+      width: fit-content;
     }
   }
 
@@ -3530,6 +4476,16 @@
   &__checkbox:checked + span,
   &__checkbox:hover + span {
     background-image: url(../img/star-32-yellow.svg);
+    &::after {
+      color: #ffc95a;
+    }
+  }
+  &__checkbox:checked + span {
+    @include r {
+      &::after {
+        content: "В избранном";
+      }
+    }
   }
 
   &--big {
@@ -3549,10 +4505,40 @@
       max-width: 370px;
       width: 100%;
       margin: 0 0 15px;
+      @include r {
+        max-width: 100%;
+        padding: 0 15px;
+      }
     }
     & .article__text {
       max-width: 465px;
       width: 100%;
+      @include r {
+        max-width: 100%;
+        padding: 0 15px;
+      }
+    }
+
+    & .article__img {
+      display: none;
+      @include r {
+        display: block;
+        margin-bottom: 25px;
+      }
+    }
+
+    & .article__add {
+      @include r {
+        padding: 0 15px;
+      }
+    }
+
+    @include r {
+      max-width: 400px;
+      background-image: none;
+      border-radius: 30px;
+      margin: 0;
+      padding: 0 0 25px;
     }
   }
   svg {
@@ -3564,24 +4550,52 @@
   margin-top: 30px;
   padding: 30px 50px;
   background-color: $white;
-  background-image: url(../img/bud-img.png);
-  background-position: top right;
-  background-repeat: no-repeat;
   border-radius: 20px;
   min-height: 375px;
   height: fit-content;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  @include r {
+    justify-content: center;
+    align-items: center;
+    min-height: auto;
+    padding: 10px 50px;
+  }
+  &__img {
+    height: calc(100% - 60px);
+    position: absolute;
+    right: 50px;
+    top: 30px;
+
+    @include r {
+      position: static;
+      height: auto;
+      width: 60%;
+      margin: 0 auto;
+    }
+  }
   &__title {
     display: inline-block;
     margin-bottom: 15px;
     padding-right: 40px;
     position: relative;
+    width: fit-content;
+    @include r {
+      text-align: center;
+      font-size: 17px;
+      padding-right: 0;
+    }
   }
 
   &__add {
     position: absolute;
     right: 0;
     top: -5px;
+
+    @include r {
+      display: none;
+    }
 
     & span {
       display: inline-block;
@@ -3611,18 +4625,24 @@
   &__stats {
     margin-bottom: 20px;
     color: $light-text;
+    @include r {
+      display: none;
+    }
   }
 
   &__price {
     font-size: 32px;
     line-height: 32px;
     color: $title;
+    @include r {
+      margin-bottom: 25px;
+      font-size: 17px;
+      color: $light-text;
+    }
   }
 
   &__btn {
-    position: absolute;
-    left: 50px;
-    bottom: 30px;
+    margin-top: auto;
   }
 }
 
@@ -3647,6 +4667,17 @@
     background-size: 100% 100%;
   }
 
+  @include r {
+    padding: 25px 15px;
+    &::after {
+      width: 250px;
+      height: 185px;
+      top: 200px;
+      right: 50%;
+      transform: translateX(50%);
+    }
+  }
+
   &__text {
     max-width: 640px;
     width: 100%;
@@ -3659,6 +4690,10 @@
     justify-content: space-between;
     max-width: 860px;
     width: 100%;
+    @include r {
+      flex-wrap: wrap;
+      margin-top: 250px;
+    }
   }
 
   &__input {
@@ -3671,8 +4706,14 @@
     border: 1px solid #68a9fe;
     border-radius: 10px;
     &::placeholder {
-      font-size: 20px;
       color: $light-text;
+    }
+
+    @include r {
+      font-size: 17px;
+      margin-bottom: 25px;
+      padding-top: 12px;
+      padding-bottom: 14px;
     }
   }
 
@@ -3711,24 +4752,52 @@
     justify-content: space-between;
     align-items: stretch;
     min-height: 580px;
-    height: fit-content;
     position: relative;
+    @include r {
+      min-height: auto;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 35px 15px;
+    }
+  }
+
+  @include r {
+    &__item:not(:last-of-type) {
+      display: none;
+    }
   }
 
   &__desc {
     padding-right: 150px;
     border-right: 1px solid #e7e7e7;
+    display: flex;
+    flex-direction: column;
+
+    @include r {
+      padding-right: 0;
+      border-right: none;
+    }
   }
 
   &__date {
     margin-bottom: 40px;
+    @include r {
+      margin-bottom: 10px;
+    }
   }
 
   &__subtitle {
     display: inline-block;
+    width: fit-content;
     margin-bottom: 25px;
     padding-right: 40px;
     position: relative;
+    @include r {
+      width: 100%;
+      padding-right: 0;
+      margin-bottom: 55px;
+    }
   }
 
   &__add {
@@ -3743,6 +4812,9 @@
       background-repeat: no-repeat;
       background-position: center;
       transition: all 0.3s;
+    }
+    @include r {
+      top: -40px;
     }
   }
 
@@ -3763,22 +4835,39 @@
   &__text {
     max-width: 600px;
     width: 100%;
+    @include r {
+      max-width: 100%;
+    }
   }
 
   &__btn-read {
-    position: absolute;
-    bottom: 55px;
-    left: 50px;
+    margin-top: auto;
+    @include r {
+      margin: 35px 0 50px;
+    }
   }
 
   &__comments {
     max-width: 415px;
     width: 100%;
     position: relative;
+    @include r {
+      max-width: 100%;
+      position: static;
+      & .recommendations__subtitle {
+        margin-bottom: 15px;
+      }
+    }
   }
 
   &__from {
     margin-bottom: 40px;
+    @include r {
+      color: $light-text;
+      position: absolute;
+      left: 15px;
+      top: 110px;
+    }
   }
 
   &__to {
@@ -3786,6 +4875,13 @@
     position: absolute;
     left: 0px;
     bottom: 10px;
+
+    @include r {
+      margin-top: 15px;
+      position: static;
+      left: auto;
+      bottom: auto;
+    }
   }
 }
 
@@ -4135,6 +5231,9 @@
     .articles__col:nth-child(1) {
       max-width: 100%;
     }
+    @include r {
+      margin-top: 0;
+    }
   }
 
   &__col {
@@ -4157,6 +5256,12 @@
     justify-content: space-between;
     max-width: 860px;
     width: 100%;
+
+    @include r {
+      justify-content: center;
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
   }
 
   &__input {
@@ -4169,13 +5274,21 @@
     border: 1px solid #68a9fe;
     border-radius: 10px;
     &::placeholder {
-      font-size: 20px;
       color: $light-text;
+    }
+
+    @include r {
+      max-width: 100%;
+      font-size: 17px;
+      border-color: #7d7d7d;
     }
   }
 
   &__btn {
     margin-left: 30px;
+    @include r {
+      display: none;
+    }
   }
 
   &__tags {
@@ -4215,6 +5328,9 @@
 
   &__recommendations {
     margin: 120px 0 100px;
+    @include r {
+      margin: 60px 0;
+    }
   }
 
   &__all {
@@ -4223,10 +5339,17 @@
     flex-wrap: wrap;
     width: calc(100% + 14px);
     margin: 0 -7px;
+    @include r {
+      margin: 0;
+      width: 100%;
+    }
   }
 
   &__item {
     margin-top: 50px;
+    @include r {
+      margin-top: 30px;
+    }
   }
 }
 
@@ -4255,9 +5378,10 @@
     }
 
     &-content {
-      display: none;
+      height: 0;
+      overflow: hidden;
       &.active {
-        display: block;
+        height: auto;
       }
     }
   }
@@ -4271,6 +5395,12 @@
     background-size: 100% 100%;
     position: relative;
     padding: 180px 40px 275px;
+    @include r {
+      background-image: none;
+      background-color: transparent;
+      padding: 0;
+      max-width: 100%;
+    }
     &-img {
       width: 245px;
       height: 245px;
@@ -4282,23 +5412,51 @@
       left: 50%;
       transform: translateX(-50%);
       top: -122px;
+      @include r {
+        width: 72px;
+        height: 72px;
+        transform: none;
+        left: auto;
+        top: 0;
+        right: 0;
+      }
     }
 
     &-btn {
       margin: 0 auto 55px;
+      @include r {
+        display: none;
+      }
     }
 
     &-name {
       margin-bottom: 25px;
+      @include r {
+        order: 1;
+      }
     }
 
     &-stat {
       font-size: 24px;
       margin-bottom: 15px;
+      @include r {
+        display: none;
+      }
+    }
+    &-reviews {
+      font-size: 24px;
+      margin-bottom: 15px;
+      @include r {
+        font-size: 17px;
+        order: 3;
+      }
     }
 
     &-title {
       margin: 50px 0 25px;
+      @include r {
+        display: none;
+      }
     }
 
     &-rating {
@@ -4306,6 +5464,9 @@
       margin: 50px 0 25px;
       list-style: none;
       display: flex;
+      @include r {
+        margin: 0 0 5px;
+      }
     }
 
     &-star {
@@ -4342,6 +5503,13 @@
     padding: 60px 50px;
     max-width: 895px;
     width: 100%;
+    @include r {
+      max-width: 100%;
+      padding: 190px 15px 30px;
+      background-image: none;
+      background-color: white;
+      border-radius: 30px;
+    }
     &-about {
       margin-bottom: 55px;
       padding-bottom: 60px;
@@ -4370,10 +5538,18 @@
       position: absolute;
       top: 0;
       right: 0;
+      @include r {
+        display: none;
+      }
     }
 
     &-slide {
       margin-right: 30px;
+      @include r {
+        margin-right: 15px;
+        display: inline-block;
+        width: fit-content;
+      }
     }
 
     .slick-dots {
@@ -4412,6 +5588,12 @@
     padding: 60px 50px;
     max-width: 895px;
     width: 100%;
+    @include r {
+      background-image: none;
+      background-color: white;
+      border-radius: 30px;
+    }
+
     &-title {
       display: inline-block;
       position: relative;
@@ -4422,6 +5604,9 @@
         position: absolute;
         top: 0;
         right: 0;
+        @include r {
+          font-size: 16px;
+        }
       }
     }
 
@@ -4445,17 +5630,26 @@
       position: absolute;
       top: 10px;
       left: 0;
+      @include r {
+        display: none;
+      }
     }
 
     &-name {
       margin-left: 80px;
       margin-bottom: 5px;
+      @include r {
+        margin-left: 0;
+      }
     }
 
     &-date {
       color: $light-text;
       margin-left: 80px;
       margin-bottom: 15px;
+      @include r {
+        margin-left: 0;
+      }
     }
 
     &-rating {
@@ -4466,6 +5660,11 @@
       position: absolute;
       right: 0;
       top: 0;
+
+      @include r {
+        position: static;
+        margin-bottom: 25px;
+      }
     }
 
     &-star {
@@ -4477,6 +5676,13 @@
       background-position: center;
       & + & {
         margin-left: 15px;
+        @include r {
+          margin-left: 10px;
+        }
+      }
+      @include r {
+        width: 16px;
+        height: 16px;
       }
     }
 
@@ -4705,6 +5911,12 @@
       box-shadow: none;
       font-size: 20px;
     }
+  }
+}
+
+@include r {
+  .content-block__inner.active[data-tab="2"] + .content-block__fixed {
+    display: none;
   }
 }
 

@@ -27,19 +27,53 @@
                 <a href="./about.html" class="header-start__link title-h3">О сервисе</a>
               </li>
               <li class="header-start__item">
-                <a href="./login.html" class="header-start__link btn-text btn">
+                <a href="./login.html" class="header-start__link btn">
                   <span>Личный кабинет</span>
                 </a>
               </li>
             </ul>
           </nav>
+          <nav class="header-start__nav mobile">
+            <a class="logo" href="./index.html">
+              <img src="./img/logo.svg" alt="logo" class="logo__icon" />
+            </a>
+            <ul class="header-start__list">
+              <li class="header-start__item">
+                <a href="./about.html" class="header-start__link title-h3">О сервисе</a>
+              </li>
+              <li class="header-start__item">
+                <a href="./contacts.html" class="header-start__link title-h3">Контакты клиники</a>
+              </li>
+              <li class="header-start__item">
+                <a href="./docs.html" class="header-start__link title-h3">Политика конфеденциальности</a>
+              </li>
+            </ul>
+            <div class="header-start__btns">
+              <a href="#" class="header-start__link btn btn--black">
+                <span>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.9226 3.0396C13.6752 2.23395 14.1842 1.11539 14.0449 0C12.9607 0.0386914 11.6467 0.636418 10.8685 1.44201C10.1709 2.15519 9.56011 3.29501 9.72311 4.38852C10.9329 4.47036 12.1688 3.84396 12.9226 3.0396ZM15.2316 10.7425C15.2084 8.24194 17.2113 7.04093 17.3 6.9829C16.174 5.2848 14.4203 5.05245 13.7958 5.02624C12.3025 4.86948 10.8842 5.93055 10.1261 5.93055C9.37105 5.93055 8.20317 5.04682 6.96471 5.07056C5.33658 5.09738 3.8364 6.04546 3.00021 7.54804C1.30891 10.5708 2.56672 15.0487 4.21481 17.5006C5.02047 18.7009 5.97972 20.0474 7.23939 19.9987C8.45535 19.95 8.91375 19.19 10.3808 19.19C11.8485 19.19 12.2594 19.9987 13.5434 19.9743C14.8499 19.95 15.6768 18.7509 16.4756 17.5468C17.3998 16.1547 17.7809 14.807 17.8027 14.7389C17.7746 14.7227 15.2584 13.7328 15.2316 10.7425Z" fill="white" />
+                  </svg>
+                  App Store
+                </span>
+              </a>
+              <a href="./login.html" class="header-start__link btn-text btn">
+                <span>Регистрация</span>
+              </a>
+            </div>
+          </nav>
+          <div class="burger burger--dark">
+            <span></span>
+          </div>
         </div>
       </div>
     </header>
+    <div class="layer-header"></div>
     <main class="main">
       <section class="reg">
         <div class="container">
           <div class="reg__inner">
+            <button class="reg__back mobileOnly">Вернуться назад</button>
             <ul class="reg__tabs-btns">
               <li class="reg__tabs-btn active" data-tab="1">
                 <div class="reg__tabs-icon">
@@ -94,17 +128,41 @@
                 <a class="reg__icon" href="#" style="background-image: url(./img/facebook-icon.svg)"></a>
                 <a class="reg__icon" href="#" style="background-image: url(./img/vk-icon.svg)"></a>
                 <form class="reg__form reg__form--doctor">
-                  <input type="text" class="reg__input reg__input--name" placeholder="ФИО" required />
-                  <input type="phone" class="reg__input reg__input--phone" placeholder="Мобильный телефон" required />
-                  <input type="email" class="reg__input reg__input--mail" placeholder="E-mail" required />
-                  <span class="reg__radio-desc">Пол</span>
-                  <input type="radio" class="reg__radio" id="doctorMale" value="male" name="doctorSex" />
-                  <label for="male" class="reg__label reg__label--inactive">М</label>
-                  <input type="radio" class="reg__radio" id="doctorFemale" value="female" name="doctorSex" />
-                  <label for="female" class="reg__label reg__label--inactive">Ж</label>
-                  <input type="number" class="reg__input reg__input--special" placeholder="Специальность" required />
-                  <input type="text" class="reg__input reg__input--grade" placeholder="Степень" required />
-                  <input type="number" class="reg__input reg__input--exp" placeholder="Стаж" required />
+                  <div class="reg__input reg__input--name">
+                    <input type="text" id="name" required />
+                    <label for="name" class="reg__label">ФИО</label>
+                  </div>
+                  <div class="reg__input reg__input--phone">
+                    <input type="tel" id="phone" required />
+                    <label for="phone" class="reg__label">Мобильный телефон</label>
+                  </div>
+                  <div class="reg__input reg__input--mail">
+                    <input type="email" id="mail" required />
+                    <label for="mail" class="reg__label">E-mail</label>
+                  </div>
+                  <div class="reg__sex">
+                    <span class="reg__radio-desc">Пол</span>
+                    <div class="reg__radio">
+                      <input type="radio" id="male" value="male" name="sex" />
+                      <label for="male" class="reg__radio-label">М</label>
+                    </div>
+                    <div class="reg__radio">
+                      <input type="radio" id="female" value="female" name="sex" />
+                      <label for="female" class="reg__radio-label">Ж</label>
+                    </div>
+                  </div>
+                  <div class="reg__input reg__input--special">
+                    <input type="text" id="special" required />
+                    <label for="special" class="reg__label">Специальность</label>
+                  </div>
+                  <div class="reg__input reg__input--grade">
+                    <input type="text" id="grade" required />
+                    <label for="grade" class="reg__label">Степень</label>
+                  </div>
+                  <div class="reg__input reg__input--exp">
+                    <input type="number" id="exp" required />
+                    <label for="exp" class="reg__label">Стаж</label>
+                  </div>
                   <div class="reg__wrapper-footer" data-tab="1">
                     <button class="reg__btn btn btn--inactive">
                       <span>Далее</span>
@@ -125,7 +183,12 @@
                     <input type="file" class="reg__file-input" id="file" name="file" />
                     <label for="file" class="reg__file-label btn-text">Загрузить файл</label>
                   </div>
+                  <div class="reg__fileLink-wrapper mobileOnly">
+                    <input type="text" class="reg__fileLink-input" id="fileLink" placeholder="Ссылка на файл" />
+                    <label for="fileLink" class="reg__fileLink-label btn-text">или вставьте ссылку на файл</label>
+                  </div>
                 </form>
+                <span class="reg__file-list-text mobileOnly">Вы загрузили</span>
                 <div class="reg__file-list"></div>
                 <div class="reg__wrapper-footer" data-tab="2">
                   <button class="reg__btn btn">
@@ -137,12 +200,11 @@
               <div class="reg__tabs-content" data-tab="3">
                 <p class="reg__desc btn-text">Опишите случаи, с которыми предпочитаете работать, а также впишите теги, по которым вас легче будет найти.</p>
                 <form action="" class="reg__form">
-                  <textarea
-                    class="reg__textarea"
-                    placeholder="Опишите то, с чем предпочитаете работать. 
-Будет отображаться в вашем личном кабинете"
-                  ></textarea>
-                  <input type="text" class="reg__input reg__input--tags" placeholder="Теги, через запятую" />
+                  <textarea class="reg__textarea" placeholder="Опишите то, с чем предпочитаете работать. Будет отображаться в вашем личном кабинете"></textarea>
+                  <div class="reg__input reg__input--tags">
+                    <input type="text" id="tags" required />
+                    <label for="tags" class="reg__label">Теги, через запятую</label>
+                  </div>
                   <div class="reg__wrapper-footer" data-tab="3">
                     <a href="./doctor-profile.html" class="reg__btn--finish btn">
                       <span>Завершить</span>

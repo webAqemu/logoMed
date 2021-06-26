@@ -12,6 +12,9 @@ body {
   position: relative;
   padding: 0;
   margin: 0;
+  @include r {
+    overflow-x: hidden;
+  }
 }
 
 a {
@@ -43,6 +46,13 @@ body {
   background-color: $bg;
   &--white {
     background-color: transparent;
+  }
+  &-reg {
+    height: calc(100vh);
+    background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
+    @include r {
+      height: auto;
+    }
   }
 }
 .header-start + .main {
@@ -133,6 +143,9 @@ textarea::placeholder {
 
 .btn-text {
   font-size: 20px;
+  @include r {
+    font-size: 17px;
+  }
 }
 
 .btn {
@@ -147,11 +160,9 @@ textarea::placeholder {
   background-color: transparent;
   background-image: url(../img/main-btn-200.svg);
   background-repeat: no-repeat;
-  border: none;
-  padding: 0;
-  margin: 0;
   font-size: 20px;
   color: $white;
+
   & span {
     color: $white;
     pointer-events: none;
@@ -165,14 +176,38 @@ textarea::placeholder {
     @include blue-shadow;
     background-image: url(../img/main-btn-200-hover.svg);
   }
-  &--shadow {
-    @include blue-shadow;
-    background-image: url(../img/main-btn-200-hover.svg);
+
+  @include r {
+    width: 100%;
+    font-size: 17px;
+    background-image: none;
+    background: $blue;
+    border-radius: 10px;
+    padding: 12px 20px 14px;
+    height: auto;
     &:hover {
-      @include pink-shadow;
-      background-image: url(../img/shadow-btn-200-hover.svg);
+      background-image: none;
+      background-color: #7384fe;
     }
   }
+
+  &--shadow {
+    background-image: url(../img/main-btn-200-hover.svg);
+    &:hover {
+      background-image: url(../img/shadow-btn-200-hover.svg);
+      @include pink-shadow;
+    }
+
+    @include r {
+      background-image: none;
+      background-color: #7384fe;
+      &:hover {
+        background-color: $peach;
+        background-image: none;
+      }
+    }
+  }
+
   &--stroke {
     background-image: url(../img/stroke-btn-200.svg);
     & span {
@@ -185,7 +220,21 @@ textarea::placeholder {
         color: $white;
       }
     }
+    @include r {
+      border: 2px solid $blue;
+      background-image: none;
+      background-color: transparent;
+      &:hover {
+        box-shadow: none;
+        background-image: none;
+        background-color: $blue;
+        & span {
+          color: $white;
+        }
+      }
+    }
   }
+
   &--stroke--white {
     background-image: url(../img/stroke-white-btn-200.svg);
     &:hover {
@@ -195,44 +244,38 @@ textarea::placeholder {
         color: $text;
       }
     }
+    @include r {
+      width: 100%;
+      height: auto;
+      padding: 15px 20px;
+      background-image: none;
+      border: 2px solid white;
+      background-color: transparent !important;
+      &:hover {
+        background-image: none;
+        background-color: white !important;
+        color: $text;
+      }
+    }
   }
+
   &--black {
     background-image: url(../img/black-btn-200.svg);
     &:hover {
       @include extra-shadow;
       background-image: url(../img/black-btn-200.svg);
     }
+    @include r {
+      background-image: none;
+      background-color: black;
+      &:hover {
+        background-image: none;
+      }
+    }
   }
 }
 
-@media (max-width: 768px) {
-  .btn {
-    font-size: 17px;
-  }
-}
-
-.pink-btn {
-  display: flex;
-  width: fit-content;
-  position: relative;
-  transition: all 0.3s;
-  & span {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-    width: fit-content;
-    color: $white;
-  }
-  &--inactive {
-    opacity: 0.5;
-  }
-  &:hover {
-    @include pink-shadow;
-  }
-}
-
-.layer-start {
+.layer-header {
   position: fixed;
   left: 0;
   top: 0;
@@ -244,5 +287,43 @@ textarea::placeholder {
   display: none;
   &.active {
     display: block;
+  }
+}
+
+.mobileOnly {
+  display: none !important;
+  @include r {
+    display: block !important;
+  }
+}
+
+.slick-dots {
+  font-size: 0;
+}
+@include r {
+  .slick-dots {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &.slick-active button {
+        border: 3px solid #68a9fe;
+        background-color: white;
+      }
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+    & li button {
+      width: 10px;
+      height: 10px;
+      border: 2px solid #e3eaff;
+      border-radius: 100%;
+      padding: 0;
+    }
   }
 }

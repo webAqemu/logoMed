@@ -8,6 +8,7 @@ $title: #141414;
 $peach: #fe9393;
 $light-text: #7d7d7d;
 $pink: #fed1f1;
+$grey: #d6d6d6;
 
 // Gradients
 @mixin main-gradient {
@@ -31,4 +32,10 @@ $pink: #fed1f1;
 @mixin mobileBold {
   font-family: "SFProDisplay-Medium", sans-serif;
   font-weight: 500;
+}
+
+@mixin r {
+  @media (max-width: 768px) {
+    @content;
+  }
 }
