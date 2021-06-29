@@ -2790,6 +2790,9 @@
       justify-content: flex-start;
       & .tabs__item + .tabs__item {
         margin-left: 20px;
+        @include r {
+          margin-left: 0;
+        }
       }
     }
 
@@ -2884,8 +2887,7 @@
       top: 0;
       right: 0;
       @include r {
-        width: 100%;
-        padding: 30px;
+        display: none;
       }
     }
   }
@@ -2912,15 +2914,19 @@
     transition: all 0.3s;
     &.active {
       height: 1275px;
+      @include r {
+        height: auto;
+      }
     }
   }
 
   &__tabs {
     &-content {
-      display: none;
+      height: 0;
+      overflow: hidden;
       position: relative;
       &.active {
-        display: block;
+        height: auto;
       }
     }
 
@@ -3079,9 +3085,17 @@
     &:nth-child(odd) {
       max-width: 314px;
       margin-right: 10px;
+      @include r {
+        max-width: 100%;
+        margin-right: 0;
+      }
     }
     &:nth-last-child(1) {
       margin-bottom: 0;
+    }
+
+    @include r {
+      display: block;
     }
 
     &-choose {
@@ -3235,7 +3249,7 @@
 
     @include r {
       font-size: 17px;
-      margin-bottom: 0;
+      margin-bottom: 10px;
     }
   }
 
@@ -3250,6 +3264,10 @@
       position: absolute;
       bottom: 36px;
       left: 20px;
+
+      @include r {
+        bottom: 23px;
+      }
     }
   }
 
@@ -5233,6 +5251,7 @@
     }
     @include r {
       margin-top: 0;
+      flex-direction: column;
     }
   }
 
@@ -5292,38 +5311,39 @@
   }
 
   &__tags {
-    font-size: 24px;
-    margin-right: 40px;
-  }
-
-  &__reload {
-    cursor: pointer;
-    font-size: 20px;
-    color: $blue;
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
+    display: none;
+    @include r {
+      display: block;
+      margin: 30px 0 20px;
+      font-family: "SFProDisplay-Medium", sans-serif;
+      font-weight: 500;
+    }
   }
 
   &__tags-list {
-    margin: 0 -10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: none;
+    @include r {
+      width: calc(100% + 15px);
+      margin-left: -15px;
+      display: flex;
+      font-family: "SFProDisplay-Medium", sans-serif;
+      font-weight: 500;
+    }
   }
 
   &__tag {
     display: inline-block;
-    text-align: center;
-    margin: 20px 10px 0;
-    background-image: url(../img/about-specialists-service-bg.png);
-    background-size: 110% 110%;
-    background-position: center;
-    min-width: 155px;
-    padding: 8px 10px 12px;
-    color: $peach;
+    padding: 17px 15px;
+    max-width: 210px;
+    width: 100%;
+    border-radius: 10px;
+    text-align: left;
+    margin: 10px 15px;
+  }
+
+  &__slide.slick-active &__tag {
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.110659);
+    background-color: white;
   }
 
   &__recommendations {
@@ -5356,11 +5376,15 @@
 .doctor {
   &__tabs {
     &-btns {
-      padding: 0;
-      margin: 0 0 75px 0;
+      margin-bottom: 75px;
       font-size: 24px;
-      list-style: none;
       display: flex;
+      @include r {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-bottom: 30px;
+      }
     }
 
     &-btn {
@@ -5370,11 +5394,28 @@
       &.active,
       &:hover {
         color: $text;
+        @include r {
+          width: auto;
+          color: white;
+          background-color: $blue;
+        }
+      }
+      @include r {
+        padding: 8px 15px 10px;
+        border-radius: 30px;
+        font-size: 17px;
+        &:not(:last-child) {
+          margin-bottom: 15px;
+          margin-right: 15px;
+        }
       }
     }
 
     &-btn + &-btn {
       margin-left: 100px;
+      @include r {
+        margin-left: 0;
+      }
     }
 
     &-content {
@@ -5396,10 +5437,7 @@
     position: relative;
     padding: 180px 40px 275px;
     @include r {
-      background-image: none;
-      background-color: transparent;
-      padding: 0;
-      max-width: 100%;
+      display: none;
     }
     &-img {
       width: 245px;
@@ -5412,51 +5450,27 @@
       left: 50%;
       transform: translateX(-50%);
       top: -122px;
-      @include r {
-        width: 72px;
-        height: 72px;
-        transform: none;
-        left: auto;
-        top: 0;
-        right: 0;
-      }
     }
 
     &-btn {
       margin: 0 auto 55px;
-      @include r {
-        display: none;
-      }
     }
 
     &-name {
       margin-bottom: 25px;
-      @include r {
-        order: 1;
-      }
     }
 
     &-stat {
       font-size: 24px;
       margin-bottom: 15px;
-      @include r {
-        display: none;
-      }
     }
     &-reviews {
       font-size: 24px;
       margin-bottom: 15px;
-      @include r {
-        font-size: 17px;
-        order: 3;
-      }
     }
 
     &-title {
       margin: 50px 0 25px;
-      @include r {
-        display: none;
-      }
     }
 
     &-rating {
@@ -5464,9 +5478,6 @@
       margin: 50px 0 25px;
       list-style: none;
       display: flex;
-      @include r {
-        margin: 0 0 5px;
-      }
     }
 
     &-star {
@@ -5505,7 +5516,7 @@
     width: 100%;
     @include r {
       max-width: 100%;
-      padding: 190px 15px 30px;
+      padding: 30px 15px;
       background-image: none;
       background-color: white;
       border-radius: 30px;
@@ -5578,6 +5589,56 @@
       border: none;
       box-shadow: none;
     }
+
+    &-mobile {
+      display: none;
+      @include r {
+        display: block;
+        margin-bottom: 40px;
+        position: relative;
+        padding-top: 10px;
+      }
+    }
+
+    &-doctor-img {
+      width: 72px;
+      height: 72px;
+      border-radius: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center top;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    &-name {
+      font-family: "SFProDisplay-Medium", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    &-stat {
+      color: $light-text;
+      margin-bottom: 10px;
+    }
+
+    &-rating {
+      display: flex;
+    }
+
+    &-star {
+      width: 16px;
+      height: 16px;
+      background-image: url(../img/star-24-yellow.svg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
   }
 
   &__reviews {
@@ -5592,6 +5653,7 @@
       background-image: none;
       background-color: white;
       border-radius: 30px;
+      padding: 35px 15px;
     }
 
     &-title {
@@ -5710,10 +5772,16 @@
         border: none;
         padding-bottom: 0;
       }
+      @include r {
+        margin-bottom: 30px;
+      }
     }
 
     &-name {
       margin-bottom: 25px;
+      @include r {
+        margin-bottom: 10px;
+      }
     }
 
     &-date {
@@ -5721,17 +5789,27 @@
       position: absolute;
       right: 0;
       top: 10px;
+      @include r {
+        position: static;
+        font-size: 15px;
+      }
     }
 
     &-client {
       color: $title;
       margin-bottom: 30px;
+      @include r {
+        margin-bottom: 15px;
+      }
     }
 
     &-text {
       max-width: 665px;
       width: 100%;
-      margin-bottom: 16px;
+      margin-bottom: 15px;
+      @include r {
+        color: $light-text;
+      }
     }
 
     &-more {
@@ -5742,10 +5820,17 @@
       margin-top: 30px;
       display: flex;
       width: 100%;
+      @include r {
+        flex-direction: column;
+      }
     }
 
     &-btn + &-btn {
       margin-left: 25px;
+      @include r {
+        margin-left: 0;
+        margin-top: 15px;
+      }
     }
   }
 
@@ -5753,6 +5838,9 @@
     position: relative;
     &-title {
       margin-bottom: 70px;
+      @include r {
+        margin-bottom: 30px;
+      }
     }
 
     &-view {
@@ -5791,6 +5879,10 @@
         height: 11px;
         top: 9px;
       }
+
+      @include r {
+        display: none;
+      }
     }
 
     &-wrapper {
@@ -5811,6 +5903,12 @@
       &:nth-last-child(1) {
         border: none;
         margin-bottom: 0;
+      }
+
+      @include r {
+        display: flex;
+        padding: 0 0 50px;
+        flex-direction: column;
       }
 
       &.block {
@@ -5868,16 +5966,34 @@
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
+      @include r {
+        display: none;
+      }
     }
 
     &-name {
       color: $title;
       font-size: 24px;
       margin-bottom: 10px;
+      @include r {
+        font-family: "SFProDisplay-Medium", sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+      }
     }
 
     &-text {
       margin-bottom: 15px;
+      @include r {
+        margin-bottom: 10px;
+      }
+    }
+
+    &-stats {
+      @include r {
+        color: $light-text;
+        margin-bottom: 20px;
+      }
     }
 
     &-next {
@@ -5889,16 +6005,36 @@
         text-align: right;
         font-size: 20px;
         margin-bottom: 5px;
+        @include r {
+          text-align: left;
+          font-size: 16px;
+        }
+      }
+
+      @include r {
+        position: static;
+        font-size: 22px;
+        margin-bottom: 30px;
       }
     }
 
     &-date {
       color: $blue;
+      @include r {
+        font-family: "SFProDisplay-Medium", sans-serif;
+        font-weight: 500;
+        color: $text;
+      }
     }
 
     &-time {
       color: $blue;
       margin-left: 15px;
+      @include r {
+        font-family: "SFProDisplay-Medium", sans-serif;
+        font-weight: 500;
+        color: $text;
+      }
     }
 
     &-cancel {
@@ -5910,6 +6046,20 @@
       border: none;
       box-shadow: none;
       font-size: 20px;
+      @include r {
+        position: static;
+        text-align: center;
+        padding: 12px 15px 14px;
+        border: 2px solid $blue;
+        border-radius: 10px;
+        font-size: 17px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          color: white;
+          background-color: $blue;
+        }
+      }
     }
   }
 }
@@ -5940,10 +6090,25 @@
 
   &__back {
     color: $blue;
+    position: relative;
+    &::before {
+      content: "Вернуться к";
+      @include r {
+        content: "К";
+        padding-left: 25px;
+        background-image: url(../img/appointment-back-arrow-mobile.svg);
+        background-position: left top;
+        background-repeat: no-repeat;
+      }
+    }
   }
 
   &__title {
     margin: 25px 0;
+    @include r {
+      font-size: 22px;
+      margin: 30px 0 15px;
+    }
   }
 
   &__text {
@@ -5952,6 +6117,11 @@
 
   &__doctor {
     display: flex;
+    @include r {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
     &-img {
       width: 90px;
       height: 90px;
@@ -5960,10 +6130,22 @@
       background-size: cover;
       background-repeat: no-repeat;
       margin-right: 45px;
+      @include r {
+        margin-right: 0;
+        margin-bottom: 25px;
+      }
     }
 
     &-name {
       margin-bottom: 20px;
+      @include r {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+    }
+
+    &-stats {
+      display: flex;
     }
 
     &-stat + &-stat {
@@ -5979,8 +6161,18 @@
     display: none;
     align-items: stretch;
     margin: 70px 0 0;
+    @include r {
+      margin-top: 50px;
+      height: 0;
+      overflow: hidden;
+      display: block;
+    }
     &.active {
       display: flex;
+      @include r {
+        display: block;
+        height: auto;
+      }
     }
 
     &-btns {
@@ -5989,6 +6181,9 @@
       padding: 20px 15px 20px 0;
       border-right: 1px solid #f1f1f1;
       margin-right: 40px;
+      @include r {
+        display: none;
+      }
     }
 
     &-btn {
@@ -6045,6 +6240,9 @@
     &-title {
       margin-bottom: 60px;
       pointer-events: none;
+      @include r {
+        margin: 15px 0 30px;
+      }
     }
 
     &-content {
@@ -6053,6 +6251,16 @@
       display: none;
       &.active {
         display: block;
+        @include r {
+          height: auto;
+        }
+      }
+      @include r {
+        width: 100%;
+        padding: 0;
+        display: block;
+        height: 0;
+        overflow: hidden;
       }
     }
   }
@@ -6081,13 +6289,16 @@
         content: "";
         position: absolute;
         left: 0;
-        top: 7px;
+        top: 6px;
         width: 16px;
         height: 16px;
         border: 4px solid $blue;
         border-radius: 100%;
         opacity: 0.5;
         transition: all 0.3s;
+        @include r {
+          top: 2px;
+        }
       }
     }
 
@@ -6107,6 +6318,11 @@
     position: absolute;
     left: 0;
     bottom: 20px;
+    @include r {
+      width: 100%;
+      position: static;
+      margin-top: 50px;
+    }
   }
 
   &__textarea {
@@ -6117,12 +6333,15 @@
     padding: 15px;
     color: $text;
     font-size: 20px;
-    min-height: 230px;
-    height: fit-content;
+    height: 230px;
     resize: none;
     &::placeholder {
       color: $light-text;
-      font-size: 20px;
+    }
+    @include r {
+      width: 100%;
+      font-size: 17px;
+      height: 160px;
     }
   }
   &__list {
@@ -6136,6 +6355,9 @@
       margin: 0 0 25px;
       width: 49%;
       padding: 0;
+      @include r {
+        width: 100%;
+      }
       span {
         transition: all 0.3s;
         padding-left: 25px;
@@ -6151,6 +6373,9 @@
           height: 16px;
           border: 1px solid $light-text;
           transition: all 0.3s;
+          @include r {
+            top: 1px;
+          }
         }
         &::after {
           content: "";
@@ -6164,6 +6389,9 @@
           background-repeat: no-repeat;
           transition: all 0.3s;
           opacity: 0;
+          @include r {
+            top: 2px;
+          }
         }
       }
 
@@ -6203,8 +6431,12 @@
     border-radius: 10px;
     outline: none;
     &::placeholder {
-      font-size: 20px;
       color: $light-text;
+    }
+
+    @include r {
+      width: 100%;
+      font-size: 17px;
     }
   }
 
@@ -6407,6 +6639,24 @@
 
     &-text {
       margin-bottom: 120px;
+    }
+  }
+
+  &__step-mobile {
+    font-family: "SFProDisplay-Medium", sans-serif;
+    font-weight: 500;
+    display: none;
+    @include r {
+      display: inline-block;
+    }
+  }
+
+  &__back-mobile {
+    color: $blue;
+    margin-left: 20px;
+    display: none;
+    @include r {
+      display: inline-block;
     }
   }
 }

@@ -20,6 +20,26 @@ $(".about-specialists__slider").slick({
 
 document.querySelectorAll(".about-specialists__slider .slick-dots li button").forEach((btn) => (btn.innerHTML = ""));
 
+// функция для обертки айтеов, чтобы после сделать слайдер
+
+const concatForSlides = function (itemsNumPerSlide, itemsClass, slideClass, parentClass) {
+  const items = document.querySelectorAll(`.${itemsClass}`);
+  const slides = Math.ceil(items.length / itemsNumPerSlide);
+  console.log(slides);
+  console.log(items.length);
+  const parent = document.querySelector(`.${parentClass}`);
+  for (let slideNum = 0; slideNum < slides; slideNum++) {
+    const slide = document.createElement("div");
+    slide.classList.add(slideClass);
+    for (let itemNum = 0 + itemsNumPerSlide * slideNum; itemNum < itemsNumPerSlide + itemsNumPerSlide * slideNum + 1; itemNum++) {
+      if (itemNum < items.length) {
+        slide.appendChild(items[+itemNum]);
+      }
+    }
+    parent.appendChild(slide);
+  }
+};
+
 // burger menu in start pages
 if (document.querySelector(".header-start")) {
   document.querySelector(".header-start").addEventListener("click", function (e) {
@@ -489,6 +509,16 @@ if (document.querySelector(".general")) {
       dots: true,
       arrows: false,
     });
+
+    // слайдер симптомов
+    concatForSlides(10, "general__symptoms[data-symptom='1'] .general__symptom", "general__symptom-slide", "general__symptoms[data-symptom='1']");
+    $(".general__symptoms[data-symptom='1']").slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      infinite: false,
+      dots: true,
+      arrows: false,
+    });
   }
 }
 
@@ -762,7 +792,28 @@ if (document.querySelector(".appointment")) {
     } else {
       document.querySelector(".hasDiagnoseInput").classList.remove("active");
     }
+
+    if (window.innerWidth < 768) {
+      // возвращение на шаг назад на мобилке
+      if (e.target.classList.contains("appointment__back-mobile")) {
+        const curStep = e.target.closest(".appointment__tabs-content");
+        const curStepNum = curStep.dataset.tab;
+        curStep.classList.remove("active");
+        document.querySelector(`.appointment__tabs-content[data-tab="${+curStepNum - 1}"]`).classList.add("active");
+      }
+    }
   });
+  if (window.innerWidth < 768) {
+    // мобильный слайдер для выбора "с чем хотите разобраться" (шаг 3 из 5)
+    concatForSlides(5, "appointment__list-item", "appointment__list-slide", "appointment__list");
+    $(".appointment__list").slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      infinite: false,
+      dots: true,
+      arrows: false,
+    });
+  }
 }
 
 if (document.querySelector(".contacts__contact") || document.querySelector(".popup")) {
@@ -807,4 +858,16 @@ if (document.querySelector(".popup")) {
     document.querySelector(".popup__notice").classList.remove("active");
     document.querySelector(".layer").classList.remove("active");
   });
+}
+
+if (document.querySelector(".articles")) {
+  if (window.innerWidth < 768) {
+    $(".articles__tags-list").slick({
+      infinite: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      variableWidth: true,
+    });
+  }
 }
