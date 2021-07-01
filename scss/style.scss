@@ -6803,6 +6803,11 @@
     left: 250px;
     top: calc(105% + 15px);
     color: $light-text;
+    @include r {
+      left: auto;
+      top: -55px;
+      color: $blue;
+    }
   }
 
   &__month {
@@ -6930,9 +6935,12 @@
       position: relative;
       &:nth-child(3n + 1) {
         margin-right: 0;
+        @include r {
+          margin-right: 25px;
+        }
       }
       @include r {
-        margin: 0;
+        margin-right: 25px;
       }
 
       input {

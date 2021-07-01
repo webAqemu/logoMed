@@ -5619,6 +5619,11 @@ textarea::placeholder {
   left: 250px;
   top: calc(105% + 15px);
   color: #7d7d7d; }
+  @media (max-width: 768px) {
+    .appointment__return {
+      left: auto;
+      top: -55px;
+      color: #68a9fe; } }
 
 .appointment__month {
   padding-right: 100px;
@@ -5722,9 +5727,12 @@ textarea::placeholder {
     position: relative; }
     .appointment__days-time:nth-child(3n + 1) {
       margin-right: 0; }
+      @media (max-width: 768px) {
+        .appointment__days-time:nth-child(3n + 1) {
+          margin-right: 25px; } }
     @media (max-width: 768px) {
       .appointment__days-time {
-        margin: 0; } }
+        margin-right: 25px; } }
     .appointment__days-time input {
       position: absolute;
       left: 0;
