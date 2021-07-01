@@ -10,6 +10,9 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
+    @include r {
+      position: static;
+    }
   }
 
   &__list {
@@ -36,9 +39,10 @@
   &__nav.mobile {
     display: none;
     z-index: 10;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
+    min-height: 500px;
     height: 100vh;
     background-color: white;
     width: 325px;
@@ -1369,10 +1373,10 @@
       margin-bottom: 30px;
     }
     .btn {
-      width: 336px;
+      width: 100%;
       height: 48px;
       font-size: 17px;
-      margin: 30px -10px 0;
+      margin: 30px 0px 0;
       background-image: url(../img/mobile/btn-main-336.svg);
       &:hover {
         @include blue-shadow;
@@ -1534,7 +1538,10 @@
     @include r {
       margin-left: 0;
       height: 100%;
-      padding: 40px 30px;
+      padding: 40px 15px;
+      background-image: none;
+      background-color: white;
+      border-radius: 30px;
     }
   }
 
@@ -1615,7 +1622,7 @@
     }
     input {
       width: 100%;
-      padding: 10px 25px;
+      padding: 14px 25px;
       border: 1px solid $text;
       outline: none;
       border: 1px solid #bdbdbd;
@@ -1638,6 +1645,7 @@
       label {
         @include r {
           font-size: 14px;
+          top: 25px;
         }
       }
     }
@@ -1812,9 +1820,28 @@
     }
   }
 
-  &__btn,
-  &__btn--finish {
+  &__btn {
     font-size: 20px;
+  }
+
+  &__btn {
+    @include r {
+      font-size: 0;
+      height: 48px;
+      &::after {
+        content: "Следующий шаг";
+        font-size: 17px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+      }
+      &--finish::after {
+        content: "Перейти в личный кабинет";
+      }
+    }
   }
 
   &__adds-text {
@@ -1928,10 +1955,16 @@
       align-items: flex-end;
       margin: 0 10px 30px;
       padding-top: 10px;
+      @include r {
+        margin-bottom: 15px;
+      }
     }
 
     &-icon {
-      cursor: pointer;
+      @include r {
+        height: 40px;
+        width: auto;
+      }
     }
 
     &-name {
@@ -1949,6 +1982,7 @@
       }
 
       @include r {
+        padding: 10px;
         padding-left: 0;
         font-size: 17px;
         border: none;
@@ -1966,6 +2000,7 @@
       @include r {
         left: auto;
         right: 0;
+        top: 5px;
       }
     }
 
@@ -2112,6 +2147,9 @@
     @include r {
       display: block;
       margin: 0 0 40px;
+      .slick-list {
+        overflow: visible;
+      }
     }
     &-title {
       margin: 0 0 25px 27px;
@@ -2124,17 +2162,8 @@
       display: inline-block;
     }
 
-    &-list {
-      @include r {
-      }
-    }
-
-    .slick-list {
-      margin-left: -15px;
-    }
-
     .slick-slide {
-      margin-left: 15px;
+      margin-right: 15px;
     }
 
     &-item {
@@ -2148,9 +2177,11 @@
         padding: 10px 45px 30px;
         max-width: 270px;
         width: 270px;
-        height: 232px;
-        background-image: url(../img/reg-icons/bud-bg-mobile.svg);
-        background-size: cover;
+        height: auto;
+        background-image: none;
+        background-color: white;
+        border-radius: 30px;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
       }
     }
 
@@ -2165,7 +2196,15 @@
       margin: 0 auto 15px;
       @include r {
         width: 120px;
-        height: 120px;
+        height: 106px;
+      }
+    }
+
+    &-desc {
+      @include r {
+        font-family: "SFProDisplay-Medium", sans-serif;
+        font-weight: 500;
+        margin-bottom: 5px;
       }
     }
 
@@ -2181,6 +2220,10 @@
         position: static;
         top: auto;
         right: auto;
+        color: $light-text;
+        font-family: "SFProDisplay-Regular", sans-serif;
+        font-weight: 400;
+        font-size: 17px;
       }
     }
   }
@@ -2392,7 +2435,7 @@
       top: 0;
       right: 0;
       padding: 65px 30px;
-      min-height: 450px;
+      min-height: 500px;
       height: 100vh;
       background-color: white;
       width: 310px;
@@ -2574,10 +2617,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 65px 15px;
+  padding: 65px 25px;
   background-color: white;
+  min-height: 730px;
   height: 100vh;
-  z-index: 12;
+  z-index: 100000;
   transform: translateX(100%);
   transition: all 0.3s;
   &.active {
@@ -2588,8 +2632,8 @@
     width: 14px;
     height: 14px;
     position: absolute;
-    right: 15px;
-    top: 65px;
+    right: 25px;
+    top: 72px;
     &::before {
       content: "";
       position: absolute;
@@ -2743,7 +2787,11 @@
     display: flex;
 
     @include r {
-      margin-bottom: 40px;
+      margin-bottom: 15px;
+      li {
+        font-family: "SFProDisplay-Regular", sans-serif;
+        font-weight: 400;
+      }
     }
   }
 
@@ -2764,13 +2812,16 @@
 
   &__btns {
     display: flex;
+    @include r {
+      margin-top: 65px;
+    }
   }
 
   &__btn {
     position: relative;
     color: $white;
     transition: all 0.3s;
-    &:not(:first-child) {
+    & + & {
       margin-left: 25px;
     }
   }
@@ -2778,6 +2829,12 @@
   &__timetable {
     color: $white;
     margin-top: 30px;
+    @include r {
+      font-family: "SFProDisplay-Regular", sans-serif;
+      font-weight: 400;
+      margin-top: 15px;
+      font-size: 17px;
+    }
   }
 }
 
@@ -2838,7 +2895,10 @@
     & svg {
       margin-right: 15px;
       @include r {
-        display: none;
+        height: 16px;
+        width: 16px;
+        margin-right: 5px;
+        margin-top: -3px;
       }
     }
     & span {
@@ -2862,6 +2922,7 @@
     padding: 30px 0 140px;
     @include r {
       padding: 30px 0 60px;
+      background-color: $bg-mobile;
     }
     .container {
       position: relative;
@@ -2872,6 +2933,7 @@
       overflow: hidden;
       &.active {
         height: auto;
+        overflow: visible;
       }
       &--general {
         align-items: flex-start;
@@ -2916,6 +2978,7 @@
       height: 1275px;
       @include r {
         height: auto;
+        margin-top: -20px;
       }
     }
   }
@@ -2941,7 +3004,7 @@
 
       @include r {
         flex-wrap: wrap;
-        margin-bottom: 20px;
+        margin-bottom: 32px;
       }
     }
 
@@ -2981,11 +3044,14 @@
     &--inline {
       display: inline-block;
     }
+    @include r {
+      margin-bottom: 15px;
+    }
   }
 
   &__stat {
     display: flex;
-    width: 100%;
+    width: calc(100% + 30px);
     padding: 15px;
     margin: 0 -15px;
     border-bottom: 1px solid #f1f1f1;
@@ -3175,6 +3241,7 @@
   }
 
   &__checkbox-label {
+    display: inline-block;
     transition: all 0.3s;
     padding-left: 25px;
     color: $light-text;
@@ -3248,8 +3315,13 @@
     }
 
     @include r {
-      font-size: 17px;
+      font-size: 16px;
+      line-height: 21px;
       margin-bottom: 10px;
+      border-color: #d7d7d7;
+      &:focus {
+        border-color: $blue;
+      }
     }
   }
 
@@ -3284,6 +3356,10 @@
       max-width: 615px;
       width: 100%;
       margin: 15px 0;
+      @include r {
+        font-family: "SFProDisplay-Medium", sans-serif;
+        font-weight: 500;
+      }
     }
     &-desc {
       color: $light-text;
@@ -3326,7 +3402,7 @@
         padding: 17px 31px 17px 15px;
         border-radius: 10px;
         background-color: $blue;
-        margin: 30px 0;
+        margin: 30px 0 40px;
         &::after {
           background-image: none;
           width: 17px;
@@ -3334,7 +3410,7 @@
           background-color: white;
           top: 50%;
           transform: translateY(-50%);
-          right: 25%;
+          right: 20%;
         }
 
         &::before {
@@ -3347,7 +3423,7 @@
           top: 0;
           top: 50%;
           transform: translateY(-50%);
-          right: calc(25% + 7px);
+          right: calc(20% + 7px);
         }
       }
     }
@@ -3369,8 +3445,13 @@
         width: 16px;
         height: 16px;
         padding: 0;
-        top: 240px;
+        top: auto;
+        position: relative;
+        right: auto;
+        left: calc(100% - 17px);
         &::after {
+          right: 0;
+          top: 0;
           width: 16px;
           height: 16px;
           background-image: url(../img/reg-icons/reg-delete-file-icon.svg);
@@ -3390,9 +3471,14 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      margin-top: 45px;
       width: calc(100% + 20px);
       margin: 45px -10px 0;
+      @include r {
+        flex-direction: column;
+        margin: 45px 0 0;
+        width: 100%;
+        align-items: flex-start;
+      }
     }
     &-item {
       display: flex;
@@ -3400,6 +3486,10 @@
       max-width: calc(50% - 20px);
       width: 100%;
       margin: 0 10px 20px;
+      @include r {
+        max-width: 100%;
+        margin: 0 0 20px;
+      }
     }
     &-name {
       display: inline-block;
@@ -3468,6 +3558,10 @@
   box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.110659);
   border-radius: 20px;
   border: none;
+  @include r {
+    padding: 80px 0 0;
+    width: 100%;
+  }
   &::after {
     content: "";
     position: absolute;
@@ -3483,6 +3577,11 @@
 
   &--days-names {
     margin: 0 -15px;
+    @include r {
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
   }
 
   &--day-name {
@@ -3525,6 +3624,9 @@
 
   &--cells {
     margin: 0 -13px;
+    @include r {
+      margin: 0;
+    }
   }
 
   &--cell {
@@ -3625,6 +3727,7 @@
     }
     &--pink {
       margin-top: 10px;
+      background: $peach;
     }
     &--inactive {
       opacity: 0.5;
@@ -3779,6 +3882,9 @@
       top: 35px;
       right: 0;
       color: $blue;
+      &.inactive {
+        color: $light-text;
+      }
       @include r {
         position: static;
       }
@@ -3888,6 +3994,11 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
+
+    @include r {
+      flex-direction: column;
+      margin-bottom: 35px;
+    }
   }
 
   &__desc {
@@ -4049,6 +4160,10 @@
       height: fit-content;
       display: none;
       z-index: 10;
+      @include r {
+        width: calc(100% + 30px);
+        left: -15px;
+      }
     }
     &.active {
       &::after {
@@ -4075,6 +4190,15 @@
     justify-content: space-between;
     &.active {
       display: flex;
+      @include r {
+        display: block;
+      }
+    }
+
+    @include r {
+      margin-top: 16px;
+      position: relative;
+      padding-bottom: 90px;
     }
 
     &-wrapper:nth-last-child(1) {
@@ -4120,15 +4244,21 @@
       border: 1px solid $blue;
       border-radius: 10px;
       &::placeholder {
-        font-size: 20px;
         color: $light-text;
+      }
+      @include r {
+        font-size: 17px;
+        width: 100%;
+        border-color: #d7d7d7;
+        padding: 12px 25px 14px;
+        &:focus {
+          border-color: $blue;
+        }
       }
     }
 
     &-list {
       display: none;
-      margin: 0;
-      list-style: none;
       position: absolute;
       left: 0;
       width: 100%;
@@ -4166,6 +4296,17 @@
         padding-top: 15px;
         border-top: 1px solid $blue;
       }
+
+      @include r {
+        font-size: 17px;
+        padding: 0;
+      }
+    }
+
+    &-recommendations {
+      @include r {
+        margin-bottom: 34px;
+      }
     }
 
     &-item {
@@ -4188,18 +4329,27 @@
         background-position: center;
         background-size: cover;
       }
+      @include r {
+        color: black;
+        font-family: "SFProDisplay-Medium", sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+      }
     }
 
     &-save {
       margin-top: 60px;
+      @include r {
+        position: absolute;
+        bottom: 0;
+      }
     }
 
     &-textarea {
       display: inline-block;
       max-width: 660px;
       width: 100%;
-      min-height: 230px;
-      height: fit-content;
+      height: 230px;
       border: 1px solid $blue;
       border-radius: 10px;
       padding: 15px;
@@ -4209,17 +4359,28 @@
       outline: none;
       &::placeholder {
         color: $light-text;
-        font-size: 20px;
+      }
+
+      @include r {
+        font-size: 17px;
+        border-color: #d7d7d7;
+        height: 152px;
+        &:focus {
+          border-color: $blue;
+        }
       }
     }
   }
 
   &__analyzes {
     position: relative;
-    display: none;
+    display: block;
+    height: 0;
+    overflow: hidden;
     margin-top: 60px;
     &.active {
-      display: block;
+      height: auto;
+      overflow: visible;
     }
 
     &-title {
@@ -4240,12 +4401,11 @@
         padding: 9px 25px 11px;
         border: 1px solid $blue;
         border-radius: 10px;
+        pointer-events: none;
       }
       ul {
         background-color: #fff;
         z-index: 100;
-        margin: 0;
-        list-style: none;
         position: absolute;
         left: 0;
         width: 100%;
@@ -4277,6 +4437,7 @@
         transform: rotate(180deg);
       }
     }
+
     &-option {
       cursor: pointer;
       transition: all 0.3s;
@@ -4291,12 +4452,18 @@
     }
 
     &-list {
-      display: none;
+      display: flex;
+      height: 0;
+      overflow: hidden;
       flex-wrap: wrap;
-      padding: 0;
-      list-style: none;
       &.active {
-        display: flex;
+        height: auto;
+        @include r {
+          margin-bottom: 40px;
+        }
+      }
+      @include r {
+        display: block;
       }
     }
 
@@ -4304,6 +4471,9 @@
       width: 33.3333%;
       position: relative;
       margin-bottom: 10px;
+      @include r {
+        width: 100%;
+      }
       & input {
         cursor: pointer;
         position: absolute;
@@ -4339,6 +4509,9 @@
           top: 6px;
           border: 1px solid $light-text;
           transition: all 0.3s;
+          @include r {
+            top: 2px;
+          }
         }
         &::after {
           content: " ";
@@ -4352,6 +4525,9 @@
           background-repeat: no-repeat;
           opacity: 0;
           transition: all 0.3s;
+          @include r {
+            top: 2px;
+          }
         }
       }
     }
@@ -4368,6 +4544,9 @@
       padding-left: 150px;
       max-width: 600px;
       width: 100%;
+      @include r {
+        display: none;
+      }
       div {
         font-size: 24px;
         position: absolute;
@@ -4397,7 +4576,7 @@
   @include r {
     background-image: none;
     background-color: white;
-    border-radius: 30px;
+    border-radius: 10px;
     height: auto;
     max-width: 400px;
     margin: 0;
@@ -4415,8 +4594,8 @@
       height: 90px;
       mask-image: none;
       -webkit-mask-image: none;
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
     }
   }
 
@@ -4620,6 +4799,7 @@
       height: 24px;
       width: 24px;
       background-image: url(../img/star-24-grey.svg);
+      background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
       transition: all 0.3s;
@@ -4662,6 +4842,60 @@
   &__btn {
     margin-top: auto;
   }
+
+  &.bud-mobile-row {
+    @include r {
+      justify-content: center;
+      align-items: flex-start;
+      padding: 25px 180px 35px 20px;
+    }
+    .bud__img {
+      @include r {
+        position: absolute;
+        height: auto;
+        width: 120px;
+        top: 22px;
+        right: 16px;
+      }
+    }
+    .bud__title {
+      @include r {
+        position: static;
+        text-align: left;
+        font-size: 17px;
+        padding-right: 0;
+      }
+    }
+
+    .bud__add {
+      position: absolute;
+      right: 0;
+      top: -5px;
+
+      @include r {
+        display: block;
+        top: 16px;
+        right: 21px;
+        span {
+          height: 16px;
+          width: 16px;
+        }
+      }
+    }
+    .bud__stats {
+      @include r {
+        display: none;
+      }
+    }
+
+    .bud__price {
+      @include r {
+        margin-bottom: 25px;
+        font-size: 17px;
+        color: $light-text;
+      }
+    }
+  }
 }
 
 .empty {
@@ -4686,11 +4920,15 @@
   }
 
   @include r {
-    padding: 25px 15px;
+    padding: 25px 15px 50px;
+    background-image: none;
+    border-radius: 30px;
+    background-color: white;
     &::after {
-      width: 250px;
+      width: 220px;
       height: 185px;
-      top: 200px;
+      top: auto;
+      bottom: 180px;
       right: 50%;
       transform: translateX(50%);
     }
@@ -4700,6 +4938,9 @@
     max-width: 640px;
     width: 100%;
     margin: 25px 0 60px;
+    @include r {
+      margin: 15px 0 0;
+    }
   }
 
   &__form {
@@ -4710,7 +4951,7 @@
     width: 100%;
     @include r {
       flex-wrap: wrap;
-      margin-top: 250px;
+      margin-top: 200px;
     }
   }
 
@@ -4732,6 +4973,10 @@
       margin-bottom: 25px;
       padding-top: 12px;
       padding-bottom: 14px;
+      border-color: #d7d7d7;
+      &:focus {
+        border-color: $blue;
+      }
     }
   }
 
@@ -4777,6 +5022,10 @@
       justify-content: center;
       align-items: center;
       padding: 35px 15px;
+      margin-bottom: 0;
+      background-image: none;
+      border-radius: 30px;
+      background-color: white;
     }
   }
 
@@ -4802,6 +5051,7 @@
     margin-bottom: 40px;
     @include r {
       margin-bottom: 10px;
+      color: $light-text;
     }
   }
 
@@ -4901,9 +5151,39 @@
       bottom: auto;
     }
   }
+
+  &__slider {
+    @include r {
+      margin-bottom: 70px;
+    }
+  }
+
+  &__bud {
+    @include r {
+      width: 270px;
+      margin-right: 16px;
+      padding: 10px 32px 32px;
+      .bud__img {
+        width: 120px;
+      }
+      .bud__btn {
+        max-width: 170px;
+        margin: auto auto 0;
+      }
+      .bud__price {
+        text-align: center;
+        line-height: 17px;
+      }
+    }
+  }
 }
 
 .useful {
+  &__title {
+    @include r {
+      margin-bottom: 36px;
+    }
+  }
   &__buds {
     margin-top: 100px;
   }
@@ -5241,7 +5521,7 @@
 }
 
 .articles {
-  padding: 120px 0;
+  padding: 134px 0 60px;
 
   &__forYou {
     margin-top: 125px;
@@ -5267,6 +5547,9 @@
     max-width: 650px;
     width: 100%;
     margin: 40px 0 60px;
+    @include r {
+      margin: 22px 0 18px;
+    }
   }
 
   &__form {
@@ -5314,9 +5597,10 @@
     display: none;
     @include r {
       display: block;
-      margin: 30px 0 20px;
+      margin: 32px 0 12px;
       font-family: "SFProDisplay-Medium", sans-serif;
       font-weight: 500;
+      color: black;
     }
   }
 
@@ -5328,28 +5612,34 @@
       display: flex;
       font-family: "SFProDisplay-Medium", sans-serif;
       font-weight: 500;
+      .slick-list {
+        overflow: visible;
+      }
     }
   }
 
   &__tag {
     display: inline-block;
-    padding: 17px 15px;
+    padding: 17px 15px 42px;
     max-width: 210px;
     width: 100%;
     border-radius: 10px;
     text-align: left;
     margin: 10px 15px;
+    background-color: white;
   }
 
   &__slide.slick-active &__tag {
     box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.110659);
-    background-color: white;
   }
 
   &__recommendations {
     margin: 120px 0 100px;
     @include r {
-      margin: 60px 0;
+      margin: 20px 0;
+      &-title {
+        display: none;
+      }
     }
   }
 
@@ -5362,6 +5652,9 @@
     @include r {
       margin: 0;
       width: 100%;
+      &--block {
+        display: none;
+      }
     }
   }
 
@@ -5529,6 +5822,9 @@
 
     &-title {
       margin-bottom: 30px;
+      @include r {
+        margin-bottom: 15px;
+      }
     }
 
     &-text {
@@ -5557,7 +5853,7 @@
     &-slide {
       margin-right: 30px;
       @include r {
-        margin-right: 15px;
+        margin: 0 15px 15px 0;
         display: inline-block;
         width: fit-content;
       }
@@ -5667,7 +5963,8 @@
         top: 0;
         right: 0;
         @include r {
-          font-size: 16px;
+          margin-top: 10px;
+          font-size: 17px;
         }
       }
     }
@@ -5758,9 +6055,13 @@
       color: $blue;
     }
   }
+
   &__requests {
     &-title {
       margin-bottom: 15px;
+      @include r {
+        margin-top: 10px;
+      }
     }
 
     &-item {
@@ -5773,14 +6074,16 @@
         padding-bottom: 0;
       }
       @include r {
+        padding-bottom: 35px;
         margin-bottom: 30px;
+        margin-top: 30px;
       }
     }
 
     &-name {
       margin-bottom: 25px;
       @include r {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
       }
     }
 
@@ -5792,6 +6095,7 @@
       @include r {
         position: static;
         font-size: 15px;
+        margin-bottom: 5px;
       }
     }
 
@@ -5822,6 +6126,7 @@
       width: 100%;
       @include r {
         flex-direction: column;
+        margin-top: 40px;
       }
     }
 
@@ -5840,6 +6145,7 @@
       margin-bottom: 70px;
       @include r {
         margin-bottom: 30px;
+        margin-top: 10px;
       }
     }
 
@@ -5909,6 +6215,7 @@
         display: flex;
         padding: 0 0 50px;
         flex-direction: column;
+        margin-bottom: 50px;
       }
 
       &.block {
@@ -6050,11 +6357,12 @@
         position: static;
         text-align: center;
         padding: 12px 15px 14px;
-        border: 2px solid $blue;
+        border: 1px solid $blue;
         border-radius: 10px;
         font-size: 17px;
         cursor: pointer;
         transition: all 0.3s;
+        color: $text;
         &:hover {
           color: white;
           background-color: $blue;
@@ -6085,6 +6393,9 @@
     display: none;
     &.active {
       display: block;
+    }
+    @include r {
+      padding: 135px 0 80px;
     }
   }
 
@@ -6344,6 +6655,7 @@
       height: 160px;
     }
   }
+
   &__list {
     padding: 0;
     margin: 0 0 50px;
@@ -6437,6 +6749,7 @@
     @include r {
       width: 100%;
       font-size: 17px;
+      padding: 12px 15px 14px;
     }
   }
 
@@ -6453,20 +6766,29 @@
       opacity: 1;
       pointer-events: inherit;
     }
+    @include r {
+      margin-top: 0;
+    }
   }
+
   &__files-type {
     position: absolute;
     left: 240px;
     top: 120px;
     color: $light-text;
+    @include r {
+      display: none;
+    }
   }
 
   &__date {
-    margin: 90px 0 130px;
     position: relative;
-    display: none;
+    height: 0;
+    overflow: hidden;
     &.active {
-      display: block;
+      margin: 90px 0 130px;
+      height: auto;
+      overflow: visible;
     }
 
     .appointment__btn {
@@ -6487,6 +6809,11 @@
     padding-right: 100px;
     border-right: 1px solid #f1f1f1;
     display: inline-block;
+    @include r {
+      padding-right: 0;
+      border: none;
+      width: 100%;
+    }
     & .appointment__calendar {
       display: inline-block;
     }
@@ -6506,6 +6833,9 @@
     & + & {
       margin-left: 120px;
       border: none;
+      @include r {
+        margin-left: 0;
+      }
     }
   }
 
@@ -6519,23 +6849,42 @@
     display: none;
   }
 
+  .datepicker-content {
+    @include r {
+      padding: 0;
+    }
+  }
+
   .datepicker--nav-action {
     display: none;
   }
 
   .datepicker-inline .datepicker--cells {
     justify-content: center;
+    @include r {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
   }
 
   .datepicker-inline .datepicker--cell {
     margin: 4px 32px 4px 0;
     &.-weekend- {
       margin-right: 0;
+      @include r {
+        margin-right: auto;
+      }
+    }
+    @include r {
+      margin: 4px auto;
     }
   }
 
   .datepicker--body.active {
     margin-top: 25px;
+    @include r {
+      margin-top: 0;
+    }
   }
 
   .datepicker-inline .datepicker--nav-title {
@@ -6547,16 +6896,29 @@
     margin: 0;
     padding: 0;
     color: $title;
+    @include r {
+      font-size: 22px;
+      font-family: "SFProDisplay-Medium", sans-serif;
+      font-weight: 500;
+      right: 0;
+      top: 40px;
+    }
   }
 
   &__wrapper {
     display: flex;
     align-items: stretch;
+    @include r {
+      display: block;
+    }
   }
 
   &__days {
     display: inline-block;
     width: 600px;
+    @include r {
+      width: 100%;
+    }
     &-title {
       margin: 50px 0 35px;
     }
@@ -6568,6 +6930,9 @@
       position: relative;
       &:nth-child(3n + 1) {
         margin-right: 0;
+      }
+      @include r {
+        margin: 0;
       }
 
       input {
@@ -6666,7 +7031,6 @@
   background: $bg;
   @include r {
     padding: 135px 0 30px;
-    background-color: white;
   }
 
   &__title {
@@ -6695,7 +7059,7 @@
 
     @include r {
       max-width: 100%;
-      margin-bottom: 25px;
+      margin-bottom: 32px;
     }
   }
 
@@ -6759,6 +7123,7 @@
       cursor: pointer;
       @include r {
         margin-bottom: 25px;
+        border-color: #d7d7d7;
       }
       &::after {
         content: "";
@@ -6779,12 +7144,16 @@
       }
 
       @include r {
-        padding: 12px 15px 14px;
+        padding: 12px 25px 14px;
+        &.active {
+          border-color: $blue;
+        }
       }
     }
 
     span {
       color: $light-text;
+      pointer-events: none;
     }
 
     &-list {
@@ -6860,7 +7229,15 @@
       resize: none;
       &::placeholder {
         color: $light-text;
-        font-size: 20px;
+      }
+
+      @include r {
+        font-size: 17px;
+        padding: 15px 25px;
+        border-color: #d7d7d7;
+        &:focus {
+          border-color: $blue;
+        }
       }
     }
     &-btn {
@@ -6887,7 +7264,6 @@
   background: $bg;
   @include r {
     padding: 135px 0 30px;
-    background-color: white;
   }
   &__title {
     margin-bottom: 70px;
@@ -6898,11 +7274,16 @@
   }
 
   &__accordeon {
+    @include r {
+      width: calc(100% + 48px);
+      margin-left: -24px;
+    }
     &-item {
       padding: 35px 0 40px;
       border-top: 1px solid #d3d3d3;
       @include r {
-        padding: 25px 0 30px;
+        width: 100%;
+        padding: 25px 24px 30px;
       }
       &:nth-last-child(1) {
         border-bottom: 1px solid #d3d3d3;

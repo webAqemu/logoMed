@@ -23,11 +23,14 @@ document.querySelectorAll(".about-specialists__slider .slick-dots li button").fo
 // функция для обертки айтеов, чтобы после сделать слайдер
 
 const concatForSlides = function (itemsNumPerSlide, itemsClass, slideClass, parentClass) {
-  const items = document.querySelectorAll(`.${itemsClass}`);
+  let items;
+  let parent;
+  items = document.querySelectorAll(`.${itemsClass}`);
+
+  parent = document.querySelector(`.${parentClass}`);
   const slides = Math.ceil(items.length / itemsNumPerSlide);
   console.log(slides);
   console.log(items.length);
-  const parent = document.querySelector(`.${parentClass}`);
   for (let slideNum = 0; slideNum < slides; slideNum++) {
     const slide = document.createElement("div");
     slide.classList.add(slideClass);
@@ -89,12 +92,15 @@ if (document.querySelector(".burger--main")) {
     burger.classList.toggle("active");
     menu.classList.toggle("active");
     bg.classList.toggle("active");
+    document.querySelector("body").classList.toggle("active");
   });
   notificationBtn.addEventListener("click", function () {
     notificationList.classList.add("active");
+    document.querySelector("body").classList.add("active-notifications");
   });
   notificationClose.addEventListener("click", function () {
     notificationList.classList.remove("active");
+    document.querySelector("body").classList.remove("active-notifications");
   });
 }
 
@@ -284,13 +290,15 @@ if (document.querySelector(".appointment")) {
     console.log(uploadFilesSecondStep);
     // 2) заплняем инпут в новом айтеме и в целом подргружаем новый айтем
     const fileName = e.srcElement.files[0].name;
+    const fileWidth = window.innerWidth > 768 ? (fileName.length + 1) * 14 : (fileName.length + 1) * 9;
     const filesList = document.querySelector(".reg__file-list");
     console.log(e);
     const html = `
-  <div class="reg__file-item" data-file="${filesCount}">
+    <div class="reg__file-item" data-file="${filesCount}">
       <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-      <input type="text" class="reg__file-name" placeholder="Введите название файла" />
-  </div>
+      <input type="text" class="reg__file-name" placeholder="Введите название файла" style="width: ${fileWidth}px"/>
+      <button class="reg__file-del"></button>  
+    </div>
   `;
     filesList.insertAdjacentHTML("beforeend", html);
     const filesInputs = document.querySelectorAll(".reg__file-name");
@@ -299,7 +307,7 @@ if (document.querySelector(".appointment")) {
 
   // удаление файла из интерфейса и объекта
   document.querySelector(".reg__file-list").addEventListener("click", function (e) {
-    if (e.target.classList.contains("reg__file-icon")) {
+    if (e.target.classList.contains("reg__file-del")) {
       const item = e.target.parentElement;
       const itemID = e.target.parentElement.dataset.file;
       delete uploadFilesSecondStep[itemID];
@@ -321,7 +329,11 @@ if (document.querySelector(".appointment")) {
       if (document.querySelector(".appointment__month.active")) {
         document.querySelector(".appointment__month.active").classList.remove("active");
       }
-      document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"`).classList.add("active");
+      if (window.innerWidth < 768) {
+        e.target.closest(".appointment__month").classList.add("active");
+      } else {
+        document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"`).classList.add("active");
+      }
       // заполняем нужной датой
       const day = e.target.innerHTML;
       const monthsList = ["Янаварь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
@@ -329,10 +341,24 @@ if (document.querySelector(".appointment")) {
       const month = monthsList[+e.target.dataset.month + 1];
       const dayOfWeek = daysOfWeekList[+e.target.dataset.date % 7];
       console.log(e.target);
-      document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"] .appointment__days-title`).innerHTML = month + " " + day + ", " + dayOfWeek;
+      if (window.innerWidth < 768) {
+        e.target.closest(".appointment__month").querySelector(`.appointment__days-title`).innerHTML = month + " " + day + ", " + dayOfWeek;
+      } else {
+        document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"] .appointment__days-title`).innerHTML = month + " " + day + ", " + dayOfWeek;
+      }
       console.log(month, dayOfWeek, day);
     }
   });
+
+  if (window.innerWidth < 768) {
+    $(".appointment__wrapper").slick({
+      infinite: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: true,
+      arrows: false,
+    });
+  }
 }
 
 if (document.querySelector(".general")) {
@@ -508,6 +534,7 @@ if (document.querySelector(".general")) {
       infinite: true,
       dots: true,
       arrows: false,
+      variableWidth: true,
     });
 
     // слайдер симптомов
@@ -517,6 +544,22 @@ if (document.querySelector(".general")) {
       slidesToScroll: 1,
       infinite: false,
       dots: true,
+      arrows: false,
+    });
+
+    // слайдер рекомендаций от доктора
+    $(".recommendations__slider").slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      infinite: false,
+      dots: true,
+      arrows: false,
+    });
+    // слайдер Может вам понравятся статьи
+    $(".useful__maybe .articles__all").slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      infinite: false,
       arrows: false,
     });
   }
@@ -696,6 +739,16 @@ if (document.querySelector(".tests__add")) {
           e.target.closest(".tests__card").querySelector("div.active").classList.remove("active");
         }
         add.closest(".tests__card").querySelector(`div[data-add="${e.target.dataset.add}"]`).classList.add("active");
+        /* if (window.innerWidth < 768) {
+          concatForSlides(10, `tests__analyzes-list[data-analyze="${e.target.dataset.analyze}"] .tests__analyzes-item`, "tests__analyzes-slide", `tests__analyzes-list[data-analyze="${e.target.dataset.analyze}"]`);
+          $(`.tests__analyzes-list[data-analyze="${e.target.dataset.analyze}"]`).slick({
+            infinite: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: true,
+          });
+        } */
       }
     })
   );
@@ -727,12 +780,18 @@ if (document.querySelector(".tests__add")) {
     }
   });
   // выбор анализов
-  document.querySelector(".tests__analyzes-choosed").addEventListener("click", function (e) {
-    document.querySelector(".tests__analyzes-choosed ul").classList.toggle("active");
+  document.querySelector(".tests").addEventListener("click", function (e) {
+    console.log("gg");
+    if (e.target.classList.contains("tests__analyzes-choosed")) {
+      e.target.querySelector("ul").classList.toggle("active");
+    }
     if (e.target.classList.contains("tests__analyzes-option")) {
-      document.querySelector(".tests__analyzes-choosed span").innerHTML = e.target.innerHTML;
-      document.querySelector(`.tests__analyzes-list.active`).classList.remove("active");
-      document.querySelector(`.tests__analyzes-list[data-analyze="${e.target.dataset.analyze}"]`).classList.add("active");
+      e.target.closest("ul").classList.toggle("active");
+      const curCard = e.target.closest(".tests__card");
+      console.log(curCard.querySelector(`.tests__analyzes-list.active`));
+      curCard.querySelector(".tests__analyzes-choosed span").innerHTML = e.target.innerHTML;
+      curCard.querySelector(`.tests__analyzes-list.active`).classList.remove("active");
+      curCard.querySelector(`.tests__analyzes-list[data-analyze="${e.target.dataset.analyze}"]`).classList.add("active");
     }
   });
   // добавляем Назначено при выборе ckeckbox
@@ -740,6 +799,32 @@ if (document.querySelector(".tests__add")) {
     document.querySelectorAll(".tests__analyzes-selected span").forEach((span) => span.remove());
     document.querySelectorAll(".tests__analyzes-checkbox:checked").forEach((box) => {
       document.querySelector(".tests__analyzes-selected").insertAdjacentHTML("beforeend", `<span>${box.parentElement.querySelector("span").innerHTML}</span>`);
+    });
+  });
+
+  document.querySelectorAll(".tests__analyzes-list").forEach((list) => {
+    let items;
+    let parent;
+    let itemsNumPerSlide = 8;
+    items = list.querySelectorAll(".tests__analyzes-item");
+    parent = list;
+    const slides = Math.ceil(items.length / itemsNumPerSlide);
+    for (let slideNum = 0; slideNum < slides; slideNum++) {
+      const slide = document.createElement("div");
+      slide.classList.add("tests__analyzes-slide");
+      for (let itemNum = 0 + itemsNumPerSlide * slideNum; itemNum < itemsNumPerSlide + itemsNumPerSlide * slideNum + 1; itemNum++) {
+        if (itemNum < items.length) {
+          slide.appendChild(items[+itemNum]);
+        }
+      }
+      parent.appendChild(slide);
+    }
+    $(list).slick({
+      infinite: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      dots: true,
     });
   });
 }

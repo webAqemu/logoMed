@@ -31,6 +31,13 @@ body {
   color: $text;
   &.active {
     overflow: hidden;
+    min-height: 500px;
+    height: 100vh;
+    &-notifications {
+      overflow: hidden;
+      height: 100vh;
+      min-height: 730px;
+    }
   }
 }
 
@@ -66,6 +73,7 @@ textarea::placeholder {
   font-family: "OpenSans-Regular", sans-serif;
   font-weight: 400;
   font-style: normal;
+  box-shadow: none;
 }
 
 @media (max-width: 768px) {
@@ -85,6 +93,9 @@ textarea::placeholder {
   width: 100%;
   padding: 0 15px;
   margin: 0 auto;
+  @include r {
+    padding: 0 24px;
+  }
 }
 
 .title {
@@ -100,7 +111,7 @@ textarea::placeholder {
   .title {
     font-family: "SFProDisplay-Medium", sans-serif;
     font-weight: 500;
-    font-size: 34px;
+    font-size: 22px;
   }
 }
 .subtitle {
@@ -187,7 +198,7 @@ textarea::placeholder {
     height: auto;
     &:hover {
       background-image: none;
-      background-color: #7384fe;
+      @include main-gradient;
     }
   }
 
@@ -200,9 +211,9 @@ textarea::placeholder {
 
     @include r {
       background-image: none;
-      background-color: #7384fe;
+      @include main-gradient;
       &:hover {
-        background-color: $peach;
+        background: $peach;
         background-image: none;
       }
     }
@@ -221,7 +232,7 @@ textarea::placeholder {
       }
     }
     @include r {
-      border: 2px solid $blue;
+      border: 1px solid $blue;
       background-image: none;
       background-color: transparent;
       &:hover {
@@ -247,7 +258,7 @@ textarea::placeholder {
     @include r {
       width: 100%;
       height: auto;
-      padding: 15px 20px;
+      padding: 10px 20px 12px;
       background-image: none;
       border: 2px solid white;
       background-color: transparent !important;
@@ -294,6 +305,12 @@ textarea::placeholder {
   display: none !important;
   @include r {
     display: block !important;
+  }
+}
+
+.desktopOnly {
+  @include r {
+    display: none !important;
   }
 }
 

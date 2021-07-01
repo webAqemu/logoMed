@@ -159,8 +159,8 @@
                 </p>
               </div>
               <div class="general__tabs-content" data-general="2">
-                <div class="general__subtitle general__symptoms-subtitle subtitle" data-symptom="1">Симптомы</div>
-                <form action="" class="general__symptoms" data-symptom="1">
+                <div class="general__subtitle general__symptoms-subtitle subtitle active" data-symptom="1">Симптомы</div>
+                <form action="" class="general__symptoms active" data-symptom="1">
                   <div class="general__symptom">
                     <input type="checkbox" class="general__checkbox" />
                     <label for="" class="general__checkbox-label">Слабость</label>
@@ -429,7 +429,8 @@
                   <div class="tasks__item">
                     <div class="tasks__subtitle title-h3">Консультация</div>
                     <div class="tasks__doctor">Врач-аллерголог Петрова Н. Ю.</div>
-                    <div class="tasks__date">26.02.2021 14:30</div>
+                    <div class="tasks__time title-h3">26.02.2021</div>
+                    <div class="tasks__timer title-h3">14:30</div>
                     <div class="tasks__btns">
                       <a href="./articles.html" class="tasks__btn tasks__btn--rec btn btn-text">
                         <span>Рекомендации</span>
@@ -442,8 +443,8 @@
                   <div class="tasks__item">
                     <div class="tasks__subtitle title-h3">Консультация</div>
                     <div class="tasks__doctor">Врач-аллерголог Петрова Н. Ю.</div>
-                    <div class="tasks__time inactive title-h3">15:00 — 16:00</div>
-                    <div class="tasks__close inactive title-h3">Завершено</div>
+                    <div class="tasks__time title-h3">15:00 — 16:00</div>
+                    <div class="tasks__timer inactive title-h3">Завершено</div>
                     <div class="tasks__btns">
                       <a href="#" class="tasks__btn--pink tasks__btn--rec btn btn--shadow btn-text">
                         <span>Оставить отзыв</span>
@@ -713,26 +714,53 @@
                   <button class="empty__btn btn"><span>Найти врача</span></button>
                 </form>
               </div>
-              <div class="recommendations__doctors">
-                <div class="recommendations__desc">
-                  <div class="recommendations__date">26.02.2021</div>
-                  <div class="recommendations__subtitle subtitle">
-                    Стол №5
-                    <div class="recommendations__add">
-                      <input type="checkbox" name="" id="" class="recommendations__checkbox" />
-                      <span></span>
+              <div class="recommendations__slider">
+                <div class="recommendations__slide">
+                  <div class="recommendations__doctors">
+                    <div class="recommendations__desc">
+                      <div class="recommendations__date">26.02.2021</div>
+                      <div class="recommendations__subtitle subtitle">
+                        Стол №5
+                        <div class="recommendations__add">
+                          <input type="checkbox" name="" id="" class="recommendations__checkbox" />
+                          <span></span>
+                        </div>
+                      </div>
+                      <div class="recommendations__text">Основной принцип — частое и дробное питание, в идеале — каждые три-четыре часа малыми порциями. Все блюда должны быть теплыми. Масло используется только как заправка к готовой еде; разрешены супы без мяса (молочные, овощные и с крупой), но их лучше протирать.</div>
+                      <a href="./art.html" class="recommendations__btn-read btn btn--shadow">Читать статью</a>
+                    </div>
+                    <div class="recommendations__comments">
+                      <div class="recommendations__from">Назначил гастроэнтеролог Капустин А. Г.</div>
+                      <div class="recommendations__subtitle subtitle">Комментарий врача:</div>
+                      <div class="recommendations__text">Независимо от выбранных продуктов, следует соблюдать общие рекомендации и ни в коем случае не жарить блюда, а готовить их на пару, варить, запекать или тушить.</div>
+                      <div class="recommendations__to">До 28.03.2021</div>
                     </div>
                   </div>
-                  <div class="recommendations__text">Основной принцип — частое и дробное питание, в идеале — каждые три-четыре часа малыми порциями. Все блюда должны быть теплыми. Масло используется только как заправка к готовой еде; разрешены супы без мяса (молочные, овощные и с крупой), но их лучше протирать.</div>
-                  <a href="./art.html" class="recommendations__btn-read btn btn--shadow">Читать статью</a>
                 </div>
-                <div class="recommendations__comments">
-                  <div class="recommendations__from">Назначил гастроэнтеролог Капустин А. Г.</div>
-                  <div class="recommendations__subtitle subtitle">Комментарий врача:</div>
-                  <div class="recommendations__text">Независимо от выбранных продуктов, следует соблюдать общие рекомендации и ни в коем случае не жарить блюда, а готовить их на пару, варить, запекать или тушить.</div>
-                  <div class="recommendations__to">До 28.03.2021</div>
+                <div class="recommendations__slide">
+                  <div class="recommendations__doctors">
+                    <div class="recommendations__desc">
+                      <div class="recommendations__date">26.02.2021</div>
+                      <div class="recommendations__subtitle subtitle">
+                        Стол №5
+                        <div class="recommendations__add">
+                          <input type="checkbox" name="" id="" class="recommendations__checkbox" />
+                          <span></span>
+                        </div>
+                      </div>
+                      <div class="recommendations__text">Основной принцип — частое и дробное питание, в идеале — каждые три-четыре часа малыми порциями. Все блюда должны быть теплыми. Масло используется только как заправка к готовой еде; разрешены супы без мяса (молочные, овощные и с крупой), но их лучше протирать.</div>
+                      <a href="./art.html" class="recommendations__btn-read btn btn--shadow">Читать статью</a>
+                    </div>
+                    <div class="recommendations__comments">
+                      <div class="recommendations__from">Назначил гастроэнтеролог Капустин А. Г.</div>
+                      <div class="recommendations__subtitle subtitle">Комментарий врача:</div>
+                      <div class="recommendations__text">Независимо от выбранных продуктов, следует соблюдать общие рекомендации и ни в коем случае не жарить блюда, а готовить их на пару, варить, запекать или тушить.</div>
+                      <div class="recommendations__to">До 28.03.2021</div>
+                    </div>
+                  </div>
                 </div>
               </div>
+
               <div class="reccomendations__maybe">
                 <div class="recommendations__title title">Подходящие вам статьи</div>
                 <div class="articles__all">
@@ -911,7 +939,7 @@
               </div>
               <div class="useful__buds">
                 <div class="useful__title title">Подходящие вам БАДы</div>
-                <div class="useful__bud bud">
+                <div class="useful__bud bud bud-mobile-row">
                   <img src="./img/bud-img.png" class="bud__img" />
                   <div class="bud__title subtitle">
                     Эвалар Фитолакс таблетки
@@ -927,7 +955,7 @@
                   <div class="bud__price">2 987 ₽</div>
                   <a href="#" class="bud__btn btn btn--shadow">Приобрести</a>
                 </div>
-                <div class="useful__bud bud">
+                <div class="useful__bud bud bud-mobile-row">
                   <img src="./img/bud-img.png" class="bud__img" />
                   <div class="bud__title subtitle">
                     Эвалар Фитолакс таблетки
