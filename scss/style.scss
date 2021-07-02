@@ -6555,6 +6555,9 @@
     padding-top: 220px;
     min-height: 100vh;
     height: fit-content;
+    @include r {
+      padding-top: 160px;
+    }
   }
 
   &__preview {
@@ -7174,6 +7177,14 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
+      @include r {
+        width: 250px;
+        height: 205px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: auto;
+        bottom: 90px;
+      }
     }
 
     &.active {
@@ -7196,6 +7207,9 @@
 
     &-text {
       margin-bottom: 120px;
+      @include r {
+        margin-bottom: 250px;
+      }
     }
   }
 

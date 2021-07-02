@@ -5434,6 +5434,9 @@ textarea::placeholder {
   padding-top: 220px;
   min-height: 100vh;
   height: fit-content; }
+  @media (max-width: 768px) {
+    .appointment--blue {
+      padding-top: 160px; } }
 
 .appointment__preview {
   padding: 195px 0 75px;
@@ -5943,6 +5946,14 @@ textarea::placeholder {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center; }
+    @media (max-width: 768px) {
+      .appointment__finish::after {
+        width: 250px;
+        height: 205px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: auto;
+        bottom: 90px; } }
   .appointment__finish.active {
     display: block; }
   .appointment__finish-title {
@@ -5955,6 +5966,9 @@ textarea::placeholder {
     margin-bottom: 15px; }
   .appointment__finish-text {
     margin-bottom: 120px; }
+    @media (max-width: 768px) {
+      .appointment__finish-text {
+        margin-bottom: 250px; } }
 
 .appointment__step-mobile {
   font-family: "SFProDisplay-Medium", sans-serif;
