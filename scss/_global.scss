@@ -96,6 +96,16 @@ textarea::placeholder {
   @include r {
     padding: 0 24px;
   }
+
+  &--flex {
+    display: flex;
+    flex-direction: column;
+    height: 420px;
+    @include r {
+      height: auto;
+      display: block;
+    }
+  }
 }
 
 .title {
@@ -284,6 +294,21 @@ textarea::placeholder {
       }
     }
   }
+
+  &--stroke-mobile {
+    @include r {
+      background-color: #fff;
+      border: 1px solid $blue;
+      span {
+        color: $text;
+      }
+      &:hover {
+        span {
+          color: white;
+        }
+      }
+    }
+  }
 }
 
 .layer-header {
@@ -329,7 +354,6 @@ textarea::placeholder {
       justify-content: center;
       &.slick-active button {
         border: 3px solid #68a9fe;
-        background-color: white;
       }
       &:not(:last-child) {
         margin-right: 15px;
@@ -341,6 +365,7 @@ textarea::placeholder {
       border: 2px solid #e3eaff;
       border-radius: 100%;
       padding: 0;
+      background-color: white;
     }
   }
 }

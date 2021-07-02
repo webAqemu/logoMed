@@ -102,6 +102,13 @@ if (document.querySelector(".burger--main")) {
     notificationList.classList.remove("active");
     document.querySelector("body").classList.remove("active-notifications");
   });
+
+  bg.addEventListener("click", function (e) {
+    burger.classList.remove("active");
+    menu.classList.remove("active");
+    bg.classList.remove("active");
+    document.querySelector("body").classList.remove("active");
+  });
 }
 
 if (document.querySelector(".reg")) {
@@ -222,6 +229,8 @@ if (document.querySelector(".reg")) {
         console.log(curStepNum);
         document.querySelector(`.reg__tabs-content[data-tab="${curStepNum - 1}"]`).classList.add("active");
         stepsCount(curStepNum - 1);
+      } else {
+        window.location.href = "login.html";
       }
     }
   });
@@ -526,7 +535,9 @@ if (document.querySelector(".general")) {
       infinite: true,
       dots: true,
       arrows: false,
+      adaptiveHeight: true,
     });
+
     // слайдер бадов на мобилке
     $(".recommendations__buds-list").slick({
       slidesToShow: 1,
@@ -555,6 +566,16 @@ if (document.querySelector(".general")) {
       dots: true,
       arrows: false,
     });
+
+    // слайдер Подходящие вам статьи
+    $(".recommendations__maybe .articles__all").slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      infinite: false,
+      dots: true,
+      arrows: false,
+    });
+
     // слайдер Может вам понравятся статьи
     $(".useful__maybe .articles__all").slick({
       slidesToShow: 1,
@@ -693,7 +714,11 @@ if (document.querySelector(".doctor__info")) {
     responsive: [
       {
         breakpoint: 768,
-        settings: "unslick",
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+        },
       },
     ],
   });
@@ -724,6 +749,12 @@ if (document.querySelector(".doctor__info")) {
       document.querySelectorAll(".doctor__clients-item").forEach((client) => {
         client.classList.remove("block");
       });
+    }
+  });
+  document.querySelector(".doctor__requests").addEventListener("click", function (e) {
+    if (e.target.classList.contains("doctor__requests-more")) {
+      e.target.closest(".doctor__requests-text").innerHTML = "Здравствуйте! Беспокоит сильная боль в желудке каждое утро. Рацион у меня обыкновенный, никаких особых препаратов не принимаю, год назад была операция, а сейчас все топчик! :)";
+      e.target.remove();
     }
   });
 }
@@ -801,32 +832,40 @@ if (document.querySelector(".tests__add")) {
       document.querySelector(".tests__analyzes-selected").insertAdjacentHTML("beforeend", `<span>${box.parentElement.querySelector("span").innerHTML}</span>`);
     });
   });
-
-  document.querySelectorAll(".tests__analyzes-list").forEach((list) => {
-    let items;
-    let parent;
-    let itemsNumPerSlide = 8;
-    items = list.querySelectorAll(".tests__analyzes-item");
-    parent = list;
-    const slides = Math.ceil(items.length / itemsNumPerSlide);
-    for (let slideNum = 0; slideNum < slides; slideNum++) {
-      const slide = document.createElement("div");
-      slide.classList.add("tests__analyzes-slide");
-      for (let itemNum = 0 + itemsNumPerSlide * slideNum; itemNum < itemsNumPerSlide + itemsNumPerSlide * slideNum + 1; itemNum++) {
-        if (itemNum < items.length) {
-          slide.appendChild(items[+itemNum]);
+  if (window.innerWidth < 768) {
+    document.querySelectorAll(".tests__analyzes-list").forEach((list) => {
+      let items;
+      let parent;
+      let itemsNumPerSlide = 8;
+      items = list.querySelectorAll(".tests__analyzes-item");
+      parent = list;
+      const slides = Math.ceil(items.length / itemsNumPerSlide);
+      for (let slideNum = 0; slideNum < slides; slideNum++) {
+        const slide = document.createElement("div");
+        slide.classList.add("tests__analyzes-slide");
+        for (let itemNum = 0 + itemsNumPerSlide * slideNum; itemNum < itemsNumPerSlide + itemsNumPerSlide * slideNum + 1; itemNum++) {
+          if (itemNum < items.length) {
+            slide.appendChild(items[+itemNum]);
+          }
         }
+        parent.appendChild(slide);
       }
-      parent.appendChild(slide);
-    }
-    $(list).slick({
+      $(list).slick({
+        infinite: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: false,
+        swipe: false,
+      });
+    });
+    $(".tests").slick({
       infinite: false,
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,
       dots: true,
     });
-  });
+  }
 }
 
 if (document.querySelector(".appointment")) {

@@ -261,6 +261,9 @@
       & .preview__icon {
         margin-left: 0;
       }
+      @include r {
+        margin-top: 0;
+      }
     }
   }
 
@@ -286,9 +289,10 @@
       max-width: 100%;
     }
     &__title {
-      margin-bottom: 0;
+      margin-bottom: 16px;
       text-align: center;
       max-width: 250px;
+      font-size: 34px;
     }
     &__text {
       max-width: 325px;
@@ -457,6 +461,7 @@
     }
     &__title {
       text-align: center;
+      font-size: 34px;
     }
     &__text {
       max-width: 300px;
@@ -774,6 +779,7 @@
       color: $title;
       text-align: center;
       margin-bottom: 20px;
+      font-size: 34px;
     }
     &__text {
       color: $text;
@@ -821,6 +827,13 @@
       margin: 20px auto 0;
     }
     .slick-dots {
+      position: static;
+      left: auto;
+      transform: translateX(0);
+      bottom: auto;
+      display: flex;
+      margin-top: 25px;
+      margin-bottom: 30px;
       & li {
         display: flex;
         align-items: center;
@@ -877,6 +890,9 @@
 @media (max-width: 768px) {
   .steps {
     margin-top: 100px;
+    h1 {
+      font-size: 34px;
+    }
     &__title {
       margin: 0 auto;
       max-width: 390px;
@@ -1009,6 +1025,7 @@
       text-align: center;
       max-width: 445px;
       margin: 0 auto 540px;
+      font-size: 34px;
     }
     &__btns {
       flex-direction: column;
@@ -1128,6 +1145,7 @@
     pointer-events: none;
     position: relative;
     margin-bottom: 40px;
+    padding-right: 45px;
     &::before {
       content: "";
       position: absolute;
@@ -1187,6 +1205,9 @@
     }
     &__question {
       margin-bottom: 20px;
+      font-family: "SFProDisplay-Regular", sans-serif;
+      font-weight: 400;
+      font-size: 17px;
       &::after {
         width: 2px;
         height: 16px;
@@ -1336,10 +1357,11 @@
       height: 666px;
       padding: 290px 15px 40px;
       background: none;
-      background-image: url(../img/mobile/login-bg.svg);
+      background-image: none;
+      background-color: white;
       background-repeat: no-repeat;
       background-position: center;
-      border-radius: 0;
+      border-radius: 30px;
     }
     &__img {
       position: absolute;
@@ -1604,8 +1626,8 @@
           display: inline-block;
           width: fit-content;
           margin: 0;
-          bottom: 170px;
-          left: 135px;
+          bottom: 160px;
+          left: 150px;
         }
       }
     }
@@ -1619,6 +1641,7 @@
     position: relative;
     @include r {
       font-size: 16px;
+      margin-bottom: 30px;
     }
     input {
       width: 100%;
@@ -1638,16 +1661,11 @@
     input:valid + label {
       top: -15px;
       left: 0;
+      font-size: 14px;
     }
     &--name {
       max-width: 730px;
       width: 100%;
-      label {
-        @include r {
-          font-size: 14px;
-          top: 25px;
-        }
-      }
     }
     &--tags {
       max-width: 730px;
@@ -1789,6 +1807,9 @@
     position: relative;
     display: inline-block;
     margin-left: 30px;
+    @include r {
+      margin-left: 10px;
+    }
     input {
       width: 100%;
       height: 100%;
@@ -2247,10 +2268,14 @@
     }
 
     @include r {
-      margin-right: 0;
-      margin-left: 0;
-      width: 100%;
-      margin-bottom: 50px;
+      width: calc(100% + 30px);
+      margin: 0 -15px 50px;
+    }
+  }
+
+  &__slide {
+    @include r {
+      margin: 0 15px;
     }
   }
 
@@ -2837,7 +2862,14 @@
     }
   }
 }
-
+.container--flex {
+  .tabs__list {
+    margin-top: auto;
+    @include r {
+      margin-top: 50px;
+    }
+  }
+}
 .tabs {
   &__list {
     margin-top: 110px;
@@ -3701,6 +3733,21 @@
     color: $light-text;
   }
 
+  &__rec {
+    display: none;
+    @include r {
+      display: block;
+      margin-bottom: 30px;
+      li {
+        font-size: 22px;
+        color: $blue;
+        font-family: "SFProDisplay-Medium", sans-serif;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
   &__btns {
     display: flex;
 
@@ -3780,6 +3827,20 @@
 
   &__subtitle {
     margin-bottom: 15px;
+    @include r {
+      padding-right: 100px;
+    }
+  }
+
+  &__item {
+    @include r {
+      &--rec {
+        .tasks__time,
+        .tasks__timer {
+          display: none;
+        }
+      }
+    }
   }
 
   &__doctor {
@@ -3798,6 +3859,16 @@
   &__today {
     color: $light-text;
     margin-left: 30px;
+  }
+  &__task-date {
+    display: none;
+    @include r {
+      display: block;
+      color: $light-text;
+      position: absolute;
+      top: 5px;
+      right: 0;
+    }
   }
 
   &__close {
@@ -3918,6 +3989,15 @@
 }
 
 .tests {
+  &.slick-slider {
+    width: calc(100% + 48px);
+    margin: 0 -24px;
+  }
+
+  .slick-list {
+    overflow: visible;
+  }
+
   &__upload {
     display: inline-block;
     padding: 50px 55px 45px;
@@ -3968,6 +4048,13 @@
     }
   }
 
+  &__list {
+    @include r {
+      margin: 0 -24px;
+      width: calc(100% + 48px);
+    }
+  }
+
   &__card {
     background-image: url(../img/tests-card-bg.png);
     background-repeat: no-repeat;
@@ -3980,6 +4067,7 @@
       background-color: white;
       border-radius: 30px;
       padding: 35px 15px;
+      margin: 0 24px;
     }
     &--flex {
       display: flex;
@@ -4014,6 +4102,11 @@
       padding-bottom: 35px;
       margin-bottom: 35px;
       border-bottom: 1px solid #f1f1f1;
+      &.for-doctor {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 25px;
+      }
     }
   }
 
@@ -4051,7 +4144,7 @@
     background-repeat: no-repeat;
     @include r {
       width: 32px;
-      margin-bottom: 45px;
+      margin-bottom: 0;
     }
   }
 
@@ -4066,11 +4159,14 @@
       max-width: 100%;
       justify-content: center;
       flex-wrap: wrap;
+      margin-top: 45px;
     }
   }
 
   &__btn:not(:last-child) {
-    margin-bottom: 15px;
+    @include r {
+      margin-bottom: 15px;
+    }
   }
 
   &__stats {
@@ -4090,6 +4186,7 @@
     @include r {
       margin: 0;
       padding: 10px 0;
+      color: $light-text;
       &:not(:last-child) {
         border-bottom: 1px solid #f1f1f1;
       }
@@ -4098,6 +4195,9 @@
       width: 33.333333%;
       &:nth-child(1) {
         color: $title;
+        @include r {
+          color: $light-text;
+        }
       }
       &:nth-last-child(1) {
         width: 240px;
@@ -4114,6 +4214,12 @@
     }
     &.bold {
       font-weight: 600;
+      @include r {
+        span {
+          color: $title;
+          font-weight: 400;
+        }
+      }
     }
     &--title {
       color: $light-text;
@@ -4131,6 +4237,9 @@
     color: $peach;
     position: relative;
     padding-right: 30px;
+    @include r {
+      margin-top: 37px;
+    }
     &::after {
       content: "";
       position: absolute;
@@ -4153,7 +4262,7 @@
       overflow: hidden;
       position: absolute;
       top: 120%;
-      left: 0;
+      left: -15px;
       transition: all 0.3s;
       width: 275px;
       padding: 25px 15px;
@@ -4202,7 +4311,7 @@
     }
 
     &-wrapper:nth-last-child(1) {
-      max-width: 660px;
+      max-width: 680px;
       width: 100%;
     }
 
@@ -4291,7 +4400,7 @@
     &-subtitle {
       font-size: 24px;
       margin-bottom: 30px;
-      padding: 5px 17px;
+      padding: 5px 17px 0 0;
       &:nth-child(1) {
         padding-top: 15px;
         border-top: 1px solid $blue;
@@ -4377,8 +4486,8 @@
     display: block;
     height: 0;
     overflow: hidden;
-    margin-top: 60px;
     &.active {
+      margin-top: 60px;
       height: auto;
       overflow: visible;
     }
@@ -4392,6 +4501,9 @@
       position: relative;
       margin-bottom: 40px;
       cursor: pointer;
+      @include r {
+        display: block;
+      }
       span {
         display: inline-block;
         outline: none;
@@ -4402,6 +4514,10 @@
         border: 1px solid $blue;
         border-radius: 10px;
         pointer-events: none;
+        @include r {
+          width: 100%;
+          font-size: 17px;
+        }
       }
       ul {
         background-color: #fff;
@@ -4459,11 +4575,31 @@
       &.active {
         height: auto;
         @include r {
+          padding-bottom: 30px;
           margin-bottom: 40px;
         }
       }
       @include r {
         display: block;
+        position: relative;
+        .slick-arrow {
+          position: absolute;
+          bottom: 5px;
+          width: 15px;
+          height: 15px;
+          border-bottom: 1px solid $peach;
+          border-left: 1px solid $peach;
+          font-size: 0;
+          transform: rotate(45deg);
+        }
+        .slick-prev {
+          left: 5px;
+        }
+
+        .slick-next {
+          right: 5px;
+          transform: rotate(-135deg);
+        }
       }
     }
 
@@ -4533,7 +4669,10 @@
     }
 
     &-btn {
-      margin-bottom: 50px;
+      margin-top: 50px;
+      @include r {
+        margin-top: 0;
+      }
     }
 
     &-selected {
@@ -4575,10 +4714,9 @@
   margin: 0 2px;
   @include r {
     background-image: none;
-    background-color: white;
     border-radius: 10px;
     height: auto;
-    max-width: 400px;
+    max-width: 100%;
     margin: 0;
   }
   &__img {
@@ -4596,6 +4734,9 @@
       -webkit-mask-image: none;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
+      max-width: 400px;
+      width: 100%;
+      margin: 0 auto;
     }
   }
 
@@ -4604,10 +4745,15 @@
     margin: 25px 0 30px;
     width: 100%;
     @include r {
-      margin: 0;
+      margin: 0 auto;
       padding: 25px 15px;
       display: flex;
       flex-direction: column;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      max-width: 400px;
+      width: 100%;
+      background-color: white;
     }
   }
 
@@ -4669,15 +4815,23 @@
     height: 100%;
     opacity: 0;
   }
-
-  &__checkbox:checked + span,
   &__checkbox:hover + span {
     background-image: url(../img/star-32-yellow.svg);
     &::after {
       color: #ffc95a;
     }
+    @include r {
+      background-image: url(../img/star-32-grey.svg);
+      &::after {
+        color: $blue;
+      }
+    }
   }
   &__checkbox:checked + span {
+    background-image: url(../img/star-32-yellow.svg);
+    &::after {
+      color: #ffc95a;
+    }
     @include r {
       &::after {
         content: "В избранном";
@@ -4990,6 +5144,9 @@
 .useful {
   &__item {
     margin-top: 60px;
+    @include r {
+      margin: 30px 0 0;
+    }
   }
 
   &__more {
@@ -4999,6 +5156,12 @@
   &__buds {
     &:nth-child(1) {
       margin-bottom: 65px;
+    }
+  }
+
+  .slick-track &__item {
+    @include r {
+      margin: 40px 24px 0;
     }
   }
 }
@@ -5026,12 +5189,6 @@
       background-image: none;
       border-radius: 30px;
       background-color: white;
-    }
-  }
-
-  @include r {
-    &__item:not(:last-of-type) {
-      display: none;
     }
   }
 
@@ -5154,7 +5311,14 @@
 
   &__slider {
     @include r {
-      margin-bottom: 70px;
+      margin: 0 -24px 70px;
+      width: calc(100% + 48px);
+    }
+  }
+
+  &__slide {
+    @include r {
+      margin: 0 24px;
     }
   }
 
@@ -5181,7 +5345,7 @@
 .useful {
   &__title {
     @include r {
-      margin-bottom: 36px;
+      margin-bottom: 0;
     }
   }
   &__buds {
@@ -5609,7 +5773,7 @@
     @include r {
       width: calc(100% + 15px);
       margin-left: -15px;
-      display: flex;
+      display: block;
       font-family: "SFProDisplay-Medium", sans-serif;
       font-weight: 500;
       .slick-list {
@@ -5650,10 +5814,17 @@
     width: calc(100% + 14px);
     margin: 0 -7px;
     @include r {
-      margin: 0;
       width: 100%;
+      margin: 0;
       &--block {
         display: none;
+      }
+      &.slick-slider {
+        @include r {
+          width: calc(100% + 48px);
+          display: block;
+          margin: 0 -24px;
+        }
       }
     }
   }
@@ -5963,7 +6134,6 @@
         top: 0;
         right: 0;
         @include r {
-          margin-top: 10px;
           font-size: 17px;
         }
       }
@@ -6322,6 +6492,7 @@
         position: static;
         font-size: 22px;
         margin-bottom: 30px;
+        color: $light-text;
       }
     }
 
@@ -6330,7 +6501,7 @@
       @include r {
         font-family: "SFProDisplay-Medium", sans-serif;
         font-weight: 500;
-        color: $text;
+        color: $title;
       }
     }
 
@@ -6340,7 +6511,7 @@
       @include r {
         font-family: "SFProDisplay-Medium", sans-serif;
         font-weight: 500;
-        color: $text;
+        color: $title;
       }
     }
 
@@ -6396,6 +6567,7 @@
     }
     @include r {
       padding: 135px 0 80px;
+      margin-bottom: 32px;
     }
   }
 
@@ -6473,7 +6645,7 @@
     align-items: stretch;
     margin: 70px 0 0;
     @include r {
-      margin-top: 50px;
+      margin: 0;
       height: 0;
       overflow: hidden;
       display: block;
@@ -6481,8 +6653,10 @@
     &.active {
       display: flex;
       @include r {
+        margin-top: 50px;
         display: block;
         height: auto;
+        overflow: visible;
       }
     }
 
@@ -6564,6 +6738,7 @@
         display: block;
         @include r {
           height: auto;
+          overflow: visible;
         }
       }
       @include r {
@@ -6661,6 +6836,15 @@
     margin: 0 0 50px;
     list-style: none;
     width: 100%;
+    @include r {
+      margin: 0 -24px 50px;
+      width: calc(100% + 48px);
+    }
+    &-slide {
+      @include r {
+        margin: 0 24px;
+      }
+    }
     &-item {
       display: inline-block;
       position: relative;
@@ -7045,7 +7229,7 @@
     margin-bottom: 25px;
     @include r {
       font-size: 22px;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
   }
 
