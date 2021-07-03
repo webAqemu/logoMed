@@ -368,6 +368,7 @@
                         <ul>
                           <li class="tests__add-option" data-add="1">Назначить питание</li>
                           <li class="tests__add-option" data-add="2">Назначить анализы</li>
+                          <li class="tests__add-option" data-add="3">Назначить БАДы</li>
                         </ul>
                       </span>
                     </div>
@@ -425,7 +426,7 @@
                     </li>
                   </ul>
                 </div>
-                <a href="#" class="tests__btn btn">
+                <a href="#" class="tests__btn btn mobileOnly">
                   <span>Посмотреть динамику</span>
                 </a>
                 <span href="#" class="tests__add mobileOnly">
@@ -593,6 +594,29 @@
 
                   <button class="tests__analyzes-btn btn"><span>Динамика</span></button>
                 </div>
+                <div class="tests__meals" data-add="3">
+                  <div class="tests__meals-wrapper">
+                    <div class="tests__meals-title subtitle">Назначить БАДы</div>
+                    <div class="tests__meals-options">
+                      <div class="tests__meals-choosed">
+                        <input type="text" class="tests__meals-input" placeholder="Выберите питание или введите" />
+                        <ul class="tests__meals-list">
+                          <li class="tests__meals-option">Бад №5</li>
+                          <li class="tests__meals-option">Бад №6</li>
+                          <li class="tests__meals-option">Бад №7</li>
+                          <li class="tests__meals-option">Бад №8</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="tests__meals-subtitle">Вы рекомендуете:</div>
+                    <div class="tests__meals-recommendations"></div>
+                    <button class="tests__meals-save btn">Сохранить</button>
+                  </div>
+                  <div class="tests__meals-wrapper">
+                    <div class="tests__meals-title subtitle">Ваш комментарий</div>
+                    <textarea class="tests__meals-textarea" placeholder="Введите здесь комментарий для пациента"></textarea>
+                  </div>
+                </div>
               </div>
               <div class="tests__card">
                 <div class="tests__wrapper">
@@ -667,7 +691,7 @@
                     </li>
                   </ul>
                 </div>
-                <a href="#" class="tests__btn btn">
+                <a href="#" class="tests__btn btn mobileOnly">
                   <span>Посмотреть динамику</span>
                 </a>
                 <span href="#" class="tests__add mobileOnly">

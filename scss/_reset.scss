@@ -53,6 +53,9 @@ textarea::placeholder {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 p {

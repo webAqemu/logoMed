@@ -172,6 +172,7 @@ if (document.querySelector(".reg")) {
     filesList.insertAdjacentHTML("beforeend", html);
     const filesInputs = document.querySelectorAll(".reg__file-name");
     filesInputs[filesInputs.length - 1].value = fileName;
+    document.querySelector(".reg__file-list-text").classList.add("active");
   });
 
   //max-width: 300px;
@@ -224,13 +225,18 @@ if (document.querySelector(".reg")) {
     const curStep = document.querySelector(".reg__tabs-content.active");
     if (e.target.classList.contains("reg__back")) {
       const curStepNum = +curStep.dataset.tab;
-      curStep.classList.remove("active");
       if (!(curStepNum == 1)) {
+        curStep.classList.remove("active");
         console.log(curStepNum);
         document.querySelector(`.reg__tabs-content[data-tab="${curStepNum - 1}"]`).classList.add("active");
         stepsCount(curStepNum - 1);
       } else {
         window.location.href = "login.html";
+      }
+
+      if (curStepNum == 2) {
+        e.target.innerHTML = "Войти в личный кабинет";
+        e.target.classList.remove("active");
       }
     }
   });
@@ -242,14 +248,20 @@ if (document.querySelector(".reg")) {
       const curStep = +e.target.parentElement.dataset.tab;
       const curStepPage = document.querySelector(`.reg__tabs-content[data-tab="${curStep}"]`);
       const newTab = +curStep + 1;
-      curStepPage.classList.remove("active");
-      console.log(newTab);
-      console.log(e.target.parentElement.parentElement);
-      document.querySelector(`.reg__tabs-content[data-tab="${newTab}"]`).classList.add("active");
-      stepsCount(newTab);
       // добавляем класс active нужному шагу справа
-      document.querySelector(".reg__tabs-btn.active").classList.remove("active");
-      document.querySelector(`.reg__tabs-btn[data-tab="${newTab}"]`).classList.add("active");
+      if (curStep != 5) {
+        curStepPage.classList.remove("active");
+        document.querySelector(`.reg__tabs-content[data-tab="${newTab}"]`).classList.add("active");
+        stepsCount(newTab);
+        document.querySelector(".reg__tabs-btn.active").classList.remove("active");
+        document.querySelector(`.reg__tabs-btn[data-tab="${newTab}"]`).classList.add("active");
+      } else {
+        window.location.href = "client-profile.html";
+      }
+      if (curStep == 1) {
+        document.querySelector(".reg__back").innerHTML = "Вернуться назад";
+        document.querySelector(".reg__back").classList.add("active");
+      }
     }
     // добавляем класс complete слева для выполненного таба
     if (e.target.classList.contains("reg__btn")) {
@@ -339,19 +351,22 @@ if (document.querySelector(".appointment")) {
         document.querySelector(".appointment__month.active").classList.remove("active");
       }
       if (window.innerWidth < 768) {
-        e.target.closest(".appointment__month").classList.add("active");
+        document.querySelector(".appointment__wrapper").classList.add("hidden");
+        document.querySelector(".appointment__date-mobile").classList.add("active");
       } else {
         document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"`).classList.add("active");
       }
       // заполняем нужной датой
       const day = e.target.innerHTML;
       const monthsList = ["Янаварь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+      const monthsListMobile = ["Янаваря", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
       const daysOfWeekList = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
-      const month = monthsList[+e.target.dataset.month + 1];
+      const month = monthsList[+e.target.dataset.month];
+      const monthMobile = monthsListMobile[+e.target.dataset.month];
       const dayOfWeek = daysOfWeekList[+e.target.dataset.date % 7];
       console.log(e.target);
       if (window.innerWidth < 768) {
-        e.target.closest(".appointment__month").querySelector(`.appointment__days-title`).innerHTML = month + " " + day + ", " + dayOfWeek;
+        document.querySelector(".appointment__date-title").innerHTML = "Свободное время " + day + " " + monthMobile + ", " + dayOfWeek.toLowerCase();
       } else {
         document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"] .appointment__days-title`).innerHTML = month + " " + day + ", " + dayOfWeek;
       }
@@ -545,7 +560,6 @@ if (document.querySelector(".general")) {
       infinite: true,
       dots: true,
       arrows: false,
-      variableWidth: true,
     });
 
     // слайдер симптомов
@@ -701,6 +715,17 @@ if (document.getElementById("price")) {
     e.preventDefault();
     filterResults();
   });
+
+  // фильтрация по популярности и тд (только внешне)
+  document.querySelector(".search__sort").addEventListener("click", function (e) {
+    if (e.target.classList.contains("search__sort-choosed")) {
+      e.target.classList.toggle("active");
+    }
+    if (e.target.classList.contains("search__sort-item")) {
+      e.target.closest(".search__sort-choosed").querySelector("span").innerHTML = e.target.innerHTML;
+      e.target.closest(".search__sort-choosed").classList.remove("active");
+    }
+  });
 }
 
 if (document.querySelector(".doctor__info")) {
@@ -717,7 +742,6 @@ if (document.querySelector(".doctor__info")) {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          dots: false,
         },
       },
     ],
@@ -770,30 +794,10 @@ if (document.querySelector(".tests__add")) {
           e.target.closest(".tests__card").querySelector("div.active").classList.remove("active");
         }
         add.closest(".tests__card").querySelector(`div[data-add="${e.target.dataset.add}"]`).classList.add("active");
-        /* if (window.innerWidth < 768) {
-          concatForSlides(10, `tests__analyzes-list[data-analyze="${e.target.dataset.analyze}"] .tests__analyzes-item`, "tests__analyzes-slide", `tests__analyzes-list[data-analyze="${e.target.dataset.analyze}"]`);
-          $(`.tests__analyzes-list[data-analyze="${e.target.dataset.analyze}"]`).slick({
-            infinite: false,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-            dots: true,
-          });
-        } */
       }
     })
   );
-  // добавляем рекомендации по питанию
-  document.querySelector(".tests__meals-choosed").addEventListener("click", function (e) {
-    document.querySelector(".tests__meals-choosed").classList.toggle("active");
-    document.querySelector(".tests__meals-list").classList.toggle("active");
-    if (e.target.classList.contains("tests__meals-option")) {
-      document.querySelector(".tests__meals-input").value = e.target.innerHTML;
-      const recommendation = `<div class="tests__meals-item">${e.target.innerHTML}<span class="delete"></span></div>`;
-      document.querySelector(".tests__meals-recommendations").insertAdjacentHTML("beforeend", recommendation);
-      document.querySelector(".tests__meals-input").value = "";
-    }
-  });
+
   // добавляем рекомендацию не из списка а по нажатию Enter
   document.querySelector(".tests__meals-input").addEventListener("keyup", function (e) {
     if (e.key === "Enter") {
@@ -812,10 +816,15 @@ if (document.querySelector(".tests__add")) {
   });
   // выбор анализов
   document.querySelector(".tests").addEventListener("click", function (e) {
-    console.log("gg");
     if (e.target.classList.contains("tests__analyzes-choosed")) {
       e.target.querySelector("ul").classList.toggle("active");
     }
+    if (e.target.classList.contains("tests__add")) {
+      e.target.classList.add("active");
+    } else {
+      document.querySelectorAll(".tests__add").forEach((el) => el.classList.remove("active"));
+    }
+
     if (e.target.classList.contains("tests__analyzes-option")) {
       e.target.closest("ul").classList.toggle("active");
       const curCard = e.target.closest(".tests__card");
@@ -823,6 +832,23 @@ if (document.querySelector(".tests__add")) {
       curCard.querySelector(".tests__analyzes-choosed span").innerHTML = e.target.innerHTML;
       curCard.querySelector(`.tests__analyzes-list.active`).classList.remove("active");
       curCard.querySelector(`.tests__analyzes-list[data-analyze="${e.target.dataset.analyze}"]`).classList.add("active");
+    }
+    // добавляем рекомендации по питанию
+    if (e.target.classList.contains("tests__meals-input")) {
+      e.target.closest(".tests__meals-choosed").classList.toggle("active");
+      e.target.closest(".tests__meals-choosed").querySelector(".tests__meals-list").classList.toggle("active");
+    } else {
+      document.querySelectorAll(".tests__meals-choosed").forEach((input) => {
+        input.classList.remove("active");
+        input.querySelector("ul").classList.remove("active");
+      });
+    }
+    if (e.target.classList.contains("tests__meals-option")) {
+      e.target.closest(".tests__meals-list").classList.remove("active");
+      e.target.closest(".tests__meals-choosed").querySelector(".tests__meals-input").value = e.target.innerHTML;
+      const recommendation = `<div class="tests__meals-item">${e.target.innerHTML}<span class="delete"></span></div>`;
+      e.target.closest(".tests__meals-wrapper").querySelector(".tests__meals-recommendations").insertAdjacentHTML("beforeend", recommendation);
+      e.target.closest(".tests__meals-choosed").querySelector(".tests__meals-input").value = "";
     }
   });
   // добавляем Назначено при выборе ckeckbox
@@ -905,11 +931,17 @@ if (document.querySelector(".appointment")) {
       }
     }
     if (e.target.classList.contains("appointment__return")) {
-      document.querySelector(".appointment__tabs").classList.add("active");
-      document.querySelector(".appointment__date").classList.remove("active");
-      document.querySelector(".appointment__tabs-btn[data-tab='5']").classList.add("active");
-      document.querySelector(".appointment__tabs-content[data-tab='5']").classList.add("active");
-      document.querySelector(".appointment__month.active").classList.remove("active");
+      if (window.innerWidth < 768) {
+        document.querySelector(".appointment__date-mobile").classList.remove("active");
+        document.querySelector(".appointment__wrapper").classList.remove("hidden");
+        document.querySelector(".appointment__date-title").innerHTML = "Свободные дни для записи";
+      } else {
+        document.querySelector(".appointment__tabs").classList.add("active");
+        document.querySelector(".appointment__date").classList.remove("active");
+        document.querySelector(".appointment__tabs-btn[data-tab='5']").classList.add("active");
+        document.querySelector(".appointment__tabs-content[data-tab='5']").classList.add("active");
+        document.querySelector(".appointment__month.active").classList.remove("active");
+      }
     }
     if (document.querySelector(".hasDiagnose:checked")) {
       document.querySelector(".hasDiagnoseInput").classList.add("active");
@@ -964,8 +996,8 @@ if (document.querySelector(".popup")) {
       const curTab = e.target.dataset.popup;
       if (curTab == "add") {
         e.target.closest(".popup__slide").classList.remove("active");
-        document.querySelector(`.popup__slide[data-popup="3"]`).classList.add("active");
-      } else if (+curTab != 2) {
+        document.querySelector(`.popup__slide[data-popup="add"]`).classList.add("active");
+      } else if (+curTab != 3) {
         e.target.closest(".popup__slide").classList.remove("active");
         document.querySelector(`.popup__slide[data-popup="${+curTab + 1}"]`).classList.add("active");
       } else {
@@ -988,6 +1020,17 @@ if (document.querySelector(".articles")) {
   if (window.innerWidth < 768) {
     $(".articles__tags-list").slick({
       infinite: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      variableWidth: true,
+    });
+  }
+}
+
+if (document.querySelector(".search__search")) {
+  if (window.innerWidth < 768) {
+    $(".search__options").slick({
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,

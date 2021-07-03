@@ -29,9 +29,40 @@
               <li class="header__item"><a href="./client-profile.html" class="header__link title-h3">Мои задачи</a></li>
             </ul>
           </nav>
-          <div class="header__profile">
+          <button class="notification__open notification__open--blue mobileOnly"></button>
+          <div class="notification mobileOnly">
+            <div class="notification__title title-h3">Уведомления</div>
+            <button class="notification__close"></button>
+            <div class="notification__activate">
+              <input type="checkbox" name="notification" id="notification" checked />
+              <label for="notification">Включены</label>
+            </div>
+            <ul class="notification__list">
+              <li class="notification__item active">
+                <div class="notification__date">Сегодня, 26.06.2021</div>
+                <div class="notification__name title-h3">Назначены рекомендации</div>
+                <div class="notification__doctor">Назначил врач Петрова Н. Ю.</div>
+              </li>
+              <li class="notification__item active">
+                <div class="notification__date">Сегодня, 26.06.2021</div>
+                <div class="notification__name title-h3">Назначены анализы</div>
+                <div class="notification__doctor">Назначил врач Петрова Н. Ю.</div>
+              </li>
+              <li class="notification__item">
+                <div class="notification__date">Сегодня, 26.06.2021</div>
+                <div class="notification__name title-h3">Предстоящая консультация</div>
+                <div class="notification__doctor">Врач Красильников Ю. Ю. 15:00 – 15:30</div>
+              </li>
+            </ul>
+
+            <button class="notification__cancel">Отметить все как прочитанное</button>
+          </div>
+          <button class="header__burger burger burger--main">
+            <span></span>
+          </button>
+          <nav class="header__profile">
             <div class="header__img" style="background-image: url(./img/profile-img.png)"></div>
-            <div class="header__name title-h3">Константинопольский К. К.</div>
+            <a href="./client-profile.html" class="header__name title-h3">Константинопольский К. К.</a>
             <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 1L6.5 7L12 1" stroke="white" stroke-linecap="round" />
             </svg>
@@ -39,20 +70,41 @@
               <li class="header__profile-item"><a href="./about.html" class="header__profile-link">О клинике</a></li>
               <li class="header__profile-item"><a href="./articles.html" class="header__profile-link">Статьи</a></li>
               <li class="header__profile-item"><a href="./contacts.html" class="header__profile-link">Контакты клиники</a></li>
+              <li class="header__profile-item"><a href="./docs.html" class="header__profile-link">Лицензии и документы</a></li>
               <li class="header__profile-item"><a href="#" class="header__profile-link">Редактировать профиль</a></li>
               <li class="header__profile-item"><a href="./login.html" class="header__profile-link">Выйти</a></li>
             </ul>
-          </div>
+          </nav>
         </div>
       </div>
     </header>
+    <div class="layer-header"></div>
     <main class="main">
       <div class="search">
         <div class="container">
-          <div class="search__title title">Поиск специалиста</div>
-          <div class="search__form">
-            <input type="text" class="search__input" placeholder="Начните вводить специальность" />
-            <button class="search__btn btn">Найти врача</button>
+          <div class="search__search">
+            <div class="search__title title">Поиск специалиста</div>
+            <form class="search__form">
+              <input type="text" class="search__input" placeholder="Начните вводить специальность" />
+              <button class="search__btn btn">Найти врача</button>
+            </form>
+            <ul class="search__options mobileOnly">
+              <li class="search__option">
+                <a href="#" class="btn btn--stroke">
+                  <span>Терапевт</span>
+                </a>
+              </li>
+              <li class="search__option">
+                <a href="#" class="btn btn--stroke">
+                  <span>Психотерапевт</span>
+                </a>
+              </li>
+              <li class="search__option">
+                <a href="#" class="btn btn--stroke">
+                  <span>ЛОР</span>
+                </a>
+              </li>
+            </ul>
           </div>
           <div class="search__inner">
             <div class="search__filters">
@@ -120,23 +172,32 @@
             </div>
             <div class="search__results">
               <div class="search__sort">
-                <span>Сортировать по популярности</span>
+                Сортировать по
+                <button class="search__sort-choosed">
+                  <span>популярности</span>
+                  <ul class="search__sort-list">
+                    <li class="search__sort-item">популярности</li>
+                    <li class="search__sort-item">крутости</li>
+                  </ul>
+                </button>
               </div>
+              <div class="search__title title">Мы нашли для вас специалистов</div>
               <div class="search__card exp5To10 female age30To50" data-price="1500" data-exp="7" data-sex="female" data-age="32">
                 <div class="search__card-img" style="background-image: url(./img/about-specialists.png)"></div>
-                <div class="search__card-rating">
-                  <span class="search__card-star"></span>
-                  <span class="search__card-star"></span>
-                  <span class="search__card-star"></span>
-                  <span class="search__card-star"></span>
-                  <span class="search__card-star"></span>
-                </div>
+
                 <span class="search__card-name subtitle">Панова Елизавета Александровна</span>
                 <span class="search__card-price">От 1500 руб</span>
                 <div class="search__card-stats">
                   <span class="search__card-stat">Хирург</span>
                   <span class="search__card-stat">Стаж 7 лет</span>
                   <a href="#" class="search__card-stat reviews">37 отзывов</a>
+                </div>
+                <div class="search__card-rating">
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
                 </div>
                 <div class="search__card-timetable">
                   <span class="search__card-days">пн — пт</span>
@@ -149,19 +210,20 @@
               </div>
               <div class="search__card expMore10 female age30To50" data-price="4500" data-exp="20" data-sex="female" data-age="32">
                 <div class="search__card-img" style="background-image: url(./img/about-specialists.png)"></div>
+                <span class="search__card-name subtitle">Панова Елизавета Александровна</span>
+                <span class="search__card-price">От 4500 руб</span>
+
+                <div class="search__card-stats">
+                  <span class="search__card-stat">Хирург</span>
+                  <span class="search__card-stat">Стаж 20 лет</span>
+                  <a href="#" class="search__card-stat reviews">37 отзывов</a>
+                </div>
                 <div class="search__card-rating">
                   <span class="search__card-star"></span>
                   <span class="search__card-star"></span>
                   <span class="search__card-star"></span>
                   <span class="search__card-star"></span>
                   <span class="search__card-star"></span>
-                </div>
-                <span class="search__card-name subtitle">Панова Елизавета Александровна</span>
-                <span class="search__card-price">От 4500 руб</span>
-                <div class="search__card-stats">
-                  <span class="search__card-stat">Хирург</span>
-                  <span class="search__card-stat">Стаж 20 лет</span>
-                  <a href="#" class="search__card-stat reviews">37 отзывов</a>
                 </div>
                 <div class="search__card-timetable">
                   <span class="search__card-days">пн — пт</span>
@@ -174,19 +236,20 @@
               </div>
               <div class="search__card expMore10 female age30To50" data-price="2500" data-exp="15" data-sex="female" data-age="32">
                 <div class="search__card-img" style="background-image: url(./img/about-specialists.png)"></div>
-                <div class="search__card-rating">
-                  <span class="search__card-star"></span>
-                  <span class="search__card-star"></span>
-                  <span class="search__card-star"></span>
-                  <span class="search__card-star"></span>
-                  <span class="search__card-star"></span>
-                </div>
+
                 <span class="search__card-name subtitle">Панова Елизавета Александровна</span>
                 <span class="search__card-price">От 2500 руб</span>
                 <div class="search__card-stats">
                   <span class="search__card-stat">Хирург</span>
                   <span class="search__card-stat">Стаж 15 лет</span>
                   <a href="#" class="search__card-stat reviews">37 отзывов</a>
+                </div>
+                <div class="search__card-rating">
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
+                  <span class="search__card-star"></span>
                 </div>
                 <div class="search__card-timetable">
                   <span class="search__card-days">пн — пт</span>
@@ -232,7 +295,7 @@
           </button>
         </div>
       </div>
-      <div class="popup__slide popup__slide--third" data-popup="3">
+      <div class="popup__slide popup__slide--third" data-popup="add">
         <div class="popup__title subtitle">Добавить жалобы к записи</div>
         <p class="popup__text popup__text--dark">Ваши жалобы:</p>
         <textarea class="popup__textarea" placeholder="Оставьте комментарий с жалобами"></textarea>
@@ -252,6 +315,15 @@
             <span>Заполнить анкету</span>
           </button>
         </div>
+      </div>
+      <div class="popup__slide popup__slide--last" data-popup="3">
+        <div class="popup__title subtitle">Вы записаны!</div>
+        <p class="popup__text">Врач хирург Панова Е. А</p>
+        <p class="popup__text">24 апреля, суббота 16:30 — 17:00</p>
+        <p class="popup__text">Первичная консультация</p>
+        <button class="popup__btn btn" data-popup="3">
+          <span>Отлично!</span>
+        </button>
       </div>
       <div class="popup__close"></div>
     </div>

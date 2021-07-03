@@ -51,6 +51,9 @@ body {
 
 .main {
   background-color: $bg;
+  @include r {
+    background-color: $bg-mobile;
+  }
   &--white {
     background-color: transparent;
   }
@@ -268,9 +271,9 @@ textarea::placeholder {
     @include r {
       width: 100%;
       height: auto;
-      padding: 10px 20px 12px;
+      padding: 10px 10px 12px;
       background-image: none;
-      border: 2px solid white;
+      border: 1px solid white;
       background-color: transparent !important;
       &:hover {
         background-image: none;
