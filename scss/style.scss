@@ -85,37 +85,39 @@
 
 .burger {
   display: none;
-  height: 14px;
-  width: 16px;
+  height: 24px;
+  width: 26px;
   position: relative;
   z-index: 11;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  padding: 5px;
   span {
     display: block;
-    width: 100%;
+    width: 16px;
     height: 2px;
     background-color: $blue;
     transition: all 0.3s;
+    pointer-events: none;
   }
   &::after {
     content: "";
     position: absolute;
-    width: 100%;
+    width: 16px;
     height: 2px;
-    top: 0;
-    left: 0;
+    top: 5px;
+    left: 5px;
     background-color: $blue;
     transition: all 0.3s;
   }
   &::before {
     content: "";
     position: absolute;
-    width: 100%;
+    width: 16px;
     height: 2px;
-    bottom: 0;
-    left: 0;
+    bottom: 5px;
+    left: 5px;
     background-color: $blue;
     transition: all 0.3s;
   }
@@ -144,11 +146,11 @@
       opacity: 0;
     }
     &::after {
-      top: 6px;
+      top: 11px;
       transform: rotate(45deg);
     }
     &::before {
-      bottom: 6px;
+      bottom: 11px;
       transform: rotate(-45deg);
     }
   }
@@ -481,7 +483,7 @@
 
   &__item {
     position: relative;
-    margin: 0 10px;
+    margin: 0 10px 10px;
     &:hover .specialists__hover {
       opacity: 1;
     }
@@ -650,6 +652,7 @@
     color: $white;
     max-width: 485px;
     width: 100%;
+    margin-bottom: 40px;
   }
 
   &__text {
@@ -824,7 +827,7 @@
     &__text {
       color: $text;
       text-align: center;
-      width: 380px;
+      width: 100%;
       margin: 0 auto;
     }
     &__slider {
@@ -959,6 +962,9 @@
       align-items: center;
       justify-content: center;
       margin: 0;
+      & + & {
+        margin-top: 20px;
+      }
     }
     &__icon {
       width: 100px;
@@ -1356,7 +1362,7 @@
 
   &__back {
     display: inline-block;
-    font-size: 14px;
+    font-size: 16px;
     color: $blue;
     margin-top: 30px;
     cursor: pointer;
@@ -1746,6 +1752,7 @@
     transform: translateY(-50%);
     color: $light-text;
     transition: all 0.3s;
+    pointer-events: none;
   }
 
   &__form-line {
@@ -2524,13 +2531,12 @@
       z-index: 10;
       right: 0;
       top: 60px;
-      max-width: 340px;
-      width: 100%;
-      padding: 40px;
+      width: 340px;
+      padding: 30px;
       background-color: $white;
       list-style: none;
       margin: 0;
-      box-shadow: 0px 2px 14px rgba(79, 79, 79, 0.5);
+      box-shadow: 0px 2px 9px rgba(124, 154, 242, 0.15);
       border-radius: 20px;
       border-top-right-radius: 0;
       opacity: 0;
@@ -2796,6 +2802,7 @@
       width: 16px;
       border-radius: 100%;
       background-color: $grey;
+      transition: all 0.3s;
     }
 
     &.active::before {
@@ -2929,13 +2936,13 @@
     @include r {
       width: calc(100% + 48px);
       padding-left: 14px;
-      margin: 50px -24px 0;
+      margin: 50px -24px 14px;
       margin-top: 50px;
-      overflow-x: scroll;
+      /* overflow-x: scroll;
       &::-webkit-scrollbar {
         width: 0;
       }
-      -ms-overflow-style: none;
+      -ms-overflow-style: none; */
     }
   }
 
@@ -3123,6 +3130,58 @@
     }
   }
 
+  &__for-doctor {
+    /* padding: 48px;
+    background-image: url(../img/general-for-doctor-bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center; */
+    max-width: 430px;
+    width: 100%;
+    margin-left: 34px;
+
+    &-wrapper {
+      background-image: url(../img/general-for-doctor-bg.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: center;
+      padding: 48px;
+      & + & {
+        margin-top: 20px;
+      }
+    }
+
+    &-item {
+      margin: 24px -32px 0;
+      padding: 0 32px 24px;
+      &:nth-child(2) {
+        margin-top: 55px;
+      }
+      &:not(:last-child) {
+        border-bottom: 1px solid #f1f1f1;
+      }
+    }
+
+    &-disease {
+      margin-bottom: 10px;
+    }
+    &-date {
+      color: $light-text;
+      margin-bottom: 8px;
+    }
+    &-rec {
+      color: $blue;
+    }
+
+    &-text {
+      margin: 24px 0 60px;
+    }
+
+    &-img {
+      width: 100%;
+    }
+  }
+
   &__stat {
     display: flex;
     width: calc(100% + 30px);
@@ -3183,10 +3242,10 @@
     @include r {
       height: 0;
       overflow: hidden;
-      margin: 0 0 40px;
+      margin: 0 0 20px;
       padding-bottom: 0;
       &.active {
-        padding-bottom: 45px;
+        padding-bottom: 24px;
         height: auto;
       }
     }
@@ -3195,7 +3254,7 @@
       position: relative;
       @include r {
         cursor: pointer;
-        margin-bottom: 30px;
+        margin-bottom: 24px;
         &::after {
           content: "";
           width: 18px;
@@ -3321,23 +3380,27 @@
     color: $light-text;
     position: relative;
     pointer-events: none;
+    @include r {
+      padding-left: 32px;
+    }
     &::before {
       content: "";
       position: absolute;
       left: 0;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 7px;
       width: 16px;
       height: 16px;
       border: 1px solid $light-text;
       transition: all 0.3s;
+      @include r {
+        top: 3px;
+      }
     }
     &::after {
       content: "";
       position: absolute;
       left: 1px;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 8px;
       width: 13px;
       height: 13px;
       background-image: url(../img/symptom-checked-icon.svg);
@@ -3345,6 +3408,9 @@
       background-repeat: no-repeat;
       transition: all 0.3s;
       opacity: 0;
+      @include r {
+        top: 4px;
+      }
     }
   }
 
@@ -3546,8 +3612,7 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      width: calc(100% + 20px);
-      margin: 45px -10px 0;
+      width: 100%;
       @include r {
         flex-direction: column;
         margin: 45px 0 0;
@@ -3558,8 +3623,6 @@
     &-item {
       display: flex;
       align-items: flex-end;
-      max-width: calc(50% - 20px);
-      width: 100%;
       margin: 0 10px 20px;
       @include r {
         max-width: 100%;
@@ -3763,9 +3826,11 @@
     width: 40px;
     height: 40px;
     background-image: url(../img/tasks-calendar.svg);
+    overflow: hidden;
     &:hover {
+      overflow: visible;
       .tasks__datepicker {
-        display: block;
+        opacity: 1;
       }
     }
   }
@@ -3840,7 +3905,8 @@
     right: -10px;
     padding-bottom: 53px;
     z-index: 10;
-    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
   }
 
   &__months {
@@ -3983,6 +4049,8 @@
       margin-top: 40px;
       &:nth-last-child(1) {
         border: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
       }
     }
 
@@ -4215,6 +4283,13 @@
     }
   }
 
+  &__btn.mobileOnly span {
+    @include r {
+      display: block;
+      text-align: center;
+    }
+  }
+
   &__btn:not(:last-child) {
     @include r {
       margin-bottom: 15px;
@@ -4396,6 +4471,7 @@
         background-position: center;
         background-repeat: no-repeat;
         transition: all 0.3s;
+        pointer-events: none;
       }
       &.active::after {
         transform: rotate(180deg);
@@ -4462,6 +4538,10 @@
       font-size: 24px;
       margin-bottom: 30px;
       padding: 5px 17px 0 0;
+      display: none;
+      &.active {
+        display: block;
+      }
       &:nth-child(1) {
         padding-top: 15px;
         border-top: 1px solid $blue;
@@ -4470,6 +4550,7 @@
       @include r {
         font-size: 17px;
         padding: 0;
+        margin-bottom: 16px;
       }
     }
 
@@ -4551,6 +4632,9 @@
       margin-top: 60px;
       height: auto;
       overflow: visible;
+      @include r {
+        margin-top: 16px;
+      }
     }
 
     &-title {
@@ -4637,7 +4721,7 @@
         height: auto;
         @include r {
           padding-bottom: 30px;
-          margin-bottom: 40px;
+          margin-bottom: 30px;
         }
       }
       @include r {
@@ -4645,26 +4729,18 @@
         position: relative;
         .slick-arrow {
           position: absolute;
-          bottom: 5px;
-          width: 12px;
-          height: 20px;
-          background-image: url(../img/tests-analazys-arrow-red.svg);
-          background-repeat: no-repeat;
-          background-size: cover;
-          font-size: 0;
+          bottom: -5px;
         }
         .slick-prev {
           left: calc(50% - 36px);
-          transform: rotate(-180deg);
         }
 
         .slick-next {
           right: calc(50% - 36px);
         }
 
-        .slick-disabled {
-          transform: rotate(0deg);
-          background-image: url(../img/tests-analazys-arrow-grey.svg);
+        .slick-disabled path {
+          stroke: #d8d8d8;
         }
       }
     }
@@ -4703,6 +4779,7 @@
         padding-left: 30px;
         color: $light-text;
         transition: all 0.3s;
+        display: inline-block;
 
         &::before {
           content: " ";
@@ -5398,10 +5475,14 @@
     @include r {
       &-wrapper {
         margin-top: 36px;
+        &.slick-active .bud {
+          opacity: 1;
+        }
       }
       width: 270px;
-      margin: 0 24px 0 0;
+      margin: 0 16px 0 0;
       padding: 10px 32px 32px;
+      opacity: 0.8;
       .bud__img {
         width: 120px;
       }
@@ -5425,11 +5506,27 @@
   }
   &__buds {
     margin-top: 100px;
+    @include r {
+      margin-top: 60px;
+    }
+  }
+  &__maybe {
+    @include r {
+      display: none;
+    }
+  }
+  .empty {
+    @include r {
+      margin-bottom: 60px;
+    }
   }
 }
 
 .search {
   padding-top: 125px;
+  @include r {
+    padding-bottom: 32px;
+  }
 
   &__inner {
     display: flex;
@@ -5569,6 +5666,12 @@
 
     @include r {
       display: none;
+    }
+  }
+
+  &__results {
+    @include r {
+      margin-top: 48px;
     }
   }
 
@@ -5793,6 +5896,7 @@
       margin: 0 50px 15px 0;
       @include r {
         margin: 16px 0 8px;
+        text-align: center;
       }
     }
 
@@ -5872,9 +5976,15 @@
     &-more {
       display: inline-block;
       color: $blue;
-      margin-bottom: 50px;
       @include r {
         display: none;
+      }
+    }
+
+    &-btn {
+      margin-top: 50px;
+      @include r {
+        margin-top: 0;
       }
     }
   }
@@ -6052,7 +6162,7 @@
   }
 
   &__slide.slick-active &__tag {
-    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.110659);
+    box-shadow: 0px 2px 9px rgba(124, 154, 242, 0.15);
   }
 
   &__recommendations {
@@ -6157,7 +6267,7 @@
     background-position: center;
     background-size: 100% 100%;
     position: relative;
-    padding: 180px 40px 275px;
+    padding: 180px 40px 150px;
     @include r {
       display: none;
     }
@@ -7022,6 +7132,7 @@
       display: none;
       &.active {
         display: block;
+        width: 100%;
         @include r {
           height: auto;
           overflow: visible;
@@ -7090,6 +7201,9 @@
     position: absolute;
     left: 0;
     bottom: 20px;
+    &--finish {
+      position: static;
+    }
     @include r {
       width: 100%;
       position: static;
@@ -7196,13 +7310,11 @@
         color: $text;
       }
 
-      input:checked + span::after,
-      input:hover + span::after {
+      input:checked + span::after {
         opacity: 1;
       }
 
-      input:checked + span::before,
-      input:hover + span::before {
+      input:checked + span::before {
         border-color: $peach;
       }
     }
@@ -7283,7 +7395,9 @@
   }
 
   &__wrapper {
+    display: flex;
     @include r {
+      display: block;
       width: calc(100% + 48px);
       margin: 0 -24px;
       .slick-dots {
@@ -7297,11 +7411,11 @@
 
   &__return {
     cursor: pointer;
-    position: absolute;
-    left: 250px;
-    top: calc(105% + 15px);
+    margin-left: 56px;
     color: $light-text;
     @include r {
+      margin-left: 0;
+      position: absolute;
       left: auto;
       top: -40px;
       color: $blue;
@@ -7312,6 +7426,7 @@
     padding-right: 100px;
     border-right: 1px solid #f1f1f1;
     display: inline-block;
+    width: 50%;
     @include r {
       padding-right: 0;
       border: none;
@@ -7420,9 +7535,15 @@
     }
   }
 
+  &__btns {
+    display: flex;
+    align-items: center;
+    margin-top: 36px;
+  }
+
   &__days {
     display: inline-block;
-    width: 600px;
+    width: 100%;
     @include r {
       width: 100%;
     }
@@ -7435,12 +7556,7 @@
       margin-right: 40px;
       margin-bottom: 40px;
       position: relative;
-      &:nth-child(3n + 1) {
-        margin-right: 0;
-        @include r {
-          margin-right: 25px;
-        }
-      }
+
       @include r {
         margin-right: 25px;
       }
@@ -7556,9 +7672,10 @@
 
 .contacts {
   padding: 220px 0 80px;
-  background: $bg;
+  background-color: $bg;
   @include r {
     padding: 135px 0 30px;
+    background-color: $bg-mobile;
   }
 
   &__title {
@@ -7792,9 +7909,10 @@
 
 .docs {
   padding: 220px 0 120px;
-  background: $bg;
+  background-color: $bg;
   @include r {
     padding: 135px 0 30px;
+    background-color: $bg-mobile;
   }
   &__title {
     margin-bottom: 70px;
@@ -7916,11 +8034,12 @@
           width: 40px;
           height: 40px;
           bottom: auto;
-          top: 5px;
+          top: -10px;
         }
       }
 
       @include r {
+        padding-bottom: 30px;
         margin-top: 30px;
         color: $light-text;
       }
@@ -8106,6 +8225,7 @@
     background-color: #fff;
     border-radius: 10px;
     max-width: calc(100% - 48px);
+    padding: 35px 16px;
   }
   &.active {
     display: block;
@@ -8156,28 +8276,42 @@
     position: absolute;
     right: 40px;
     top: 50px;
-    width: 16px;
+    width: 17px;
     height: 16px;
     background-image: url(../img/popup-close.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     cursor: pointer;
+    @include r {
+      right: 16px;
+      top: 16px;
+    }
   }
 
   &__symptom {
     display: inline-block;
     width: 40%;
     margin-bottom: 15px;
+    @include r {
+      width: calc(50% - 5px);
+    }
   }
 
   &__btns {
     display: flex;
     align-items: center;
+    @include r {
+      flex-wrap: wrap;
+    }
   }
 
   .btn--stroke {
     margin-left: 25px;
+    @include r {
+      margin-left: 0;
+      margin-top: 16px;
+    }
   }
 
   &__textarea {
@@ -8212,9 +8346,11 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 11;
   display: none;
+
+  background-color: rgba(84, 153, 222, 0.5);
+  backdrop-filter: blur(5px);
   &.active {
     display: block;
   }

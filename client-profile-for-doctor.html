@@ -59,8 +59,8 @@
             <span></span>
           </button>
           <nav class="header__profile">
-            <div class="header__img" style="background-image: url(./img/profile-img.png)"></div>
-            <a href="./client-profile.html" class="header__name title-h3">Константинопольский К. К.</a>
+            <div class="header__img" style="background-image: url(./img/doctor-aside-img.png)"></div>
+            <a href="./client-profile.html" class="header__name title-h3">Романова Е. П.</a>
             <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 1L6.5 7L12 1" stroke="white" stroke-linecap="round" />
             </svg>
@@ -91,12 +91,6 @@
             <li class="tabs__item" data-tab="1"><span>Общее</span></li>
             <li class="tabs__item active" data-tab="2"><span>Анализы</span></li>
             <li class="tabs__item" data-tab="3"><span>Рекомендации</span></li>
-            <li class="tabs__item" data-tab="4">
-              <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 18L4.94658 21.7082L6.29366 13.8541L0.587322 8.2918L8.47329 7.1459L12 0L15.5267 7.1459L23.4127 8.2918L17.7063 13.8541L19.0534 21.7082L12 18Z" fill="#FFC95A" />
-              </svg>
-              <span>Полезное</span>
-            </li>
           </ul>
         </div>
       </div>
@@ -349,6 +343,29 @@
                 </div>
               </div>
             </div>
+            <div class="general__for-doctor">
+              <div class="general__for-doctor-wrapper">
+                <div class="general__subtitle subtitle">Диагнозов пока нет</div>
+                <p class="general__for-doctor-text">Пациент пока не заполнил данные об истории болезней</p>
+                <img src="./img/recommendations-empty-img.svg" class="general__for-doctor-img" />
+              </div>
+              <div class="general__for-doctor-wrapper">
+                <div class="general__subtitle subtitle">Болезни пациента</div>
+                <div class="general__for-doctor-item">
+                  <div class="general__for-doctor-disease title-h3">Обострение гастрита</div>
+                  <div class="general__for-doctor-date">С 20.06.2017</div>
+                  <button class="general__for-doctor-rec">Рекомендации</button>
+                </div>
+                <div class="general__for-doctor-item">
+                  <div class="general__for-doctor-disease title-h3">Геморрагический гастрит</div>
+                  <div class="general__for-doctor-date">С 20.06.2017</div>
+                </div>
+                <div class="general__for-doctor-item">
+                  <div class="general__for-doctor-disease title-h3">Перелом ключиц</div>
+                  <div class="general__for-doctor-date">С 20.06.2017</div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="content-block__inner active" data-tab="2">
             <div class="tests">
@@ -436,7 +453,7 @@
                     <li class="tests__add-option" data-add="2">Назначить анализы</li>
                   </ul>
                 </span>
-                <div class="tests__meals" data-add="1">
+                <div class="tests__meals active" data-add="1">
                   <div class="tests__meals-wrapper">
                     <div class="tests__meals-title subtitle">Назначить питание</div>
                     <div class="tests__meals-options">
@@ -455,7 +472,7 @@
                     <button class="tests__meals-save btn">Сохранить</button>
                   </div>
                   <div class="tests__meals-wrapper">
-                    <div class="tests__meals-title subtitle">Комментарий к рекомендации</div>
+                    <div class="tests__meals-title subtitle">Ваш комментарий</div>
                     <textarea class="tests__meals-textarea" placeholder="Введите здесь комментарий для пациента"></textarea>
                   </div>
                 </div>
@@ -701,7 +718,7 @@
                     <li class="tests__add-option" data-add="2">Назначить анализы</li>
                   </ul>
                 </span>
-                <div class="tests__meals" data-add="1">
+                <div class="tests__meals active" data-add="1">
                   <div class="tests__meals-wrapper">
                     <div class="tests__meals-title subtitle">Назначить питание</div>
                     <div class="tests__meals-options">
@@ -720,7 +737,7 @@
                     <button class="tests__meals-save btn">Сохранить</button>
                   </div>
                   <div class="tests__meals-wrapper">
-                    <div class="tests__meals-title subtitle">Комментарий к рекомендации</div>
+                    <div class="tests__meals-title subtitle">Ваш комментарий</div>
                     <textarea class="tests__meals-textarea" placeholder="Введите здесь комментарий для пациента"></textarea>
                   </div>
                 </div>
@@ -1025,141 +1042,6 @@
                     <div class="bud__price">2 987 ₽</div>
                     <a href="#" class="bud__btn btn btn--shadow">Приобрести</a>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="content-block__inner" data-tab="4">
-            <div class="useful">
-              <div class="empty">
-                <div class="empty__title title">Сохраненного пока нет</div>
-                <div class="empty__text">Здесь будут отображаться ваши сохраненные статьи, а также БАДы. Попробуйте поискать что-нибудь интересное и нажать на звездочку – сможете вернуться к статье позже, в этом разделе.</div>
-                <form action="" class="empty__form">
-                  <input type="text" class="empty__input" placeholder="Поиск по статьям" required />
-                  <button class="empty__btn btn">Найти статью</button>
-                </form>
-              </div>
-              <div class="useful__maybe">
-                <div class="useful__title title">Может, вам понравятся статьи</div>
-                <div class="articles__all">
-                  <div class="useful__item article">
-                    <div class="article__img"></div>
-                    <div class="article__desc">
-                      <div class="article__title title-h3">Профилактика коронавируса. Рекомендации специалистов</div>
-                      <div class="article__text">Позитивизм, как следует из вышесказанного, подчеркивает...</div>
-                      <div class="article__add">
-                        <input type="checkbox" name="" id="" class="article__checkbox" />
-                        <span></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="useful__item article">
-                    <div class="article__img"></div>
-                    <div class="article__desc">
-                      <div class="article__title title-h3">Профилактика коронавируса. Рекомендации специалистов</div>
-                      <div class="article__text">Позитивизм, как следует из вышесказанного, подчеркивает...</div>
-                      <div class="article__add">
-                        <input type="checkbox" name="" id="" class="article__checkbox" />
-                        <span></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="useful__item article">
-                    <div class="article__img"></div>
-                    <div class="article__desc">
-                      <div class="article__title title-h3">Профилактика коронавируса. Рекомендации специалистов</div>
-                      <div class="article__text">Позитивизм, как следует из вышесказанного, подчеркивает...</div>
-                      <div class="article__add">
-                        <input type="checkbox" name="" id="" class="article__checkbox" />
-                        <span></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button class="useful__more btn btn--shadow">Все статьи</button>
-              </div>
-              <div class="useful__articles">
-                <div class="useful__title title">Сохраненные статьи</div>
-                <div class="articles__all">
-                  <div class="useful__item article">
-                    <div class="article__img"></div>
-                    <div class="article__desc">
-                      <div class="article__title title-h3">Профилактика коронавируса. Рекомендации специалистов</div>
-                      <div class="article__text">Позитивизм, как следует из вышесказанного, подчеркивает...</div>
-                      <div class="article__add">
-                        <input type="checkbox" name="" id="" class="article__checkbox" checked />
-                        <span></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="useful__item article">
-                    <div class="article__img"></div>
-                    <div class="article__desc">
-                      <div class="article__title title-h3">Профилактика коронавируса. Рекомендации специалистов</div>
-                      <div class="article__text">Позитивизм, как следует из вышесказанного, подчеркивает...</div>
-                      <div class="article__add">
-                        <input type="checkbox" name="" id="" class="article__checkbox" checked />
-                        <span></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="useful__item article">
-                    <div class="article__img"></div>
-                    <div class="article__desc">
-                      <div class="article__title title-h3">Профилактика коронавируса. Рекомендации специалистов</div>
-                      <div class="article__text">Позитивизм, как следует из вышесказанного, подчеркивает...</div>
-                      <div class="article__add">
-                        <input type="checkbox" name="" id="" class="article__checkbox" checked />
-                        <span></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="useful__item article">
-                    <div class="article__img"></div>
-                    <div class="article__desc">
-                      <div class="article__title title-h3">Профилактика коронавируса. Рекомендации специалистов</div>
-                      <div class="article__text">Позитивизм, как следует из вышесказанного, подчеркивает...</div>
-                      <div class="article__add">
-                        <input type="checkbox" name="" id="" class="article__checkbox" checked />
-                        <span></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="useful__buds">
-                <div class="useful__title title">Подходящие вам БАДы</div>
-                <div class="useful__bud bud bud-mobile-row">
-                  <img src="./img/bud-img.png" class="bud__img" />
-                  <div class="bud__title subtitle">
-                    Эвалар Фитолакс таблетки
-                    <div class="bud__add">
-                      <input type="checkbox" name="" id="" class="bud__checkbox" checked />
-                      <span></span>
-                    </div>
-                  </div>
-                  <div class="bud__stats">
-                    <span>500 мл</span>
-                    <span>20 шт</span>
-                  </div>
-                  <div class="bud__price">2 987 ₽</div>
-                  <a href="#" class="bud__btn btn btn--shadow">Приобрести</a>
-                </div>
-                <div class="useful__bud bud bud-mobile-row">
-                  <img src="./img/bud-img.png" class="bud__img" />
-                  <div class="bud__title subtitle">
-                    Эвалар Фитолакс таблетки
-                    <div class="bud__add">
-                      <input type="checkbox" name="" id="" class="bud__checkbox" checked />
-                      <span></span>
-                    </div>
-                  </div>
-                  <div class="bud__stats">
-                    <span>500 мл</span>
-                    <span>20 шт</span>
-                  </div>
-                  <div class="bud__price">2 987 ₽</div>
-                  <a href="#" class="bud__btn btn btn--shadow">Приобрести</a>
                 </div>
               </div>
             </div>

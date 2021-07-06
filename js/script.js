@@ -45,14 +45,22 @@ const concatForSlides = function (itemsNumPerSlide, itemsClass, slideClass, pare
 
 // burger menu in start pages
 if (document.querySelector(".header-start")) {
-  document.querySelector(".header-start").addEventListener("click", function (e) {
+  document.addEventListener("click", function (e) {
     const mobileMenu = document.querySelector(".header-start__nav.mobile");
     const bg = document.querySelector(".layer-header");
-    if (e.target.classList.contains("burger")) {
+    const burger = document.querySelector(".burger");
+    if (e.target == burger) {
       e.target.classList.toggle("active");
       mobileMenu.classList.toggle("active");
       bg.classList.toggle("active");
       document.querySelector("body").classList.toggle("active");
+    }
+
+    if (e.target == bg) {
+      burger.classList.remove("active");
+      mobileMenu.classList.remove("active");
+      bg.classList.remove("active");
+      document.querySelector("body").classList.remove("active");
     }
   });
 }
@@ -88,16 +96,20 @@ if (document.querySelector(".burger--main")) {
   const notificationBtn = document.querySelector(".notification__open");
   const notificationClose = document.querySelector(".notification__close");
   const notificationList = document.querySelector(".notification");
+  const notificationRead = document.querySelector(".notification__cancel");
+
   burger.addEventListener("click", function () {
     burger.classList.toggle("active");
     menu.classList.toggle("active");
     bg.classList.toggle("active");
     document.querySelector("body").classList.toggle("active");
   });
+
   notificationBtn.addEventListener("click", function () {
     notificationList.classList.add("active");
     document.querySelector("body").classList.add("active-notifications");
   });
+
   notificationClose.addEventListener("click", function () {
     notificationList.classList.remove("active");
     document.querySelector("body").classList.remove("active-notifications");
@@ -109,14 +121,18 @@ if (document.querySelector(".burger--main")) {
     bg.classList.remove("active");
     document.querySelector("body").classList.remove("active");
   });
+
+  notificationRead.addEventListener("click", function () {
+    notificationList.querySelectorAll(".notification__item.active").forEach((item) => item.classList.remove("active"));
+  });
 }
 
 if (document.querySelector(".reg")) {
   // рассче индекса массы тела
   document.addEventListener("keyup", function () {
     const msd = document.querySelector(".reg__msd");
-    const weight = document.querySelector(".reg__input--weight");
-    const height = document.querySelector(".reg__input--height");
+    const weight = document.querySelector(".reg__input--weight input");
+    const height = document.querySelector(".reg__input--height input");
     if (weight.value && height.value) {
       let msdNum = weight.value / (height.value / 100) ** 2;
       msd.classList.remove("inactive");
@@ -241,8 +257,9 @@ if (document.querySelector(".reg")) {
     }
   });
 
-  // добавляем функционал для кнопки Далее и Пропустить шаг
   document.querySelector(".reg__wrapper").addEventListener("click", function (e) {
+    // добавляем функционал для кнопки Далее и Пропустить шаг
+    e.preventDefault();
     if (e.target.classList.contains("reg__btn") || e.target.classList.contains("reg__pass")) {
       // переходим на новый шаг
       const curStep = +e.target.parentElement.dataset.tab;
@@ -268,6 +285,12 @@ if (document.querySelector(".reg")) {
       const curStep = +e.target.parentElement.dataset.tab;
       document.querySelector(`.reg__tabs-btn[data-tab="${curStep}"]`).classList.add("complete");
     }
+    // вставляем +7 если пользователь собирается вводить номер телефона
+    if (e.target.getAttribute("id") == "phone") {
+      if (e.target.value == "") {
+        e.target.value = "+7";
+      }
+    }
   });
   // слайдер для 5-го шага регистрации
   $(".reg__slider").slick({
@@ -288,8 +311,8 @@ if (document.querySelector(".reg")) {
     ],
   });
 
-  // слайдер для мобильных бадов
   if (window.innerWidth < 768) {
+    // слайдер для мобильных бадов
     $(".reg__buds-list").slick({
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -364,13 +387,14 @@ if (document.querySelector(".appointment")) {
       const month = monthsList[+e.target.dataset.month];
       const monthMobile = monthsListMobile[+e.target.dataset.month];
       const dayOfWeek = daysOfWeekList[+e.target.dataset.date % 7];
-      console.log(e.target);
       if (window.innerWidth < 768) {
         document.querySelector(".appointment__date-title").innerHTML = "Свободное время " + day + " " + monthMobile + ", " + dayOfWeek.toLowerCase();
       } else {
         document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"] .appointment__days-title`).innerHTML = month + " " + day + ", " + dayOfWeek;
       }
-      console.log(month, dayOfWeek, day);
+      document.querySelectorAll(".appointment__days-time input").forEach((input) => {
+        input.checked = false;
+      });
     }
   });
 
@@ -440,6 +464,7 @@ if (document.querySelector(".general")) {
     document.querySelector(".general__form--new").classList.remove("active");
     document.getElementById("cancelNewHistory").classList.remove("active");
   });
+
   // аккордеон для историй болезни
   document.querySelectorAll(".general__history-name").forEach((history) => {
     history.addEventListener("click", function () {
@@ -560,6 +585,16 @@ if (document.querySelector(".general")) {
       infinite: true,
       dots: true,
       arrows: false,
+      variableWidth: true,
+    });
+
+    // слайдер табов (общее, анализы и тд)
+    $(".tabs__list").slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      infinite: false,
+      arrows: false,
+      variableWidth: true,
     });
 
     // слайдер симптомов
@@ -590,13 +625,13 @@ if (document.querySelector(".general")) {
       arrows: false,
     });
 
-    // слайдер Может вам понравятся статьи
+    /* // слайдер Может вам понравятся статьи
     $(".useful__maybe .articles__all").slick({
       slidesToShow: 1,
       slidesToScroll: 1,
       infinite: false,
       arrows: false,
-    });
+    }); */
   }
 }
 
@@ -726,6 +761,15 @@ if (document.getElementById("price")) {
       e.target.closest(".search__sort-choosed").classList.remove("active");
     }
   });
+
+  // добавление функционала для Читать полностью
+  document.querySelector(".search__results").addEventListener("click", function (e) {
+    if (e.target.classList.contains("search__card-more")) {
+      const content = "Диагностирую, предупреждаю и лечу патологии головного и спинного мозга, нервных окончаний и заболеваний влияющих на нервную систему. Окончила Московский государственный университет имени Ленина и Сталина";
+      e.target.closest(".search__card").querySelector(".search__card-text").innerHTML = content;
+      e.target.remove();
+    }
+  });
 }
 
 if (document.querySelector(".doctor__info")) {
@@ -789,7 +833,7 @@ if (document.querySelector(".tests__add")) {
     add.addEventListener("click", function (e) {
       add.classList.toggle("active");
       if (e.target.classList.contains("tests__add-option")) {
-        add.querySelector(" span").innerHTML = e.target.innerHTML;
+        add.querySelector("span").innerHTML = e.target.innerHTML;
         if (e.target.closest(".tests__card").querySelector("div.active")) {
           e.target.closest(".tests__card").querySelector("div.active").classList.remove("active");
         }
@@ -806,14 +850,18 @@ if (document.querySelector(".tests__add")) {
       const recommendation = `<div class="tests__meals-item">${document.querySelector(".tests__meals-input").value}<span class="delete"></span></div>`;
       document.querySelector(".tests__meals-recommendations").insertAdjacentHTML("beforeend", recommendation);
       document.querySelector(".tests__meals-input").value = "";
+      // также выводим заголовок для этого списка "Вы рекумендуете"
+      e.target.closest(".tests__meals").querySelector(".tests__meals-subtitle").classList.add("active");
     }
   });
+
   // удаляем элементы при нажатии на крестик
   document.querySelector(".tests__meals-recommendations").addEventListener("click", function (e) {
     if (e.target.classList.contains("delete")) {
       e.target.parentElement.remove();
     }
   });
+
   // выбор анализов
   document.querySelector(".tests").addEventListener("click", function (e) {
     if (e.target.classList.contains("tests__analyzes-choosed")) {
@@ -849,14 +897,27 @@ if (document.querySelector(".tests__add")) {
       const recommendation = `<div class="tests__meals-item">${e.target.innerHTML}<span class="delete"></span></div>`;
       e.target.closest(".tests__meals-wrapper").querySelector(".tests__meals-recommendations").insertAdjacentHTML("beforeend", recommendation);
       e.target.closest(".tests__meals-choosed").querySelector(".tests__meals-input").value = "";
+      // также выводим заголовок для этого списка "Вы рекумендуете"
+      e.target.closest(".tests__meals").querySelector(".tests__meals-subtitle").classList.add("active");
     }
   });
+
   // добавляем Назначено при выборе ckeckbox
   document.querySelector(".tests__analyzes-btn").addEventListener("click", function (e) {
     document.querySelectorAll(".tests__analyzes-selected span").forEach((span) => span.remove());
     document.querySelectorAll(".tests__analyzes-checkbox:checked").forEach((box) => {
       document.querySelector(".tests__analyzes-selected").insertAdjacentHTML("beforeend", `<span>${box.parentElement.querySelector("span").innerHTML}</span>`);
     });
+  });
+
+  // добавляем переход на реккомендации при нажатии на болезни пациента
+  document.querySelector(".general__for-doctor").addEventListener("click", function (e) {
+    if (e.target.classList.contains("general__for-doctor-rec")) {
+      document.querySelector(".tabs__item.active").classList.remove("active");
+      document.querySelector(".content-block__inner.active").classList.remove("active");
+      document.querySelector(`.content-block__inner[data-tab="3"]`).classList.add("active");
+      document.querySelector(`.tabs__item[data-tab="3"]`).classList.add("active");
+    }
   });
   if (window.innerWidth < 768) {
     document.querySelectorAll(".tests__analyzes-list").forEach((list) => {
@@ -882,6 +943,8 @@ if (document.querySelector(".tests__add")) {
         slidesToScroll: 1,
         dots: false,
         swipe: false,
+        prevArrow: `<button type="button" class="slick-prev"><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.79387 1L2 8.89559L10 17" stroke="#FE9393" stroke-width="1.6" stroke-linecap="round"/></svg></button>`,
+        nextArrow: `<button type="button" class="slick-next"><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.20613 17L9 9.10441L0.999999 1" stroke="#FE9393" stroke-width="1.6" stroke-linecap="round"/></svg></button>`,
       });
     });
     $(".tests").slick({

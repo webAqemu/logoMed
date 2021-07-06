@@ -293,6 +293,7 @@ textarea::placeholder {
       background-image: none;
       background-color: black;
       &:hover {
+        background-color: black;
         background-image: none;
       }
     }

@@ -1850,8 +1850,16 @@
         ////////////////////////////////////////////////
         const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
         const curMonth = months.indexOf(document.querySelector(".datepicker--nav-title").innerHTML);
-        document.querySelector(`.datepicker--nav-action[data-action="prev"] span`).innerHTML = months[curMonth - 1];
-        document.querySelector(`.datepicker--nav-action[data-action="next"] span`).innerHTML = months[curMonth + 1];
+        if (curMonth == 0) {
+          document.querySelector(`.datepicker--nav-action[data-action="prev"] span`).innerHTML = months[11];
+        } else {
+          document.querySelector(`.datepicker--nav-action[data-action="prev"] span`).innerHTML = months[curMonth - 1];
+        }
+        if (curMonth == 11) {
+          document.querySelector(`.datepicker--nav-action[data-action="next"] span`).innerHTML = months[0];
+        } else {
+          document.querySelector(`.datepicker--nav-action[data-action="next"] span`).innerHTML = months[curMonth + 1];
+        }
         ////////////////////////////////////////////////
         if (!(this.opts.minDate || this.opts.maxDate) || !this.opts.disableNavWhenOutOfRange) return;
 
@@ -1904,8 +1912,16 @@
         //////////////////////////////////////
         const months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
         const curMonth = months.indexOf(document.querySelector(".datepicker--nav-title").innerHTML);
-        document.querySelector(`.datepicker--nav-action[data-action="prev"] span`).innerHTML = months[curMonth - 1];
-        document.querySelector(`.datepicker--nav-action[data-action="next"] span`).innerHTML = months[curMonth + 1];
+        if (curMonth == 0) {
+          document.querySelector(`.datepicker--nav-action[data-action="prev"] span`).innerHTML = months[11];
+        } else {
+          document.querySelector(`.datepicker--nav-action[data-action="prev"] span`).innerHTML = months[curMonth - 1];
+        }
+        if (curMonth == 11) {
+          document.querySelector(`.datepicker--nav-action[data-action="next"] span`).innerHTML = months[0];
+        } else {
+          document.querySelector(`.datepicker--nav-action[data-action="next"] span`).innerHTML = months[curMonth + 1];
+        }
         //////////////////////////////////////
       },
 

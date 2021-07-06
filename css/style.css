@@ -336,6 +336,7 @@ textarea::placeholder {
         background-image: none;
         background-color: black; }
         .btn--black:hover {
+          background-color: black;
           background-image: none; } }
   @media (max-width: 768px) {
     .btn--stroke-mobile {
@@ -458,35 +459,37 @@ textarea::placeholder {
 
 .burger {
   display: none;
-  height: 14px;
-  width: 16px;
+  height: 24px;
+  width: 26px;
   position: relative;
   z-index: 11;
   align-items: center;
   justify-content: center;
-  cursor: pointer; }
+  cursor: pointer;
+  padding: 5px; }
   .burger span {
     display: block;
-    width: 100%;
+    width: 16px;
     height: 2px;
     background-color: #68a9fe;
-    transition: all 0.3s; }
+    transition: all 0.3s;
+    pointer-events: none; }
   .burger::after {
     content: "";
     position: absolute;
-    width: 100%;
+    width: 16px;
     height: 2px;
-    top: 0;
-    left: 0;
+    top: 5px;
+    left: 5px;
     background-color: #68a9fe;
     transition: all 0.3s; }
   .burger::before {
     content: "";
     position: absolute;
-    width: 100%;
+    width: 16px;
     height: 2px;
-    bottom: 0;
-    left: 0;
+    bottom: 5px;
+    left: 5px;
     background-color: #68a9fe;
     transition: all 0.3s; }
   .burger--dark span, .burger--dark::before, .burger--dark::after {
@@ -498,10 +501,10 @@ textarea::placeholder {
   .burger.active span {
     opacity: 0; }
   .burger.active::after {
-    top: 6px;
+    top: 11px;
     transform: rotate(45deg); }
   .burger.active::before {
-    bottom: 6px;
+    bottom: 11px;
     transform: rotate(-45deg); }
   .burger.dark span, .burger.dark::after, .burger.dark::before {
     background-color: #444444; }
@@ -731,7 +734,7 @@ textarea::placeholder {
         justify-content: space-between; } }
   .specialists__item {
     position: relative;
-    margin: 0 10px; }
+    margin: 0 10px 10px; }
     .specialists__item:hover .specialists__hover {
       opacity: 1; }
     .specialists__item:hover .specialists__text {
@@ -863,7 +866,8 @@ textarea::placeholder {
   .about-specialists__title {
     color: #ffffff;
     max-width: 485px;
-    width: 100%; }
+    width: 100%;
+    margin-bottom: 40px; }
   .about-specialists__text {
     color: #ffffff;
     max-width: 615px;
@@ -995,7 +999,7 @@ textarea::placeholder {
     .about-specialists__text {
       color: #444444;
       text-align: center;
-      width: 380px;
+      width: 100%;
       margin: 0 auto; }
     .about-specialists__slider {
       width: calc(100% + 48px);
@@ -1097,6 +1101,8 @@ textarea::placeholder {
       align-items: center;
       justify-content: center;
       margin: 0; }
+      .steps__item + .steps__item {
+        margin-top: 20px; }
     .steps__icon {
       width: 100px; }
     .steps__text {
@@ -1388,7 +1394,7 @@ textarea::placeholder {
     width: 100%; }
   .login__back {
     display: inline-block;
-    font-size: 14px;
+    font-size: 16px;
     color: #68a9fe;
     margin-top: 30px;
     cursor: pointer; }
@@ -1690,7 +1696,8 @@ textarea::placeholder {
     left: 25px;
     transform: translateY(-50%);
     color: #7d7d7d;
-    transition: all 0.3s; }
+    transition: all 0.3s;
+    pointer-events: none; }
   .reg__form-line {
     position: relative; }
     @media (max-width: 768px) {
@@ -2290,13 +2297,12 @@ textarea::placeholder {
       z-index: 10;
       right: 0;
       top: 60px;
-      max-width: 340px;
-      width: 100%;
-      padding: 40px;
+      width: 340px;
+      padding: 30px;
       background-color: #ffffff;
       list-style: none;
       margin: 0;
-      box-shadow: 0px 2px 14px rgba(79, 79, 79, 0.5);
+      box-shadow: 0px 2px 9px rgba(124, 154, 242, 0.15);
       border-radius: 20px;
       border-top-right-radius: 0;
       opacity: 0; }
@@ -2499,7 +2505,8 @@ textarea::placeholder {
       height: 16px;
       width: 16px;
       border-radius: 100%;
-      background-color: #d6d6d6; }
+      background-color: #d6d6d6;
+      transition: all 0.3s; }
     .notification__item.active::before {
       background-color: #fe9393; }
     .notification__item:not(:first-child) {
@@ -2598,12 +2605,13 @@ textarea::placeholder {
     .tabs__list {
       width: calc(100% + 48px);
       padding-left: 14px;
-      margin: 50px -24px 0;
+      margin: 50px -24px 14px;
       margin-top: 50px;
-      overflow-x: scroll;
-      -ms-overflow-style: none; }
-      .tabs__list::-webkit-scrollbar {
-        width: 0; } }
+      /* overflow-x: scroll;
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+      -ms-overflow-style: none; */ } }
 
 .tabs__item {
   cursor: pointer;
@@ -2745,6 +2753,41 @@ textarea::placeholder {
   @media (max-width: 768px) {
     .general__subtitle {
       margin-bottom: 15px; } }
+  .general__for-doctor {
+    /* padding: 48px;
+    background-image: url(../img/general-for-doctor-bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center; */
+    max-width: 430px;
+    width: 100%;
+    margin-left: 34px; }
+    .general__for-doctor-wrapper {
+      background-image: url(../img/general-for-doctor-bg.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: center;
+      padding: 48px; }
+      .general__for-doctor-wrapper + .general__for-doctor-wrapper {
+        margin-top: 20px; }
+    .general__for-doctor-item {
+      margin: 24px -32px 0;
+      padding: 0 32px 24px; }
+      .general__for-doctor-item:nth-child(2) {
+        margin-top: 55px; }
+      .general__for-doctor-item:not(:last-child) {
+        border-bottom: 1px solid #f1f1f1; }
+    .general__for-doctor-disease {
+      margin-bottom: 10px; }
+    .general__for-doctor-date {
+      color: #7d7d7d;
+      margin-bottom: 8px; }
+    .general__for-doctor-rec {
+      color: #68a9fe; }
+    .general__for-doctor-text {
+      margin: 24px 0 60px; }
+    .general__for-doctor-img {
+      width: 100%; }
   .general__stat {
     display: flex;
     width: calc(100% + 30px);
@@ -2793,17 +2836,17 @@ textarea::placeholder {
       .general__symptoms {
         height: 0;
         overflow: hidden;
-        margin: 0 0 40px;
+        margin: 0 0 20px;
         padding-bottom: 0; }
         .general__symptoms.active {
-          padding-bottom: 45px;
+          padding-bottom: 24px;
           height: auto; } }
     .general__symptoms-subtitle {
       position: relative; }
       @media (max-width: 768px) {
         .general__symptoms-subtitle {
           cursor: pointer;
-          margin-bottom: 30px; }
+          margin-bottom: 24px; }
           .general__symptoms-subtitle::after {
             content: "";
             width: 18px;
@@ -2901,22 +2944,26 @@ textarea::placeholder {
     color: #7d7d7d;
     position: relative;
     pointer-events: none; }
+    @media (max-width: 768px) {
+      .general__checkbox-label {
+        padding-left: 32px; } }
     .general__checkbox-label::before {
       content: "";
       position: absolute;
       left: 0;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 7px;
       width: 16px;
       height: 16px;
       border: 1px solid #7d7d7d;
       transition: all 0.3s; }
+      @media (max-width: 768px) {
+        .general__checkbox-label::before {
+          top: 3px; } }
     .general__checkbox-label::after {
       content: "";
       position: absolute;
       left: 1px;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 8px;
       width: 13px;
       height: 13px;
       background-image: url(../img/symptom-checked-icon.svg);
@@ -2924,6 +2971,9 @@ textarea::placeholder {
       background-repeat: no-repeat;
       transition: all 0.3s;
       opacity: 0; }
+      @media (max-width: 768px) {
+        .general__checkbox-label::after {
+          top: 4px; } }
   .general__col {
     display: inline-block;
     max-width: 340px;
@@ -3081,8 +3131,7 @@ textarea::placeholder {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    width: calc(100% + 20px);
-    margin: 45px -10px 0; }
+    width: 100%; }
     @media (max-width: 768px) {
       .general__file-list {
         flex-direction: column;
@@ -3092,8 +3141,6 @@ textarea::placeholder {
   .general__file-item {
     display: flex;
     align-items: flex-end;
-    max-width: calc(50% - 20px);
-    width: 100%;
     margin: 0 10px 20px; }
     @media (max-width: 768px) {
       .general__file-item {
@@ -3247,9 +3294,12 @@ textarea::placeholder {
     right: 40px;
     width: 40px;
     height: 40px;
-    background-image: url(../img/tasks-calendar.svg); }
-    .tasks__dates:hover .tasks__datepicker {
-      display: block; }
+    background-image: url(../img/tasks-calendar.svg);
+    overflow: hidden; }
+    .tasks__dates:hover {
+      overflow: visible; }
+      .tasks__dates:hover .tasks__datepicker {
+        opacity: 1; }
   .tasks__empty {
     display: none;
     padding-bottom: 175px;
@@ -3301,7 +3351,8 @@ textarea::placeholder {
     right: -10px;
     padding-bottom: 53px;
     z-index: 10;
-    display: none; }
+    opacity: 0;
+    transition: opacity 0.3s; }
   .tasks__months {
     position: absolute;
     bottom: 0;
@@ -3402,7 +3453,9 @@ textarea::placeholder {
       padding-bottom: 40px;
       margin-top: 40px; }
       .tasks__all .tasks__item:nth-last-child(1) {
-        border: none; }
+        border: none;
+        padding-bottom: 0;
+        margin-bottom: 0; }
     .tasks__all .tasks__time {
       position: absolute;
       top: 0;
@@ -3594,6 +3647,11 @@ textarea::placeholder {
       margin-top: 45px; } }
 
 @media (max-width: 768px) {
+  .tests__btn.mobileOnly span {
+    display: block;
+    text-align: center; } }
+
+@media (max-width: 768px) {
   .tests__btn:not(:last-child) {
     margin-bottom: 15px; } }
 
@@ -3737,7 +3795,8 @@ textarea::placeholder {
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      transition: all 0.3s; }
+      transition: all 0.3s;
+      pointer-events: none; }
     .tests__meals-choosed.active::after {
       transform: rotate(180deg); }
   .tests__meals-input {
@@ -3788,14 +3847,18 @@ textarea::placeholder {
   .tests__meals-subtitle {
     font-size: 24px;
     margin-bottom: 30px;
-    padding: 5px 17px 0 0; }
+    padding: 5px 17px 0 0;
+    display: none; }
+    .tests__meals-subtitle.active {
+      display: block; }
     .tests__meals-subtitle:nth-child(1) {
       padding-top: 15px;
       border-top: 1px solid #68a9fe; }
     @media (max-width: 768px) {
       .tests__meals-subtitle {
         font-size: 17px;
-        padding: 0; } }
+        padding: 0;
+        margin-bottom: 16px; } }
   @media (max-width: 768px) {
     .tests__meals-recommendations {
       margin-bottom: 34px; } }
@@ -3861,6 +3924,9 @@ textarea::placeholder {
     margin-top: 60px;
     height: auto;
     overflow: visible; }
+    @media (max-width: 768px) {
+      .tests__analyzes.active {
+        margin-top: 16px; } }
   .tests__analyzes-title {
     margin-bottom: 25px; }
   .tests__analyzes-choosed {
@@ -3933,28 +3999,20 @@ textarea::placeholder {
       @media (max-width: 768px) {
         .tests__analyzes-list.active {
           padding-bottom: 30px;
-          margin-bottom: 40px; } }
+          margin-bottom: 30px; } }
     @media (max-width: 768px) {
       .tests__analyzes-list {
         display: block;
         position: relative; }
         .tests__analyzes-list .slick-arrow {
           position: absolute;
-          bottom: 5px;
-          width: 12px;
-          height: 20px;
-          background-image: url(../img/tests-analazys-arrow-red.svg);
-          background-repeat: no-repeat;
-          background-size: cover;
-          font-size: 0; }
+          bottom: -5px; }
         .tests__analyzes-list .slick-prev {
-          left: calc(50% - 36px);
-          transform: rotate(-180deg); }
+          left: calc(50% - 36px); }
         .tests__analyzes-list .slick-next {
           right: calc(50% - 36px); }
-        .tests__analyzes-list .slick-disabled {
-          transform: rotate(0deg);
-          background-image: url(../img/tests-analazys-arrow-grey.svg); } }
+        .tests__analyzes-list .slick-disabled path {
+          stroke: #d8d8d8; } }
   .tests__analyzes-item {
     width: calc(33.3333% - 10px);
     margin-right: 10px;
@@ -3983,7 +4041,8 @@ textarea::placeholder {
       position: relative;
       padding-left: 30px;
       color: #7d7d7d;
-      transition: all 0.3s; }
+      transition: all 0.3s;
+      display: inline-block; }
       .tests__analyzes-item span::before {
         content: " ";
         width: 16px;
@@ -4557,10 +4616,13 @@ textarea::placeholder {
 @media (max-width: 768px) {
   .recommendations__bud {
     width: 270px;
-    margin: 0 24px 0 0;
-    padding: 10px 32px 32px; }
+    margin: 0 16px 0 0;
+    padding: 10px 32px 32px;
+    opacity: 0.8; }
     .recommendations__bud-wrapper {
       margin-top: 36px; }
+      .recommendations__bud-wrapper.slick-active .bud {
+        opacity: 1; }
     .recommendations__bud .bud__img {
       width: 120px; }
     .recommendations__bud .bud__btn {
@@ -4576,9 +4638,23 @@ textarea::placeholder {
 
 .useful__buds {
   margin-top: 100px; }
+  @media (max-width: 768px) {
+    .useful__buds {
+      margin-top: 60px; } }
+
+@media (max-width: 768px) {
+  .useful__maybe {
+    display: none; } }
+
+@media (max-width: 768px) {
+  .useful .empty {
+    margin-bottom: 60px; } }
 
 .search {
   padding-top: 125px; }
+  @media (max-width: 768px) {
+    .search {
+      padding-bottom: 32px; } }
   .search__inner {
     display: flex;
     justify-content: space-between;
@@ -4684,6 +4760,9 @@ textarea::placeholder {
     @media (max-width: 768px) {
       .search__filters {
         display: none; } }
+  @media (max-width: 768px) {
+    .search__results {
+      margin-top: 48px; } }
   .search__subtitle {
     display: inline-block;
     margin: 0 40px 25px 0; }
@@ -4857,7 +4936,8 @@ textarea::placeholder {
       margin: 0 50px 15px 0; }
       @media (max-width: 768px) {
         .search__card-name {
-          margin: 16px 0 8px; } }
+          margin: 16px 0 8px;
+          text-align: center; } }
     .search__card-price {
       font-size: 32px;
       color: #68a9fe; }
@@ -4918,11 +4998,15 @@ textarea::placeholder {
           display: none; } }
     .search__card-more {
       display: inline-block;
-      color: #68a9fe;
-      margin-bottom: 50px; }
+      color: #68a9fe; }
       @media (max-width: 768px) {
         .search__card-more {
           display: none; } }
+    .search__card-btn {
+      margin-top: 50px; }
+      @media (max-width: 768px) {
+        .search__card-btn {
+          margin-top: 0; } }
   .search__sort {
     padding: 12px 0 22px;
     display: flex;
@@ -5054,7 +5138,7 @@ textarea::placeholder {
     margin: 10px 15px;
     background-color: white; }
   .articles__slide.slick-active .articles__tag {
-    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.110659); }
+    box-shadow: 0px 2px 9px rgba(124, 154, 242, 0.15); }
   .articles__recommendations {
     margin: 120px 0 100px; }
     @media (max-width: 768px) {
@@ -5136,7 +5220,7 @@ textarea::placeholder {
   background-position: center;
   background-size: 100% 100%;
   position: relative;
-  padding: 180px 40px 275px; }
+  padding: 180px 40px 150px; }
   @media (max-width: 768px) {
     .doctor__aside {
       display: none; } }
@@ -5828,7 +5912,8 @@ textarea::placeholder {
     position: relative;
     display: none; }
     .appointment__tabs-content.active {
-      display: block; }
+      display: block;
+      width: 100%; }
       @media (max-width: 768px) {
         .appointment__tabs-content.active {
           height: auto;
@@ -5884,6 +5969,8 @@ textarea::placeholder {
   position: absolute;
   left: 0;
   bottom: 20px; }
+  .appointment__btn--finish {
+    position: static; }
   @media (max-width: 768px) {
     .appointment__btn {
       width: 100%;
@@ -5976,11 +6063,9 @@ textarea::placeholder {
     .appointment__list-item input:checked + span,
     .appointment__list-item input:hover + span {
       color: #444444; }
-    .appointment__list-item input:checked + span::after,
-    .appointment__list-item input:hover + span::after {
+    .appointment__list-item input:checked + span::after {
       opacity: 1; }
-    .appointment__list-item input:checked + span::before,
-    .appointment__list-item input:hover + span::before {
+    .appointment__list-item input:checked + span::before {
       border-color: #fe9393; }
 
 .appointment__anotherInput {
@@ -6044,23 +6129,26 @@ textarea::placeholder {
     display: block;
     margin-top: 30px; }
 
-@media (max-width: 768px) {
-  .appointment__wrapper {
-    width: calc(100% + 48px);
-    margin: 0 -24px; }
-    .appointment__wrapper .slick-dots {
-      margin-top: -5px; }
-    .appointment__wrapper.hidden {
-      display: none; } }
+.appointment__wrapper {
+  display: flex; }
+  @media (max-width: 768px) {
+    .appointment__wrapper {
+      display: block;
+      width: calc(100% + 48px);
+      margin: 0 -24px; }
+      .appointment__wrapper .slick-dots {
+        margin-top: -5px; }
+      .appointment__wrapper.hidden {
+        display: none; } }
 
 .appointment__return {
   cursor: pointer;
-  position: absolute;
-  left: 250px;
-  top: calc(105% + 15px);
+  margin-left: 56px;
   color: #7d7d7d; }
   @media (max-width: 768px) {
     .appointment__return {
+      margin-left: 0;
+      position: absolute;
       left: auto;
       top: -40px;
       color: #68a9fe; } }
@@ -6068,7 +6156,8 @@ textarea::placeholder {
 .appointment__month {
   padding-right: 100px;
   border-right: 1px solid #f1f1f1;
-  display: inline-block; }
+  display: inline-block;
+  width: 50%; }
   @media (max-width: 768px) {
     .appointment__month {
       padding-right: 0;
@@ -6154,9 +6243,14 @@ textarea::placeholder {
     .datepicker-inline .appointment__wrapper {
       display: block; } }
 
+.appointment__btns {
+  display: flex;
+  align-items: center;
+  margin-top: 36px; }
+
 .appointment__days {
   display: inline-block;
-  width: 600px; }
+  width: 100%; }
   @media (max-width: 768px) {
     .appointment__days {
       width: 100%; } }
@@ -6167,11 +6261,6 @@ textarea::placeholder {
     margin-right: 40px;
     margin-bottom: 40px;
     position: relative; }
-    .appointment__days-time:nth-child(3n + 1) {
-      margin-right: 0; }
-      @media (max-width: 768px) {
-        .appointment__days-time:nth-child(3n + 1) {
-          margin-right: 25px; } }
     @media (max-width: 768px) {
       .appointment__days-time {
         margin-right: 25px; } }
@@ -6264,10 +6353,11 @@ textarea::placeholder {
 
 .contacts {
   padding: 220px 0 80px;
-  background: #f9fcff; }
+  background-color: #f9fcff; }
   @media (max-width: 768px) {
     .contacts {
-      padding: 135px 0 30px; } }
+      padding: 135px 0 30px;
+      background-color: #eff5fb; } }
   .contacts__title {
     margin-bottom: 25px; }
     @media (max-width: 768px) {
@@ -6443,10 +6533,11 @@ textarea::placeholder {
 
 .docs {
   padding: 220px 0 120px;
-  background: #f9fcff; }
+  background-color: #f9fcff; }
   @media (max-width: 768px) {
     .docs {
-      padding: 135px 0 30px; } }
+      padding: 135px 0 30px;
+      background-color: #eff5fb; } }
   .docs__title {
     margin-bottom: 70px; }
     @media (max-width: 768px) {
@@ -6544,9 +6635,10 @@ textarea::placeholder {
           width: 40px;
           height: 40px;
           bottom: auto;
-          top: 5px; } }
+          top: -10px; } }
     @media (max-width: 768px) {
       .docs__accordeon-file {
+        padding-bottom: 30px;
         margin-top: 30px;
         color: #7d7d7d; } }
 
@@ -6694,7 +6786,8 @@ textarea::placeholder {
       background-image: none;
       background-color: #fff;
       border-radius: 10px;
-      max-width: calc(100% - 48px); } }
+      max-width: calc(100% - 48px);
+      padding: 35px 16px; } }
   .popup.active {
     display: block; }
   .popup__slide {
@@ -6724,22 +6817,36 @@ textarea::placeholder {
     position: absolute;
     right: 40px;
     top: 50px;
-    width: 16px;
+    width: 17px;
     height: 16px;
     background-image: url(../img/popup-close.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     cursor: pointer; }
+    @media (max-width: 768px) {
+      .popup__close {
+        right: 16px;
+        top: 16px; } }
   .popup__symptom {
     display: inline-block;
     width: 40%;
     margin-bottom: 15px; }
+    @media (max-width: 768px) {
+      .popup__symptom {
+        width: calc(50% - 5px); } }
   .popup__btns {
     display: flex;
     align-items: center; }
+    @media (max-width: 768px) {
+      .popup__btns {
+        flex-wrap: wrap; } }
   .popup .btn--stroke {
     margin-left: 25px; }
+    @media (max-width: 768px) {
+      .popup .btn--stroke {
+        margin-left: 0;
+        margin-top: 16px; } }
   .popup__textarea {
     outline: none;
     width: 100%;
@@ -6767,8 +6874,9 @@ textarea::placeholder {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 11;
-  display: none; }
+  display: none;
+  background-color: rgba(84, 153, 222, 0.5);
+  backdrop-filter: blur(5px); }
   .layer.active {
     display: block; }
