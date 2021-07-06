@@ -368,8 +368,9 @@ if (document.querySelector(".appointment")) {
   });
   // активация календарей
   if (window.innerWidth < 768) {
+    document.querySelector(".appointment__btn--next[data-tab='6']").classList.remove("appointment__btn--next");
     document.querySelector(".appointment__date").addEventListener("click", function (e) {
-      if (e.target.classList.contains("appointment__btn--finish")) {
+      if (e.target.classList.contains("appointment__btn--finish") && document.querySelector(".-selected-")) {
         // показываем время
         if (document.querySelector(".appointment__month.active")) {
           document.querySelector(".appointment__month.active").classList.remove("active");
