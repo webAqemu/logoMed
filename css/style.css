@@ -1008,7 +1008,7 @@ textarea::placeholder {
       opacity: 1;
       margin: 0 24px; }
     .about-specialists__item {
-      padding: 30px;
+      padding: 30px 16px;
       background-image: url(../img/mobile/about-specialists-bg.png);
       background-repeat: no-repeat;
       min-height: 380px;
@@ -1032,7 +1032,8 @@ textarea::placeholder {
     .about-specialists__about {
       max-width: 305px;
       width: 100%;
-      margin: 20px auto 0; }
+      margin: 20px auto 0;
+      color: #444444; }
     .about-specialists .slick-dots {
       position: static;
       left: auto;
@@ -1102,12 +1103,13 @@ textarea::placeholder {
       justify-content: center;
       margin: 0; }
       .steps__item + .steps__item {
-        margin-top: 20px; }
+        margin-top: 30px; }
     .steps__icon {
       width: 100px; }
     .steps__text {
       text-align: center;
-      max-width: 280px; }
+      max-width: 280px;
+      margin-top: 16px; }
     .steps__desc {
       margin: 0;
       max-width: 100%; }
@@ -2567,7 +2569,7 @@ textarea::placeholder {
     display: flex; }
     @media (max-width: 768px) {
       .menu__btns {
-        margin-top: 65px; } }
+        margin-top: 40px; } }
   .menu__btn {
     position: relative;
     color: #ffffff;
@@ -2762,6 +2764,9 @@ textarea::placeholder {
     max-width: 430px;
     width: 100%;
     margin-left: 34px; }
+    @media (max-width: 768px) {
+      .general__for-doctor {
+        display: none; } }
     .general__for-doctor-wrapper {
       background-image: url(../img/general-for-doctor-bg.png);
       background-repeat: no-repeat;
@@ -2841,13 +2846,13 @@ textarea::placeholder {
         .general__symptoms.active {
           padding-bottom: 24px;
           height: auto; } }
-    .general__symptoms-subtitle {
+    .general__symptoms-title {
       position: relative; }
       @media (max-width: 768px) {
-        .general__symptoms-subtitle {
+        .general__symptoms-title {
           cursor: pointer;
           margin-bottom: 24px; }
-          .general__symptoms-subtitle::after {
+          .general__symptoms-title::after {
             content: "";
             width: 18px;
             height: 11px;
@@ -2859,8 +2864,24 @@ textarea::placeholder {
             background-size: cover;
             background-repeat: no-repeat;
             transition: all 0.3s; }
-          .general__symptoms-subtitle.active::after {
+          .general__symptoms-title.active::after {
             transform: rotate(180deg); } }
+      .general__symptoms-title + .general__symptoms-wrapper {
+        margin-top: 16px; }
+    .general__symptoms-wrapper + .general__symptoms-title {
+      border-top: 1px solid #d8d8d8;
+      padding-top: 16px; }
+    .general__symptoms-wrapper {
+      margin: 8px 0 24px;
+      display: flex;
+      flex-wrap: wrap; }
+    .general__symptoms-subtitle {
+      width: 100%; }
+    .general__symptoms-item {
+      color: #7d7d7d;
+      width: 100%; }
+      .general__symptoms-item:not(:last-child) {
+        margin-bottom: 8px; }
   .general__symptom {
     display: inline-block;
     max-width: 439px;
@@ -3028,6 +3049,9 @@ textarea::placeholder {
   .general__disease-text {
     max-width: 725px;
     margin: 32px 0 40px; }
+    @media (max-width: 768px) {
+      .general__disease-text {
+        margin: 0; } }
   .general__disease-new {
     display: block;
     margin-bottom: 25px; }
@@ -3153,8 +3177,9 @@ textarea::placeholder {
     margin: 40px 0 60px; }
   .general__history {
     padding-top: 25px;
-    margin-bottom: 15px;
-    border-top: 1px solid #f1f1f1; }
+    margin-bottom: 15px; }
+    .general__history:not(:first-child) {
+      border-top: 1px solid #f1f1f1; }
     .general__history-name {
       cursor: pointer;
       padding-bottom: 10px;
@@ -4059,7 +4084,7 @@ textarea::placeholder {
         content: " ";
         position: absolute;
         left: 1px;
-        top: 6px;
+        top: 8px;
         width: 13px;
         height: 11px;
         background-image: url(../img/symptom-checked-icon.svg);
@@ -5331,6 +5356,9 @@ textarea::placeholder {
     justify-content: center; }
     .doctor__info .slick-dots li + li {
       margin-left: 25px; }
+      @media (max-width: 768px) {
+        .doctor__info .slick-dots li + li {
+          margin-left: 0; } }
     .doctor__info .slick-dots .slick-active button {
       background-color: #fe9393; }
       @media (max-width: 768px) {
@@ -6263,7 +6291,8 @@ textarea::placeholder {
     position: relative; }
     @media (max-width: 768px) {
       .appointment__days-time {
-        margin-right: 25px; } }
+        margin-right: 25px;
+        margin-bottom: 25px; } }
     .appointment__days-time input {
       position: absolute;
       left: 0;
@@ -6314,7 +6343,7 @@ textarea::placeholder {
         left: 50%;
         transform: translateX(-50%);
         top: auto;
-        bottom: 90px; } }
+        bottom: 70px; } }
   .appointment__finish.active {
     display: block; }
   .appointment__finish-title {
@@ -6341,7 +6370,9 @@ textarea::placeholder {
   display: none; }
   @media (max-width: 768px) {
     .appointment__step-mobile {
-      display: inline-block; } }
+      display: inline-block;
+      height: 25px;
+      width: 100px; } }
 
 .appointment__back-mobile {
   color: #68a9fe;
@@ -6855,8 +6886,7 @@ textarea::placeholder {
     padding: 15px;
     color: #444444;
     font-size: 20px;
-    min-height: 170px;
-    height: fit-content;
+    height: 170px;
     resize: none;
     margin-bottom: 15px; }
     .popup__textarea::placeholder {
@@ -6867,6 +6897,28 @@ textarea::placeholder {
         font-size: 17px; }
         .popup__textarea:focus {
           border-color: #68a9fe; } }
+  .popup__mark {
+    margin-top: 40px; }
+  .popup__rating {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin: 16px auto 40px 0; }
+  .popup__star {
+    background-image: url(../img/star-24-grey.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s; }
+    .popup__star + .popup__star {
+      margin-right: 16px; }
+    .popup__star:hover,
+    .popup__star:hover ~ button, .popup__star.active,
+    .popup__star.active ~ button {
+      background-image: url(../img/star-24-yellow.svg); }
 
 .layer {
   position: fixed;

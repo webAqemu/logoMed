@@ -376,6 +376,8 @@ if (document.querySelector(".appointment")) {
       if (window.innerWidth < 768) {
         document.querySelector(".appointment__wrapper").classList.add("hidden");
         document.querySelector(".appointment__date-mobile").classList.add("active");
+        document.querySelector(".appointment__return").classList.add("daysOpen");
+        document.querySelector(".appointment__return").innerHTML = "Вернуться к выбору дня";
       } else {
         document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"`).classList.add("active");
       }
@@ -425,45 +427,46 @@ if (document.querySelector(".general")) {
   // загрузка файлов в регистрации пациента (2-ой шаг)
   const uploadFilesDisease = {}; // сюда сохраняем загруженные файлы
   let filesCount = 0;
-  document.querySelector("#file").addEventListener("change", function (e) {
-    filesCount++;
-    // 1) находим загруженный файл и добавляем его в наш объект
-    uploadFilesDisease[filesCount] = e.target.files[0];
-    console.log(uploadFilesDisease);
-    // 2) заплняем инпут в новом айтеме и в целом подргружаем новый айтем
-    const fileName = e.srcElement.files[0].name;
-    const filesList = document.querySelector(".general__file-list");
-    console.log(e);
-    const html = `
-  <div class="general__file-item" data-file="${filesCount}">
-      <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-      <span class="general__file-name"></span>
-  </div>
-  `;
-    filesList.insertAdjacentHTML("beforeend", html);
-    const filesInputs = document.querySelectorAll(".general__file-name");
-    filesInputs[filesInputs.length - 1].innerHTML = fileName;
-  });
+  if (document.querySelector("#file")) {
+    document.querySelector("#file").addEventListener("change", function (e) {
+      filesCount++;
+      // 1) находим загруженный файл и добавляем его в наш объект
+      uploadFilesDisease[filesCount] = e.target.files[0];
+      console.log(uploadFilesDisease);
+      // 2) заплняем инпут в новом айтеме и в целом подргружаем новый айтем
+      const fileName = e.srcElement.files[0].name;
+      const filesList = document.querySelector(".general__file-list");
+      console.log(e);
+      const html = `
+    <div class="general__file-item" data-file="${filesCount}">
+        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+        <span class="general__file-name"></span>
+    </div>
+    `;
+      filesList.insertAdjacentHTML("beforeend", html);
+      const filesInputs = document.querySelectorAll(".general__file-name");
+      filesInputs[filesInputs.length - 1].innerHTML = fileName;
+    });
+    // удаление файла из интерфейса и объекта
+    document.querySelector(".general__file-list").addEventListener("click", function (e) {
+      if (e.target.classList.contains("reg__file-icon")) {
+        const item = e.target.parentElement;
+        const itemID = e.target.parentElement.dataset.file;
+        delete uploadFilesSecondStep[itemID];
+        item.remove();
+      }
+    });
 
-  // удаление файла из интерфейса и объекта
-  document.querySelector(".general__file-list").addEventListener("click", function (e) {
-    if (e.target.classList.contains("reg__file-icon")) {
-      const item = e.target.parentElement;
-      const itemID = e.target.parentElement.dataset.file;
-      delete uploadFilesSecondStep[itemID];
-      item.remove();
-    }
-  });
-
-  // закрытие и создание новой истории по кнопкам
-  document.getElementById("newHistory").addEventListener("click", () => {
-    document.querySelector(".general__form--new").classList.add("active");
-    document.getElementById("cancelNewHistory").classList.add("active");
-  });
-  document.getElementById("cancelNewHistory").addEventListener("click", () => {
-    document.querySelector(".general__form--new").classList.remove("active");
-    document.getElementById("cancelNewHistory").classList.remove("active");
-  });
+    // закрытие и создание новой истории по кнопкам
+    document.getElementById("newHistory").addEventListener("click", () => {
+      document.querySelector(".general__form--new").classList.add("active");
+      document.getElementById("cancelNewHistory").classList.add("active");
+    });
+    document.getElementById("cancelNewHistory").addEventListener("click", () => {
+      document.querySelector(".general__form--new").classList.remove("active");
+      document.getElementById("cancelNewHistory").classList.remove("active");
+    });
+  }
 
   // аккордеон для историй болезни
   document.querySelectorAll(".general__history-name").forEach((history) => {
@@ -509,17 +512,18 @@ if (document.querySelector(".general")) {
       input.parentElement.querySelector(".general__save").classList.remove("btn--inactive");
     })
   );
-
-  // добавляем воозможность выбрать уточнение для жалобы (список)
-  document.querySelector(".general__symptoms").addEventListener("click", function (e) {
-    if (e.target.classList.contains("general__symptom-choose")) {
-      e.target.classList.toggle("active");
-    }
-    if (e.target.classList.contains("general__symptom-item")) {
-      e.target.closest(".general__symptom-choose").classList.toggle("active");
-      e.target.closest(".general__symptom-choose").querySelector("span").innerHTML = e.target.innerHTML;
-    }
-  });
+  if (document.querySelector(".general__symptoms")) {
+    // добавляем воозможность выбрать уточнение для жалобы (список)
+    document.querySelector(".general__symptoms").addEventListener("click", function (e) {
+      if (e.target.classList.contains("general__symptom-choose")) {
+        e.target.classList.toggle("active");
+      }
+      if (e.target.classList.contains("general__symptom-item")) {
+        e.target.closest(".general__symptom-choose").classList.toggle("active");
+        e.target.closest(".general__symptom-choose").querySelector("span").innerHTML = e.target.innerHTML;
+      }
+    });
+  }
 
   // переключение на все задачи по ссылке
   if (document.querySelector(".tasks__all")) {
@@ -792,36 +796,47 @@ if (document.querySelector(".doctor__info")) {
   });
   document.querySelectorAll(".slick-dots button").forEach((btn) => (btn.innerHTML = " "));
   // accordeon for doctor-info
-  document.querySelector(".doctor__tabs-btns").addEventListener("click", function (e) {
-    if (e.target.classList.contains("doctor__tabs-btn")) {
-      const infoTabId = e.target.dataset.info;
-      document.querySelector(".doctor__tabs-content.active").classList.remove("active");
-      document.querySelector(".doctor__tabs-btn.active").classList.remove("active");
+  if (document.querySelector(".doctor__tabs-btns")) {
+    document.querySelector(".doctor__tabs-btns").addEventListener("click", function (e) {
+      if (e.target.classList.contains("doctor__tabs-btn")) {
+        const infoTabId = e.target.dataset.info;
+        document.querySelector(".doctor__tabs-content.active").classList.remove("active");
+        document.querySelector(".doctor__tabs-btn.active").classList.remove("active");
 
-      e.target.classList.add("active");
-      document.querySelector(`.doctor__tabs-content[data-info="${infoTabId}"]`).classList.add("active");
-    }
-  });
-  // block or list view for doctor__clients
-  document.querySelector(".doctor__clients-view").addEventListener("click", function (e) {
-    if (e.target.classList.contains("block")) {
-      e.target.classList.remove("active");
-      document.querySelector(".doctor__clients-view .list").classList.add("active");
-      document.querySelectorAll(".doctor__clients-item").forEach((client) => {
-        client.classList.add("block");
-      });
-    }
-    if (e.target.classList.contains("list")) {
-      e.target.classList.remove("active");
-      document.querySelector(".doctor__clients-view .block").classList.add("active");
-      document.querySelectorAll(".doctor__clients-item").forEach((client) => {
-        client.classList.remove("block");
-      });
-    }
-  });
-  document.querySelector(".doctor__requests").addEventListener("click", function (e) {
-    if (e.target.classList.contains("doctor__requests-more")) {
-      e.target.closest(".doctor__requests-text").innerHTML = "Здравствуйте! Беспокоит сильная боль в желудке каждое утро. Рацион у меня обыкновенный, никаких особых препаратов не принимаю, год назад была операция, а сейчас все топчик! :)";
+        e.target.classList.add("active");
+        document.querySelector(`.doctor__tabs-content[data-info="${infoTabId}"]`).classList.add("active");
+      }
+    });
+
+    // block or list view for doctor__clients
+    document.querySelector(".doctor__clients-view").addEventListener("click", function (e) {
+      if (e.target.classList.contains("block")) {
+        e.target.classList.remove("active");
+        document.querySelector(".doctor__clients-view .list").classList.add("active");
+        document.querySelectorAll(".doctor__clients-item").forEach((client) => {
+          client.classList.add("block");
+        });
+      }
+      if (e.target.classList.contains("list")) {
+        e.target.classList.remove("active");
+        document.querySelector(".doctor__clients-view .block").classList.add("active");
+        document.querySelectorAll(".doctor__clients-item").forEach((client) => {
+          client.classList.remove("block");
+        });
+      }
+    });
+
+    document.querySelector(".doctor__requests").addEventListener("click", function (e) {
+      if (e.target.classList.contains("doctor__requests-more")) {
+        e.target.closest(".doctor__requests-text").innerHTML = "Здравствуйте! Беспокоит сильная боль в желудке каждое утро. Рацион у меня обыкновенный, никаких особых препаратов не принимаю, год назад была операция, а сейчас все топчик! :)";
+        e.target.remove();
+      }
+    });
+  }
+  // смотерть весь отзыв
+  document.querySelector(".doctor__reviews").addEventListener("click", function (e) {
+    if (e.target.classList.contains("doctor__reviews-more")) {
+      e.target.closest(".doctor__reviews-item").querySelector(".doctor__reviews-text").innerHTML = "Здравствуйте! Хочу выразить огромную благодарность талантливейшему врачу Елене Петровне! С самого начала Елена Петровна очень ответственно отнеслась к моей проблеме по серьезке и теперь все топчик :)";
       e.target.remove();
     }
   });
@@ -866,6 +881,8 @@ if (document.querySelector(".tests__add")) {
   document.querySelector(".tests").addEventListener("click", function (e) {
     if (e.target.classList.contains("tests__analyzes-choosed")) {
       e.target.querySelector("ul").classList.toggle("active");
+    } else {
+      document.querySelectorAll(".tests__analyzes-choosed ul.active").forEach((list) => list.classList.remove("active"));
     }
     if (e.target.classList.contains("tests__add")) {
       e.target.classList.add("active");
@@ -995,9 +1012,19 @@ if (document.querySelector(".appointment")) {
     }
     if (e.target.classList.contains("appointment__return")) {
       if (window.innerWidth < 768) {
-        document.querySelector(".appointment__date-mobile").classList.remove("active");
-        document.querySelector(".appointment__wrapper").classList.remove("hidden");
-        document.querySelector(".appointment__date-title").innerHTML = "Свободные дни для записи";
+        if (e.target.classList.contains("daysOpen")) {
+          document.querySelector(".appointment__date-mobile").classList.remove("active");
+          document.querySelector(".appointment__wrapper").classList.remove("hidden");
+          document.querySelector(".appointment__date-title").innerHTML = "Свободные дни для записи";
+          e.target.innerHTML = "Вернуться к анкете";
+          e.target.classList.remove("daysOpen");
+        } else {
+          document.querySelector(".appointment__tabs").classList.add("active");
+          document.querySelector(".appointment__date").classList.remove("active");
+          document.querySelector(".appointment__tabs-btn[data-tab='5']").classList.add("active");
+          document.querySelector(".appointment__tabs-content[data-tab='5']").classList.add("active");
+          document.querySelector(".appointment__month.active").classList.remove("active");
+        }
       } else {
         document.querySelector(".appointment__tabs").classList.add("active");
         document.querySelector(".appointment__date").classList.remove("active");
@@ -1035,7 +1062,7 @@ if (document.querySelector(".appointment")) {
   }
 }
 
-if (document.querySelector(".contacts__contact") || document.querySelector(".popup")) {
+if (document.querySelector(".contacts__form-choose")) {
   document.querySelector(".contacts__form-choose").addEventListener("click", function (e) {
     document.querySelector(".contacts__form-choose").classList.toggle("active");
     document.querySelector(".contacts__form-list").classList.toggle("active");
@@ -1077,6 +1104,17 @@ if (document.querySelector(".popup")) {
     document.querySelector(".popup__notice").classList.remove("active");
     document.querySelector(".layer").classList.remove("active");
   });
+
+  if (document.querySelector(".popup__rating")) {
+    document.querySelector(".popup__rating").addEventListener("click", function (e) {
+      if (e.target.classList.contains("popup__star")) {
+        if (document.querySelector(".popup__star.active")) {
+          document.querySelectorAll(".popup__star.active").forEach((star) => star.classList.remove("active"));
+        }
+        e.target.classList.add("active");
+      }
+    });
+  }
 }
 
 if (document.querySelector(".articles")) {

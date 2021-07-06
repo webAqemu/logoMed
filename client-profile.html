@@ -160,7 +160,7 @@
                 </p>
               </div>
               <div class="general__tabs-content" data-general="2">
-                <div class="general__subtitle general__symptoms-subtitle subtitle active" data-symptom="1">Симптомы</div>
+                <div class="general__subtitle general__symptoms-title subtitle active" data-symptom="1">Симптомы</div>
                 <form action="" class="general__symptoms active" data-symptom="1">
                   <div class="general__symptom">
                     <input type="checkbox" class="general__checkbox" />
@@ -248,7 +248,7 @@
                     <label for="" class="general__checkbox-label">Одышка, сердцебиение</label>
                   </div>
                 </form>
-                <div class="general__subtitle general__symptoms-subtitle subtitle" data-symptom="2">Мужское здоровье</div>
+                <div class="general__subtitle general__symptoms-title subtitle" data-symptom="2">Мужское здоровье</div>
                 <form action="" class="general__symptoms general__symptoms--man" data-symptom="2">
                   <div class="general__symptom">
                     <input type="checkbox" class="general__checkbox" />
@@ -263,7 +263,7 @@
                     <label for="" class="general__checkbox-label">Проблемы с эррекцией во время полового акта</label>
                   </div>
                 </form>
-                <div class="general__subtitle general__symptoms-subtitle subtitle" data-symptom="3">Прочее</div>
+                <div class="general__subtitle general__symptoms-title subtitle" data-symptom="3">Прочее</div>
                 <form action="" class="general__symptoms general__symptoms--more" data-symptom="3">
                   <div class="general__col">
                     <label for="" class="general__input-label">Аллергические реакции</label>
@@ -989,5 +989,34 @@
         </div>
       </div>
     </main>
+    <div class="layer active"></div>
+    <div class="popup popup__notice active">
+      <div class="popup__slide active" data-popup="1">
+        <div class="popup__title subtitle">Отзыв для врача</div>
+        <p class="popup__text">Врач хирург Панова Е. А</p>
+        <div class="popup__mark">
+          <p class="popup__text">Ваша оценка</p>
+          <div class="popup__rating">
+            <button class="popup__star" data-rating="5"></button>
+            <button class="popup__star" data-rating="4"></button>
+            <button class="popup__star" data-rating="3"></button>
+            <button class="popup__star" data-rating="2"></button>
+            <button class="popup__star" data-rating="1"></button>
+          </div>
+        </div>
+        <textarea class="popup__textarea" placeholder="Комментарий"></textarea>
+        <button class="popup__btn btn" data-popup="1">
+          <span>Отправить</span>
+        </button>
+      </div>
+      <div class="popup__slide popup__slide--last" data-popup="2">
+        <div class="popup__title subtitle">Спасибо за отзыв!</div>
+        <p class="popup__text">После модерации отзыв появится на личной странице врача!</p>
+        <button class="popup__btn btn" data-popup="3">
+          <span>Понятно!</span>
+        </button>
+      </div>
+      <div class="popup__close"></div>
+    </div>
   </body>
 </html>
