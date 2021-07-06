@@ -367,38 +367,72 @@ if (document.querySelector(".appointment")) {
     weekends: [0],
   });
   // активация календарей
-  document.querySelector(".appointment__wrapper").addEventListener("mousedown", function (e) {
-    if (e.target.classList.contains("datepicker--cell-day")) {
-      // показываем время
-      if (document.querySelector(".appointment__month.active")) {
-        document.querySelector(".appointment__month.active").classList.remove("active");
-      }
-      if (window.innerWidth < 768) {
+  if (window.innerWidth < 768) {
+    document.querySelector(".appointment__date").addEventListener("click", function (e) {
+      if (e.target.classList.contains("appointment__btn--finish")) {
+        // показываем время
+        if (document.querySelector(".appointment__month.active")) {
+          document.querySelector(".appointment__month.active").classList.remove("active");
+        }
         document.querySelector(".appointment__wrapper").classList.add("hidden");
         document.querySelector(".appointment__date-mobile").classList.add("active");
         document.querySelector(".appointment__return").classList.add("daysOpen");
         document.querySelector(".appointment__return").innerHTML = "Вернуться к выбору дня";
-      } else {
-        document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"`).classList.add("active");
+        // заполняем нужной датой
+        const day = document.querySelector(".-selected-");
+        const monthsList = ["Янаварь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+        const monthsListMobile = ["Янаваря", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
+        const daysOfWeekList = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+        const month = monthsList[+day.dataset.month];
+        const monthMobile = monthsListMobile[+day.dataset.month];
+        const dayOfWeek = daysOfWeekList[+day.dataset.date % 7];
+        document.querySelector(".appointment__date-title").innerHTML = "Свободное время " + day.dataset.date + " " + monthMobile + ", " + dayOfWeek.toLowerCase();
+        document.querySelectorAll(".appointment__days-time input").forEach((input) => {
+          if (input.checked) {
+            document.querySelector(".appointment__tabs").classList.remove("active");
+            document.querySelector(".appointment__date").classList.remove("active");
+            document.querySelector(".appointment__finish").classList.add("active");
+            document.querySelector(".appointment__finish-title").classList.add("active");
+            document.querySelector(".appointment__preview").classList.remove("active");
+            document.querySelector(".appointment").classList.add("appointment--blue");
+          }
+        });
       }
-      // заполняем нужной датой
-      const day = e.target.innerHTML;
-      const monthsList = ["Янаварь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-      const monthsListMobile = ["Янаваря", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
-      const daysOfWeekList = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
-      const month = monthsList[+e.target.dataset.month];
-      const monthMobile = monthsListMobile[+e.target.dataset.month];
-      const dayOfWeek = daysOfWeekList[+e.target.dataset.date % 7];
-      if (window.innerWidth < 768) {
-        document.querySelector(".appointment__date-title").innerHTML = "Свободное время " + day + " " + monthMobile + ", " + dayOfWeek.toLowerCase();
-      } else {
-        document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"] .appointment__days-title`).innerHTML = month + " " + day + ", " + dayOfWeek;
+    });
+  } else {
+    document.querySelector(".appointment__wrapper").addEventListener("mousedown", function (e) {
+      if (e.target.classList.contains("datepicker--cell-day")) {
+        // показываем время
+        if (document.querySelector(".appointment__month.active")) {
+          document.querySelector(".appointment__month.active").classList.remove("active");
+        }
+        if (window.innerWidth < 768) {
+          document.querySelector(".appointment__wrapper").classList.add("hidden");
+          document.querySelector(".appointment__date-mobile").classList.add("active");
+          document.querySelector(".appointment__return").classList.add("daysOpen");
+          document.querySelector(".appointment__return").innerHTML = "Вернуться к выбору дня";
+        } else {
+          document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"`).classList.add("active");
+        }
+        // заполняем нужной датой
+        const day = e.target.innerHTML;
+        const monthsList = ["Янаварь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+        const monthsListMobile = ["Янаваря", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
+        const daysOfWeekList = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+        const month = monthsList[+e.target.dataset.month];
+        const monthMobile = monthsListMobile[+e.target.dataset.month];
+        const dayOfWeek = daysOfWeekList[+e.target.dataset.date % 7];
+        if (window.innerWidth < 768) {
+          document.querySelector(".appointment__date-title").innerHTML = "Свободное время " + day + " " + monthMobile + ", " + dayOfWeek.toLowerCase();
+        } else {
+          document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"] .appointment__days-title`).innerHTML = month + " " + day + ", " + dayOfWeek;
+        }
+        document.querySelectorAll(".appointment__days-time input").forEach((input) => {
+          input.checked = false;
+        });
       }
-      document.querySelectorAll(".appointment__days-time input").forEach((input) => {
-        input.checked = false;
-      });
-    }
-  });
+    });
+  }
 
   if (window.innerWidth < 768) {
     $(".appointment__wrapper").slick({
@@ -1015,6 +1049,9 @@ if (document.querySelector(".appointment")) {
         if (e.target.classList.contains("daysOpen")) {
           document.querySelector(".appointment__date-mobile").classList.remove("active");
           document.querySelector(".appointment__wrapper").classList.remove("hidden");
+          document.querySelectorAll(".appointment__days-time input").forEach((input) => {
+            input.checked = false;
+          });
           document.querySelector(".appointment__date-title").innerHTML = "Свободные дни для записи";
           e.target.innerHTML = "Вернуться к анкете";
           e.target.classList.remove("daysOpen");
