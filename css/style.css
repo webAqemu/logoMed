@@ -737,9 +737,16 @@ textarea::placeholder {
     margin: 0 10px 10px; }
     .specialists__item:hover .specialists__hover {
       opacity: 1; }
+      @media (max-width: 768px) {
+        .specialists__item:hover .specialists__hover {
+          opacity: 0; } }
     .specialists__item:hover .specialists__text {
       left: 50%;
       transform: translateX(-50%); }
+      @media (max-width: 768px) {
+        .specialists__item:hover .specialists__text {
+          left: 24px;
+          transform: translateX(0); } }
     @media (max-width: 768px) {
       .specialists__item {
         margin: 0 0 30px;
@@ -1637,7 +1644,7 @@ textarea::placeholder {
         width: fit-content;
         margin: 0;
         bottom: 160px;
-        left: 150px; } }
+        left: 130px; } }
   .reg__input {
     color: #444444;
     font-size: 20px;

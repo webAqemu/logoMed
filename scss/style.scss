@@ -486,10 +486,17 @@
     margin: 0 10px 10px;
     &:hover .specialists__hover {
       opacity: 1;
+      @include r {
+        opacity: 0;
+      }
     }
     &:hover .specialists__text {
       left: 50%;
       transform: translateX(-50%);
+      @include r {
+        left: 24px;
+        transform: translateX(0);
+      }
     }
 
     @include r {
@@ -1667,7 +1674,7 @@
           width: fit-content;
           margin: 0;
           bottom: 160px;
-          left: 150px;
+          left: 130px;
         }
       }
     }
