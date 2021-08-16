@@ -16,18 +16,37 @@
   <body>
     <header class="header">
       <div class="container">
-        <div class="header__inner">
-          <a class="logo" href="./index.html">
-            <img src="./img/logo-white.svg" alt="logo" class="logo__icon" />
+        <div class="header__row">
+          <a class="header__logo logo" href="./index.html">
+            <img src="./img/logo.svg" alt="logo" class="logo__icon" />
           </a>
-          <input type="text" class="header__search" placeholder="Поиск по сайту" />
-          <nav class="header__nav">
-            <ul class="header__list">
-              <li class="header__item"><a href="./search.html" class="header__link title-h3">Поиск врача</a></li>
-              <li class="header__item"><a href="./client-profile.html" class="header__link title-h3">Мои задачи</a></li>
+          <form action="" class="header__form">
+            <input type="text" class="header__input" placeholder="Поиск по сайту" />
+            <button class="header__btn"></button>
+          </form>
+          <div class="header__profile">
+            <img src="./img/profile-img.png" alt="Avatar" class="header__img">
+            <div class="header__name">Константинопольский К. К.</div>
+
+            <ul class="header__profile-menu">
+              <li class="header__profile-item"><a href="./client-profile.html" class="header__link">Мой профиль</a></li>
+              <li class="header__profile-item"><a href="./client-profile.html" class="header__link">Мои анализы</a></li>
+              <li class="header__profile-item"><a href="./client-profile.html" class="header__link">Полезное</a></li>
+              <li class="header__profile-item"><a href="./client-profile.html" class="header__link">Редактировать профиль</a></li>
+              <li class="header__profile-item"><button class="header__profile-link">Выйти</button></li>
             </ul>
-          </nav>
-          <button class="notification__open mobileOnly"></button>
+          </div>
+        </div>
+        <nav class="header__nav">
+          <ul class="header__menu">
+            <li class="header__item"><a href="./search-filters.html" class="header__link">Каталог врачей</a></li>
+            <li class="header__item"><a href="./client-profile.html" class="header__link">Мои задачи</a></li>
+            <li class="header__item"><a href="./articles.html" class="header__link">Статьи</a></li>
+            <li class="header__item"><a href="./about.html" class="header__link">О сервисе</a></li>
+            <li class="header__item"><a href="./contacts.html" class="header__link">Контакты</a></li>
+          </ul>
+        </nav>
+          <!-- <button class="notification__open mobileOnly"></button>
           <div class="notification mobileOnly">
             <div class="notification__title title-h3">Уведомления</div>
             <button class="notification__close"></button>
@@ -54,26 +73,11 @@
             </ul>
 
             <button class="notification__cancel">Отметить все как прочитанное</button>
-          </div>
+          </div> 
           <button class="header__burger burger burger--main burger--white">
             <span></span>
-          </button>
-          <nav class="header__profile">
-            <div class="header__img" style="background-image: url(./img/profile-img.png)"></div>
-            <a href="./client-profile.html" class="header__name title-h3">Константинопольский К. К.</a>
-            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 1L6.5 7L12 1" stroke="white" stroke-linecap="round" />
-            </svg>
-            <ul class="header__profile-menu">
-              <li class="header__profile-item"><a href="./about.html" class="header__profile-link">О клинике</a></li>
-              <li class="header__profile-item"><a href="./articles.html" class="header__profile-link">Статьи</a></li>
-              <li class="header__profile-item"><a href="./contacts.html" class="header__profile-link">Контакты клиники</a></li>
-              <li class="header__profile-item"><a href="./docs.html" class="header__profile-link">Лицензии и документы</a></li>
-              <li class="header__profile-item"><a href="#" class="header__profile-link">Редактировать профиль</a></li>
-              <li class="header__profile-item"><a href="./login.html" class="header__profile-link">Выйти</a></li>
-            </ul>
-          </nav>
-        </div>
+          </button> -->
+        
       </div>
     </header>
     <div class="layer-header"></div>
@@ -126,38 +130,126 @@
                   </li>
                   <li class="general__stat">
                     <div class="general__stat-name">Рост, вес</div>
-                    <div class="general__stat-value">179/89 нормальный ИМТ</div>
+                    <input class="general__stat-input" type="text" value="179/89" />
                   </li>
                   <li class="general__stat">
                     <div class="general__stat-name">Окружность талии</div>
-                    <div class="general__stat-value">89</div>
+                    <input class="general__stat-input" type="text" value="89" />
                   </li>
                   <li class="general__stat">
                     <div class="general__stat-name">Окружность бедер</div>
-                    <div class="general__stat-value">96</div>
+                    <input class="general__stat-input" type="text" value="96" />
                   </li>
                   <li class="general__stat">
                     <div class="general__stat-name">Активность</div>
-                    <div class="general__stat-value">Средняя</div>
+                    <div class="general__stat-value general__stat-value--list">
+                      <span class="general__stat-choosed">Средняя</span>
+                      <ul class="general__stat-list">
+                        <li class="general__stat-var">Низкая</li>
+                        <li class="general__stat-var">Средняя</li>
+                        <li class="general__stat-var">Высокая</li>
+                      </ul>
+                    </div>
                   </li>
                   <li class="general__stat">
                     <div class="general__stat-name">Сон</div>
-                    <div class="general__stat-value">7 часов с 23:30</div>
+                    <div class="general__stat-value general__stat-value--list">
+                      <span class="general__stat-choosed">Выберите из списка</span>
+                      <ul class="general__stat-list">
+                        <li class="general__stat-var">6 часов</li>
+                        <li class="general__stat-var">7 часов</li>
+                        <li class="general__stat-var">8 часов</li>
+                      </ul>
+                    </div>
                   </li>
                   <li class="general__stat">
                     <div class="general__stat-name">Вредные привычки</div>
-                    <div class="general__stat-value">Курение редко</div>
+                    <input class="general__stat-input general__stat-input--full" type="text" placeholder="Введите через запятую" value="Курение"/>
                   </li>
                   <li class="general__stat">
                     <div class="general__stat-name">Прием препаратов</div>
-                    <div class="general__stat-value">Канефрон, Панкреатин</div>
+                    <input class="general__stat-input general__stat-input--full" type="text" placeholder="Препараты через запятую" value="Аскорбиновая, кислота"/>
                   </li>
                 </ul>
-                <div class="general__comment subtitle">Комментарий</div>
-                <p class="general__paragraph">
-                  Чувствую постоянную усталость. Все болит, ничего не помогает! <br />
-                  Проекция на подвижные оси характеризует курс. Курс нелинеен. Будем, как и раньше, предполагать, что погрешность изготовления зависима. Дифференциальное уравнение участвует в погрешности определения курса меньше, чем прецизионный гироскопический стабилизатоор.
-                </p>
+                <button class="general__change">Редактировать</button>
+              </div>
+              <div class="profile">
+                <div class="profile__img" style="background-image: url(./img/profile-img.png)">
+                  <div class="profile__change">
+
+                    <input type="file"></input=>
+                  </div>
+                </div>
+                <div class="profile__wrapper">
+                  <div class="profile__sex">
+                    Пол
+                    <div class="profile__option">
+                      <input type="radio" name="sex" id="" class="profile__radio" />
+                      <span class="profile__male">М</span>
+                    </div>
+                    <div class="profile__option">
+                      <input type="radio" name="sex" id="" class="profile__radio" />
+                      <span class="profile__female">Ж</span>
+                    </div>
+                  </div>
+                  <div class="profile__msgs">
+                    <input type="checkbox" name="messages" id="" />
+                    <label for="messages">Хочу получать рассылку</label>
+                  </div>
+                </div>
+                <div class="profile__row">
+                  <div class="profile__input profile__input--full">
+                    <input type="text" id="name" value="Константинопольский Константин Константинович" required />
+                    <label for="name">ФИО</label>
+                  </div>
+                </div>
+                <div class="profile__row">
+                  <div class="profile__input">
+                    <input type="password" id="oldPassword" value="12345" />
+                    <label for="oldPassword">Текущий пароль</label>
+                    <button class="profile__show"></button>
+                  </div>
+                </div>
+                <div class="profile__row">
+                  <div class="profile__input">
+                    <input type="text" id="newPassowrd" required />
+                    <label for="newPassowrd">Новый пароль</label>
+                  </div>
+                  <div class="profile__input">
+                    <input type="text" id="newPassowrdRepeat" required />
+                    <label for="newPassowrdRepeat">Повторите новый пароль</label>
+                  </div>
+                </div>
+                <div class="profile__row">
+                  <div class="profile__input">
+                    <input type="email" id="email" value="konst.konst@gmail.com" />
+                    <label for="email">E-mail</label>
+                  </div>
+                </div>
+                <div class="profile__row">
+                  <div class="profile__input">
+                    <input type="email" id="emailNew" value="k.konst@gmail.com" required />
+                    <label for="emailNew">Новый E-mail</label>
+                  </div>
+                  <div class="profile__input">
+                    <input type="email" id="emailNewRepeat" required />
+                    <label for="emailNewRepeat">Повторите новый E-mail</label>
+                  </div>
+                </div>
+                <div class="profile__row">
+                  <div class="profile__input">
+                    <input type="phone" id="phone" value="+7 926 567 89 90" />
+                    <label for="phone">Телефон</label>
+                  </div>
+                </div>
+                <div class="profile__btns">
+                  <button class="profile__btn btn" type="submit">
+                    <span>Сохранить</span>
+                  </button>
+                  <button class="profile__btn profile__btn--cancel btn btn--stroke" type="submit">
+                    <span>Отменить</span>
+                  </button>
+                </div>
               </div>
               <div class="general__tabs-content" data-general="2">
                 <div class="general__subtitle general__symptoms-title subtitle active" data-symptom="1">Симптомы</div>
@@ -989,8 +1081,26 @@
         </div>
       </div>
     </main>
-    <div class="layer active"></div>
-    <div class="popup popup__notice active">
+    <footer class="footer">
+      <div class="container">
+        <a class="footer__logo logo" href="./index.html">
+          <img src="./img/logo-white.svg" alt="logo" class="logo__icon" />
+        </a>
+        <ul class="footer__menu">
+          <li class="footer__item"><a href="./search-filters.html" class="footer__link" link="#">Каталог врачей</a></li>
+          <li class="footer__item"><a href="./about.html" class="footer__link" link="#">О сервисе</a></li>
+          <li class="footer__item"><a href="./articles.html" class="footer__link" link="#">Статьи</a></li>
+          <li class="footer__item"><a href="./contacts.html" class="footer__link" link="#">Контакты</a></li>
+        </ul>
+        <div class="footer__copy">
+          <a href="./docs.html" class="footer__police">Политика конфиденциальности</a>
+          <a href="./docs.html" class="footer__docs">Лицензии и документы</a>
+          <div class="footer__text">© ООО «Logo.med» 2021, все права защищены</div>
+        </div>
+      </div>
+    </footer>
+    <div class="layer"></div>
+    <div class="popup popup__notice">
       <div class="popup__slide active" data-popup="1">
         <div class="popup__title subtitle">Отзыв для врача</div>
         <p class="popup__text">Врач хирург Панова Е. А</p>

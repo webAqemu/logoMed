@@ -2443,241 +2443,132 @@
   top: 0;
   left: 0;
   width: 100%;
-  & .logo {
-    display: flex;
-  }
+  padding: 40px;
+  background-color: white;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 
-  &__inner {
-    margin-top: 65px;
+  &__row {
     display: flex;
     align-items: center;
-    @include r {
-      justify-content: space-between;
-    }
+    padding-bottom: 40px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #bdbdbd;
   }
 
-  &__search {
-    background-color: transparent;
-    box-shadow: none;
-    border: none;
-    color: $white;
-    padding: 16px 25px 18px;
-    width: 265px;
-    margin: 0 0px 0 40px;
-    border: 1px solid $white;
+  &__logo {
+    margin-right: 48px;
+  }
+
+  &__logo img {
+    width: 151px;
+  }
+
+  &__form {
+    max-width: 585px;
+    width: 100%;
+    position: relative;
+  }
+
+  &__input {
+    color: $text;
+    padding: 4px 25px 8px;
+    width: 100%;
+    border: 1px solid #bdbdbd;
     border-radius: 10px;
     font-size: 20px;
     outline: none;
+
     &::placeholder {
-      color: $white;
+      color: $light-text;
     }
-    @include r {
-      display: none;
-    }
-  }
 
-  &__nav {
-    margin: 0 auto;
-    @include r {
-      display: none;
+    &:focus {
+      border-color: $blue;
     }
   }
 
-  &__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
-
-  &__item + &__item {
-    margin-left: 40px;
-  }
-
-  &__link {
-    color: $white;
+  &__btn {
+    position: absolute;
+    right: 15px;
+    top: calc(50% - 8px);
+    background-image: url(../img/searching-icon-header.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 16.3px;
+    height: 16.3px;
   }
 
   &__profile {
-    position: relative;
+    margin-left: auto;
     display: flex;
     align-items: center;
-    padding-bottom: 10px;
-    margin-bottom: -10px;
-    cursor: pointer;
-    overflow: hidden;
-    @include r {
-      flex-direction: column;
-      align-items: flex-start;
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 65px 30px;
-      min-height: 500px;
-      height: 100vh;
-      background-color: white;
-      width: 310px;
-      z-index: 10;
-      svg {
-        display: none;
-      }
-      transition: all 0.3s;
-      transform: translateX(100%);
-    }
-    &.active {
-      transform: translateX(0);
-    }
-    &:hover {
-      overflow: visible;
-      & .header__profile-menu {
-        opacity: 1;
-        transition: all 0.3s;
-      }
+    position: relative;
+
+    &:hover &-menu {
+      opacity: 1;
+      pointer-events: inherit;
     }
 
     &-menu {
       position: absolute;
-      z-index: 10;
+      top: 100%;
       right: 0;
-      top: 60px;
-      width: 340px;
-      padding: 30px;
-      background-color: $white;
-      list-style: none;
-      margin: 0;
-      box-shadow: 0px 2px 9px rgba(124, 154, 242, 0.15);
+      padding: 40px;
       border-radius: 20px;
       border-top-right-radius: 0;
+      background-color: white;
+      box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
       opacity: 0;
-
-      @include r {
-        opacity: 1;
-        box-shadow: none;
-        border-radius: 0;
-        position: static;
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-        height: 100%;
-        margin-right: -30px;
-        width: calc(100% + 30px);
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: -15px;
-        right: 0;
-        width: 45px;
-        height: 15px;
-        clip-path: polygon(100% 0, 0 100%, 100% 100%);
-        background-color: $white;
-        box-shadow: 0px 2px 14px rgba(79, 79, 79, 0.5);
-        @include r {
-          display: none;
-        }
-      }
+      pointer-events: none;
+      transition: opacity 0.3s;
     }
 
-    &-item {
-      padding-right: 30px;
+    &-item:not(:last-child) {
+      margin-bottom: 16px;
     }
+  }
 
-    .header__profile-item:last-child {
-      @include r {
-        margin-top: auto;
-        border-top: none;
-      }
-    }
+  &__link {
+    transition: color 0.3s;
 
-    &-item + &-item {
-      margin-top: 15px;
-      @include r {
-        padding-top: 15px;
-        border-top: 1px solid #f1f1f1;
-      }
-    }
-
-    &-link {
-      display: block;
-      text-decoration: none;
-      color: $text;
-      transition: all 0.3s;
-      &:hover {
-        color: $blue;
-      }
+    &:hover {
+      color: $blue;
     }
   }
 
   &__img {
-    width: 55px;
-    min-height: 55px;
+    width: 48px;
+    height: 48px;
     border-radius: 100%;
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
-    margin-right: 25px;
-    @include r {
-      margin-right: auto;
-      margin-bottom: 15px;
-    }
+    margin-right: 24px;
   }
 
   &__name {
-    margin-right: 15px;
-    color: $white;
-    @include r {
-      font-size: 17px;
-      margin-right: 0;
-      color: $text;
-      margin-bottom: 30px;
+    position: relative;
+    padding-right: 27px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: calc(50% - 3.25px);
+      width: 12px;
+      height: 6.5px;
+      background-image: url(../img/header-profile-arrow.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
     }
   }
 
-  &--dark {
-    & .logo__icon {
-      content: url(../img/logo.svg);
-      width: 180px;
-    }
-    & .header__search {
-      border-color: $blue;
-      color: $text;
+  &__menu {
+    display: flex;
+    align-items: center;
+  }
 
-      &::placeholder {
-        color: $text;
-      }
-    }
-
-    & .header__link {
-      color: $text;
-    }
-
-    svg path {
-      stroke: $blue;
-    }
-
-    &__profile {
-      position: relative;
-      display: flex;
-      align-items: center;
-      padding-bottom: 10px;
-      margin-bottom: -10px;
-      cursor: pointer;
-      overflow: hidden;
-      &-link {
-        display: block;
-        text-decoration: none;
-        color: $text;
-        transition: all 0.3s;
-        &:hover {
-          color: $blue;
-        }
-      }
-    }
-
-    & .header__name {
-      color: $text;
-    }
+  &__item:not(:last-child) {
+    margin-right: 64px;
   }
 }
 
@@ -2846,7 +2737,7 @@
 .menu {
   min-height: 685px;
   background: linear-gradient(97.21deg, #48c6ef 0.97%, #6f86d6 99.06%);
-  padding: 245px 0 20px;
+  padding: 330px 0 20px;
   display: flex;
   flex-direction: column;
   @include r {
@@ -3046,20 +2937,11 @@
 }
 
 .general {
-  background-image: url(../img/generl-content-bg.png);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-color: $bg;
+  border-radius: 20px;
   max-width: 895px;
   width: 100%;
-  padding: 50px;
 
-  @include r {
-    padding: 20px 20px 70px;
-    background-image: none;
-    background-color: white;
-    border-radius: 30px;
-  }
   &__form--new {
     height: 0;
     overflow: hidden;
@@ -3079,45 +2961,95 @@
       overflow: hidden;
       position: relative;
       &.active {
+        background-color: white;
+        border-radius: 20px;
+        padding: 48px 30px;
         height: auto;
       }
     }
 
     &-btns {
-      margin-bottom: 60px;
       display: flex;
       align-items: flex-start;
+      justify-content: space-between;
       display: none;
       &.active {
         display: flex;
       }
 
       @include r {
-        flex-wrap: wrap;
-        margin-bottom: 32px;
+        overflow-x: scroll;
+        margin: 0 -24px;
+        padding-left: 24px;
       }
     }
 
     &-btn {
       cursor: pointer;
       color: $light-text;
+      padding: 24px 36px;
       transition: all 0.3s;
-      width: max-content;
-      & + & {
-        margin-left: 100px;
+      background-color: $bg;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      position: relative;
+      width: 100%;
+      min-width: fit-content;
+      text-align: center;
+
+      @include r {
+      }
+
+      &:first-child::before {
+        content: "";
+        width: 20px;
+        height: 40px;
+        background-color: white;
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.3s;
+
         @include r {
-          margin-left: 0;
+          display: none;
         }
       }
+
+      &:last-child::before {
+        content: "";
+        width: 20px;
+        height: 40px;
+        background-color: white;
+        position: absolute;
+        bottom: -20px;
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s;
+
+        @include r {
+          display: none;
+        }
+      }
+
+      &.active {
+        background-color: white;
+
+        &:first-child::before,
+        &:last-child::before {
+          opacity: 1;
+        }
+      }
+
       &:hover,
       &.active {
         color: $text;
         @include r {
-          width: auto;
           color: white;
           background-color: $blue;
         }
       }
+
       @include r {
         padding: 8px 15px 10px;
         border-radius: 30px;
@@ -3140,11 +3072,6 @@
   }
 
   &__for-doctor {
-    /* padding: 48px;
-    background-image: url(../img/general-for-doctor-bg.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center; */
     max-width: 430px;
     width: 100%;
     margin-left: 34px;
@@ -3195,6 +3122,67 @@
     }
   }
 
+  &.change &__stats {
+    .general__stat-input {
+      padding: 9px 16px 11px;
+      margin: -9px 0 -11px -16px;
+      border: 1px solid #bdbdbd;
+      border-radius: 10px;
+      width: 125px;
+      outline: none;
+      pointer-events: inherit;
+
+      &--full {
+        width: 100%;
+
+        @include r {
+          margin: 10px 0 -8px;
+        }
+      }
+
+      &::placeholder {
+        color: $light-text;
+      }
+
+      &:focus {
+        border-color: $blue;
+      }
+    }
+
+    .general__stat-value {
+      &--list {
+        padding: 9px 16px 11px;
+        margin: -9px 0 -11px -16px;
+        border: 1px solid #bdbdbd;
+        border-radius: 10px;
+        position: relative;
+        width: 267px;
+
+        @include r {
+          width: 100%;
+          margin: 10px 0 -8px;
+        }
+
+        &.active {
+          border-color: $blue;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          right: 16px;
+          top: calc(50% - 3px);
+          width: 11px;
+          height: 7px;
+          background-image: url(../img/general-stat-arrow-icon.svg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+        }
+      }
+    }
+  }
+
   &__stat {
     display: flex;
     width: calc(100% + 30px);
@@ -3204,6 +3192,12 @@
     &:nth-last-child(1) {
       border: none;
     }
+
+    @include r {
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
     &-name {
       color: $light-text;
       max-width: 285px;
@@ -3213,11 +3207,53 @@
         max-width: fit-content;
       }
     }
-    &-value {
-      @include r {
-        margin-left: auto;
-        text-align: right;
+
+    &-input {
+      pointer-events: none;
+    }
+
+    &-list {
+      width: calc(100% + 2px);
+      position: absolute;
+      left: -1px;
+      top: calc(100% - 6px);
+      border: 1px solid $blue;
+      border-top: none;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      padding: 9px 16px 11px;
+      background-color: white;
+      z-index: 2;
+      display: none;
+    }
+
+    &-var {
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $blue;
       }
+    }
+
+    &-var + &-var {
+      margin-top: 15px;
+    }
+
+    &-value.active {
+      border-color: $blue;
+    }
+
+    &-value.active &-list {
+      display: block;
+    }
+
+    &-value.active::after {
+      transform: rotate(180deg);
+    }
+
+    &-choosed {
+      pointer-events: none;
     }
   }
 
@@ -3562,8 +3598,8 @@
     margin: 0;
     padding: 0 42px 0 0;
     position: absolute;
-    right: 0;
-    top: 5px;
+    right: 30px;
+    top: 55px;
     color: $blue;
     &::after {
       content: "";
@@ -3617,8 +3653,8 @@
       position: absolute;
       opacity: 0;
       transition: all 0.3s;
-      right: 0;
-      top: 200px;
+      right: 30px;
+      top: 240px;
       color: $light-text;
       &::after {
         background-image: url(../img/cancel-added-disease.svg);
@@ -3728,6 +3764,273 @@
         height: auto;
       }
     }
+  }
+
+  &__change {
+    display: inline-block;
+    margin-top: 55px;
+    padding: 12px 13px 14px 39px;
+    border: 1px solid $grey;
+    border-radius: 10px;
+    position: relative;
+    transition: border-color 0.3s, opacity 0.3s;
+
+    &::before {
+      content: url(../img/change-profile-icon.svg);
+      position: absolute;
+      left: 13px;
+      top: calc(50% - 10px);
+    }
+
+    &:hover {
+      border-color: $blue;
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+}
+
+.change + .profile {
+  display: block;
+}
+
+.profile {
+  background-color: white;
+  border-radius: 20px;
+  padding: 48px 30px;
+  margin-top: 32px;
+  display: none;
+
+  &__img {
+    height: 88px;
+    width: 88px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 100%;
+    display: inline-block;
+    margin-right: 48px;
+    position: relative;
+
+    @include r {
+      width: 66px;
+      height: 66px;
+      margin-right: 16px;
+    }
+  }
+
+  &__change {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/profile-pen-icon--blue.svg);
+    background-size: cover;
+    background-position: center;
+
+    input {
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  &__wrapper {
+    display: inline-block;
+  }
+
+  &__sex {
+    display: flex;
+    margin-bottom: 16px;
+  }
+
+  &__option {
+    margin-left: 32px;
+    position: relative;
+  }
+
+  &__radio {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  &__male,
+  &__female {
+    position: relative;
+    padding-right: 26px;
+  }
+
+  &__male::before,
+  &__female::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    border: 3px solid $light-blue;
+    position: absolute;
+    top: calc(50% - 8px);
+    right: 0;
+    transition: all 0.3s;
+  }
+
+  &__radio:checked + &__male::before,
+  &__radio:checked + &__female::before {
+    border-width: 4px;
+    border-color: $blue;
+  }
+
+  &__msgs {
+    position: relative;
+
+    input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    label {
+      position: relative;
+      padding-left: 32px;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: calc(50% - 8px);
+        width: 16px;
+        height: 16px;
+        border: 1px solid $blue;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 1px;
+        top: calc(50% - 4px);
+        height: 9px;
+        width: 13px;
+        background-image: url(../img/profile-arrow.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+      }
+    }
+
+    input:checked + label::after {
+      opacity: 1;
+    }
+  }
+
+  &__row {
+    margin-top: 40px;
+
+    @include r {
+      display: flex;
+      flex-direction: column;
+      align-content: flex-start;
+      justify-content: flex-start;
+    }
+  }
+
+  &__input {
+    display: inline-block;
+    width: 300px;
+    position: relative;
+
+    @include r {
+      width: 100%;
+    }
+
+    & + & {
+      margin-left: 24px;
+
+      @include r {
+        margin-left: 0;
+        margin-top: 24px;
+      }
+    }
+
+    #oldPassword {
+      pointer-events: none;
+    }
+
+    &--full {
+      display: block;
+      width: 100%;
+    }
+
+    input {
+      padding: 9px 16px 11px;
+      border: 1px solid #bdbdbd;
+      border-radius: 10px;
+      width: 100%;
+      outline: none;
+      cursor: pointer;
+
+      &:focus {
+        border-color: $blue;
+      }
+    }
+
+    label {
+      color: $light-text;
+      position: absolute;
+      top: 10px;
+      left: 16px;
+      transition: all 0.3s;
+    }
+
+    input:focus + label,
+    input:valid + label {
+      font-size: 14px;
+      left: 0;
+      top: -22px;
+      color: $text;
+    }
+
+    input:placeholder-shown {
+      background-color: $blue;
+    }
+  }
+
+  &__show {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 16px;
+    top: 17px;
+    background-image: url(../img/profile-password-eye.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  &__btns {
+    margin-top: 64px;
+    display: flex;
+  }
+
+  &__btn + &__btn {
+    margin-left: 24px;
   }
 }
 
@@ -3851,9 +4154,8 @@
 .tasks {
   position: relative;
   padding: 40px;
-  background-image: url(../img/general-tasks-bg.png);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 20px;
   max-width: 430px;
   width: 100%;
   margin-left: 35px;
@@ -8442,5 +8744,54 @@
   backdrop-filter: blur(5px);
   &.active {
     display: block;
+  }
+}
+
+.footer {
+  background-color: #3a485a;
+  padding: 76px 0 46px;
+
+  &__logo {
+    display: flex;
+    margin-bottom: 32px;
+  }
+
+  &__menu {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  &__item {
+    margin-bottom: 16px;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 32px;
+  }
+
+  &__link {
+    color: white;
+  }
+
+  &__copy {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    border-top: 1px solid $light-text;
+  }
+
+  &__police,
+  &__docs,
+  &__text {
+    color: $light-text;
+  }
+
+  &__police {
+    margin-right: 32px;
+  }
+
+  &__docs {
+    margin-right: auto;
   }
 }

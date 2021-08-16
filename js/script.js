@@ -503,6 +503,39 @@ if (document.querySelector(".general")) {
     });
   }
 
+  // выбор активности в общем состоянии
+  document.querySelector(".general__stats").addEventListener("click", function (e) {
+    if (e.target.classList.contains("general__stat-value--list")) {
+      e.target.classList.toggle("active");
+    } else if (document.querySelector(".general__stat-value--list.active")) {
+      document.querySelector(".general__stat-value--list.active").classList.remove("active");
+    }
+
+    if (e.target.classList.contains("general__stat-var")) {
+      e.target.parentElement.parentElement.querySelector("span").innerHTML = e.target.innerHTML;
+    }
+  });
+
+  // открытие настроек порфиля по кнопке
+  document.querySelector(".general__change").addEventListener("click", function (e) {
+    e.target.classList.toggle("hidden");
+
+    e.target.closest(".general__tabs-content").classList.toggle("change");
+  });
+
+  // закрытие настроек порфиля по кнопке
+  document.querySelector(".profile__btn--cancel").addEventListener("click", function (e) {
+    document.querySelector(".general__tabs-content[data-general='1']").classList.toggle("change");
+    document.querySelector(".general__change").classList.toggle("hidden");
+  });
+
+  //показать существующий пароль
+  document.querySelector(".profile__show").addEventListener("click", function () {
+    if (this.parentElement.querySelector("input").getAttribute("type") == "password") {
+      this.parentElement.querySelector("input").setAttribute("type", "text");
+    } else this.parentElement.querySelector("input").setAttribute("type", "password");
+  });
+
   // аккордеон для историй болезни
   document.querySelectorAll(".general__history-name").forEach((history) => {
     history.addEventListener("click", function () {
