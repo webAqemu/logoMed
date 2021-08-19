@@ -456,6 +456,10 @@ if (document.querySelector(".general")) {
 
       e.target.classList.add("active");
       document.querySelector(`.general__tabs-content[data-general="${generalTabId}"]`).classList.add("active");
+      if (document.querySelector(".change")) {
+        document.querySelector(".change").classList.remove("change");
+        document.querySelector(".general__change").classList.remove("hidden");
+      }
     }
   });
   // загрузка файлов в создании новой болезни
