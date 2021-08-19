@@ -2291,18 +2291,14 @@ textarea::placeholder {
       transition: opacity 0.3s; }
       .header__profile-menu::after {
         content: "▲";
-        /* border: 10px solid transparent;
-        border-right: 20px solid white; */
         position: absolute;
         top: -14px;
-        right: -2px;
+        right: -3px;
         text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
         color: white;
         transform: rotate(-90deg); }
       .header__profile-menu::before {
         content: "";
-        /* border: 10px solid transparent;
-        border-right: 20px solid white; */
         position: absolute;
         top: 0;
         right: 0;
@@ -2753,7 +2749,7 @@ textarea::placeholder {
       margin: 24px 0 60px; }
     .general__for-doctor-img {
       width: 100%; }
-  .general.change .general__stats .general__stat-input {
+  .general__tabs-content.change .general__stats .general__stat-input {
     padding: 9px 16px 11px;
     margin: -9px 0 -11px -16px;
     border: 1px solid #bdbdbd;
@@ -2761,16 +2757,16 @@ textarea::placeholder {
     width: 125px;
     outline: none;
     pointer-events: inherit; }
-    .general.change .general__stats .general__stat-input--full {
+    .general__tabs-content.change .general__stats .general__stat-input--full {
       width: 100%; }
       @media (max-width: 768px) {
-        .general.change .general__stats .general__stat-input--full {
+        .general__tabs-content.change .general__stats .general__stat-input--full {
           margin: 10px 0 -8px; } }
-    .general.change .general__stats .general__stat-input::placeholder {
+    .general__tabs-content.change .general__stats .general__stat-input::placeholder {
       color: #7d7d7d; }
-    .general.change .general__stats .general__stat-input:focus {
+    .general__tabs-content.change .general__stats .general__stat-input:focus {
       border-color: #68a9fe; }
-  .general.change .general__stats .general__stat-value--list {
+  .general__tabs-content.change .general__stats .general__stat-value--list {
     padding: 9px 16px 11px;
     margin: -9px 0 -11px -16px;
     border: 1px solid #bdbdbd;
@@ -2778,12 +2774,12 @@ textarea::placeholder {
     position: relative;
     width: 267px; }
     @media (max-width: 768px) {
-      .general.change .general__stats .general__stat-value--list {
+      .general__tabs-content.change .general__stats .general__stat-value--list {
         width: 100%;
         margin: 10px 0 -8px; } }
-    .general.change .general__stats .general__stat-value--list.active {
+    .general__tabs-content.change .general__stats .general__stat-value--list.active {
       border-color: #68a9fe; }
-    .general.change .general__stats .general__stat-value--list::after {
+    .general__tabs-content.change .general__stats .general__stat-value--list::after {
       content: "";
       position: absolute;
       right: 16px;
