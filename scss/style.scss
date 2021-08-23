@@ -2503,6 +2503,7 @@
     display: flex;
     align-items: center;
     position: relative;
+    padding-bottom: 10px;
 
     &:hover &-menu {
       opacity: 1;
@@ -2521,6 +2522,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s;
+      min-width: 320px;
 
       &::after {
         content: "▲";
@@ -5914,7 +5916,7 @@
 }
 
 .search {
-  padding-top: 125px;
+  padding-top: 225px;
   @include r {
     padding-bottom: 32px;
   }
@@ -6440,7 +6442,7 @@
 }
 
 .articles {
-  padding: 134px 0 60px;
+  padding: 225px 0 60px;
 
   &__forYou {
     margin-top: 125px;
@@ -8072,7 +8074,7 @@
 }
 
 .contacts {
-  padding: 220px 0 80px;
+  padding: 270px 0 80px;
   background-color: $bg;
   @include r {
     padding: 135px 0 30px;

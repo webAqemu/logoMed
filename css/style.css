@@ -2273,7 +2273,8 @@ textarea::placeholder {
     margin-left: auto;
     display: flex;
     align-items: center;
-    position: relative; }
+    position: relative;
+    padding-bottom: 10px; }
     .header__profile:hover .header__profile-menu {
       opacity: 1;
       pointer-events: inherit; }
@@ -2288,7 +2289,8 @@ textarea::placeholder {
       box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s; }
+      transition: opacity 0.3s;
+      min-width: 320px; }
       .header__profile-menu::after {
         content: "▲";
         position: absolute;
@@ -4913,7 +4915,7 @@ textarea::placeholder {
     margin-bottom: 60px; } }
 
 .search {
-  padding-top: 125px; }
+  padding-top: 225px; }
   @media (max-width: 768px) {
     .search {
       padding-bottom: 32px; } }
@@ -5314,7 +5316,7 @@ textarea::placeholder {
         display: block; }
 
 .articles {
-  padding: 134px 0 60px; }
+  padding: 225px 0 60px; }
   .articles__forYou {
     margin-top: 125px;
     display: flex; }
@@ -6624,7 +6626,7 @@ textarea::placeholder {
       display: inline-block; } }
 
 .contacts {
-  padding: 220px 0 80px;
+  padding: 270px 0 80px;
   background-color: #eff5fb; }
   @media (max-width: 768px) {
     .contacts {
