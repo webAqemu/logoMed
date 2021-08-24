@@ -373,3 +373,25 @@ textarea::placeholder {
     }
   }
 }
+
+.breadcrumbs {
+  display: flex;
+  margin-bottom: 64px;
+
+  &__item {
+    position: relative;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+
+      &::after {
+        content: "/";
+        margin-left: 5px;
+      }
+    }
+
+    &:last-child a {
+      color: $blue;
+    }
+  }
+}

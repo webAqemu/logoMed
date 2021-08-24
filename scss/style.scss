@@ -1892,9 +1892,6 @@
 
   &__btn {
     font-size: 20px;
-  }
-
-  &__btn {
     @include r {
       font-size: 0;
       height: 48px;
@@ -1996,7 +1993,7 @@
         position: absolute;
         cursor: pointer;
         left: 0;
-        top: -1px;
+        top: 2px;
         height: 32px;
         width: 32px;
         background-image: url(../img/reg-icons/reg-add-file.svg);
@@ -2043,10 +2040,14 @@
       border-radius: 10px;
       color: $text;
       font-size: 20px;
-      outline-color: $blue;
       border: 1px solid #bdbdbd;
-
       margin-left: 20px;
+      outline: none;
+
+      &:focus {
+        border-color: $blue;
+      }
+
       &::placeholder {
         color: $light-text;
       }
@@ -2965,6 +2966,20 @@
   max-width: 895px;
   width: 100%;
 
+  &__wrapper {
+    height: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__tabs-content.active &__wrapper {
+    background-color: white;
+    border-radius: 20px;
+    padding: 48px 30px;
+    height: auto;
+    margin-bottom: 32px;
+  }
+
   &__form--new {
     height: 0;
     overflow: hidden;
@@ -2979,18 +2994,6 @@
   }
 
   &__tabs {
-    &-content {
-      height: 0;
-      overflow: hidden;
-      position: relative;
-      &.active {
-        background-color: white;
-        border-radius: 20px;
-        padding: 48px 30px;
-        height: auto;
-      }
-    }
-
     &-btns {
       display: flex;
       align-items: flex-start;
@@ -3019,9 +3022,6 @@
       width: 100%;
       min-width: fit-content;
       text-align: center;
-
-      @include r {
-      }
 
       &:first-child::before {
         content: "";
@@ -3285,7 +3285,7 @@
   }
 
   &__symptoms {
-    margin: 40px -50px 40px 0;
+    margin: 40px 0;
     padding-bottom: 45px;
     border-bottom: 1px solid #f1f1f1;
     &:nth-last-child(1) {
@@ -3372,6 +3372,87 @@
       width: 100%;
       &:not(:last-child) {
         margin-bottom: 8px;
+      }
+    }
+
+    &-add {
+      margin-top: 15px;
+    }
+
+    &-btn {
+      display: flex;
+      color: $blue;
+      padding-left: 48px;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        background-image: url(../img/reg-icons/reg-add-file.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        top: calc(50% - 16px);
+        left: 0;
+      }
+    }
+
+    &-input {
+      padding: 9px 16px 11px;
+      border-radius: 10px;
+      border: 1px solid $blue;
+      outline: none;
+      display: none;
+
+      &.active {
+        margin-top: 22px;
+        display: inline-block;
+      }
+    }
+
+    &-list {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      color: $light-text;
+    }
+
+    &-added {
+      display: flex;
+      align-items: center;
+      margin-top: 22px;
+
+      &:not(:last-child) {
+        margin-right: 24px;
+      }
+    }
+
+    &-delete {
+      position: relative;
+      width: 26px;
+      height: 26px;
+      padding: 13px;
+      margin-right: 12px;
+
+      &::after,
+      &::before {
+        content: "";
+        width: 24px;
+        height: 2px;
+        border-radius: 2px;
+        background-color: $light-text;
+        position: absolute;
+        left: 0;
+        top: calc(50% - 2px);
+      }
+
+      &::before {
+        transform: rotate(-45deg);
+      }
+
+      &::after {
+        transform: rotate(45deg);
       }
     }
   }
@@ -3535,16 +3616,23 @@
     font-weight: 400;
     padding: 10px 15px;
     color: $text;
-    border: 1px solid $blue;
+    border: 1px solid $grey;
     border-radius: 10px;
     box-shadow: none;
     margin-bottom: 25px;
     line-height: 28px;
     font-size: 20px;
     outline: none;
+    transition: border-color 0.3s;
+
+    &:focus {
+      border-color: $blue;
+    }
+
     &::placeholder {
       color: $light-text;
     }
+
     &--disease {
       max-width: 615px;
       resize: none;
@@ -3823,7 +3911,6 @@
   background-color: white;
   border-radius: 20px;
   padding: 48px 30px;
-  margin-top: 32px;
   display: none;
 
   &__img {
@@ -7326,6 +7413,9 @@
 }
 
 .appointment {
+  padding: 295px 0 50px;
+  min-height: calc(100vh + 295px);
+
   &--blue {
     background-color: $bg;
     padding-top: 220px;
@@ -7339,56 +7429,6 @@
 
   @include r {
     padding-bottom: 60px;
-  }
-
-  &__preview {
-    padding: 195px 0 75px;
-    margin-bottom: 60px;
-    background-color: $bg;
-    display: none;
-    &.active {
-      display: block;
-    }
-    @include r {
-      padding: 135px 0 80px;
-      margin-bottom: 32px;
-      background-color: $bg-mobile;
-    }
-  }
-
-  &__back {
-    color: $blue;
-    position: absolute;
-    top: 175px;
-    left: auto;
-    max-width: 1320px;
-    width: 100%;
-    right: auto;
-    @include r {
-      top: 125px;
-    }
-    &::before {
-      content: "Вернуться к";
-      @include r {
-        content: "К";
-        padding-left: 25px;
-        background-image: url(../img/appointment-back-arrow-mobile.svg);
-        background-position: left top;
-        background-repeat: no-repeat;
-      }
-    }
-  }
-
-  &__title {
-    margin: 25px 0;
-    @include r {
-      font-size: 22px;
-      margin: 30px 0 15px;
-    }
-  }
-
-  &__text {
-    max-width: 750px;
   }
 
   &__doctor {
@@ -7438,16 +7478,19 @@
 
   &__tabs {
     display: none;
-    align-items: stretch;
+    align-items: flex-start;
     margin: 70px 0 0;
+
     @include r {
       margin: 0;
       height: 0;
       overflow: hidden;
       display: block;
     }
+
     &.active {
       display: flex;
+
       @include r {
         margin-top: 50px;
         display: block;
@@ -7457,11 +7500,13 @@
     }
 
     &-btns {
-      max-width: 340px;
+      max-width: 430px;
       width: 100%;
-      padding: 20px 15px 20px 0;
-      border-right: 1px solid #f1f1f1;
-      margin-right: 40px;
+      padding: 32px 12px;
+      margin-right: 32px;
+      background-color: #fff;
+      border-radius: 20px;
+
       @include r {
         display: none;
       }
@@ -7472,15 +7517,38 @@
       cursor: pointer;
       color: $light-text;
       margin-bottom: 20px;
+      border-radius: 10px;
+      padding: 14px 15px;
+      display: flex;
+      align-items: center;
       transition: all 0.3s;
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: 20px;
+        top: calc(50% - 9px);
+        width: 24px;
+        height: 18px;
+        background-image: url(../img/reg-icons/reg-icon-step-complete.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
       &:hover,
       &.active {
         color: $text;
+        background-color: #fbfbfb;
+
         .appointment__tabs-icon {
           background-color: $peach;
-        }
-        path {
-          fill: white;
+
+          &::after {
+            filter: invert(100%);
+          }
         }
       }
 
@@ -7489,33 +7557,51 @@
       }
 
       &.complete::after {
-        content: "";
-        position: absolute;
-        right: 20px;
-        bottom: 10px;
-        width: 24px;
-        height: 18px;
-        background-image: url(../img/reg-icons/reg-icon-step-complete.svg);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
+        opacity: 1;
       }
     }
 
     &-icon {
-      margin-bottom: 5px;
-      width: 55px;
-      height: 55px;
+      width: 40px;
+      height: 40px;
       border-radius: 100%;
       background-color: $bg;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
+      margin-right: 24px;
+      position: relative;
       pointer-events: none;
-      & path {
-        transition: all 0.3s;
+
+      &::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        background-image: url(../img/appointemnt-step-type.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        filter: invert(65%) sepia(26%) saturate(4471%) hue-rotate(190deg) brightness(102%) contrast(99%);
       }
+
+      &--symptoms::after {
+        background-image: url(../img/appointemnt-step-symptoms.svg);
+      }
+
+      &--docs::after {
+        background-image: url(../img/appointemnt-step-docs.svg);
+      }
+
+      &--diagnoses::after {
+        background-image: url(../img/appointemnt-step-diagnoses.svg);
+      }
+
+      &--time::after {
+        background-image: url(../img/appointemnt-step-time.svg);
+      }
+    }
+
+    &-text {
+      pointer-events: none;
     }
 
     &-title {
@@ -7527,7 +7613,9 @@
     }
 
     &-content {
-      padding: 20px 0 200px;
+      padding: 32px 27px;
+      background-color: #fff;
+      border-radius: 20px;
       position: relative;
       display: none;
       &.active {
@@ -7598,12 +7686,14 @@
   }
 
   &__btn {
-    position: absolute;
-    left: 0;
-    bottom: 20px;
     &--finish {
       position: static;
     }
+
+    &--back {
+      margin-left: 32px;
+    }
+
     @include r {
       width: 100%;
       position: static;
@@ -7621,9 +7711,11 @@
     font-size: 20px;
     height: 230px;
     resize: none;
+
     &::placeholder {
       color: $light-text;
     }
+
     @include r {
       width: 100%;
       font-size: 17px;
@@ -7636,6 +7728,9 @@
     margin: 0 0 50px;
     list-style: none;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
     @include r {
       margin: 0 -24px 40px;
       width: calc(100% + 48px);
@@ -7643,20 +7738,24 @@
         margin-top: 0;
       }
     }
+
     &-slide {
       @include r {
         margin: 0 24px;
       }
     }
+
     &-item {
       display: inline-block;
       position: relative;
       margin: 0 0 25px;
-      width: 49%;
+      width: 50%;
       padding: 0;
+
       @include r {
         width: 100%;
       }
+
       span {
         transition: all 0.3s;
         padding-left: 25px;
@@ -7677,6 +7776,7 @@
             top: 1px;
           }
         }
+
         &::after {
           content: "";
           position: absolute;
@@ -7725,9 +7825,18 @@
     padding: 9px 15px 11px;
     font-size: 20px;
     color: $text;
-    border: 1px solid $blue;
+    border: 1px solid $grey;
     border-radius: 10px;
+    margin-top: 32px;
     outline: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+
+    &:focus {
+      border-color: $blue;
+    }
+
     &::placeholder {
       color: $light-text;
     }
@@ -7736,31 +7845,19 @@
       width: 100%;
       font-size: 17px;
       padding: 12px 15px 14px;
+      margin-top: 0;
     }
-  }
 
-  &__radio + &__anotherInput {
-    margin-top: 50px;
-  }
-
-  .hasDiagnoseInput {
-    margin-top: 50px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
     &.active {
       opacity: 1;
       pointer-events: inherit;
-    }
-    @include r {
-      margin-top: 0;
     }
   }
 
   &__files-type {
     position: absolute;
-    left: 240px;
-    top: 120px;
+    left: 280px;
+    top: 138px;
     color: $light-text;
     @include r {
       display: none;
@@ -7939,6 +8036,10 @@
     display: flex;
     align-items: center;
     margin-top: 36px;
+  }
+
+  &__radio + &__btns {
+    margin-top: 80px;
   }
 
   &__days {

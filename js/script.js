@@ -540,6 +540,37 @@ if (document.querySelector(".general")) {
     } else this.parentElement.querySelector("input").setAttribute("type", "password");
   });
 
+  // добавить симптом в жалобах
+  document.querySelector(".general__symptoms-add").addEventListener("click", function (e) {
+    e.preventDefault();
+    const input = document.querySelector(".general__symptoms-input");
+    if (e.target.classList.contains("general__symptoms-btn")) {
+      input.classList.add("active");
+      input.focus();
+    }
+
+    if (e.target.classList.contains("general__symptoms-delete")) {
+      e.target.parentElement.remove();
+    }
+  });
+
+  document.querySelector(".general__symptoms-input").addEventListener("keyup", function (e) {
+    const list = document.querySelector(".general__symptoms-list");
+    if (e.code === "Enter") {
+      const html = `
+      <li class="general__symptoms-added">
+        <button class="general__symptoms-delete"></button>
+        ${e.target.value}
+      </li>
+      `;
+
+      list.insertAdjacentHTML("beforeend", html);
+
+      e.target.value = "";
+      e.target.classList.remove("active");
+    }
+  });
+
   // аккордеон для историй болезни
   document.querySelectorAll(".general__history-name").forEach((history) => {
     history.addEventListener("click", function () {
@@ -1070,7 +1101,6 @@ if (document.querySelector(".appointment")) {
           document.querySelector(".appointment__date").classList.remove("active");
           document.querySelector(".appointment__finish").classList.add("active");
           document.querySelector(".appointment__finish-title").classList.add("active");
-          document.querySelector(".appointment__preview").classList.remove("active");
           document.querySelector(".appointment").classList.add("appointment--blue");
           break;
         default:
@@ -1081,6 +1111,13 @@ if (document.querySelector(".appointment")) {
           document.querySelector(`.appointment__tabs-content[data-tab="${curTab + 1}"]`).classList.add("active");
           break;
       }
+    }
+
+    if (e.target.classList.contains("appointment__btn--back")) {
+      document.querySelector(".appointment__tabs-btn.active").classList.remove("active");
+      document.querySelector(".appointment__tabs-content.active").classList.remove("active");
+      document.querySelector(`.appointment__tabs-btn[data-tab="${curTab - 1}"]`).classList.add("active");
+      document.querySelector(`.appointment__tabs-content[data-tab="${curTab - 1}"]`).classList.add("active");
     }
     if (e.target.classList.contains("appointment__return")) {
       if (window.innerWidth < 768) {

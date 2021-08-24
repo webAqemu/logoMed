@@ -123,7 +123,8 @@
                 <div class="general__tabs-btn title-h3" data-general="3">История болезней</div>
               </div>
               <div class="general__tabs-content active" data-general="1">
-                <ul class="general__stats">
+                <div class="general__wrapper">
+                  <ul class="general__stats">
                   <li class="general__stat">
                     <div class="general__stat-name">Дата рождения</div>
                     <div class="general__stat-value">27.03.1965</div>
@@ -171,7 +172,8 @@
                     <input class="general__stat-input general__stat-input--full" type="text" placeholder="Препараты через запятую" value="Аскорбиновая, кислота"/>
                   </li>
                 </ul>
-                <button class="general__change">Редактировать</button>
+                  <button class="general__change">Редактировать</button>
+                </div>  
               </div>
               <div class="profile">
                 <div class="profile__img" style="background-image: url(./img/profile-img.png)">
@@ -252,8 +254,9 @@
                 </div>
               </div>
               <div class="general__tabs-content" data-general="2">
-                <div class="general__subtitle general__symptoms-title subtitle active" data-symptom="1">Симптомы</div>
-                <form action="" class="general__symptoms active" data-symptom="1">
+                <div class="general__wrapper">
+                  <div class="general__subtitle general__symptoms-title subtitle active" data-symptom="1">Симптомы</div>
+                  <form action="" class="general__symptoms active" data-symptom="1">
                   <div class="general__symptom">
                     <input type="checkbox" class="general__checkbox" />
                     <label for="" class="general__checkbox-label">Слабость</label>
@@ -339,74 +342,90 @@
                     <input type="checkbox" class="general__checkbox" />
                     <label for="" class="general__checkbox-label">Одышка, сердцебиение</label>
                   </div>
-                </form>
-                <div class="general__subtitle general__symptoms-title subtitle" data-symptom="2">Мужское здоровье</div>
-                <form action="" class="general__symptoms general__symptoms--man" data-symptom="2">
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Утренняя эррекция</label>
+                  <div class="general__symptoms-add">
+                    <button class="general__symptoms-btn">Добавить симптом</button>
+                    <input type="text" class="general__symptoms-input" placeholder="Введите симптом">
+                    <ul class="general__symptoms-list">
+                      <li class="general__symptoms-added">
+                        <button class="general__symptoms-delete"></button>
+                        Запах изо рта
+                      </li>
+                    </ul>
                   </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Снижено либидо</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Проблемы с эррекцией во время полового акта</label>
-                  </div>
-                </form>
-                <div class="general__subtitle general__symptoms-title subtitle" data-symptom="3">Прочее</div>
-                <form action="" class="general__symptoms general__symptoms--more" data-symptom="3">
-                  <div class="general__col">
-                    <label for="" class="general__input-label">Аллергические реакции</label>
-                    <input type="text" class="general__input" placeholder="Перечислите" />
-                    <label for="" class="general__input-label">Установленные диагнозы</label>
-                    <input type="text" class="general__input" placeholder="Перечислите" />
-                    <label for="" class="general__input-label">Проведенные операции</label>
-                    <input type="text" class="general__input" placeholder="Перечислите" />
+                  </form>
+                </div>
+                <div class="general__wrapper">
+                  <div class="general__subtitle general__symptoms-title subtitle" data-symptom="2">Мужское здоровье</div>
+                  <form action="" class="general__symptoms general__symptoms--man" data-symptom="2">
                     <div class="general__symptom">
                       <input type="checkbox" class="general__checkbox" />
-                      <label for="" class="general__checkbox-label">Тяга к сладкому</label>
+                      <label for="" class="general__checkbox-label">Утренняя эррекция</label>
                     </div>
                     <div class="general__symptom">
                       <input type="checkbox" class="general__checkbox" />
-                      <label for="" class="general__checkbox-label">Тяга к соленому</label>
+                      <label for="" class="general__checkbox-label">Снижено либидо</label>
                     </div>
                     <div class="general__symptom">
                       <input type="checkbox" class="general__checkbox" />
-                      <label for="" class="general__checkbox-label">Контакты с животными</label>
+                      <label for="" class="general__checkbox-label">Проблемы с эррекцией во время полового акта</label>
                     </div>
-                  </div>
-                  <div class="general__col">
-                    <div class="general__input-wrapper">
-                      <span>раз</span>
-                      <label for="" class="general__input-label">Количество приемов пищи в день</label>
-                      <input type="number" class="general__input" />
+                  </form>
+                </div>
+                <div class="general__wrapper">
+                  <div class="general__subtitle general__symptoms-title subtitle" data-symptom="3">Прочее</div>
+                  <form action="" class="general__symptoms general__symptoms--more" data-symptom="3">
+                    <div class="general__col">
+                      <label for="" class="general__input-label">Аллергические реакции</label>
+                      <input type="text" class="general__input" placeholder="Перечислите" />
+                      <label for="" class="general__input-label">Установленные диагнозы</label>
+                      <input type="text" class="general__input" placeholder="Перечислите" />
+                      <label for="" class="general__input-label">Проведенные операции</label>
+                      <input type="text" class="general__input" placeholder="Перечислите" />
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Тяга к сладкому</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Тяга к соленому</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Контакты с животными</label>
+                      </div>
                     </div>
-                    <div class="general__input-wrapper">
-                      <span>раз</span>
-                      <label for="" class="general__input-label">Количество перекусов в день</label>
-                      <input type="number" class="general__input" />
+                    <div class="general__col">
+                      <div class="general__input-wrapper">
+                        <span>раз</span>
+                        <label for="" class="general__input-label">Количество приемов пищи в день</label>
+                        <input type="number" class="general__input" />
+                      </div>
+                      <div class="general__input-wrapper">
+                        <span>раз</span>
+                        <label for="" class="general__input-label">Количество перекусов в день</label>
+                        <input type="number" class="general__input" />
+                      </div>
+                      <div class="general__input-wrapper">
+                        <span>мл.</span>
+                        <label for="" class="general__input-label">Объем потреблемой воды</label>
+                        <input type="number" class="general__input" />
+                      </div>
+                      <div class="general__input-wrapper">
+                        <span>мл.</span>
+                        <label for="" class="general__input-label">Количество кофе в рационе</label>
+                        <input type="number" class="general__input" />
+                      </div>
                     </div>
-                    <div class="general__input-wrapper">
-                      <span>мл.</span>
-                      <label for="" class="general__input-label">Объем потреблемой воды</label>
-                      <input type="number" class="general__input" />
-                    </div>
-                    <div class="general__input-wrapper">
-                      <span>мл.</span>
-                      <label for="" class="general__input-label">Количество кофе в рационе</label>
-                      <input type="number" class="general__input" />
-                    </div>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </div>
               <div class="general__tabs-content" data-general="3">
-                <div class="general__subtitle general__subtitle--inline subtitle">Течение болезни</div>
-                <p class="general__disease-text">Для более точного понимания врачом вашего состояния, необходимо ответить на ряд вопросов по каждому заболеванию, которое у вас было. Вы всегда можете добавить историю нового заболевания.</p>
-                <button class="general__btn general__btn--add btn-text" id="newHistory">Добавить историю</button>
-                <button class="general__btn general__btn--cancel btn-text active" id="cancelNewHistory">Отменить</button>
-                <form action="" class="general__form general__form--new active">
+                <div class="general__wrapper">
+                  <div class="general__subtitle general__subtitle--inline subtitle">Течение болезни</div>
+                  <p class="general__disease-text">Для более точного понимания врачом вашего состояния, необходимо ответить на ряд вопросов по каждому заболеванию, которое у вас было. Вы всегда можете добавить историю нового заболевания.</p>
+                  <button class="general__btn general__btn--add btn-text" id="newHistory">Добавить историю</button>
+                  <button class="general__btn general__btn--cancel btn-text active" id="cancelNewHistory">Отменить</button>
+                  <form action="" class="general__form general__form--new active">
                   <label class="general__disease-new title-h3">Добавление новой истории</label>
                   <input type="text" class="general__input general__input--disease general__input--disease-name" placeholder="Введите название диагноза" />
                   <label for="" class="general__disease-label">1. В течение какого времени считаете себя больным?</label>
@@ -427,8 +446,8 @@
                   <button class="general__save btn btn--inactive btn-text">
                     <span>Сохранить</span>
                   </button>
-                </form>
-                <div class="general__history">
+                  </form>
+                  <div class="general__history">
                   <div class="general__history-name title-h3">Геморрагический гастрит</div>
                   <div class="general__history-date">С 20.06.2017</div>
                   <form action="" class="general__form">
@@ -461,8 +480,8 @@
                       <span>Сохранить</span>
                     </button> -->
                   </form>
-                </div>
-                <div class="general__history">
+                  </div>
+                  <div class="general__history">
                   <div class="general__history-name title-h3">Геморрагический гастрит</div>
                   <div class="general__history-date">С 20.06.2017</div>
                   <form action="" class="general__form">
@@ -495,6 +514,7 @@
                       <span>Сохранить</span>
                     </button> -->
                   </form>
+                  </div>
                 </div>
               </div>
               <div class="tasks__all">
