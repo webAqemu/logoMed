@@ -362,10 +362,6 @@ if (document.querySelector(".appointment")) {
     showOtherMonths: false,
     weekends: [0],
   });
-  $(".appointment__month[data-date='2'] .appointment__datepicker").datepicker({
-    showOtherMonths: false,
-    weekends: [0],
-  });
   // активация календарей
   if (window.innerWidth < 768) {
     document.querySelector(".appointment__btn--next[data-tab='6']").classList.remove("appointment__btn--next");
@@ -381,7 +377,7 @@ if (document.querySelector(".appointment")) {
         document.querySelector(".appointment__return").innerHTML = "Вернуться к выбору дня";
         // заполняем нужной датой
         const day = document.querySelector(".-selected-");
-        const monthsList = ["Янаварь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+        const monthsList = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
         const monthsListMobile = ["Янаваря", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
         const daysOfWeekList = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
         const month = monthsList[+day.dataset.month];
@@ -401,33 +397,18 @@ if (document.querySelector(".appointment")) {
       }
     });
   } else {
-    document.querySelector(".appointment__wrapper").addEventListener("mousedown", function (e) {
+    document.querySelector(".appointment__tabs-content[data-tab='5']").addEventListener("mousedown", function (e) {
       if (e.target.classList.contains("datepicker--cell-day")) {
-        // показываем время
-        if (document.querySelector(".appointment__month.active")) {
-          document.querySelector(".appointment__month.active").classList.remove("active");
-        }
-        if (window.innerWidth < 768) {
-          document.querySelector(".appointment__wrapper").classList.add("hidden");
-          document.querySelector(".appointment__date-mobile").classList.add("active");
-          document.querySelector(".appointment__return").classList.add("daysOpen");
-          document.querySelector(".appointment__return").innerHTML = "Вернуться к выбору дня";
-        } else {
-          document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"`).classList.add("active");
-        }
+        document.querySelector(".appointment__days").classList.add("active");
+        e.target.closest(".appointment__tabs-content").querySelector(".appointment__btns").classList.add("hidden");
         // заполняем нужной датой
         const day = e.target.innerHTML;
         const monthsList = ["Янаварь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
         const monthsListMobile = ["Янаваря", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
-        const daysOfWeekList = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+
         const month = monthsList[+e.target.dataset.month];
         const monthMobile = monthsListMobile[+e.target.dataset.month];
-        const dayOfWeek = daysOfWeekList[+e.target.dataset.date % 7];
-        if (window.innerWidth < 768) {
-          document.querySelector(".appointment__date-title").innerHTML = "Свободное время " + day + " " + monthMobile + ", " + dayOfWeek.toLowerCase();
-        } else {
-          document.querySelector(`.appointment__month[data-date="${3 - e.target.closest(".appointment__month").dataset.date}"] .appointment__days-title`).innerHTML = month + " " + day + ", " + dayOfWeek;
-        }
+        document.querySelector(`.appointment__days-title`).innerHTML = "Свободное время " + day + " " + monthMobile;
         document.querySelectorAll(".appointment__days-time input").forEach((input) => {
           input.checked = false;
         });
@@ -1087,30 +1068,11 @@ if (document.querySelector(".appointment")) {
       document.querySelector(`.appointment__tabs-content[data-tab="${curTab}"]`).classList.add("active");
     }
     if (e.target.classList.contains("appointment__btn--next")) {
-      switch (curTab) {
-        case 5:
-          document.querySelector(".appointment__tabs-btn.active").classList.remove("active");
-          document.querySelector(".appointment__tabs-content.active").classList.remove("active");
-          document.querySelector(".appointment__tabs").classList.remove("active");
-          document.querySelector(".appointment__date").classList.add("active");
-          document.querySelector(".appointment__tabs").classList.remove("active");
-          document.querySelector(".appointment__date").classList.add("active");
-          break;
-        case 6:
-          document.querySelector(".appointment__tabs").classList.remove("active");
-          document.querySelector(".appointment__date").classList.remove("active");
-          document.querySelector(".appointment__finish").classList.add("active");
-          document.querySelector(".appointment__finish-title").classList.add("active");
-          document.querySelector(".appointment").classList.add("appointment--blue");
-          break;
-        default:
-          document.querySelector(".appointment__tabs-btn.active").classList.remove("active");
-          document.querySelector(".appointment__tabs-content.active").classList.remove("active");
-          document.querySelector(`.appointment__tabs-btn[data-tab="${curTab}"]`).classList.add("complete");
-          document.querySelector(`.appointment__tabs-btn[data-tab="${curTab + 1}"]`).classList.add("active");
-          document.querySelector(`.appointment__tabs-content[data-tab="${curTab + 1}"]`).classList.add("active");
-          break;
-      }
+      document.querySelector(".appointment__tabs-btn.active").classList.remove("active");
+      document.querySelector(".appointment__tabs-content.active").classList.remove("active");
+      document.querySelector(`.appointment__tabs-btn[data-tab="${curTab}"]`).classList.add("complete");
+      document.querySelector(`.appointment__tabs-btn[data-tab="${curTab + 1}"]`).classList.add("active");
+      document.querySelector(`.appointment__tabs-content[data-tab="${curTab + 1}"]`).classList.add("active");
     }
 
     if (e.target.classList.contains("appointment__btn--back")) {
@@ -1118,7 +1080,23 @@ if (document.querySelector(".appointment")) {
       document.querySelector(".appointment__tabs-content.active").classList.remove("active");
       document.querySelector(`.appointment__tabs-btn[data-tab="${curTab - 1}"]`).classList.add("active");
       document.querySelector(`.appointment__tabs-content[data-tab="${curTab - 1}"]`).classList.add("active");
+
+      if (document.querySelector(".appointment__days.active")) {
+        document.querySelector(".appointment__days").classList.remove("active");
+        document.querySelector(".-selected-").classList.remove("-selected-");
+      }
     }
+
+    if (e.target.classList.contains("appointment__btn--finish")) {
+      document.querySelector(".appointment__tabs").classList.remove("active");
+      let data = document.querySelector(".appointment__days-title").innerHTML.split(" ").slice(-2).join(" ");
+      data += ", " + document.querySelector(".appointment__days-time input:checked + div").innerHTML;
+      document.querySelector(".appointment__finish-time").innerHTML = data;
+      document.querySelector(".appointment__finish").classList.add("active");
+      document.querySelector(".appointment__finish-title").classList.add("active");
+      document.querySelector(".appointment__days").classList.remove("active");
+    }
+
     if (e.target.classList.contains("appointment__return")) {
       if (window.innerWidth < 768) {
         if (e.target.classList.contains("daysOpen")) {

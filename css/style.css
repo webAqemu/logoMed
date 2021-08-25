@@ -6157,7 +6157,7 @@ textarea::placeholder {
     .appointment__tabs-btns {
       max-width: 430px;
       width: 100%;
-      padding: 32px 12px;
+      padding: 48px 24px;
       margin-right: 32px;
       background-color: #fff;
       border-radius: 20px; }
@@ -6234,7 +6234,7 @@ textarea::placeholder {
         .appointment__tabs-title {
           margin: 15px 0 30px; } }
     .appointment__tabs-content {
-      padding: 32px 27px;
+      padding: 48px 40px;
       background-color: #fff;
       border-radius: 20px;
       position: relative;
@@ -6293,7 +6293,7 @@ textarea::placeholder {
       opacity: 1; }
   .appointment__btn--finish {
     position: static; }
-  .appointment__btn--back {
+  .appointment__btn--back:not(:first-child) {
     margin-left: 32px; }
   @media (max-width: 768px) {
     .appointment__btn {
@@ -6419,7 +6419,7 @@ textarea::placeholder {
   .appointment__files-type {
     position: absolute;
     left: 280px;
-    top: 138px;
+    top: 154px;
     color: #7d7d7d; }
     @media (max-width: 768px) {
       .appointment__files-type {
@@ -6494,8 +6494,10 @@ textarea::placeholder {
           margin-left: 0; } }
   .appointment .datepicker-inline .datepicker {
     box-shadow: none;
-    padding-left: 0;
-    border-radius: 0; }
+    padding: 50px 0 0;
+    border-radius: 0;
+    width: 420px;
+    margin: 0 auto; }
     .appointment .datepicker-inline .datepicker::after {
       display: none; }
   .appointment .datepicker-inline .datepicker--cells {
@@ -6515,14 +6517,16 @@ textarea::placeholder {
       .appointment .datepicker-inline .datepicker--cell {
         margin: 4px auto; } }
   .appointment .datepicker-inline .datepicker--nav-title {
-    right: 80px;
+    right: 20px;
     font-family: "NotoSans-Regular", sans-serif;
     font-weight: 400;
     font-size: 32px;
     line-height: 1.3;
     margin: 0;
     padding: 0;
-    color: #141414; }
+    color: #141414;
+    top: 0;
+    position: static; }
     @media (max-width: 768px) {
       .appointment .datepicker-inline .datepicker--nav-title {
         font-size: 22px;
@@ -6530,36 +6534,72 @@ textarea::placeholder {
         font-weight: 500;
         right: 0;
         top: 40px; } }
-  @media (max-width: 768px) {
-    .appointment .datepicker-content {
-      padding: 0; } }
-  .appointment .datepicker--nav-action {
-    display: none; }
-  .appointment .datepicker--body.active {
-    margin-top: 25px; }
-    @media (max-width: 768px) {
-      .appointment .datepicker--body.active {
-        margin-top: 0; } }
-  .datepicker-inline .appointment__wrapper {
+  .appointment .datepicker-inline .datepicker--nav {
+    padding: 0;
     display: flex;
-    align-items: stretch; }
-    @media (max-width: 768px) {
-      .datepicker-inline .appointment__wrapper {
-        display: block; } }
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .appointment .datepicker-inline .datepicker--nav-action {
+      font-size: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 100%;
+      background-color: #eff5fb;
+      margin: 0 5px;
+      position: relative;
+      border: 1px solid #eff5fb;
+      transition: border-color 0.3s; }
+      .appointment .datepicker-inline .datepicker--nav-action::before {
+        content: "";
+        position: absolute;
+        width: 7px;
+        height: 12px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-image: url(../img/appointment-arrow-left.svg);
+        background-repeat: no-repeat;
+        background-position: center; }
+      .appointment .datepicker-inline .datepicker--nav-action[data-action="next"] {
+        transform: rotate(180deg); }
+      .appointment .datepicker-inline .datepicker--nav-action:hover {
+        background-color: #fff;
+        border-color: #68a9fe; }
   .appointment__btns {
     display: flex;
     align-items: center;
     margin-top: 36px; }
+    .appointment__btns.hidden {
+      display: none; }
   .appointment__radio + .appointment__btns {
     margin-top: 80px; }
   .appointment__days {
-    display: inline-block;
-    width: 100%; }
+    display: block;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    max-width: 868px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #fff;
+    margin-left: auto;
+    transition: opacity 0.3s; }
+    .appointment__days.active {
+      opacity: 1;
+      height: auto;
+      overflow: visible;
+      padding: 48px 40px;
+      margin-top: 32px; }
     @media (max-width: 768px) {
       .appointment__days {
         width: 100%; } }
     .appointment__days-title {
-      margin: 50px 0 35px; }
+      margin: 0 0 35px; }
     .appointment__days-time {
       display: inline-block;
       margin-right: 40px;

@@ -7502,7 +7502,7 @@
     &-btns {
       max-width: 430px;
       width: 100%;
-      padding: 32px 12px;
+      padding: 48px 24px;
       margin-right: 32px;
       background-color: #fff;
       border-radius: 20px;
@@ -7613,7 +7613,7 @@
     }
 
     &-content {
-      padding: 32px 27px;
+      padding: 48px 40px;
       background-color: #fff;
       border-radius: 20px;
       position: relative;
@@ -7690,7 +7690,7 @@
       position: static;
     }
 
-    &--back {
+    &--back:not(:first-child) {
       margin-left: 32px;
     }
 
@@ -7857,7 +7857,7 @@
   &__files-type {
     position: absolute;
     left: 280px;
-    top: 138px;
+    top: 154px;
     color: $light-text;
     @include r {
       display: none;
@@ -7960,8 +7960,10 @@
   .datepicker-inline {
     .datepicker {
       box-shadow: none;
-      padding-left: 0;
+      padding: 50px 0 0;
       border-radius: 0;
+      width: 420px;
+      margin: 0 auto;
       &::after {
         display: none;
       }
@@ -7989,7 +7991,7 @@
     }
 
     .datepicker--nav-title {
-      right: 80px;
+      right: 20px;
       font-family: "NotoSans-Regular", sans-serif;
       font-weight: 400;
       font-size: 32px;
@@ -7997,6 +7999,9 @@
       margin: 0;
       padding: 0;
       color: $title;
+      top: 0;
+      position: static;
+
       @include r {
         font-size: 22px;
         font-family: "SFProDisplay-Medium", sans-serif;
@@ -8005,30 +8010,51 @@
         top: 40px;
       }
     }
-  }
 
-  .datepicker-content {
-    @include r {
+    .datepicker--nav {
       padding: 0;
-    }
-  }
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
 
-  .datepicker--nav-action {
-    display: none;
-  }
+      &-action {
+        font-size: 0;
+        width: 24px;
+        height: 24px;
+        border-radius: 100%;
+        background-color: $bg;
+        margin: 0 5px;
+        position: relative;
+        border: 1px solid $bg;
+        transition: border-color 0.3s;
 
-  .datepicker--body.active {
-    margin-top: 25px;
-    @include r {
-      margin-top: 0;
-    }
-  }
+        &::before {
+          content: "";
+          position: absolute;
+          width: 7px;
+          height: 12px;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          background-image: url(../img/appointment-arrow-left.svg);
+          background-repeat: no-repeat;
+          background-position: center;
+        }
 
-  .datepicker-inline &__wrapper {
-    display: flex;
-    align-items: stretch;
-    @include r {
-      display: block;
+        &[data-action="next"] {
+          transform: rotate(180deg);
+        }
+
+        &:hover {
+          background-color: #fff;
+          border-color: $blue;
+        }
+      }
     }
   }
 
@@ -8036,6 +8062,10 @@
     display: flex;
     align-items: center;
     margin-top: 36px;
+
+    &.hidden {
+      display: none;
+    }
   }
 
   &__radio + &__btns {
@@ -8043,13 +8073,31 @@
   }
 
   &__days {
-    display: inline-block;
+    display: block;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    max-width: 868px;
     width: 100%;
+    border-radius: 20px;
+    background-color: #fff;
+    margin-left: auto;
+    transition: opacity 0.3s;
+
+    &.active {
+      opacity: 1;
+      height: auto;
+      overflow: visible;
+      padding: 48px 40px;
+      margin-top: 32px;
+    }
+
     @include r {
       width: 100%;
     }
+
     &-title {
-      margin: 50px 0 35px;
+      margin: 0 0 35px;
     }
 
     &-time {
