@@ -78,12 +78,18 @@ if (document.querySelector(".accordion__inner")) {
 if (document.querySelector(".login__inner")) {
   document.querySelector(".login__inner").addEventListener("click", function (e) {
     if (e.target.classList.contains("login__forgot-link")) {
+      e.preventDefault();
       document.querySelector(".login__window.active").classList.remove("active");
       document.querySelector(".login__window--recover").classList.add("active");
     }
     if (e.target.classList.contains("login__back")) {
       document.querySelector(".login__window.active").classList.remove("active");
       document.querySelector(".login__window").classList.add("active");
+    }
+    if (e.target.classList.contains("login__btn--send")) {
+      e.preventDefault();
+      document.querySelector(".login__window--recover").classList.remove("active");
+      document.querySelector(".login__window--recover-check").classList.add("active");
     }
   });
 }
@@ -358,10 +364,32 @@ if (document.querySelector(".appointment")) {
       item.remove();
     }
   });
+  const freeDays = [10, 11, 12, 25, 26];
   $(".appointment__datepicker").datepicker({
     showOtherMonths: false,
     weekends: [0],
+    onRenderCell: function (date, cellType) {
+      if (cellType == "day" && freeDays.indexOf(date.getDate()) != -1) {
+        console.log("gg");
+        return {
+          classes: "disable",
+        };
+      }
+    },
   });
+
+  const calendar = document.querySelectorAll(".datepicker--cell");
+  const monthsList = ["Янаварь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+  const curMonth = monthsList.indexOf(document.querySelector(".datepicker--nav-title").innerHTML);
+  setTimeout(() => {
+    calendar.forEach((cell) => {
+      if (freeDays.indexOf(+cell.dataset.date) != -1 && cell.dataset.month == curMonth) {
+        console.log(cell);
+        cell.setAttribute("available", "true");
+      }
+    });
+  }, 1000);
+
   // активация календарей
   if (window.innerWidth < 768) {
     document.querySelector(".appointment__btn--next[data-tab='6']").classList.remove("appointment__btn--next");
@@ -482,7 +510,8 @@ if (document.querySelector(".general")) {
       document.querySelector(".general__form--new").classList.add("active");
       document.getElementById("cancelNewHistory").classList.add("active");
     });
-    document.getElementById("cancelNewHistory").addEventListener("click", () => {
+    document.getElementById("cancelNewHistory").addEventListener("click", (e) => {
+      e.preventDefault();
       document.querySelector(".general__form--new").classList.remove("active");
       document.getElementById("cancelNewHistory").classList.remove("active");
     });
@@ -504,7 +533,6 @@ if (document.querySelector(".general")) {
   // открытие настроек порфиля по кнопке
   document.querySelector(".general__change").addEventListener("click", function (e) {
     e.target.classList.toggle("hidden");
-
     e.target.closest(".general__tabs-content").classList.toggle("change");
   });
 
@@ -519,6 +547,25 @@ if (document.querySelector(".general")) {
     if (this.parentElement.querySelector("input").getAttribute("type") == "password") {
       this.parentElement.querySelector("input").setAttribute("type", "text");
     } else this.parentElement.querySelector("input").setAttribute("type", "password");
+  });
+
+  // добавить жалобу
+
+  document.querySelector(".general__tabs-content[data-general='2']").addEventListener("click", function (e) {
+    e.preventDefault();
+    if (e.target.classList.contains("general__btn--add")) {
+      document.querySelector(".general__disease").classList.add("active");
+    }
+
+    if (e.target.classList.contains("general__disease-title")) {
+      e.target.closest(".general__disease-item").classList.toggle("active");
+      const item = e.target.closest(".general__disease-item").querySelector(".general__disease-inner");
+      $(item).slideToggle();
+    }
+
+    if (e.target.classList.contains("general__save")) {
+      e.target.closest(".general__history").classList.remove("change");
+    }
   });
 
   // добавить симптом в жалобах
@@ -538,17 +585,21 @@ if (document.querySelector(".general")) {
   document.querySelector(".general__symptoms-input").addEventListener("keyup", function (e) {
     const list = document.querySelector(".general__symptoms-list");
     if (e.code === "Enter") {
-      const html = `
-      <li class="general__symptoms-added">
+      if (e.target.value === "" || e.target.value === " ") {
+        e.target.classList.remove("active");
+      } else {
+        const html = `
+        <li class="general__symptoms-added">
         <button class="general__symptoms-delete"></button>
         ${e.target.value}
       </li>
       `;
 
-      list.insertAdjacentHTML("beforeend", html);
+        list.insertAdjacentHTML("beforeend", html);
 
-      e.target.value = "";
-      e.target.classList.remove("active");
+        e.target.value = "";
+        e.target.classList.remove("active");
+      }
     }
   });
 
@@ -557,6 +608,22 @@ if (document.querySelector(".general")) {
     history.addEventListener("click", function () {
       this.parentElement.classList.toggle("active");
     });
+  });
+
+  // редактирование болезни
+  document.querySelector(".general__tabs-content[data-general='3']").addEventListener("click", function (e) {
+    e.preventDefault();
+    if (e.target.classList.contains("general__change")) {
+      e.target.closest(".general__history").classList.add("change");
+    }
+
+    if (e.target.classList.contains("general__btn--cancel")) {
+      e.target.closest(".general__history").classList.remove("change");
+    }
+
+    if (e.target.classList.contains("general__save")) {
+      e.target.closest(".general__history").classList.remove("change");
+    }
   });
 
   // кастомизация календаря
@@ -1072,6 +1139,7 @@ if (document.querySelector(".appointment")) {
       document.querySelector(".appointment__tabs-content.active").classList.remove("active");
       document.querySelector(`.appointment__tabs-btn[data-tab="${curTab}"]`).classList.add("complete");
       document.querySelector(`.appointment__tabs-btn[data-tab="${curTab + 1}"]`).classList.add("active");
+      document.querySelector(`.appointment__tabs-btn[data-tab="${curTab + 1}"]`).classList.remove("disable");
       document.querySelector(`.appointment__tabs-content[data-tab="${curTab + 1}"]`).classList.add("active");
     }
 
@@ -1084,6 +1152,7 @@ if (document.querySelector(".appointment")) {
       if (document.querySelector(".appointment__days.active")) {
         document.querySelector(".appointment__days").classList.remove("active");
         document.querySelector(".-selected-").classList.remove("-selected-");
+        document.querySelector(`.appointment__tabs-content[data-tab="5"] .hidden`).classList.remove("hidden");
       }
     }
 

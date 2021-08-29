@@ -69,8 +69,6 @@
     <main class="main">
       <section class="login">
         <div class="container">
-          <h1 class="login__title title">Вход в личный кабинет</h1>
-          <a class="login__reg btn-text" href="./registration-client.html">Регистрация</a>
           <div class="login__inner">
             <div class="login__window active">
               <div class="login__subtitle title-h3">Войти</div>
@@ -81,11 +79,12 @@
               <form action="" class="login__form">
                 <input type="email" class="login__input btn-text" placeholder="E-mail" required />
                 <input type="password" class="login__input btn-text" placeholder="Пароль" required />
-                <span class="login__forgot-link">Восстановление пароля</span>
+                <span class="login__forgot-link">Забыли пароль?</span>
                 <a href="./client-profile.html" class="login__btn btn" type="submit">
                   <span>В личный кабинет</span>
                 </a>
-                <a class="login__reg-mobile" href="./registration-client.html">Регистрация</a>
+                <a class="login__reg" href="./registration-doctor.html">Регистрация для врача</a>
+                <a class="login__reg" href="./registration-client.html">Регистрация для пациента</a>
               </form>
               <a href="./index.html" class="login__return">Вернуться назад</a>
             </div>
@@ -94,23 +93,21 @@
               <div class="login__desc">Введите почту, на которую был зарегистрирован аккаунт, и мы пришлем новый пароль.</div>
               <form action="" class="login__form login__form--recover">
                 <input type="email" class="login__input btn-text" placeholder="E-mail" required />
-                <button class="login__btn btn" type="submit">
+                <button class="login__btn login__btn--send btn" type="submit">
                   <span>Отправить</span>
                 </button>
               </form>
-              <a class="login__reg-mobile" href="./registration-client.html">Регистрация</a>
               <span class="login__back">Вернуться назад</span>
             </div>
             <div class="login__window login__window--recover-check">
               <div class="login__subtitle title-h3">Восстановление пароля</div>
               <div class="login__desc btn-text">Мы выслали новый пароль на почту! Позднее вы сможете его изменить на собственный.</div>
               <form action="" class="login__form login__form--recover">
-                <input type="email" class="login__input btn-text" placeholder="Пароль из письма" required />
-                <button class="login__btn btn" type="submit">
+                <input type="password" class="login__input btn-text" placeholder="Пароль из письма" required />
+                <button class="login__btn login__btn btn" type="submit">
                   <span>Войти</span>
                 </button>
               </form>
-              <a class="login__reg-mobile" href="./registration-client.html">Регистрация</a>
               <span class="login__back">Вернуться назад</span>
             </div>
             <img class="login__img" src="./img/login-img.svg" alt="login vector image" />

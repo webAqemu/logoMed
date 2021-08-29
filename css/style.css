@@ -1354,19 +1354,16 @@ textarea::placeholder {
   padding-top: 136px;
   background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%); }
   .login__inner {
-    margin-top: 65px;
+    margin-top: 215px;
     display: flex;
     align-items: center;
     justify-content: space-between; }
-  .login__title {
-    display: inline-block;
-    margin-top: 150px; }
   .login__reg {
-    margin-left: 50px;
     color: #68a9fe;
-    text-decoration: none; }
-    .login__reg-mobile {
-      display: none; }
+    text-decoration: none;
+    margin-top: 24px; }
+    .login__reg + .login__reg {
+      margin-top: 16px; }
   .login__window {
     padding: 40px 48px;
     background: #ffffff;
@@ -1410,7 +1407,7 @@ textarea::placeholder {
   .login__forgot-link {
     font-size: 16px;
     line-height: 28px;
-    margin: 16px 0 30px;
+    margin: 16px 0;
     color: #68a9fe;
     cursor: pointer; }
   .login__img {
@@ -2656,7 +2653,7 @@ textarea::placeholder {
     overflow: hidden;
     transition: all 0.3s; }
     .general__form--new.active {
-      height: 1275px; }
+      height: 100%; }
       @media (max-width: 768px) {
         .general__form--new.active {
           height: auto;
@@ -2711,10 +2708,16 @@ textarea::placeholder {
       @media (max-width: 768px) {
         .general__tabs-btn:last-child::before {
           display: none; } }
+    .general__tabs-btn:nth-child(2) {
+      margin: 0 10px; }
     .general__tabs-btn.active {
       background-color: white; }
       .general__tabs-btn.active:first-child::before, .general__tabs-btn.active:last-child::before {
         opacity: 1; }
+      .general__tabs-btn.active .circle {
+        opacity: 1;
+        height: 40px;
+        transition: opacity 0.3s; }
     .general__tabs-btn:hover, .general__tabs-btn.active {
       color: #444444; }
       @media (max-width: 768px) {
@@ -2729,6 +2732,32 @@ textarea::placeholder {
         .general__tabs-btn:not(:last-child) {
           margin-bottom: 15px;
           margin-right: 15px; } }
+    .general__tabs-btn .circle {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      bottom: 0;
+      right: -40px;
+      z-index: 2;
+      background-color: #fff;
+      opacity: 0;
+      height: 0; }
+      .general__tabs-btn .circle::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        border-bottom-left-radius: 20px;
+        background-color: #eff5fb;
+        position: absolute;
+        bottom: 0;
+        left: 0; }
+      .general__tabs-btn .circle--left {
+        right: 100%; }
+        .general__tabs-btn .circle--left::after {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 20px;
+          left: auto;
+          right: 0; }
   .general__subtitle--inline {
     display: inline-block; }
   @media (max-width: 768px) {
@@ -2939,8 +2968,8 @@ textarea::placeholder {
       .general__symptoms-btn::before {
         content: "";
         position: absolute;
-        width: 32px;
-        height: 32px;
+        width: 33px;
+        height: 33px;
         background-image: url(../img/reg-icons/reg-add-file.svg);
         background-repeat: no-repeat;
         background-size: cover;
@@ -3128,10 +3157,13 @@ textarea::placeholder {
     .general__input--disease {
       max-width: 615px;
       resize: none;
-      min-height: 75px;
-      max-height: fit-content; }
+      height: 120px; }
       .general__input--disease-name {
-        min-height: auto; }
+        height: 50px; }
+    .general__input--date {
+      max-width: 615px;
+      resize: none;
+      height: 50px; }
     @media (max-width: 768px) {
       .general__input {
         font-size: 16px;
@@ -3152,47 +3184,98 @@ textarea::placeholder {
       @media (max-width: 768px) {
         .general__input-wrapper span {
           bottom: 23px; } }
-  .general__disease-text {
-    max-width: 725px;
-    margin: 32px 0 40px; }
-    @media (max-width: 768px) {
-      .general__disease-text {
-        margin: 0; } }
-  .general__disease-new {
-    display: block;
-    margin-bottom: 25px; }
-  .general__disease-label {
-    display: block;
-    max-width: 615px;
-    width: 100%;
-    margin: 15px 0; }
-    @media (max-width: 768px) {
-      .general__disease-label {
-        font-family: "SFProDisplay-Medium", sans-serif;
-        font-weight: 500; } }
-  .general__disease-desc {
-    color: #7d7d7d;
-    max-width: 715px;
-    margin-bottom: 50px; }
+  .general__disease {
+    height: 0;
+    overflow: hidden; }
+    .general__disease.active {
+      height: auto; }
+    .general__disease-text {
+      max-width: 725px;
+      margin: 32px 0 40px; }
+      @media (max-width: 768px) {
+        .general__disease-text {
+          margin: 0; } }
+    .general__disease-new {
+      display: block;
+      margin-bottom: 25px; }
+    .general__disease-label {
+      display: block;
+      max-width: 615px;
+      width: 100%;
+      margin: 15px 0;
+      font-weight: 600; }
+      @media (max-width: 768px) {
+        .general__disease-label {
+          font-family: "SFProDisplay-Medium", sans-serif;
+          font-weight: 500; } }
+    .general__disease-desc {
+      max-width: 615px;
+      margin-bottom: 50px; }
+    .general__disease-item {
+      padding: 28px 0 17px;
+      border-top: 1px solid #f1f1f1; }
+      .general__disease-item.active .general__disease-title::after {
+        transform: rotate(180deg); }
+      .general__disease-item:nth-child(2) {
+        margin-top: 32px; }
+    .general__disease-inner {
+      display: none; }
+    .general__disease-title {
+      font-size: 24px;
+      margin-bottom: 16px;
+      font-weight: 600;
+      position: relative;
+      cursor: pointer; }
+      .general__disease-title::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 5px;
+        width: 22px;
+        height: 13px;
+        background-image: url(../img/disease-history-arrow.svg);
+        transition: all 0.3s; }
+    .general__disease-date {
+      color: #7d7d7d; }
+    .general__disease-list {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 40px; }
+      .general__disease-list li {
+        width: 50%;
+        margin-bottom: 16px; }
+        .general__disease-list li:nth-child(odd) {
+          padding-left: 15px; }
+        .general__disease-list li:first-child {
+          font-weight: 600;
+          margin-bottom: 24px;
+          width: 100%;
+          padding-left: 0; }
+      .general__disease-list--column li {
+        width: 100%; }
+        .general__disease-list--column li:nth-child(odd) {
+          padding-left: 0; }
+  .general__btns {
+    display: flex;
+    margin: 40px 0 0; }
   .general__btn {
     cursor: pointer;
     background-color: transparent;
     border: none;
     box-shadow: none;
     margin: 0;
-    padding: 0 42px 0 0;
-    position: absolute;
-    right: 30px;
-    top: 55px;
-    color: #68a9fe; }
+    position: relative;
+    padding-left: 21px;
+    margin-bottom: 32px; }
     .general__btn::after {
       content: "";
       position: absolute;
-      right: 0;
-      top: -2px;
-      width: 32px;
-      height: 32px;
-      background-image: url(../img/reg-icons/reg-add-file.svg);
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 17px;
+      background-image: url(../img/general-add-disease-icon.svg);
       background-repeat: no-repeat;
       background-position: center; }
     @media (max-width: 768px) {
@@ -3228,14 +3311,10 @@ textarea::placeholder {
             transform: translateY(-50%);
             right: calc(20% + 7px); } }
     .general__btn--cancel {
-      position: absolute;
-      opacity: 0;
-      transition: all 0.3s;
-      right: 30px;
-      top: 240px;
-      color: #7d7d7d; }
+      padding-left: 0;
+      margin-left: 32px; }
       .general__btn--cancel::after {
-        background-image: url(../img/cancel-added-disease.svg); }
+        display: none; }
       .general__btn--cancel.active {
         opacity: 1; }
       @media (max-width: 768px) {
@@ -3254,6 +3333,19 @@ textarea::placeholder {
             width: 16px;
             height: 16px;
             background-image: url(../img/reg-icons/reg-delete-file-icon.svg); } }
+  .general__save {
+    padding-left: 21px; }
+    .general__save::after {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-image: url(../img/change-profile-icon--white.svg);
+      background-repeat: no-repeat;
+      background-position: center; }
   @media (max-width: 768px) {
     .general .reg__file-wrapper {
       display: none; } }
@@ -3279,17 +3371,18 @@ textarea::placeholder {
   .general__file-name {
     display: inline-block;
     margin-left: 15px; }
-  .general__save {
-    margin: 40px 0 60px; }
   .general__history {
     margin-bottom: 15px; }
     .general__history:not(:first-child) {
       padding-top: 25px;
       border-top: 1px solid #f1f1f1; }
+    .general__history:nth-child(2) {
+      margin-top: 32px; }
     .general__history-name {
       cursor: pointer;
       padding-bottom: 10px;
-      position: relative; }
+      position: relative;
+      font-weight: 700; }
       .general__history-name::after {
         content: "";
         position: absolute;
@@ -3306,12 +3399,24 @@ textarea::placeholder {
       height: 0;
       overflow: hidden;
       transition: all 0.3s; }
+    .general__history .general__input,
+    .general__history .general__btns {
+      display: none; }
+    .general__history .general__change {
+      margin-bottom: 32px; }
     .general__history.active .general__history-name::after {
       transform: rotate(180deg); }
     .general__history.active .general__history-date {
       opacity: 0; }
     .general__history.active .general__form {
       height: auto; }
+    .general__history.change .general__input {
+      display: block; }
+    .general__history.change .general__btns {
+      display: flex; }
+    .general__history.change .general__disease-desc,
+    .general__history.change .general__change {
+      display: none; }
   .general__change {
     display: inline-block;
     margin-top: 55px;
@@ -3329,6 +3434,8 @@ textarea::placeholder {
       border-color: #68a9fe; }
     .general__change.hidden {
       display: none; }
+    .general__change span {
+      pointer-events: none; }
 
 .change + .profile {
   display: block; }
@@ -3593,17 +3700,18 @@ textarea::placeholder {
     width: 32px;
     margin: 4px 10.29px;
     font-size: 20px;
-    text-align: center; }
+    text-align: center;
+    transition: all 0.3s;
+    pointer-events: none; }
     .datepicker-inline .datepicker--cell.-weekend- {
       color: #fe9393; }
-    .datepicker-inline .datepicker--cell.-focus- {
-      border: 1px solid #68a9fe;
+    .datepicker-inline .datepicker--cell.-selected-, .datepicker-inline .datepicker--cell.-focus- {
       background-color: transparent;
-      color: #7d7d7d; }
-    .datepicker-inline .datepicker--cell.-selected- {
+      color: white;
+      background-color: #68a9fe; }
+    .datepicker-inline .datepicker--cell.disable {
       border: 1px solid #68a9fe;
-      background-color: transparent;
-      color: #68a9fe; }
+      pointer-events: inherit; }
     @media (max-width: 768px) {
       .datepicker-inline .datepicker--cell {
         font-size: 17px; } }
@@ -6198,6 +6306,13 @@ textarea::placeholder {
         margin-bottom: 0; }
       .appointment__tabs-btn.complete::after {
         opacity: 1; }
+      .appointment__tabs-btn.disable {
+        pointer-events: none;
+        color: #bfbfbf; }
+        .appointment__tabs-btn.disable .appointment__tabs-icon {
+          background-color: #ededed; }
+          .appointment__tabs-btn.disable .appointment__tabs-icon::after {
+            filter: invert(72%) sepia(2%) saturate(5%) hue-rotate(334deg) brightness(91%) contrast(92%); }
     .appointment__tabs-icon {
       width: 40px;
       height: 40px;
@@ -6339,6 +6454,8 @@ textarea::placeholder {
       margin: 0 0 25px;
       width: 50%;
       padding: 0; }
+      .appointment__list-item:nth-child(even) {
+        padding-left: 20px; }
       @media (max-width: 768px) {
         .appointment__list-item {
           width: 100%; } }
@@ -6398,7 +6515,7 @@ textarea::placeholder {
     color: #444444;
     border: 1px solid #d6d6d6;
     border-radius: 10px;
-    margin-top: 32px;
+    margin-bottom: 32px;
     outline: none;
     opacity: 0;
     transition: opacity 0.3s;

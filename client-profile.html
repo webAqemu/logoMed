@@ -118,9 +118,19 @@
           <div class="content-block__inner content-block__inner--general active" data-tab="1">
             <div class="general">
               <div class="general__tabs-btns active">
-                <div class="general__tabs-btn title-h3 active" data-general="1">Общее состояние</div>
-                <div class="general__tabs-btn title-h3" data-general="2">Жалобы</div>
-                <div class="general__tabs-btn title-h3" data-general="3">История болезней</div>
+                <div class="general__tabs-btn title-h3 active" data-general="1">
+                  Общее состояние 
+                  <span class="circle circle--right"></span> 
+                </div>
+                <div class="general__tabs-btn title-h3" data-general="2">
+                  <span class="circle circle--left"></span>
+                  Жалобы
+                  <span class="circle circle--right"></span>
+                </div>
+                <div class="general__tabs-btn title-h3" data-general="3">
+                  <span class="circle circle--left"></span>
+                  История болезней
+                </div>
               </div>
               <div class="general__tabs-content active" data-general="1">
                 <div class="general__wrapper">
@@ -255,106 +265,112 @@
               </div>
               <div class="general__tabs-content" data-general="2">
                 <div class="general__wrapper">
-                  <div class="general__subtitle general__symptoms-title subtitle active" data-symptom="1">Симптомы</div>
-                  <form action="" class="general__symptoms active" data-symptom="1">
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Слабость</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Недостаточная концентрация внимания</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Снижение энергии</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Инфекции чаще 1 раза в 4 месяц</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Повышенная утомляемость</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Сухость кожи</label>
-                    <div class="general__symptom-choose">
-                      <span></span>
-                      <ul class="general__symptom-list">
-                        <li class="general__symptom-item">Голова</li>
-                        <li class="general__symptom-item">Руки</li>
-                        <li class="general__symptom-item">Локти</li>
-                        <li class="general__symptom-item">Лицо</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Головные боли</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Волосы</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Раздражительность</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Трудности проглатывания твердой пищи</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Перепады настроения</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Проблемы со стулом</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Головокружение, шум в ушах</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Вздутие, изжога, тяжесть в желудке</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Депрессивное настроение</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Беспокойный сон, подъем ночью в туалет</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Снижение трудоспособности</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Отеки</label>
-                  </div>
-                  <div class="general__symptom">
-                    <input type="checkbox" class="general__checkbox" />
-                    <label for="" class="general__checkbox-label">Одышка, сердцебиение</label>
-                  </div>
-                  <div class="general__symptoms-add">
-                    <button class="general__symptoms-btn">Добавить симптом</button>
-                    <input type="text" class="general__symptoms-input" placeholder="Введите симптом">
-                    <ul class="general__symptoms-list">
-                      <li class="general__symptoms-added">
-                        <button class="general__symptoms-delete"></button>
-                        Запах изо рта
-                      </li>
-                    </ul>
-                  </div>
-                  </form>
+                  <div class="general__subtitle general__subtitle--inline subtitle">Создать новую жалобу</div>
+                  <p class="general__disease-text">Ответьте на ряд вопросов, чтобы врачу была понятна общая картина вашего состояния</p>
+                  <button class="general__btn general__btn--add btn" id="newSymptoms">
+                    <span>
+                      Новая жалоба
+                    </span>
+                  </button>
                 </div>
-                <div class="general__wrapper">
+                <div class="general__disease">
+                  <div class="general__wrapper">
+                    <div class="general__subtitle general__symptoms-title subtitle active" data-symptom="1">Симптомы</div>
+                    <form action="" class="general__symptoms active" data-symptom="1">
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Слабость</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Недостаточная концентрация внимания</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Снижение энергии</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Инфекции чаще 1 раза в 4 месяц</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Повышенная утомляемость</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Сухость кожи</label>
+                        <div class="general__symptom-choose">
+                          <span></span>
+                          <ul class="general__symptom-list">
+                            <li class="general__symptom-item">Голова</li>
+                            <li class="general__symptom-item">Руки</li>
+                            <li class="general__symptom-item">Локти</li>
+                            <li class="general__symptom-item">Лицо</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Головные боли</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Волосы</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Раздражительность</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Трудности проглатывания твердой пищи</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Перепады настроения</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Проблемы со стулом</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Головокружение, шум в ушах</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Вздутие, изжога, тяжесть в желудке</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Депрессивное настроение</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Беспокойный сон, подъем ночью в туалет</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Снижение трудоспособности</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Отеки</label>
+                      </div>
+                      <div class="general__symptom">
+                        <input type="checkbox" class="general__checkbox" />
+                        <label for="" class="general__checkbox-label">Одышка, сердцебиение</label>
+                      </div>
+                      <div class="general__symptoms-add">
+                        <button class="general__symptoms-btn">Добавить симптом</button>
+                        <input type="text" class="general__symptoms-input" placeholder="Введите симптом">
+                        <ul class="general__symptoms-list">
+                        </ul>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="general__wrapper">
                   <div class="general__subtitle general__symptoms-title subtitle" data-symptom="2">Мужское здоровье</div>
                   <form action="" class="general__symptoms general__symptoms--man" data-symptom="2">
                     <div class="general__symptom">
@@ -370,62 +386,123 @@
                       <label for="" class="general__checkbox-label">Проблемы с эррекцией во время полового акта</label>
                     </div>
                   </form>
+                  </div>
+                  <div class="general__wrapper">
+                  <div class="general__subtitle general__symptoms-title subtitle" data-symptom="3">Прочее</div>
+                    <form action="" class="general__symptoms general__symptoms--more" data-symptom="3">
+                      <div class="general__col">
+                        <label for="" class="general__input-label">Аллергические реакции</label>
+                        <input type="text" class="general__input" placeholder="Перечислите" />
+                        <label for="" class="general__input-label">Установленные диагнозы</label>
+                        <input type="text" class="general__input" placeholder="Перечислите" />
+                        <label for="" class="general__input-label">Проведенные операции</label>
+                        <input type="text" class="general__input" placeholder="Перечислите" />
+                        <div class="general__symptom">
+                          <input type="checkbox" class="general__checkbox" />
+                          <label for="" class="general__checkbox-label">Тяга к сладкому</label>
+                        </div>
+                        <div class="general__symptom">
+                          <input type="checkbox" class="general__checkbox" />
+                          <label for="" class="general__checkbox-label">Тяга к соленому</label>
+                        </div>
+                        <div class="general__symptom">
+                          <input type="checkbox" class="general__checkbox" />
+                          <label for="" class="general__checkbox-label">Контакты с животными</label>
+                        </div>
+                      </div>
+                      <div class="general__col">
+                        <div class="general__input-wrapper">
+                          <span>раз</span>
+                          <label for="" class="general__input-label">Количество приемов пищи в день</label>
+                          <input type="number" class="general__input" />
+                        </div>
+                        <div class="general__input-wrapper">
+                          <span>раз</span>
+                          <label for="" class="general__input-label">Количество перекусов в день</label>
+                          <input type="number" class="general__input" />
+                        </div>
+                        <div class="general__input-wrapper">
+                          <span>мл.</span>
+                          <label for="" class="general__input-label">Объем потреблемой воды</label>
+                          <input type="number" class="general__input" />
+                        </div>
+                        <div class="general__input-wrapper">
+                          <span>мл.</span>
+                          <label for="" class="general__input-label">Количество кофе в рационе</label>
+                          <input type="number" class="general__input" />
+                        </div>
+                      </div>
+                    </form>
+                    <button class="general__save btn">Сохранить</button>
+                  </div>
                 </div>
                 <div class="general__wrapper">
-                  <div class="general__subtitle general__symptoms-title subtitle" data-symptom="3">Прочее</div>
-                  <form action="" class="general__symptoms general__symptoms--more" data-symptom="3">
-                    <div class="general__col">
-                      <label for="" class="general__input-label">Аллергические реакции</label>
-                      <input type="text" class="general__input" placeholder="Перечислите" />
-                      <label for="" class="general__input-label">Установленные диагнозы</label>
-                      <input type="text" class="general__input" placeholder="Перечислите" />
-                      <label for="" class="general__input-label">Проведенные операции</label>
-                      <input type="text" class="general__input" placeholder="Перечислите" />
-                      <div class="general__symptom">
-                        <input type="checkbox" class="general__checkbox" />
-                        <label for="" class="general__checkbox-label">Тяга к сладкому</label>
-                      </div>
-                      <div class="general__symptom">
-                        <input type="checkbox" class="general__checkbox" />
-                        <label for="" class="general__checkbox-label">Тяга к соленому</label>
-                      </div>
-                      <div class="general__symptom">
-                        <input type="checkbox" class="general__checkbox" />
-                        <label for="" class="general__checkbox-label">Контакты с животными</label>
-                      </div>
+                  <div class="general__subtitle general__subtitle--inline subtitle">Ваши жалобы</div>
+                  <div class="general__disease-item">
+                    <div class="general__disease-title">Жалоба №1</div>
+                    <div class="general__disease-date">От 20.06.2021</div>
+                    <div class="general__disease-inner">
+                      <ul class="general__disease-list">
+                        <li>Симптомы</li>
+                        <li>Слабость</li>
+                        <li>Сильная отрыжка</li>
+                        <li>Снижение энергии</li>
+                        <li>Запах изо рта</li>
+                        <li>Снижение трудоспособности</li>
+                        <li>Боли в желудке</li>
+                        <li>Сухость кожи: локти</li>
+                      </ul>
+                      <ul class="general__disease-list">
+                        <li>Мужское здоровье</li>
+                        <li>Снижено либидо</li>
+                      </ul>
+                      <ul class="general__disease-list general__disease-list--column">
+                        <li>Прочее</li>
+                        <li>Тяга к соленому</li>
+                        <li>Количество перекусов в день: 4</li>
+                      </ul>
+                      <button class="general__change">Редактировать</button>
                     </div>
-                    <div class="general__col">
-                      <div class="general__input-wrapper">
-                        <span>раз</span>
-                        <label for="" class="general__input-label">Количество приемов пищи в день</label>
-                        <input type="number" class="general__input" />
-                      </div>
-                      <div class="general__input-wrapper">
-                        <span>раз</span>
-                        <label for="" class="general__input-label">Количество перекусов в день</label>
-                        <input type="number" class="general__input" />
-                      </div>
-                      <div class="general__input-wrapper">
-                        <span>мл.</span>
-                        <label for="" class="general__input-label">Объем потреблемой воды</label>
-                        <input type="number" class="general__input" />
-                      </div>
-                      <div class="general__input-wrapper">
-                        <span>мл.</span>
-                        <label for="" class="general__input-label">Количество кофе в рационе</label>
-                        <input type="number" class="general__input" />
-                      </div>
+                  </div>
+                  <div class="general__disease-item">
+                    <div class="general__disease-title">Жалоба №1</div>
+                    <div class="general__disease-date">От 20.06.2021</div>
+                    <div class="general__disease-inner">
+                      <ul class="general__disease-list">
+                        <li>Симптомы</li>
+                        <li>Слабость</li>
+                        <li>Сильная отрыжка</li>
+                        <li>Снижение энергии</li>
+                        <li>Запах изо рта</li>
+                        <li>Снижение трудоспособности</li>
+                        <li>Боли в желудке</li>
+                        <li>Сухость кожи: локти</li>
+                      </ul>
+                      <ul class="general__disease-list">
+                        <li>Мужское здоровье</li>
+                        <li>Снижено либидо</li>
+                      </ul>
+                      <ul class="general__disease-list general__disease-list--column">
+                        <li>Прочее</li>
+                        <li>Тяга к соленому</li>
+                        <li>Количество перекусов в день: 4</li>
+                      </ul>
+                      <button class="general__change">Редактировать</button>
                     </div>
-                  </form>
+                  </div>
                 </div>
               </div>
               <div class="general__tabs-content" data-general="3">
                 <div class="general__wrapper">
-                  <div class="general__subtitle general__subtitle--inline subtitle">Течение болезни</div>
-                  <p class="general__disease-text">Для более точного понимания врачом вашего состояния, необходимо ответить на ряд вопросов по каждому заболеванию, которое у вас было. Вы всегда можете добавить историю нового заболевания.</p>
-                  <button class="general__btn general__btn--add btn-text" id="newHistory">Добавить историю</button>
-                  <button class="general__btn general__btn--cancel btn-text active" id="cancelNewHistory">Отменить</button>
-                  <form action="" class="general__form general__form--new active">
+                  <div class="general__subtitle general__subtitle--inline subtitle">Создать новую историю болезней</div>
+                  <p class="general__disease-text">Ответьте на ряд вопросов, чтобы врачу была понятна общая картина вашего состояния</p>
+                  <button class="general__btn general__btn--add btn" id="newHistory">
+                    <span>
+                      Новая история
+                    </span>
+                  </button>
+                  
+                  <form action="" class="general__form general__form--new">
                   <label class="general__disease-new title-h3">Добавление новой истории</label>
                   <input type="text" class="general__input general__input--disease general__input--disease-name" placeholder="Введите название диагноза" />
                   <label for="" class="general__disease-label">1. В течение какого времени считаете себя больным?</label>
@@ -443,77 +520,113 @@
                     <label for="file" class="reg__file-label btn-text">Загрузить файл</label>
                   </div>
                   <div class="general__file-list"></div>
-                  <button class="general__save btn btn--inactive btn-text">
-                    <span>Сохранить</span>
-                  </button>
-                  </form>
-                  <div class="general__history">
-                  <div class="general__history-name title-h3">Геморрагический гастрит</div>
-                  <div class="general__history-date">С 20.06.2017</div>
-                  <form action="" class="general__form">
-                    <label for="" class="general__disease-label">1. В течение какого времени считаете себя больным?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Введите дату начала болезни и дату окончания">26.04.2016 — 10.06.2021</textarea> -->
-                    <div class="general__disease-desc">26.04.2016 — 10.06.2021</div>
-                    <label for="" class="general__disease-label">2. Когда, где и при каких обстоятельствах заболели впервые?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</textarea> -->
-                    <div class="general__disease-desc">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</div>
-                    <label for="" class="general__disease-label">3. С каких ощущений началось заболевание?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</textarea> -->
-                    <div class="general__disease-desc">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</div>
-                    <label for="" class="general__disease-label">4. Первое обращение к врачу, результаты исследований, диагноз заболевания, лечение и его эффективность.</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де-нола и омепразола становится легче. Пил месяц по 3 раза в день</textarea> -->
-                    <div class="general__disease-desc">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де&nbsp;-&nbsp;нола и омепразола становится легче. Пил месяц по 3 раза в день</div>
-                    <label for="" class="general__disease-label">5. Последующее течение заболевания.</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</textarea> -->
-                    <div class="general__disease-desc">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</div>
-                    <div class="general__file-list">
-                      <div class="general__file-item" data-file="-">
-                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-                        <span class="general__file-name">Гастроскопия.png</span>
-                      </div>
-                      <div class="general__file-item" data-file="-">
-                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-                        <span class="general__file-name">Анализ на хеликобактер.png</span>
-                      </div>
-                    </div>
-                    <!-- <button class="general__save btn btn--inactive btn-text">
+                  <div class="general__btns">
+
+                    <button class="general__save btn btn--inactive btn-text">
                       <span>Сохранить</span>
-                    </button> -->
+                    </button>
+
+                    <button class="general__btn general__btn--cancel btn btn--stroke active" id="cancelNewHistory">
+                      <span>
+                        Отменить
+                      </span>
+                    </button>
+                  </div>
                   </form>
+                </div>
+                <div class="general__wrapper">
+                  <div class="general__subtitle general__subtitle--inline subtitle">Ваша история болезней</div>
+                  <div class="general__history">
+                    <div class="general__history-name title-h3">Геморрагический гастрит</div>
+                    <div class="general__history-date">С 20.06.2017</div>
+                    <form action="" class="general__form">
+                      <label for="" class="general__disease-label">1. В течение какого времени считаете себя больным?</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Введите дату начала болезни и дату окончания">26.04.2016 — 10.06.2021</textarea>
+                      <div class="general__disease-desc">26.04.2016 — 10.06.2021</div>
+                      <label for="" class="general__disease-label">2. Когда, где и при каких обстоятельствах заболели впервые?</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</textarea>
+                      <div class="general__disease-desc">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</div>
+                      <label for="" class="general__disease-label">3. С каких ощущений началось заболевание?</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</textarea>
+                      <div class="general__disease-desc">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</div>
+                      <label for="" class="general__disease-label">4. Первое обращение к врачу, результаты исследований, диагноз заболевания, лечение и его эффективность.</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де-нола и омепразола становится легче. Пил месяц по 3 раза в день</textarea>
+                      <div class="general__disease-desc">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де&nbsp;-&nbsp;нола и омепразола становится легче. Пил месяц по 3 раза в день</div>
+                      <label for="" class="general__disease-label">5. Последующее течение заболевания.</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</textarea>
+                      <div class="general__disease-desc">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</div>
+                      <div class="general__file-list">
+                        <div class="general__file-item" data-file="-">
+                          <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+                          <span class="general__file-name">Гастроскопия.png</span>
+                        </div>
+                        <div class="general__file-item" data-file="-">
+                          <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+                          <span class="general__file-name">Анализ на хеликобактер.png</span>
+                        </div>
+                      </div>
+                      <button class="general__change">
+                        <span>
+                          Редактировать
+                        </span>
+                      </button>
+                      <div class="general__btns">
+                        <button class="general__save btn btn--inactive btn-text">
+                          <span>Сохранить</span>
+                        </button>
+                        <button class="general__btn general__btn--cancel btn btn--stroke active">
+                          <span>
+                            Отменить
+                          </span>
+                        </button>
+                      </div>
+                    </form>
                   </div>
                   <div class="general__history">
-                  <div class="general__history-name title-h3">Геморрагический гастрит</div>
-                  <div class="general__history-date">С 20.06.2017</div>
-                  <form action="" class="general__form">
-                    <label for="" class="general__disease-label">1. В течение какого времени считаете себя больным?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Введите дату начала болезни и дату окончания">26.04.2016 — 10.06.2021</textarea> -->
-                    <div class="general__disease-desc">26.04.2016 — 10.06.2021</div>
-                    <label for="" class="general__disease-label">2. Когда, где и при каких обстоятельствах заболели впервые?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</textarea> -->
-                    <div class="general__disease-desc">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</div>
-                    <label for="" class="general__disease-label">3. С каких ощущений началось заболевание?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</textarea> -->
-                    <div class="general__disease-desc">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</div>
-                    <label for="" class="general__disease-label">4. Первое обращение к врачу, результаты исследований, диагноз заболевания, лечение и его эффективность.</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де-нола и омепразола становится легче. Пил месяц по 3 раза в день</textarea> -->
-                    <div class="general__disease-desc">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де&nbsp;-&nbsp;нола и омепразола становится легче. Пил месяц по 3 раза в день</div>
-                    <label for="" class="general__disease-label">5. Последующее течение заболевания.</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</textarea> -->
-                    <div class="general__disease-desc">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</div>
-                    <div class="general__file-list">
-                      <div class="general__file-item" data-file="-">
-                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-                        <span class="general__file-name">Гастроскопия.png</span>
+                    <div class="general__history-name title-h3">Геморрагический гастрит</div>
+                    <div class="general__history-date">С 20.06.2017</div>
+                    <form action="" class="general__form">
+                      <label for="" class="general__disease-label">1. В течение какого времени считаете себя больным?</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Введите дату начала болезни и дату окончания">26.04.2016 — 10.06.2021</textarea>
+                      <div class="general__disease-desc">26.04.2016 — 10.06.2021</div>
+                      <label for="" class="general__disease-label">2. Когда, где и при каких обстоятельствах заболели впервые?</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</textarea>
+                      <div class="general__disease-desc">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</div>
+                      <label for="" class="general__disease-label">3. С каких ощущений началось заболевание?</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</textarea>
+                      <div class="general__disease-desc">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</div>
+                      <label for="" class="general__disease-label">4. Первое обращение к врачу, результаты исследований, диагноз заболевания, лечение и его эффективность.</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де-нола и омепразола становится легче. Пил месяц по 3 раза в день</textarea>
+                      <div class="general__disease-desc">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де&nbsp;-&nbsp;нола и омепразола становится легче. Пил месяц по 3 раза в день</div>
+                      <label for="" class="general__disease-label">5. Последующее течение заболевания.</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</textarea>
+                      <div class="general__disease-desc">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</div>
+                      <div class="general__file-list">
+                        <div class="general__file-item" data-file="-">
+                          <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+                          <span class="general__file-name">Гастроскопия.png</span>
+                        </div>
+                        <div class="general__file-item" data-file="-">
+                          <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+                          <span class="general__file-name">Анализ на хеликобактер.png</span>
+                        </div>
                       </div>
-                      <div class="general__file-item" data-file="-">
-                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-                        <span class="general__file-name">Анализ на хеликобактер.png</span>
+                      <button class="general__change">
+                        <span>
+                          Редактировать
+                        </span>
+                      </button>
+                      <div class="general__btns">
+                        <button class="general__save btn btn--inactive btn-text">
+                          <span>Сохранить</span>
+                        </button>
+                        <button class="general__btn general__btn--cancel btn btn--stroke active">
+                          <span>
+                            Отменить
+                          </span>
+                        </button>
                       </div>
-                    </div>
-                    <!-- <button class="general__save btn btn--inactive btn-text">
-                      <span>Сохранить</span>
-                    </button> -->
-                  </form>
+                    </form>
                   </div>
                 </div>
               </div>
