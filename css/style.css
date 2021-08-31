@@ -2323,6 +2323,11 @@ textarea::placeholder {
         z-index: 10; }
     .header__profile-item:not(:last-child) {
       margin-bottom: 16px; }
+    .header__profile-link {
+      color: inherit;
+      transition: color 0.3s; }
+      .header__profile-link:hover {
+        color: #68a9fe; }
   .header__link {
     transition: color 0.3s; }
     .header__link:hover {
