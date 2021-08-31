@@ -3582,7 +3582,7 @@
   &__checkbox {
     position: absolute;
     z-index: 2;
-    width: 100%;
+    width: 40px;
     height: 100%;
     cursor: pointer;
     opacity: 0;
@@ -3720,6 +3720,7 @@
       bottom: 36px;
       left: 20px;
       pointer-events: none;
+      color: $light-text;
 
       @include r {
         bottom: 23px;
@@ -3869,7 +3870,7 @@
     &::after {
       content: "";
       position: absolute;
-      left: 10px;
+      left: 18px;
       top: 50%;
       transform: translateY(-50%);
       width: 16px;
@@ -4075,7 +4076,7 @@
 
   &__change {
     display: inline-block;
-    margin-top: 55px;
+    margin: 40px 0 50px;
     padding: 12px 13px 14px 39px;
     border: 1px solid $grey;
     border-radius: 10px;
@@ -4099,6 +4100,10 @@
 
     span {
       pointer-events: none;
+    }
+
+    &--profile {
+      margin-bottom: 0;
     }
 
     &-wrapper {
@@ -4329,10 +4334,6 @@
       left: 0;
       top: -22px;
       color: $text;
-    }
-
-    input:placeholder-shown {
-      background-color: $blue;
     }
   }
 
@@ -7806,6 +7807,7 @@
       margin-right: 24px;
       position: relative;
       pointer-events: none;
+      transition: all 0.3s;
 
       &::after {
         content: "";
@@ -7817,6 +7819,7 @@
         position: absolute;
         left: 0;
         top: 0;
+        transition: all 0.3s;
         filter: invert(65%) sepia(26%) saturate(4471%) hue-rotate(190deg) brightness(102%) contrast(99%);
       }
 

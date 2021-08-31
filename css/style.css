@@ -3080,7 +3080,7 @@ textarea::placeholder {
   .general__checkbox {
     position: absolute;
     z-index: 2;
-    width: 100%;
+    width: 40px;
     height: 100%;
     cursor: pointer;
     opacity: 0;
@@ -3184,7 +3184,8 @@ textarea::placeholder {
       position: absolute;
       bottom: 36px;
       left: 20px;
-      pointer-events: none; }
+      pointer-events: none;
+      color: #7d7d7d; }
       @media (max-width: 768px) {
         .general__input-wrapper span {
           bottom: 23px; } }
@@ -3282,7 +3283,7 @@ textarea::placeholder {
     .general__btn::after {
       content: "";
       position: absolute;
-      left: 10px;
+      left: 18px;
       top: 50%;
       transform: translateY(-50%);
       width: 16px;
@@ -3431,7 +3432,7 @@ textarea::placeholder {
       display: none; }
   .general__change {
     display: inline-block;
-    margin-top: 55px;
+    margin: 40px 0 50px;
     padding: 12px 13px 14px 39px;
     border: 1px solid #d6d6d6;
     border-radius: 10px;
@@ -3448,6 +3449,8 @@ textarea::placeholder {
       display: none; }
     .general__change span {
       pointer-events: none; }
+    .general__change--profile {
+      margin-bottom: 0; }
     .general__change-wrapper {
       display: none;
       margin-top: 32px; }
@@ -3615,8 +3618,6 @@ textarea::placeholder {
       left: 0;
       top: -22px;
       color: #444444; }
-    .profile__input input:placeholder-shown {
-      background-color: #68a9fe; }
   .profile__show {
     width: 16px;
     height: 16px;
@@ -6344,7 +6345,8 @@ textarea::placeholder {
       background-color: #eff5fb;
       margin-right: 24px;
       position: relative;
-      pointer-events: none; }
+      pointer-events: none;
+      transition: all 0.3s; }
       .appointment__tabs-icon::after {
         content: "";
         width: 40px;
@@ -6355,6 +6357,7 @@ textarea::placeholder {
         position: absolute;
         left: 0;
         top: 0;
+        transition: all 0.3s;
         filter: invert(65%) sepia(26%) saturate(4471%) hue-rotate(190deg) brightness(102%) contrast(99%); }
       .appointment__tabs-icon--symptoms::after {
         background-image: url(../img/appointemnt-step-symptoms.svg); }

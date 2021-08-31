@@ -531,7 +531,7 @@ if (document.querySelector(".general")) {
   });
 
   // открытие настроек порфиля по кнопке
-  document.querySelector(".general__change").addEventListener("click", function (e) {
+  document.querySelector(".general__change--profile").addEventListener("click", function (e) {
     e.target.classList.toggle("hidden");
     e.target.closest(".general__tabs-content").classList.toggle("change");
   });
@@ -539,7 +539,7 @@ if (document.querySelector(".general")) {
   // закрытие настроек порфиля по кнопке
   document.querySelector(".profile__btn--cancel").addEventListener("click", function (e) {
     document.querySelector(".general__tabs-content[data-general='1']").classList.toggle("change");
-    document.querySelector(".general__change").classList.toggle("hidden");
+    document.querySelector(".general__change--profile").classList.toggle("hidden");
   });
 
   //показать существующий пароль
@@ -572,6 +572,10 @@ if (document.querySelector(".general")) {
           }
         });
 
+        if (additional) {
+          e.target.parentElement.querySelector(".general__symptoms-list").innerHTML = "";
+        }
+
         // setting all choosed symptoms
         symptomsString.forEach((symptom, i) => {
           if (i != 0) {
@@ -585,9 +589,24 @@ if (document.querySelector(".general")) {
               }
             });
 
+            if (symptom.split(":").length == 2) {
+              symptomsList.forEach((el) => {
+                const label = el.querySelector("label");
+                const input = el.querySelector("input");
+                if (label) {
+                  if (label.innerHTML == symptom.split(":")[0]) {
+                    input.checked = true;
+                    flag = false;
+                    input.parentElement.querySelector("span").innerHTML = symptom.split(":")[1];
+                  }
+                }
+              });
+            }
+
             // setting additional symptoms
             if (flag && additional) {
               const list = e.target.parentElement.querySelector(".general__symptoms-list");
+
               const html = `
                 <li class="general__symptoms-added">
                   <button class="general__symptoms-delete"></button>
@@ -608,7 +627,9 @@ if (document.querySelector(".general")) {
               const customValue = symptom.querySelector("span").innerHTML;
               customInput.value = customValue;
               if (customInput.parentElement.classList.contains("general__input-wrapper")) {
-                customInput.parentElement.querySelector("span").style.left = symptom.querySelector("span").innerHTML.length * 28 + "px";
+                customInput.parentElement.querySelector("span").style.left = symptom.querySelector("span").innerHTML.length * 31 + "px";
+                customInput.parentElement.querySelector("span").style.color = "#333333";
+                customInput.parentElement.querySelector("span").innerHTML = checkNum(+symptom.querySelector("span").innerHTML, true);
               }
             }
           });
@@ -623,7 +644,12 @@ if (document.querySelector(".general")) {
       // getting checked inputs
       parent.querySelectorAll(`.general__subtitle[data-desc='${titleData}'] + .general__symptoms input`).forEach((input) => {
         if (input.checked) {
-          symptoms.push(input.parentElement.querySelector("label").innerHTML);
+          const adds = input.parentElement.querySelector("span");
+          if (adds) {
+            adds.innerHTML != "" ? symptoms.push(input.parentElement.querySelector("label").innerHTML + ": " + adds.innerHTML) : symptoms.push(input.parentElement.querySelector("label").innerHTML);
+          } else {
+            symptoms.push(input.parentElement.querySelector("label").innerHTML);
+          }
         }
       });
 
@@ -921,41 +947,52 @@ if (document.querySelector(".general")) {
     if (e.target.classList.contains("profile__btn--cancel")) {
       e.target.closest(".general__disease-item").classList.toggle("change");
     }
-  });
 
-  // добавить симптом в жалобах
-  document.querySelector(".general__symptoms-add").addEventListener("click", function (e) {
-    e.preventDefault();
-    const input = document.querySelector(".general__symptoms-input");
+    if (e.target.classList.contains("general__symptom-choose")) {
+      e.target.classList.toggle("active");
+    }
+
+    if (e.target.classList.contains("general__symptom-item")) {
+      e.target.closest(".general__symptom-choose").classList.toggle("active");
+      e.target.closest(".general__symptom-choose").querySelector("span").innerHTML = e.target.innerHTML;
+    }
+
+    // added custom symptom
     if (e.target.classList.contains("general__symptoms-btn")) {
+      e.preventDefault();
+      const input = e.target.parentElement.querySelector(".general__symptoms-input");
       input.classList.add("active");
       input.focus();
     }
 
     if (e.target.classList.contains("general__symptoms-delete")) {
+      e.preventDefault();
       e.target.parentElement.remove();
     }
   });
 
-  document.querySelector(".general__symptoms-input").addEventListener("keyup", function (e) {
-    const list = document.querySelector(".general__symptoms-list");
-    if (e.code === "Enter") {
-      if (e.target.value === "" || e.target.value === " ") {
-        e.target.classList.remove("active");
-      } else {
-        const html = `
-        <li class="general__symptoms-added">
-        <button class="general__symptoms-delete"></button>
-        <span>${e.target.value}</span>
-      </li>
-      `;
+  document.querySelectorAll(".general__symptoms-input").forEach((input) => {
+    input.addEventListener("keyup", function (e) {
+      const list = this.parentElement.querySelector(".general__symptoms-list");
+      console.log(e.code);
+      if (e.code === "Enter") {
+        if (e.target.value === "" || e.target.value === " ") {
+          e.target.classList.remove("active");
+        } else {
+          const html = `
+          <li class="general__symptoms-added">
+          <button class="general__symptoms-delete"></button>
+          <span>${e.target.value}</span>
+        </li>
+        `;
 
-        list.insertAdjacentHTML("beforeend", html);
+          list.insertAdjacentHTML("beforeend", html);
 
-        e.target.value = "";
-        e.target.classList.remove("active");
+          e.target.value = "";
+          e.target.classList.remove("active");
+        }
       }
-    }
+    });
   });
 
   // аккордеон для историй болезни
@@ -994,16 +1031,61 @@ if (document.querySelector(".general")) {
     input.addEventListener("input", () => {
       const width = getTextWidth(input.value, "24px arial");
       if (input.parentElement.classList.contains("general__input-wrapper")) {
-        input.parentElement.querySelector("span").style.left = width + 15 + "px";
+        input.parentElement.querySelector("span").style.left = width + 18 + "px";
+        input.parentElement.querySelector("span").style.color = "#333333";
       }
+
+      input.parentElement.querySelector("span").innerHTML = checkNum(input);
     })
   );
 
-  function updateSuffix() {
-    const width = getTextWidth(input.value, "20px arial");
-    console.log(this);
-    this.parentElement.querySelector("span").style.left = width + "px";
+  function checkNum(input, num = false) {
+    let number;
+    if (num) {
+      number = +input;
+    } else {
+      number = +input.value;
+    }
+    let value;
+    switch (number % 10) {
+      case 1:
+        value = "раз";
+        break;
+
+      case 2:
+        value = "раза";
+        break;
+
+      case 3:
+        value = "раза";
+        break;
+
+      case 4:
+        value = "раза";
+        break;
+
+      default:
+        value = "раз";
+        break;
+    }
+
+    switch (number) {
+      case 12:
+        value = "раз";
+        break;
+
+      case 13:
+        value = "раз";
+        break;
+
+      case 14:
+        value = "раз";
+        break;
+    }
+
+    return value;
   }
+
   function getTextWidth(text, font) {
     // re-use canvas object for better performance
     var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
@@ -1022,15 +1104,7 @@ if (document.querySelector(".general")) {
   );
   if (document.querySelector(".general__symptoms")) {
     // добавляем воозможность выбрать уточнение для жалобы (список)
-    document.querySelector(".general__symptoms").addEventListener("click", function (e) {
-      if (e.target.classList.contains("general__symptom-choose")) {
-        e.target.classList.toggle("active");
-      }
-      if (e.target.classList.contains("general__symptom-item")) {
-        e.target.closest(".general__symptom-choose").classList.toggle("active");
-        e.target.closest(".general__symptom-choose").querySelector("span").innerHTML = e.target.innerHTML;
-      }
-    });
+    document.querySelector(".general__symptoms").addEventListener("click", function (e) {});
   }
 
   // переключение на все задачи по ссылке
