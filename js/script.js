@@ -550,9 +550,327 @@ if (document.querySelector(".general")) {
   });
 
   // добавить жалобу
-
   document.querySelector(".general__tabs-content[data-general='2']").addEventListener("click", function (e) {
-    e.preventDefault();
+    const setSymptoms = function (symptoms, parent, additional = false, action = "get") {
+      if (action === "get") {
+        // checking type of incoming array
+        let symptomsObject;
+        let symptomsString = [];
+        if (typeof symptoms[0] === "object") {
+          symptomsObject = symptoms;
+          symptoms.forEach((el) => {
+            symptomsString.push(el.innerHTML);
+          });
+        } else {
+          symptomsString = symptoms;
+        }
+        // finding parent element
+        let symptomsList;
+        parent.querySelectorAll(".general__subtitle").forEach((title) => {
+          if (title.innerHTML == symptomsString[0]) {
+            symptomsList = e.target.parentElement.querySelectorAll(`.general__symptoms[data-symptom="${title.dataset.symptom}"] .general__symptom`);
+          }
+        });
+
+        // setting all choosed symptoms
+        symptomsString.forEach((symptom, i) => {
+          if (i != 0) {
+            let flag = true;
+            symptomsList.forEach((el) => {
+              const label = el.querySelector("label");
+              const input = el.querySelector("input");
+              if (label.innerHTML == symptom) {
+                input.checked = true;
+                flag = false;
+              }
+            });
+
+            // setting additional symptoms
+            if (flag && additional) {
+              const list = e.target.parentElement.querySelector(".general__symptoms-list");
+              const html = `
+                <li class="general__symptoms-added">
+                  <button class="general__symptoms-delete"></button>
+                  <span>${symptom}</span>
+                </li>
+                `;
+
+              list.insertAdjacentHTML("beforeend", html);
+            }
+          }
+        });
+
+        // if type of array is object then trying to find custom inputs
+        if (symptomsObject) {
+          symptomsObject.forEach((symptom, i) => {
+            if (symptom.classList.value) {
+              const customInput = parent.querySelector(`.${symptom.classList.value}-input`);
+              const customValue = symptom.querySelector("span").innerHTML;
+              customInput.value = customValue;
+              if (customInput.parentElement.classList.contains("general__input-wrapper")) {
+                customInput.parentElement.querySelector("span").style.left = symptom.querySelector("span").innerHTML.length * 28 + "px";
+              }
+            }
+          });
+        }
+      }
+    };
+
+    const getSymptoms = function (parent, titleData, additional = false, columnList = false, customData = false) {
+      const symptoms = [];
+      symptoms.push(parent.querySelector(`.general__subtitle[data-desc='${titleData}']`).innerHTML);
+
+      // getting checked inputs
+      parent.querySelectorAll(`.general__subtitle[data-desc='${titleData}'] + .general__symptoms input`).forEach((input) => {
+        if (input.checked) {
+          symptoms.push(input.parentElement.querySelector("label").innerHTML);
+        }
+      });
+
+      if (additional) {
+        parent.querySelectorAll(".general__symptoms-added").forEach((el) => {
+          symptoms.push(el.querySelector("span").innerHTML);
+        });
+      }
+
+      let list;
+
+      if (columnList) {
+        list = '<ul class="general__disease-list general__disease-list--column">';
+      } else {
+        list = '<ul class="general__disease-list">';
+      }
+
+      symptoms.forEach((symptom) => {
+        const html = `<li>${symptom}</li>`;
+        list += html;
+      });
+
+      if (customData) {
+        parent.querySelectorAll("input[type='text']").forEach((input) => {
+          if (input.value) {
+            let symptomType;
+            input.classList.forEach((name) => {
+              if (name.includes("-input")) {
+                symptomType = name.slice(0, -6);
+              }
+            });
+            const label = parent.querySelector(`.${symptomType}-label`).innerHTML;
+            const html = `<li>${label}: ${input.value}</li>`;
+            list += html;
+          }
+        });
+
+        parent.querySelectorAll("input[type='number']").forEach((input) => {
+          if (input.value) {
+            let symptomType;
+            input.classList.forEach((name) => {
+              if (name.includes("-input")) {
+                symptomType = name.slice(0, -6);
+              }
+            });
+            const label = parent.querySelector(`.${symptomType}-label`).innerHTML;
+            const html = `<li>${label}: ${input.value}</li>`;
+            list += html;
+          }
+        });
+      }
+
+      list += "</ul>";
+
+      return list;
+    };
+
+    const addSymptomItem = function () {
+      let template = `
+      <div class="general__disease-item">
+        <div class="general__disease-title">Жалоба №1</div>
+        <div class="general__disease-date">От 20.06.2021</div>
+        <div class="general__disease-inner">
+      `;
+
+      const parent = e.target.closest(".general__disease");
+      template += getSymptoms(parent, "symptoms", true);
+      template += getSymptoms(parent, "menSymptoms");
+      template += getSymptoms(parent, "anotherSymptoms", false, true, true);
+      template += `
+        <div class="general__change-wrapper">
+        <div class="general__subtitle general__symptoms-title subtitle active" data-symptom="1" data-desc="symptoms">Симптомы</div>
+        <form action="" class="general__symptoms active" data-symptom="1">
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Слабость</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Недостаточная концентрация внимания</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Снижение энергии</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Инфекции чаще 1 раза в 4 месяц</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Повышенная утомляемость</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Сухость кожи</label>
+            <div class="general__symptom-choose">
+              <span></span>
+              <ul class="general__symptom-list">
+                <li class="general__symptom-item">Голова</li>
+                <li class="general__symptom-item">Руки</li>
+                <li class="general__symptom-item">Локти</li>
+                <li class="general__symptom-item">Лицо</li>
+              </ul>
+            </div>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Головные боли</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Волосы</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Раздражительность</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Трудности проглатывания твердой пищи</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Перепады настроения</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Проблемы со стулом</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Головокружение, шум в ушах</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Вздутие, изжога, тяжесть в желудке</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Депрессивное настроение</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Беспокойный сон, подъем ночью в туалет</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Снижение трудоспособности</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Отеки</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Одышка, сердцебиение</label>
+          </div>
+          <div class="general__symptoms-add">
+            <button class="general__symptoms-btn">Добавить симптом</button>
+            <input type="text" class="general__symptoms-input" placeholder="Введите симптом">
+            <ul class="general__symptoms-list">
+            </ul>
+          </div>
+        </form>
+        <div class="general__subtitle general__symptoms-title subtitle" data-symptom="2" data-desc="menSymptoms">Мужское здоровье</div>
+        <form action="" class="general__symptoms general__symptoms--man" data-symptom="2">
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Утренняя эррекция</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Снижено либидо</label>
+          </div>
+          <div class="general__symptom">
+            <input type="checkbox" class="general__checkbox" />
+            <label for="" class="general__checkbox-label">Проблемы с эррекцией во время полового акта</label>
+          </div>
+        </form>
+        <div class="general__subtitle general__symptoms-title subtitle" data-symptom="3" data-desc="anotherSymptoms">Прочее</div>
+        <form action="" class="general__symptoms general__symptoms--more" data-symptom="3">
+          <div class="general__col">
+            <label for="" class="general__input-label allergic-label">Аллергические реакции</label>
+            <input type="text" class="general__input allergic-input" placeholder="Перечислите" />
+            <label for="" class="general__input-label diagnoses-label">Установленные диагнозы</label>
+            <input type="text" class="general__input diagnoses-input" placeholder="Перечислите" />
+            <label for="" class="general__input-label operations-label">Проведенные операции</label>
+            <input type="text" class="general__input operations-input" placeholder="Перечислите" />
+            <div class="general__symptom">
+              <input type="checkbox" class="general__checkbox" />
+              <label for="" class="general__checkbox-label">Тяга к сладкому</label>
+            </div>
+            <div class="general__symptom">
+              <input type="checkbox" class="general__checkbox" />
+              <label for="" class="general__checkbox-label">Тяга к соленому</label>
+            </div>
+            <div class="general__symptom">
+              <input type="checkbox" class="general__checkbox" />
+              <label for="" class="general__checkbox-label">Контакты с животными</label>
+            </div>
+          </div>
+          <div class="general__col">
+            <div class="general__input-wrapper">
+              <span>раз</span>
+              <label for="" class="general__input-label eatingNum-label">Количество приемов пищи в день</label>
+              <input type="number" class="general__input eatingNum-input" />
+            </div>
+            <div class="general__input-wrapper">
+              <span>раз</span>
+              <label for="" class="general__input-label snacksNum-label">Количество перекусов в день</label>
+              <input type="number" class="general__input snacksNum-input" />
+            </div>
+            <div class="general__input-wrapper">
+              <span>мл.</span>
+              <label for="" class="general__input-label waterNum-label">Объем потреблемой воды</label>
+              <input type="number" class="general__input waterNum-input" />
+            </div>
+            <div class="general__input-wrapper">
+              <span>мл.</span>
+              <label for="" class="general__input-label coffeeNum-label">Количество кофе в рационе</label>
+              <input type="number" class="general__input coffeeNum-input" />
+            </div>
+          </div>
+        </form>
+        <div class="profile__btns">
+          <button class="profile__btn profile__btn--save btn" type="submit">
+            <span>Сохранить</span>
+          </button>
+          <button class="profile__btn profile__btn--cancel btn btn--stroke" type="submit">
+            <span>Отменить</span>
+          </button>
+        </div>
+      </div>
+      
+      <button class="general__change">Редактировать</button>
+    </div>
+  </div>
+      `;
+      document.getElementById("yourSymptoms").insertAdjacentHTML("afterend", template);
+      document.querySelectorAll("input:checked").forEach((input) => (input.checked = "false"));
+      document.querySelectorAll("input").forEach((input) => (input.value = ""));
+      document.querySelectorAll("input[type='number']").forEach((input) => {
+        input.parentElement.querySelector("span").style.left = "20px";
+      });
+    };
+
     if (e.target.classList.contains("general__btn--add")) {
       document.querySelector(".general__disease").classList.add("active");
     }
@@ -564,7 +882,44 @@ if (document.querySelector(".general")) {
     }
 
     if (e.target.classList.contains("general__save")) {
-      e.target.closest(".general__history").classList.remove("change");
+      addSymptomItem();
+      e.target.closest(".general__disease").classList.remove("active");
+    }
+
+    if (e.target.classList.contains("general__change")) {
+      e.target.closest(".general__disease-item").classList.add("change");
+      const symptoms = [];
+      const menSymptoms = [];
+      const anotherSymptoms = [];
+      e.target.parentElement.querySelectorAll(".general__disease-list:first-child li").forEach((el) => symptoms.push(el.innerHTML));
+      e.target.parentElement.querySelectorAll(".general__disease-list:nth-child(2) li").forEach((el) => menSymptoms.push(el.innerHTML));
+      e.target.parentElement.querySelectorAll(".general__disease-list--column li").forEach((el) => anotherSymptoms.push(el));
+      let parent = e.target.closest(".general__disease-item");
+      // вводим данный в редактированную форму
+      setSymptoms(symptoms, parent, true);
+      setSymptoms(menSymptoms, parent);
+      setSymptoms(anotherSymptoms, parent);
+    }
+
+    if (e.target.classList.contains("profile__btn--save")) {
+      const parent = e.target.parentElement.parentElement;
+      e.target
+        .closest(".general__disease-inner")
+        .querySelectorAll(".general__disease-list")
+        .forEach((list) => list.remove());
+
+      // anotherSymptoms
+      e.target.closest(".general__disease-inner").insertAdjacentHTML("afterbegin", getSymptoms(parent, "anotherSymptoms", false, true, true));
+      // symptoms
+      e.target.closest(".general__disease-inner").insertAdjacentHTML("afterbegin", getSymptoms(parent, "menSymptoms"));
+      // menSymptoms
+      e.target.closest(".general__disease-inner").insertAdjacentHTML("afterbegin", getSymptoms(parent, "symptoms", true));
+
+      e.target.closest(".general__disease-item").classList.toggle("change");
+    }
+
+    if (e.target.classList.contains("profile__btn--cancel")) {
+      e.target.closest(".general__disease-item").classList.toggle("change");
     }
   });
 
@@ -591,7 +946,7 @@ if (document.querySelector(".general")) {
         const html = `
         <li class="general__symptoms-added">
         <button class="general__symptoms-delete"></button>
-        ${e.target.value}
+        <span>${e.target.value}</span>
       </li>
       `;
 
@@ -638,7 +993,9 @@ if (document.querySelector(".general")) {
   inputElements.forEach((input) =>
     input.addEventListener("input", () => {
       const width = getTextWidth(input.value, "24px arial");
-      input.parentElement.querySelector("span").style.left = width + 15 + "px";
+      if (input.parentElement.classList.contains("general__input-wrapper")) {
+        input.parentElement.querySelector("span").style.left = width + 15 + "px";
+      }
     })
   );
 

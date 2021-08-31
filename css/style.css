@@ -2893,12 +2893,12 @@ textarea::placeholder {
     margin: 40px 0;
     padding-bottom: 45px;
     border-bottom: 1px solid #f1f1f1; }
-    .general__symptoms:nth-last-child(1) {
+    .general__symptoms:nth-last-child(1), .general__symptoms:nth-last-child(2) {
       border: none;
       padding-bottom: 0;
       margin-bottom: 0; }
       @media (max-width: 768px) {
-        .general__symptoms:nth-last-child(1) {
+        .general__symptoms:nth-last-child(1), .general__symptoms:nth-last-child(2) {
           border-bottom: 1px solid #f1f1f1; } }
     .general__symptoms--man .general__symptom {
       display: block;
@@ -3079,7 +3079,8 @@ textarea::placeholder {
         color: #68a9fe; }
   .general__checkbox {
     position: absolute;
-    width: 20px;
+    z-index: 2;
+    width: 100%;
     height: 100%;
     cursor: pointer;
     opacity: 0;
@@ -3090,6 +3091,8 @@ textarea::placeholder {
         border-color: #fe9393; }
       .general__checkbox:checked + .general__checkbox-label::after {
         opacity: 1; }
+    .general__checkbox:checked {
+      background: #000; }
   .general__checkbox-label {
     display: inline-block;
     transition: all 0.3s;
@@ -3104,7 +3107,7 @@ textarea::placeholder {
       content: "";
       position: absolute;
       left: 0;
-      top: 7px;
+      top: 6px;
       width: 16px;
       height: 16px;
       border: 1px solid #7d7d7d;
@@ -3116,7 +3119,7 @@ textarea::placeholder {
       content: "";
       position: absolute;
       left: 1px;
-      top: 8px;
+      top: 6px;
       width: 13px;
       height: 13px;
       background-image: url(../img/symptom-checked-icon.svg);
@@ -3180,7 +3183,8 @@ textarea::placeholder {
     .general__input-wrapper span {
       position: absolute;
       bottom: 36px;
-      left: 20px; }
+      left: 20px;
+      pointer-events: none; }
       @media (max-width: 768px) {
         .general__input-wrapper span {
           bottom: 23px; } }
@@ -3216,6 +3220,14 @@ textarea::placeholder {
       border-top: 1px solid #f1f1f1; }
       .general__disease-item.active .general__disease-title::after {
         transform: rotate(180deg); }
+      .general__disease-item.change .general__disease-list {
+        display: none; }
+      .general__disease-item.change .general__change-wrapper {
+        display: block; }
+      .general__disease-item.change .general__change {
+        display: none; }
+      .general__disease-item.change .general__disease-date {
+        display: none; }
       .general__disease-item:nth-child(2) {
         margin-top: 32px; }
     .general__disease-inner {
@@ -3310,15 +3322,15 @@ textarea::placeholder {
             top: 50%;
             transform: translateY(-50%);
             right: calc(20% + 7px); } }
-    .general__btn--cancel {
+    .general__btn--cancel, .general__btn#cancelNewHistory {
       padding-left: 0;
       margin-left: 32px; }
-      .general__btn--cancel::after {
+      .general__btn--cancel::after, .general__btn#cancelNewHistory::after {
         display: none; }
-      .general__btn--cancel.active {
+      .general__btn--cancel.active, .general__btn#cancelNewHistory.active {
         opacity: 1; }
       @media (max-width: 768px) {
-        .general__btn--cancel {
+        .general__btn--cancel, .general__btn#cancelNewHistory {
           font-size: 0;
           width: 16px;
           height: 16px;
@@ -3327,7 +3339,7 @@ textarea::placeholder {
           position: relative;
           right: auto;
           left: calc(100% - 17px); }
-          .general__btn--cancel::after {
+          .general__btn--cancel::after, .general__btn#cancelNewHistory::after {
             right: 0;
             top: 0;
             width: 16px;
@@ -3436,6 +3448,14 @@ textarea::placeholder {
       display: none; }
     .general__change span {
       pointer-events: none; }
+    .general__change-wrapper {
+      display: none;
+      margin-top: 32px; }
+      .general__change-wrapper .general__subtitle {
+        font-size: 24px;
+        font-weight: 600; }
+      .general__change-wrapper .general__symptoms {
+        margin-top: 24px; }
 
 .change + .profile {
   display: block; }
@@ -3705,10 +3725,14 @@ textarea::placeholder {
     pointer-events: none; }
     .datepicker-inline .datepicker--cell.-weekend- {
       color: #fe9393; }
+    .datepicker-inline .datepicker--cell.-current- {
+      color: inherit; }
     .datepicker-inline .datepicker--cell.-selected-, .datepicker-inline .datepicker--cell.-focus- {
       background-color: transparent;
       color: white;
       background-color: #68a9fe; }
+    .datepicker-inline .datepicker--cell.-current- {
+      color: inherit; }
     .datepicker-inline .datepicker--cell.disable {
       border: 1px solid #68a9fe;
       pointer-events: inherit; }
