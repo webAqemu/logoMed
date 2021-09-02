@@ -3153,10 +3153,8 @@
     }
 
     &-wrapper {
-      background-image: url(../img/general-for-doctor-bg.png);
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      background-position: center;
+      background-color: #fff;
+      border-radius: 20px;
       padding: 48px;
       & + & {
         margin-top: 20px;
@@ -6922,7 +6920,7 @@
 .doctor {
   &__tabs {
     &-btns {
-      margin-bottom: 75px;
+      max-width: 895px;
       font-size: 24px;
       display: flex;
       @include r {
@@ -6936,16 +6934,76 @@
     &-btn {
       cursor: pointer;
       color: $light-text;
+      padding: 24px 36px;
       transition: all 0.3s;
-      &.active,
-      &:hover {
+      background-color: $bg;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      position: relative;
+      width: 100%;
+      min-width: fit-content;
+      text-align: center;
+
+      &:first-child::before {
+        content: "";
+        width: 20px;
+        height: 40px;
+        background-color: white;
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.3s;
+
+        @include r {
+          display: none;
+        }
+      }
+
+      &:last-child::before {
+        content: "";
+        width: 20px;
+        height: 40px;
+        background-color: white;
+        position: absolute;
+        bottom: -20px;
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s;
+
+        @include r {
+          display: none;
+        }
+      }
+
+      &:nth-child(2) {
+        margin: 0 10px;
+      }
+
+      &.active {
+        background-color: white;
+
+        &:first-child::before,
+        &:last-child::before {
+          opacity: 1;
+        }
+
+        .circle {
+          opacity: 1;
+          height: 40px;
+          transition: opacity 0.3s;
+        }
+      }
+
+      &:hover,
+      &.active {
         color: $text;
         @include r {
-          width: auto;
           color: white;
           background-color: $blue;
         }
       }
+
       @include r {
         padding: 8px 15px 10px;
         border-radius: 30px;
@@ -6955,33 +7013,222 @@
           margin-right: 15px;
         }
       }
-    }
 
-    &-btn + &-btn {
-      margin-left: 100px;
-      @include r {
-        margin-left: 0;
+      .circle {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        bottom: 0;
+        right: -40px;
+        z-index: 2;
+        background-color: #fff;
+
+        &::after {
+          content: "";
+          width: 40px;
+          height: 40px;
+          border-bottom-left-radius: 20px;
+          background-color: $bg;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+        }
+
+        &--left {
+          right: 100%;
+
+          &::after {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 20px;
+            left: auto;
+            right: 0;
+          }
+        }
+
+        opacity: 0;
+        height: 0;
       }
     }
 
     &-content {
       height: 0;
       overflow: hidden;
+
       &.active {
         height: auto;
       }
+
+      &.change {
+        .profile {
+          display: block;
+          max-width: 895px;
+          margin-top: 32px;
+        }
+
+        .doctor__textarea {
+          border: 1px solid #bdbdbd;
+          border-radius: 10px;
+          pointer-events: inherit;
+        }
+
+        .doctor__prompt {
+          display: block;
+        }
+
+        .general__file-list,
+        .reg__file-wrapper {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__info {
+    .general__file-list,
+    .reg__file-wrapper {
+      display: none;
+    }
+
+    .general__file-item {
+      margin-top: 10px;
+      margin-left: -8px;
+    }
+  }
+
+  &__wrapper {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 60px 50px 80px;
+    max-width: 895px;
+    width: 100%;
+    position: relative;
+
+    & + & {
+      margin-top: 32px;
+    }
+
+    &--bottom {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      padding-bottom: 0;
+    }
+
+    &--top {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    &.block {
+      display: inline-block;
+      border-radius: 10px;
+      box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+      padding: 30px !important;
+      max-width: 380px;
+      width: 100%;
+      min-height: 380px;
+      height: fit-content;
+      margin: 15px;
+
+      .doctor__clients-item {
+        padding: 0;
+      }
+
+      .doctor__clients-img {
+        position: relative;
+        height: 90px;
+        width: 90px;
+        margin-bottom: 15px;
+        left: auto;
+        top: auto;
+      }
+
+      .doctor__clients-stats {
+        display: none;
+      }
+
+      .doctor__clients-next {
+        position: absolute;
+        display: inline-block;
+        right: auto;
+        top: auto;
+        left: 30px;
+        bottom: 30px;
+        font-size: 24px;
+        & div {
+          text-align: left;
+        }
+      }
+
+      .doctor__clients-cancel {
+        top: 30px;
+        bottom: auto;
+        right: 25px;
+      }
+    }
+
+    @include r {
+      max-width: 100%;
+      padding: 30px 15px;
+      background-image: none;
+      background-color: white;
+      border-radius: 30px;
+    }
+  }
+
+  &__textarea {
+    resize: none;
+    width: calc(100% + 20px);
+    height: 380px;
+    border: none;
+    padding: 16px 12px;
+    margin: 0 -10px;
+    pointer-events: none;
+  }
+
+  &__prompt {
+    font-size: 14px;
+    position: absolute;
+    left: 50px;
+    top: 110px;
+    display: none;
+  }
+
+  &__change {
+    display: inline-block;
+    margin-top: 56px;
+    padding: 12px 13px 14px 39px;
+    border: 1px solid $grey;
+    border-radius: 10px;
+    position: relative;
+    transition: border-color 0.3s, opacity 0.3s;
+
+    &::before {
+      content: url(../img/change-profile-icon.svg);
+      position: absolute;
+      left: 13px;
+      top: calc(50% - 10px);
+    }
+
+    &:hover {
+      border-color: $blue;
+    }
+
+    &.hidden {
+      display: none;
+    }
+
+    span {
+      pointer-events: none;
     }
   }
 
   &__aside {
     max-width: 430px;
     width: 100%;
-    background-image: url(../img/doctor-aside-bg.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
+    background-color: #fff;
+    border-radius: 20px;
     position: relative;
-    padding: 180px 40px 150px;
+    padding: 180px 40px 100px;
     @include r {
       display: none;
     }
@@ -7053,20 +7300,6 @@
   }
 
   &__info {
-    background-image: url(../img/doctor-content-bg.png);
-    background-position: center;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    padding: 60px 50px;
-    max-width: 895px;
-    width: 100%;
-    @include r {
-      max-width: 100%;
-      padding: 30px 15px;
-      background-image: none;
-      background-color: white;
-      border-radius: 30px;
-    }
     &-about {
       margin-bottom: 55px;
       padding-bottom: 60px;
@@ -7074,7 +7307,7 @@
     }
 
     &-title {
-      margin-bottom: 30px;
+      margin-bottom: 35px;
       @include r {
         margin-bottom: 15px;
       }
@@ -7204,11 +7437,6 @@
   }
 
   &__reviews {
-    background-image: url(../img/doctor-content-bg.png);
-    background-position: center;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    padding: 60px 50px;
     max-width: 895px;
     width: 100%;
     @include r {
@@ -7218,10 +7446,15 @@
       padding: 35px 15px;
     }
 
+    .doctor__wrapper {
+      padding: 30px 40px 50px;
+    }
+
     &-title {
       display: inline-block;
       position: relative;
       padding-right: 35px;
+      margin-bottom: 30px;
       & span {
         font-size: 20px;
         color: $peach;
@@ -7238,12 +7471,7 @@
 
     &-item {
       margin-top: 25px;
-      padding-bottom: 30px;
-      border-bottom: 1px solid #f1f1f1;
       position: relative;
-      &:nth-last-child(1) {
-        border: none;
-      }
     }
 
     &-img {
@@ -7408,19 +7636,24 @@
 
   &__clients {
     position: relative;
+
     &-title {
-      margin-bottom: 70px;
       @include r {
         margin-bottom: 30px;
         margin-top: 10px;
       }
     }
 
+    .doctor__wrapper {
+      padding: 30px 50px 40px;
+    }
+
     &-view {
       position: absolute;
-      right: 0;
-      top: 10px;
+      right: 50px;
+      top: 67px;
       color: $light-text;
+
       span {
         cursor: pointer;
         display: none;
@@ -7460,19 +7693,23 @@
 
     &-wrapper {
       display: flex;
+      max-width: 895px;
       width: 100%;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: flex-start;
+
+      &.active {
+        padding: 35px;
+        background-color: #fff;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+      }
     }
 
     &-item {
       width: 100%;
       padding-left: 95px;
-      padding-bottom: 25px;
-      border-bottom: 1px solid #f1f1f1;
-      margin-bottom: 25px;
-      position: relative;
       &:nth-last-child(1) {
         border: none;
         margin-bottom: 0;
@@ -7484,56 +7721,12 @@
         flex-direction: column;
         margin-bottom: 50px;
       }
-
-      &.block {
-        display: inline-block;
-        background-image: url(../img/doctor-clients-item-block-bg.png);
-        background-position: center;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        padding: 30px;
-        max-width: 380px;
-        width: 100%;
-        min-height: 380px;
-        height: fit-content;
-        border: none;
-
-        .doctor__clients-img {
-          position: relative;
-          height: 90px;
-          width: 90px;
-          margin-bottom: 15px;
-        }
-
-        .doctor__clients-stats {
-          display: none;
-        }
-
-        .doctor__clients-next {
-          position: absolute;
-          display: inline-block;
-          right: auto;
-          top: auto;
-          left: 30px;
-          bottom: 30px;
-          font-size: 24px;
-          & div {
-            text-align: left;
-          }
-        }
-
-        .doctor__clients-cancel {
-          top: 30px;
-          bottom: auto;
-          right: 30px;
-        }
-      }
     }
 
     &-img {
       position: absolute;
-      left: 0;
-      top: 0;
+      left: 50px;
+      top: 30px;
       height: 65px;
       width: 65px;
       border-radius: 100%;
@@ -7558,6 +7751,7 @@
 
     &-text {
       margin-bottom: 15px;
+      max-width: 390px;
       @include r {
         margin-bottom: 10px;
       }
@@ -7572,8 +7766,8 @@
 
     &-next {
       position: absolute;
-      right: 0;
-      top: 0;
+      right: 50px;
+      top: 30px;
       font-size: 24px;
       & div {
         text-align: right;
@@ -7615,12 +7809,13 @@
     &-cancel {
       color: $light-text;
       position: absolute;
-      bottom: 25px;
-      right: 0;
+      bottom: 40px;
+      right: 50px;
       background-color: transparent;
       border: none;
       box-shadow: none;
       font-size: 20px;
+      cursor: pointer;
       @include r {
         position: static;
         text-align: center;

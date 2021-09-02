@@ -102,11 +102,22 @@
           <div class="content-block__inner active" data-tab="1">
             <div class="doctor__info">
               <ul class="doctor__tabs-btns">
-                <li class="doctor__tabs-btn active" data-info="1">Общее</li>
-                <li class="doctor__tabs-btn desktopOnly" data-info="2">Заявки</li>
+                <li class="doctor__tabs-btn active" data-info="1">
+                  Общее
+                  <span class="circle circle--right"></span>
+                </li>
+                <li class="doctor__tabs-btn desktopOnly" data-info="2">
+                  <span class="circle circle--left"></span>
+                  Заявки
+                  <span class="circle circle--right"></span>
+                </li>
                 <li class="doctor__tabs-btn mobileOnly" data-info="2">Новые заявки</li>
-                <li class="doctor__tabs-btn desktopOnly" data-info="3">Пациенты</li>
                 <li class="doctor__tabs-btn mobileOnly" data-info="3">Мои пациенты</li>
+                <li class="doctor__tabs-btn desktopOnly" data-info="3">
+                  <span class="circle circle--left"></span>
+                  Пациенты
+                </li>
+                
               </ul>
               <div class="doctor__tabs-content active" data-info="1">
                 <div class="doctor__info-mobile">
@@ -124,29 +135,132 @@
                     <li class="doctor__info-star"></li>
                   </ul>
                 </div>
-                <div class="doctor__info-about">
+                <div class="doctor__wrapper">
                   <div class="doctor__info-title subtitle">Обо мне</div>
-                  <p class="doctor__info-text">Диагностирую, предупреждаю и лечу патологии головного и спинного мозга, нервных окончаний и заболеваний влияющих на нервную систему. Окончила Московский государственный университет имени М.В. Ломоносова по направлению Лечебное дело, невропатология. Освобождение осмысляет даосизм, изменяя привычную реальность. Сомнение создает позитивизм, tertium nоn datur. Сомнение, следовательно, непредвзято дискредитирует дуализм.</p>
-                  <p class="doctor__info-text">Освобождение осмысляет даосизм, изменяя привычную реальность. Сомнение создает позитивизм, tertium nоn datur. Сомнение, следовательно, непредвзято дискредитирует дуализм.</p>
+                  <div class="doctor__prompt">Расскажите о себе и чем занимаетесь</div>
+                  <textarea name="" class="doctor__textarea">
+Диагностирую, предупреждаю и лечу патологии головного и спинного мозга, нервных окончаний и заболеваний влияющих на нервную систему. Окончила Московский государственный университет имени М.В. Ломоносова по направлению Лечебное дело, невропатология. Освобождение осмысляет даосизм, изменяя привычную реальность. Сомнение создает позитивизм, tertium nоn datur. Сомнение, следовательно, непредвзято дискредитирует дуализм.
+
+Освобождение осмысляет даосизм, изменяя привычную реальность. Сомнение создает позитивизм, tertium nоn datur. Сомнение, следовательно, непредвзято дискредитирует дуализм.
+                  </textarea>
                 </div>
-                <div class="doctor__info-title subtitle">Сертификаты и дипломы</div>
-                <div class="doctor__info-slider">
-                  <div class="doctor__info-slide">
-                    <img src="./img/doctor-sertificate-1.png" alt="sertificate" class="doctor__info-img" />
+                <div class="doctor__wrapper">
+                  <div class="doctor__info-title subtitle">Сертификаты и дипломы</div>
+                  <div class="doctor__info-slider">
+                    <div class="doctor__info-slide">
+                      <img src="./img/doctor-sertificate-1.png" alt="sertificate" class="doctor__info-img" />
+                    </div>
+                    <div class="doctor__info-slide">
+                      <img src="./img/doctor-sertificate-2.png" alt="sertificate" class="doctor__info-img" />
+                    </div>
+                    <div class="doctor__info-slide">
+                      <img src="./img/doctor-sertificate-3.png" alt="sertificate" class="doctor__info-img" />
+                    </div>
+                    <div class="doctor__info-slide">
+                      <img src="./img/doctor-sertificate-4.png" alt="sertificate" class="doctor__info-img" />
+                    </div>
+                    <div class="doctor__info-slide">
+                      <img src="./img/doctor-sertificate-4.png" alt="sertificate" class="doctor__info-img" />
+                    </div>
+                    <div class="doctor__info-slide">
+                      <img src="./img/doctor-sertificate-4.png" alt="sertificate" class="doctor__info-img" />
+                    </div>
+                    <div class="doctor__info-slide">
+                      <img src="./img/doctor-sertificate-4.png" alt="sertificate" class="doctor__info-img" />
+                    </div>
+                    <div class="doctor__info-slide">
+                      <img src="./img/doctor-sertificate-4.png" alt="sertificate" class="doctor__info-img" />
+                    </div>
                   </div>
-                  <div class="doctor__info-slide">
-                    <img src="./img/doctor-sertificate-2.png" alt="sertificate" class="doctor__info-img" />
+                  <div class="reg__file-wrapper">
+                    <input type="file" class="reg__file-input" id="file" name="file" />
+                    <label for="file" class="reg__file-label btn-text">Загрузить файл</label>
                   </div>
-                  <div class="doctor__info-slide">
-                    <img src="./img/doctor-sertificate-3.png" alt="sertificate" class="doctor__info-img" />
+                  <div class="general__file-list"></div>
+                  <button class="doctor__change doctor__change--profile">Редактировать</button>
+                </div>
+                <div class="profile">
+                  <div class="profile__img" style="background-image: url(./img/doctor-aside-img.png)">
+                    <div class="profile__change">
+  
+                      <input type="file"></input=>
+                    </div>
                   </div>
-                  <div class="doctor__info-slide">
-                    <img src="./img/doctor-sertificate-4.png" alt="sertificate" class="doctor__info-img" />
+                  <div class="profile__wrapper">
+                    <div class="profile__sex">
+                      Пол
+                      <div class="profile__option">
+                        <input type="radio" name="sex" id="" class="profile__radio"/>
+                        <span class="profile__male">М</span>
+                      </div>
+                      <div class="profile__option">
+                        <input type="radio" name="sex" id="" class="profile__radio" checked/>
+                        <span class="profile__female">Ж</span>
+                      </div>
+                    </div>
+                    <div class="profile__msgs">
+                      <input type="checkbox" name="messages" id="" checked/>
+                      <label for="messages">Хочу получать рассылку</label>
+                    </div>
+                  </div>
+                  <div class="profile__row">
+                    <div class="profile__input profile__input--full">
+                      <input type="text" id="name" value="Романова Елена Петровна" required />
+                      <label for="name">ФИО</label>
+                    </div>
+                  </div>
+                  <div class="profile__row">
+                    <div class="profile__input">
+                      <input type="password" id="oldPassword" value="12345" />
+                      <label for="oldPassword">Текущий пароль</label>
+                      <button class="profile__show"></button>
+                    </div>
+                  </div>
+                  <div class="profile__row">
+                    <div class="profile__input">
+                      <input type="text" id="newPassowrd" required />
+                      <label for="newPassowrd">Новый пароль</label>
+                    </div>
+                    <div class="profile__input">
+                      <input type="text" id="newPassowrdRepeat" required />
+                      <label for="newPassowrdRepeat">Повторите новый пароль</label>
+                    </div>
+                  </div>
+                  <div class="profile__row">
+                    <div class="profile__input">
+                      <input type="email" id="email" value="romanova1975@mail.ru" />
+                      <label for="email">E-mail</label>
+                    </div>
+                  </div>
+                  <div class="profile__row">
+                    <div class="profile__input">
+                      <input type="email" id="emailNew" value="E.Romanova1975@mail.ru" required />
+                      <label for="emailNew">Новый E-mail</label>
+                    </div>
+                    <div class="profile__input">
+                      <input type="email" id="emailNewRepeat" required />
+                      <label for="emailNewRepeat">Повторите новый E-mail</label>
+                    </div>
+                  </div>
+                  <div class="profile__row">
+                    <div class="profile__input">
+                      <input type="phone" id="phone" value="+7 926 567 89 90" />
+                      <label for="phone">Телефон</label>
+                    </div>
+                  </div>
+                  <div class="profile__btns">
+                    <button class="profile__btn profile__btn--save btn" type="submit">
+                      <span>Сохранить</span>
+                    </button>
+                    <button class="profile__btn profile__btn--cancel btn btn--stroke" type="submit">
+                      <span>Отменить</span>
+                    </button>
                   </div>
                 </div>
               </div>
               <div class="doctor__tabs-content" data-info="2">
                 <div class="doctor__requests">
+                  <div class="doctor__wrapper">
                   <div class="doctor__requests-title subtitle">Новые заявки</div>
                   <div class="doctor__requests-item">
                     <div class="doctor__requests-date">01.03.2021 18:50</div>
@@ -161,6 +275,8 @@
                       <button class="doctor__requests-btn btn btn--stroke"><span>Отказаться</span></button>
                     </div>
                   </div>
+                </div>
+                <div class="doctor__wrapper">
                   <div class="doctor__requests-item">
                     <div class="doctor__requests-date">01.03.2021 18:50</div>
                     <div class="doctor__requests-name subtitle">Подготовка к операции и повторная консультация</div>
@@ -176,16 +292,20 @@
                   </div>
                 </div>
               </div>
+              </div>
               <div class="doctor__tabs-content" data-info="3">
                 <div class="doctor__clients">
-                  <div class="doctor__clients-title subtitle">Текущие пациенты</div>
-                  <span class="doctor__clients-view">
-                    <span class="block active">Карточками</span>
-                    <span class="list">Списком</span>
-                  </span>
+                  <div class="doctor__wrapper doctor__wrapper--bottom">
+                    <div class="doctor__clients-title subtitle">Текущие пациенты</div>
+                    <span class="doctor__clients-view">
+                      <span class="block active">Карточками</span>
+                      <span class="list">Списком</span>
+                    </span>
+                  </div>
                   <div class="doctor__clients-wrapper">
-                    <div class="doctor__clients-item">
-                      <div class="doctor__clients-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
+                    <div class="doctor__wrapper doctor__wrapper--top">
+                      <div class="doctor__clients-item">
+                        <div class="doctor__clients-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
                       <div class="doctor__clients-name">Панова Е. В.</div>
                       <div class="doctor__clients-text">Острая боль в желудке</div>
                       <div class="doctor__clients-stats">Женщина, 63 года</div>
@@ -196,41 +316,48 @@
                       </div>
                       <div class="doctor__clients-cancel">Отменить запись</div>
                     </div>
-                    <div class="doctor__clients-item">
-                      <div class="doctor__clients-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
-                      <div class="doctor__clients-name">Панова Е. В.</div>
-                      <div class="doctor__clients-text">Подготовка к операции и повторная консультация</div>
-                      <div class="doctor__clients-stats">Женщина, 63 года</div>
-                      <div class="doctor__clients-next">
-                        <div>Следующая запись</div>
-                        <span class="doctor__clients-date">21.03.2021</span>
-                        <span class="doctor__clients-time">18:00</span>
+                  </div>
+                  <div class="doctor__wrapper">
+                      <div class="doctor__clients-item">
+                        <div class="doctor__clients-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
+                        <div class="doctor__clients-name">Панова Е. В.</div>
+                        <div class="doctor__clients-text">Подготовка к операции и повторная консультация</div>
+                        <div class="doctor__clients-stats">Женщина, 63 года</div>
+                        <div class="doctor__clients-next">
+                          <div>Следующая запись</div>
+                          <span class="doctor__clients-date">21.03.2021</span>
+                          <span class="doctor__clients-time">18:00</span>
+                        </div>
+                        <div class="doctor__clients-cancel">Отменить запись</div>
                       </div>
-                      <div class="doctor__clients-cancel">Отменить запись</div>
                     </div>
-                    <div class="doctor__clients-item">
-                      <div class="doctor__clients-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
-                      <div class="doctor__clients-name">Панова Е. В.</div>
-                      <div class="doctor__clients-text">Острая боль в желудке</div>
-                      <div class="doctor__clients-stats">Женщина, 63 года</div>
-                      <div class="doctor__clients-next">
-                        <div>Следующая запись</div>
-                        <span class="doctor__clients-date">21.03.2021</span>
-                        <span class="doctor__clients-time">18:00</span>
+                    <div class="doctor__wrapper">
+                      <div class="doctor__clients-item">
+                        <div class="doctor__clients-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
+                        <div class="doctor__clients-name">Панова Е. В.</div>
+                        <div class="doctor__clients-text">Острая боль в желудке</div>
+                        <div class="doctor__clients-stats">Женщина, 63 года</div>
+                        <div class="doctor__clients-next">
+                          <div>Следующая запись</div>
+                          <span class="doctor__clients-date">21.03.2021</span>
+                          <span class="doctor__clients-time">18:00</span>
+                        </div>
+                        <button class="doctor__clients-cancel">Отменить запись</button>
                       </div>
-                      <button class="doctor__clients-cancel">Отменить запись</button>
                     </div>
-                    <div class="doctor__clients-item">
-                      <div class="doctor__clients-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
-                      <div class="doctor__clients-name">Панова Е. В.</div>
-                      <div class="doctor__clients-text">Острая боль в желудке</div>
-                      <div class="doctor__clients-stats">Женщина, 63 года</div>
-                      <div class="doctor__clients-next">
-                        <div>Следующая запись</div>
-                        <span class="doctor__clients-date">21.03.2021</span>
-                        <span class="doctor__clients-time">18:00</span>
+                    <div class="doctor__wrapper">
+                      <div class="doctor__clients-item">
+                        <div class="doctor__clients-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
+                        <div class="doctor__clients-name">Панова Е. В.</div>
+                        <div class="doctor__clients-text">Острая боль в желудке</div>
+                        <div class="doctor__clients-stats">Женщина, 63 года</div>
+                        <div class="doctor__clients-next">
+                          <div>Следующая запись</div>
+                          <span class="doctor__clients-date">21.03.2021</span>
+                          <span class="doctor__clients-time">18:00</span>
+                        </div>
+                        <button class="doctor__clients-cancel">Отменить запись</button>
                       </div>
-                      <button class="doctor__clients-cancel">Отменить запись</button>
                     </div>
                   </div>
                 </div>
@@ -239,46 +366,53 @@
           </div>
           <div class="content-block__inner" data-tab="2">
             <div class="doctor__reviews">
-              <div class="doctor__reviews-title subtitle">Отзывы<span>34</span></div>
-              <div class="doctor__reviews-item">
-                <div class="doctor__reviews-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
-                <div class="doctor__reviews-name subtitle">Панова Е. В.</div>
-                <div class="doctor__reviews-date">01.03.2021 18:50</div>
-                <ul class="doctor__reviews-rating">
-                  <li class="doctor__reviews-star"></li>
-                  <li class="doctor__reviews-star"></li>
-                  <li class="doctor__reviews-star"></li>
-                  <li class="doctor__reviews-star"></li>
-                  <li class="doctor__reviews-star"></li>
-                </ul>
-                <div class="doctor__reviews-text">Здравствуйте! Хочу выразить огромную благодарность талантливейшему врачу Елене Петровне! С самого начала Елена Петровна очень ответственно отнеслась к моей проблеме…</div>
-                <span class="doctor__reviews-more">Смотреть весь отзыв</span>
+              <div class="doctor__wrapper">
+
+                <div class="doctor__reviews-title subtitle">Отзывы<span>34</span></div>
+                <div class="doctor__reviews-item">
+                  <div class="doctor__reviews-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
+                  <div class="doctor__reviews-name subtitle">Панова Е. В.</div>
+                  <div class="doctor__reviews-date">01.03.2021 18:50</div>
+                  <ul class="doctor__reviews-rating">
+                    <li class="doctor__reviews-star"></li>
+                    <li class="doctor__reviews-star"></li>
+                    <li class="doctor__reviews-star"></li>
+                    <li class="doctor__reviews-star"></li>
+                    <li class="doctor__reviews-star"></li>
+                  </ul>
+                  <div class="doctor__reviews-text">Здравствуйте! Хочу выразить огромную благодарность талантливейшему врачу Елене Петровне! С самого начала Елена Петровна очень ответственно отнеслась к моей проблеме…</div>
+                  <span class="doctor__reviews-more">Смотреть весь отзыв</span>
+                </div>
               </div>
-              <div class="doctor__reviews-item">
-                <div class="doctor__reviews-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
-                <div class="doctor__reviews-name subtitle">Панова Е. В.</div>
-                <div class="doctor__reviews-date">01.03.2021 18:50</div>
-                <ul class="doctor__reviews-rating">
-                  <li class="doctor__reviews-star"></li>
-                  <li class="doctor__reviews-star"></li>
-                  <li class="doctor__reviews-star"></li>
-                  <li class="doctor__reviews-star"></li>
-                  <li class="doctor__reviews-star"></li>
-                </ul>
-                <div class="doctor__reviews-text">Добрый день. Хочу сказать большое спасибо Елене Петровне. Я консультировался в этом приложении с несколькими врачами этого профиля, и только Елена Петровна предложила лучшее лечение, котрое помогло. Спасибо!</div>
+              <div class="doctor__wrapper"> 
+                <div class="doctor__reviews-item">
+                  <div class="doctor__reviews-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
+                  <div class="doctor__reviews-name subtitle">Панова Е. В.</div>
+                  <div class="doctor__reviews-date">01.03.2021 18:50</div>
+                  <ul class="doctor__reviews-rating">
+                    <li class="doctor__reviews-star"></li>
+                    <li class="doctor__reviews-star"></li>
+                    <li class="doctor__reviews-star"></li>
+                    <li class="doctor__reviews-star"></li>
+                    <li class="doctor__reviews-star"></li>
+                  </ul>
+                  <div class="doctor__reviews-text">Добрый день. Хочу сказать большое спасибо Елене Петровне. Я консультировался в этом приложении с несколькими врачами этого профиля, и только Елена Петровна предложила лучшее лечение, котрое помогло. Спасибо!</div>
+                </div>
               </div>
-              <div class="doctor__reviews-item">
-                <div class="doctor__reviews-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
-                <div class="doctor__reviews-name subtitle">Панова Е. В.</div>
-                <div class="doctor__reviews-date">01.03.2021 18:50</div>
-                <ul class="doctor__reviews-rating">
-                  <li class="doctor__reviews-star"></li>
-                  <li class="doctor__reviews-star"></li>
-                  <li class="doctor__reviews-star"></li>
-                  <li class="doctor__reviews-star"></li>
-                  <li class="doctor__reviews-star"></li>
-                </ul>
-                <div class="doctor__reviews-text">Здравствуйте! Хочу выразить огромную благодарность талантливейшему врачу Елене Петровне!</div>
+              <div class="doctor__wrapper"> 
+                <div class="doctor__reviews-item">
+                  <div class="doctor__reviews-img" style="background-image: url(./img/doctor-reviews-img.png)"></div>
+                  <div class="doctor__reviews-name subtitle">Панова Е. В.</div>
+                  <div class="doctor__reviews-date">01.03.2021 18:50</div>
+                  <ul class="doctor__reviews-rating">
+                    <li class="doctor__reviews-star"></li>
+                    <li class="doctor__reviews-star"></li>
+                    <li class="doctor__reviews-star"></li>
+                    <li class="doctor__reviews-star"></li>
+                    <li class="doctor__reviews-star"></li>
+                  </ul>
+                  <div class="doctor__reviews-text">Здравствуйте! Хочу выразить огромную благодарность талантливейшему врачу Елене Петровне!</div>
+                </div>
               </div>
             </div>
           </div>
@@ -303,7 +437,6 @@
                 <li class="doctor__aside-star"></li>
               </ul>
               <div class="doctor__aside-stat">84% положительных отзывов</div>
-              <button class="doctor__aside-change">Настроить профиль</button>
             </div>
           </div>
         </div>

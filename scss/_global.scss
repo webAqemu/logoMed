@@ -65,9 +65,11 @@ body {
     }
   }
 }
+
 .header-start + .main {
   background-color: transparent;
 }
+
 address,
 input,
 textarea,
@@ -120,6 +122,7 @@ textarea::placeholder {
   padding: 0;
   color: $title;
 }
+
 @media (max-width: 768px) {
   .title {
     font-family: "SFProDisplay-Medium", sans-serif;

@@ -25,8 +25,8 @@
             <button class="header__btn"></button>
           </form>
           <div class="header__profile">
-            <img src="./img/profile-img.png" alt="Avatar" class="header__img" />
-            <div class="header__name">Константинопольский К. К.</div>
+            <img src="./img/doctor-aside-img.png" alt="Avatar" class="header__img" />
+            <div class="header__name">Романова Е.А.</div>
 
             <ul class="header__profile-menu">
               <li class="header__profile-item"><a href="./client-profile.html" class="header__link">Мой профиль</a></li>
@@ -103,214 +103,201 @@
           <div class="content-block__inner content-block__inner--general active" data-tab="1">
             <div class="general">
               <div class="general__tabs-btns active">
-                <div class="general__tabs-btn title-h3 active" data-general="1">Общее состояние</div>
-                <div class="general__tabs-btn title-h3" data-general="2">Жалобы</div>
-                <div class="general__tabs-btn title-h3" data-general="3">История болезней</div>
+                <div class="general__tabs-btn title-h3 active" data-general="1">
+                  Общее состояние
+                  <span class="circle circle--right"></span>
+                </div>
+                <div class="general__tabs-btn title-h3" data-general="2">
+                  <span class="circle circle--left"></span>
+                  Жалобы
+                  <span class="circle circle--right"></span>
+                </div>
+                <div class="general__tabs-btn title-h3" data-general="3">
+                  <span class="circle circle--left"></span>
+                  История болезней
+                </div>
               </div>
               <div class="general__tabs-content active" data-general="1">
-                <ul class="general__stats">
-                  <li class="general__stat">
-                    <div class="general__stat-name">Дата рождения</div>
-                    <div class="general__stat-value">27.03.1965</div>
-                  </li>
-                  <li class="general__stat">
-                    <div class="general__stat-name">Рост, вес</div>
-                    <div class="general__stat-value">179/89 нормальный ИМТ</div>
-                  </li>
-                  <li class="general__stat">
-                    <div class="general__stat-name">Окружность талии</div>
-                    <div class="general__stat-value">89</div>
-                  </li>
-                  <li class="general__stat">
-                    <div class="general__stat-name">Окружность бедер</div>
-                    <div class="general__stat-value">96</div>
-                  </li>
-                  <li class="general__stat">
-                    <div class="general__stat-name">Активность</div>
-                    <div class="general__stat-value">Средняя</div>
-                  </li>
-                  <li class="general__stat">
-                    <div class="general__stat-name">Сон</div>
-                    <div class="general__stat-value">7 часов с 23:30</div>
-                  </li>
-                  <li class="general__stat">
-                    <div class="general__stat-name">Вредные привычки</div>
-                    <div class="general__stat-value">Курение редко</div>
-                  </li>
-                  <li class="general__stat">
-                    <div class="general__stat-name">Прием препаратов</div>
-                    <div class="general__stat-value">Канефрон, Панкреатин</div>
-                  </li>
-                </ul>
-                <div class="general__comment subtitle">Комментарий</div>
-                <p class="general__paragraph">
-                  Чувствую постоянную усталость. Все болит, ничего не помогает! <br />
-                  Проекция на подвижные оси характеризует курс. Курс нелинеен. Будем, как и раньше, предполагать, что погрешность изготовления зависима. Дифференциальное уравнение участвует в погрешности определения курса меньше, чем прецизионный гироскопический стабилизатоор.
-                </p>
+                <div class="general__wrapper">
+                  <ul class="general__stats">
+                    <li class="general__stat">
+                      <div class="general__stat-name">Дата рождения</div>
+                      <div class="general__stat-value">27.03.1965</div>
+                    </li>
+                    <li class="general__stat">
+                      <div class="general__stat-name">Рост, вес</div>
+                      <input class="general__stat-input" type="text" value="179/89" />
+                    </li>
+                    <li class="general__stat">
+                      <div class="general__stat-name">Окружность талии</div>
+                      <input class="general__stat-input" type="text" value="89" />
+                    </li>
+                    <li class="general__stat">
+                      <div class="general__stat-name">Окружность бедер</div>
+                      <input class="general__stat-input" type="text" value="96" />
+                    </li>
+                    <li class="general__stat">
+                      <div class="general__stat-name">Активность</div>
+                      <div class="general__stat-value general__stat-value--list">
+                        <span class="general__stat-choosed">Средняя</span>
+                        <ul class="general__stat-list">
+                          <li class="general__stat-var">Низкая</li>
+                          <li class="general__stat-var">Средняя</li>
+                          <li class="general__stat-var">Высокая</li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li class="general__stat">
+                      <div class="general__stat-name">Сон</div>
+                      <div class="general__stat-value general__stat-value--list">
+                        <span class="general__stat-choosed">Выберите из списка</span>
+                        <ul class="general__stat-list">
+                          <li class="general__stat-var">6 часов</li>
+                          <li class="general__stat-var">7 часов</li>
+                          <li class="general__stat-var">8 часов</li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li class="general__stat">
+                      <div class="general__stat-name">Вредные привычки</div>
+                      <input class="general__stat-input general__stat-input--full" type="text" placeholder="Введите через запятую" value="Курение" />
+                    </li>
+                    <li class="general__stat">
+                      <div class="general__stat-name">Прием препаратов</div>
+                      <input class="general__stat-input general__stat-input--full" type="text" placeholder="Препараты через запятую" value="Аскорбиновая, кислота" />
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div class="general__tabs-content" data-general="2">
-                <div class="general__subtitle general__symptoms-title for-doctor subtitle active" data-symptom="1">Симптомы</div>
-                <div class="general__symptoms-wrapper">
-                  <div class="general__symptoms-item">Слабость</div>
-                  <div class="general__symptoms-item">Недостаточная концентрация внимания</div>
-                  <div class="general__symptoms-item">Снижение энергии</div>
-                  <div class="general__symptoms-item">Инфекции чаще 1 раза в 4 месяц</div>
-                </div>
-                <div class="general__subtitle general__symptoms-title for-doctor subtitle" data-symptom="2">Мужское здоровье</div>
-                <div class="general__symptoms-wrapper">
-                  <div class="general__symptoms-item">Жалобы отсутствуют</div>
-                </div>
-                <div class="general__subtitle general__symptoms-title for-doctor subtitle" data-symptom="3">Прочее</div>
-                <div class="general__symptoms-wrapper">
-                  <div class="general__col">
-                    <div class="general__symptoms-subtitle">Аллергические реакции</div>
-                    <div class="general__symptoms-wrapper">
-                      <div class="general__symptoms-item">Полиноз</div>
-                      <div class="general__symptoms-item">Морковь</div>
-                    </div>
-                    <div class="general__symptoms-subtitle">Установленные диагнозы</div>
-                    <div class="general__symptoms-wrapper">
-                      <div class="general__symptoms-item">Биполярное расстойстро</div>
-                    </div>
-                    <div class="general__symptoms-subtitle">Проведенные операции</div>
-                    <div class="general__symptoms-wrapper">
-                      <div class="general__symptoms-item">Смена пола</div>
-                    </div>
-                    <div class="general__symptom">
-                      <div class="general__symptoms-item">Тяга к сладкому</div>
+                <div class="general__wrapper">
+                  <div class="general__subtitle general__subtitle--inline subtitle" id="yourSymptoms">Жалобы пациента</div>
+                  <div class="general__disease-item">
+                    <div class="general__disease-title">Жалоба №1</div>
+                    <div class="general__disease-date">От 20.06.2021</div>
+                    <div class="general__disease-inner">
+                      <ul class="general__disease-list">
+                        <li>Симптомы</li>
+                        <li>Слабость</li>
+                        <li>Сильная отрыжка</li>
+                        <li>Снижение энергии</li>
+                        <li>Запах изо рта</li>
+                        <li>Снижение трудоспособности</li>
+                        <li>Боли в желудке</li>
+                      </ul>
+                      <ul class="general__disease-list">
+                        <li>Мужское здоровье</li>
+                        <li>Снижено либидо</li>
+                      </ul>
+                      <ul class="general__disease-list general__disease-list--column">
+                        <li>Прочее</li>
+                        <li>Тяга к соленому</li>
+                        <li class="snacksNum">Количество перекусов в день: <span>4</span></li>
+                        <li class="allergic">Аллергическая реакция: <span>бобы, хвоя</span></li>
+                      </ul>
                     </div>
                   </div>
-                  <div class="general__col">
-                    <div class="general__symptoms-subtitle">Количество приемов пищи в день</div>
-                    <div class="general__symptoms-wrapper">
-                      <div class="general__symptoms-item">10 раз</div>
-                    </div>
-                    <div class="general__symptoms-subtitle">Количество перекусов в день</div>
-                    <div class="general__symptoms-wrapper">
-                      <div class="general__symptoms-item">777 раз</div>
-                    </div>
-                    <div class="general__symptoms-subtitle">Объем потреблемой воды</div>
-                    <div class="general__symptoms-wrapper">
-                      <div class="general__symptoms-item">10 мл.</div>
-                    </div>
-                    <div class="general__symptoms-subtitle">Количество кофе в рационе</div>
-                    <div class="general__symptoms-wrapper">
-                      <div class="general__symptoms-item">200 мл.</div>
+                  <div class="general__disease-item">
+                    <div class="general__disease-title">Жалоба №1</div>
+                    <div class="general__disease-date">От 20.06.2021</div>
+                    <div class="general__disease-inner">
+                      <ul class="general__disease-list">
+                        <li>Симптомы</li>
+                        <li>Слабость</li>
+                        <li>Сильная отрыжка</li>
+                        <li>Снижение энергии</li>
+                        <li>Запах изо рта</li>
+                        <li>Снижение трудоспособности</li>
+                        <li>Боли в желудке</li>
+                      </ul>
+                      <ul class="general__disease-list">
+                        <li>Мужское здоровье</li>
+                        <li>Снижено либидо</li>
+                      </ul>
+                      <ul class="general__disease-list general__disease-list--column">
+                        <li>Прочее</li>
+                        <li>Тяга к соленому</li>
+                        <li class="snacksNum">Количество перекусов в день: <span>4</span></li>
+                        <li class="allergic">Аллергическая реакция: <span>бобы, хвоя</span></li>
+                      </ul>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="general__tabs-content" data-general="3">
-                <div class="general__history active">
-                  <div class="general__history-name title-h3">Геморрагический гастрит</div>
-                  <div class="general__history-date">С 20.06.2017</div>
-                  <form action="" class="general__form">
-                    <label for="" class="general__disease-label">1. В течение какого времени считаете себя больным?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Введите дату начала болезни и дату окончания">26.04.2016 — 10.06.2021</textarea> -->
-                    <div class="general__disease-desc">26.04.2016 — 10.06.2021</div>
-                    <label for="" class="general__disease-label">2. Когда, где и при каких обстоятельствах заболели впервые?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</textarea> -->
-                    <div class="general__disease-desc">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</div>
-                    <label for="" class="general__disease-label">3. С каких ощущений началось заболевание?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</textarea> -->
-                    <div class="general__disease-desc">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</div>
-                    <label for="" class="general__disease-label">4. Первое обращение к врачу, результаты исследований, диагноз заболевания, лечение и его эффективность.</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де-нола и омепразола становится легче. Пил месяц по 3 раза в день</textarea> -->
-                    <div class="general__disease-desc">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де&nbsp;-&nbsp;нола и омепразола становится легче. Пил месяц по 3 раза в день</div>
-                    <label for="" class="general__disease-label">5. Последующее течение заболевания.</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</textarea> -->
-                    <div class="general__disease-desc">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</div>
-                    <div class="general__file-list">
-                      <div class="general__file-item" data-file="-">
-                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-                        <span class="general__file-name">Гастроскопия.png</span>
+                <div class="general__wrapper">
+                  <div class="general__subtitle general__subtitle--inline subtitle">История болезней пациента</div>
+                  <div class="general__history">
+                    <div class="general__history-name title-h3">Геморрагический гастрит</div>
+                    <div class="general__history-date">С 20.06.2017</div>
+                    <form action="" class="general__form">
+                      <label for="" class="general__disease-label">1. В течение какого времени считаете себя больным?</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Введите дату начала болезни и дату окончания">26.04.2016 — 10.06.2021</textarea>
+                      <div class="general__disease-desc">26.04.2016 — 10.06.2021</div>
+                      <label for="" class="general__disease-label">2. Когда, где и при каких обстоятельствах заболели впервые?</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</textarea>
+                      <div class="general__disease-desc">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</div>
+                      <label for="" class="general__disease-label">3. С каких ощущений началось заболевание?</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</textarea>
+                      <div class="general__disease-desc">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</div>
+                      <label for="" class="general__disease-label">4. Первое обращение к врачу, результаты исследований, диагноз заболевания, лечение и его эффективность.</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де-нола и омепразола становится легче. Пил месяц по 3 раза в день</textarea>
+                      <div class="general__disease-desc">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де&nbsp;-&nbsp;нола и омепразола становится легче. Пил месяц по 3 раза в день</div>
+                      <label for="" class="general__disease-label">5. Последующее течение заболевания.</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</textarea>
+                      <div class="general__disease-desc">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</div>
+                      <div class="general__file-list">
+                        <div class="general__file-item" data-file="-">
+                          <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+                          <span class="general__file-name">Гастроскопия.png</span>
+                        </div>
+                        <div class="general__file-item" data-file="-">
+                          <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+                          <span class="general__file-name">Анализ на хеликобактер.png</span>
+                        </div>
                       </div>
-                      <div class="general__file-item" data-file="-">
-                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-                        <span class="general__file-name">Анализ на хеликобактер.png</span>
+                    </form>
+                  </div>
+                  <div class="general__history">
+                    <div class="general__history-name title-h3">Геморрагический гастрит</div>
+                    <div class="general__history-date">С 20.06.2017</div>
+                    <form action="" class="general__form">
+                      <label for="" class="general__disease-label">1. В течение какого времени считаете себя больным?</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Введите дату начала болезни и дату окончания">26.04.2016 — 10.06.2021</textarea>
+                      <div class="general__disease-desc">26.04.2016 — 10.06.2021</div>
+                      <label for="" class="general__disease-label">2. Когда, где и при каких обстоятельствах заболели впервые?</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</textarea>
+                      <div class="general__disease-desc">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</div>
+                      <label for="" class="general__disease-label">3. С каких ощущений началось заболевание?</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</textarea>
+                      <div class="general__disease-desc">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</div>
+                      <label for="" class="general__disease-label">4. Первое обращение к врачу, результаты исследований, диагноз заболевания, лечение и его эффективность.</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де-нола и омепразола становится легче. Пил месяц по 3 раза в день</textarea>
+                      <div class="general__disease-desc">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де&nbsp;-&nbsp;нола и омепразола становится легче. Пил месяц по 3 раза в день</div>
+                      <label for="" class="general__disease-label">5. Последующее течение заболевания.</label>
+                      <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</textarea>
+                      <div class="general__disease-desc">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</div>
+                      <div class="general__file-list">
+                        <div class="general__file-item" data-file="-">
+                          <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+                          <span class="general__file-name">Гастроскопия.png</span>
+                        </div>
+                        <div class="general__file-item" data-file="-">
+                          <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+                          <span class="general__file-name">Анализ на хеликобактер.png</span>
+                        </div>
                       </div>
-                    </div>
-                    <!-- <button class="general__save btn btn--inactive btn-text">
-                      <span>Сохранить</span>
-                    </button> -->
-                  </form>
-                </div>
-                <div class="general__history">
-                  <div class="general__history-name title-h3">Геморрагический гастрит</div>
-                  <div class="general__history-date">С 20.06.2017</div>
-                  <form action="" class="general__form">
-                    <label for="" class="general__disease-label">1. В течение какого времени считаете себя больным?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Введите дату начала болезни и дату окончания">26.04.2016 — 10.06.2021</textarea> -->
-                    <div class="general__disease-desc">26.04.2016 — 10.06.2021</div>
-                    <label for="" class="general__disease-label">2. Когда, где и при каких обстоятельствах заболели впервые?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</textarea> -->
-                    <div class="general__disease-desc">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</div>
-                    <label for="" class="general__disease-label">3. С каких ощущений началось заболевание?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</textarea> -->
-                    <div class="general__disease-desc">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</div>
-                    <label for="" class="general__disease-label">4. Первое обращение к врачу, результаты исследований, диагноз заболевания, лечение и его эффективность.</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де-нола и омепразола становится легче. Пил месяц по 3 раза в день</textarea> -->
-                    <div class="general__disease-desc">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де&nbsp;-&nbsp;нола и омепразола становится легче. Пил месяц по 3 раза в день</div>
-                    <label for="" class="general__disease-label">5. Последующее течение заболевания.</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</textarea> -->
-                    <div class="general__disease-desc">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</div>
-                    <div class="general__file-list">
-                      <div class="general__file-item" data-file="-">
-                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-                        <span class="general__file-name">Гастроскопия.png</span>
-                      </div>
-                      <div class="general__file-item" data-file="-">
-                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-                        <span class="general__file-name">Анализ на хеликобактер.png</span>
-                      </div>
-                    </div>
-                    <!-- <button class="general__save btn btn--inactive btn-text">
-                      <span>Сохранить</span>
-                    </button> -->
-                  </form>
-                </div>
-                <div class="general__history">
-                  <div class="general__history-name title-h3">Геморрагический гастрит</div>
-                  <div class="general__history-date">С 20.06.2017</div>
-                  <form action="" class="general__form">
-                    <label for="" class="general__disease-label">1. В течение какого времени считаете себя больным?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Введите дату начала болезни и дату окончания">26.04.2016 — 10.06.2021</textarea> -->
-                    <div class="general__disease-desc">26.04.2016 — 10.06.2021</div>
-                    <label for="" class="general__disease-label">2. Когда, где и при каких обстоятельствах заболели впервые?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</textarea> -->
-                    <div class="general__disease-desc">Раньше были проблемы с гастритом, поэтому каждую весну у меня обострение. Впервые боли появились еще весной 2016 года</div>
-                    <label for="" class="general__disease-label">3. С каких ощущений началось заболевание?</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</textarea> -->
-                    <div class="general__disease-desc">Сильные боли чуть ниже желудка, диарея, рано утром возникала тошнота, а также сильный запах изо рта</div>
-                    <label for="" class="general__disease-label">4. Первое обращение к врачу, результаты исследований, диагноз заболевания, лечение и его эффективность.</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де-нола и омепразола становится легче. Пил месяц по 3 раза в день</textarea> -->
-                    <div class="general__disease-desc">Направили на гастроскопию, там поставили этот диагноз. Также сдавал анализ на хеликобактер, но анализ отрицательный. После курса де&nbsp;-&nbsp;нола и омепразола становится легче. Пил месяц по 3 раза в день</div>
-                    <label for="" class="general__disease-label">5. Последующее течение заболевания.</label>
-                    <!-- <textarea type="text" class="general__input general__input--disease" placeholder="Распишите подробности здесь">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</textarea> -->
-                    <div class="general__disease-desc">После курса омепразола и де-нола обычно становится легче, но каждый год обострение появляется снова</div>
-                    <div class="general__file-list">
-                      <div class="general__file-item" data-file="-">
-                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-                        <span class="general__file-name">Гастроскопия.png</span>
-                      </div>
-                      <div class="general__file-item" data-file="-">
-                        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
-                        <span class="general__file-name">Анализ на хеликобактер.png</span>
-                      </div>
-                    </div>
-                    <!-- <button class="general__save btn btn--inactive btn-text">
-                      <span>Сохранить</span>
-                    </button> -->
-                  </form>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="general__for-doctor">
-              <div class="general__for-doctor-wrapper">
+              <!-- <div class="general__for-doctor-wrapper">
                 <div class="general__subtitle subtitle">Диагнозов пока нет</div>
                 <p class="general__for-doctor-text">Пациент пока не заполнил данные об истории болезней</p>
                 <img src="./img/recommendations-empty-img.svg" class="general__for-doctor-img" />
-              </div>
+              </div> -->
               <div class="general__for-doctor-wrapper">
                 <div class="general__subtitle subtitle">Болезни пациента</div>
                 <div class="general__for-doctor-item">
@@ -875,14 +862,14 @@
           </div>
           <div class="content-block__inner" data-tab="3">
             <div class="recommendations">
-              <div class="empty">
+              <!-- <div class="empty">
                 <div class="empty__title title">Рекомендаций пока нет</div>
                 <div class="empty__text">Здесь будут отображаться ваши рекомендации, назначенные специалистом. Пока рекомендаций нет, предлагаем вам ознакомиться со статьями или подобрать врача.</div>
                 <form action="" class="empty__form">
                   <input type="text" class="empty__input" placeholder="Найдите врача по направлению" required />
                   <button class="empty__btn btn"><span>Найти врача</span></button>
                 </form>
-              </div>
+              </div> -->
               <div class="recommendations__slider">
                 <div class="recommendations__slide">
                   <div class="recommendations__doctors">
@@ -930,7 +917,7 @@
                 </div>
               </div>
 
-              <div class="recommendations__maybe">
+              <!-- <div class="recommendations__maybe">
                 <div class="recommendations__title title">Подходящие вам статьи</div>
                 <div class="articles__all">
                   <div class="recommendations__item article">
@@ -1009,7 +996,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

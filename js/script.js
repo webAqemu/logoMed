@@ -531,23 +531,25 @@ if (document.querySelector(".general")) {
   });
 
   // открытие настроек порфиля по кнопке
-  document.querySelector(".general__change--profile").addEventListener("click", function (e) {
-    e.target.classList.toggle("hidden");
-    e.target.closest(".general__tabs-content").classList.toggle("change");
-  });
+  if (document.querySelector(".general__change--profile")) {
+    document.querySelector(".general__change--profile").addEventListener("click", function (e) {
+      e.target.classList.toggle("hidden");
+      e.target.closest(".general__tabs-content").classList.toggle("change");
+    });
 
-  // закрытие настроек порфиля по кнопке
-  document.querySelector(".profile__btn--cancel").addEventListener("click", function (e) {
-    document.querySelector(".general__tabs-content[data-general='1']").classList.toggle("change");
-    document.querySelector(".general__change--profile").classList.toggle("hidden");
-  });
+    // закрытие настроек порфиля по кнопке
+    document.querySelector(".profile__btn--cancel").addEventListener("click", function (e) {
+      document.querySelector(".general__tabs-content[data-general='1']").classList.toggle("change");
+      document.querySelector(".general__change--profile").classList.toggle("hidden");
+    });
 
-  //показать существующий пароль
-  document.querySelector(".profile__show").addEventListener("click", function () {
-    if (this.parentElement.querySelector("input").getAttribute("type") == "password") {
-      this.parentElement.querySelector("input").setAttribute("type", "text");
-    } else this.parentElement.querySelector("input").setAttribute("type", "password");
-  });
+    //показать существующий пароль
+    document.querySelector(".profile__show").addEventListener("click", function () {
+      if (this.parentElement.querySelector("input").getAttribute("type") == "password") {
+        this.parentElement.querySelector("input").setAttribute("type", "text");
+      } else this.parentElement.querySelector("input").setAttribute("type", "password");
+    });
+  }
 
   // добавить жалобу
   document.querySelector(".general__tabs-content[data-general='2']").addEventListener("click", function (e) {
@@ -1376,7 +1378,29 @@ if (document.querySelector(".doctor__info")) {
       },
     ],
   });
+  // открытие настроек порфиля по кнопке
+  document.querySelector(".doctor__change--profile").addEventListener("click", function (e) {
+    e.target.classList.toggle("hidden");
+    e.target.closest(".doctor__tabs-content").classList.toggle("change");
+    if (e.target.closest(".doctor__tabs-content").classList.contains("change")) {
+      document.querySelector(".general__file-list").innerHTML = "";
+    }
+  });
+
+  // закрытие настроек порфиля по кнопке
+  document.querySelector(".profile__btn--cancel").addEventListener("click", function (e) {
+    document.querySelector(".doctor__tabs-content").classList.toggle("change");
+    document.querySelector(".doctor__change--profile").classList.toggle("hidden");
+  });
+
+  //показать существующий пароль
+  document.querySelector(".profile__show").addEventListener("click", function () {
+    if (this.parentElement.querySelector("input").getAttribute("type") == "password") {
+      this.parentElement.querySelector("input").setAttribute("type", "text");
+    } else this.parentElement.querySelector("input").setAttribute("type", "password");
+  });
   document.querySelectorAll(".slick-dots button").forEach((btn) => (btn.innerHTML = " "));
+
   // accordeon for doctor-info
   if (document.querySelector(".doctor__tabs-btns")) {
     document.querySelector(".doctor__tabs-btns").addEventListener("click", function (e) {
@@ -1395,14 +1419,16 @@ if (document.querySelector(".doctor__info")) {
       if (e.target.classList.contains("block")) {
         e.target.classList.remove("active");
         document.querySelector(".doctor__clients-view .list").classList.add("active");
-        document.querySelectorAll(".doctor__clients-item").forEach((client) => {
+        document.querySelector(".doctor__clients-wrapper").classList.add("active");
+        document.querySelectorAll(".doctor__clients-wrapper .doctor__wrapper").forEach((client) => {
           client.classList.add("block");
         });
       }
       if (e.target.classList.contains("list")) {
         e.target.classList.remove("active");
         document.querySelector(".doctor__clients-view .block").classList.add("active");
-        document.querySelectorAll(".doctor__clients-item").forEach((client) => {
+        document.querySelector(".doctor__clients-wrapper").classList.remove("active");
+        document.querySelectorAll(".doctor__clients-wrapper .doctor__wrapper").forEach((client) => {
           client.classList.remove("block");
         });
       }
@@ -1422,6 +1448,39 @@ if (document.querySelector(".doctor__info")) {
       e.target.remove();
     }
   });
+
+  const uploadFilesDisease = {}; // сюда сохраняем загруженные файлы
+  let filesCount = 0;
+  if (document.querySelector("#file")) {
+    document.querySelector("#file").addEventListener("change", function (e) {
+      filesCount++;
+      // 1) находим загруженный файл и добавляем его в наш объект
+      uploadFilesDisease[filesCount] = e.target.files[0];
+      console.log(uploadFilesDisease);
+      // 2) заплняем инпут в новом айтеме и в целом подргружаем новый айтем
+      const fileName = e.srcElement.files[0].name;
+      const filesList = document.querySelector(".general__file-list");
+      console.log(e);
+      const html = `
+    <div class="general__file-item" data-file="${filesCount}">
+        <img src="./img/reg-icons/reg-file-icon.svg" alt="file icon" class="reg__file-icon" />
+        <span class="general__file-name"></span>
+    </div>
+    `;
+      filesList.insertAdjacentHTML("beforeend", html);
+      const filesInputs = document.querySelectorAll(".general__file-name");
+      filesInputs[filesInputs.length - 1].innerHTML = fileName;
+    });
+    // удаление файла из интерфейса и объекта
+    document.querySelector(".general__file-list").addEventListener("click", function (e) {
+      if (e.target.classList.contains("reg__file-icon")) {
+        const item = e.target.parentElement;
+        const itemID = e.target.parentElement.dataset.file;
+        delete uploadFilesSecondStep[itemID];
+        item.remove();
+      }
+    });
+  }
 }
 
 if (document.querySelector(".tests__add")) {
