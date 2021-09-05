@@ -179,29 +179,48 @@ textarea::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 199px;
+  min-width: 199px;
+  width: fit-content;
   height: 56px;
+  padding: 13px 15px 15px;
   position: relative;
   transition: all 0.3s;
   cursor: pointer;
-  background-color: transparent;
-  background-image: url(../img/main-btn-200.svg);
-  background-repeat: no-repeat;
+  background-color: $blue;
+  border-radius: 10px;
   font-size: 20px;
   color: $white;
 
   & span {
-    color: $white;
+    color: white;
     pointer-events: none;
     transition: all 0.3s;
+    z-index: 2;
   }
+
   &--inactive {
     opacity: 0.5;
     pointer-events: none;
   }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-image: linear-gradient(135deg, #5ba4e5 0%, #7384fe 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
   &:hover {
     @include blue-shadow;
-    background-image: url(../img/main-btn-200-hover.svg);
+    &::after {
+      opacity: 1;
+    }
   }
 
   @include r {
@@ -219,14 +238,20 @@ textarea::placeholder {
   }
 
   &--shadow {
-    background-image: url(../img/main-btn-200-hover.svg);
+    &::after {
+      opacity: 1;
+    }
+
     &:hover {
-      background-image: url(../img/shadow-btn-200-hover.svg);
+      background-color: $peach;
       @include pink-shadow;
+
+      &::after {
+        opacity: 0;
+      }
     }
 
     @include r {
-      background-image: none;
       @include main-gradient;
       &:hover {
         background: $peach;
@@ -236,24 +261,30 @@ textarea::placeholder {
   }
 
   &--stroke {
-    background-image: url(../img/stroke-btn-200.svg);
+    background-color: transparent;
+    border: 1px solid $blue;
+
     & span {
       color: $text;
     }
+
     &:hover {
       box-shadow: none;
-      background-image: url(../img/stroke-btn-200-hover.svg);
+      background-color: $blue;
       & span {
         color: $white;
       }
+
+      &::after {
+        opacity: 0;
+      }
     }
+
     @include r {
       border: 1px solid $blue;
-      background-image: none;
       background-color: transparent;
       &:hover {
         box-shadow: none;
-        background-image: none;
         background-color: $blue;
         & span {
           color: $white;
@@ -263,14 +294,22 @@ textarea::placeholder {
   }
 
   &--stroke--white {
-    background-image: url(../img/stroke-white-btn-200.svg);
+    border: 1px solid #fff;
+    background-color: transparent;
+
     &:hover {
       box-shadow: none;
-      background-image: url(../img/stroke-white-btn-200-hover.svg);
+      background-color: #fff;
+
       & span {
         color: $text;
       }
+
+      &::after {
+        opacity: 0;
+      }
     }
+
     @include r {
       width: 100%;
       height: auto;
@@ -278,6 +317,7 @@ textarea::placeholder {
       background-image: none;
       border: 1px solid white;
       background-color: transparent !important;
+
       &:hover {
         background-image: none;
         background-color: white !important;
@@ -287,17 +327,23 @@ textarea::placeholder {
   }
 
   &--black {
-    background-image: url(../img/black-btn-200.svg);
+    background-color: black;
+
     &:hover {
       @include extra-shadow;
-      background-image: url(../img/black-btn-200.svg);
-    }
-    @include r {
       background-image: none;
       background-color: black;
+
+      &::after {
+        opacity: 0;
+      }
+    }
+
+    @include r {
+      background-color: black;
+
       &:hover {
         background-color: black;
-        background-image: none;
       }
     }
   }

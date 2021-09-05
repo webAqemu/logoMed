@@ -3866,23 +3866,21 @@
 
   &__btn {
     cursor: pointer;
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
     margin: 0;
     position: relative;
-    padding-left: 21px;
+    padding-left: 36px;
     margin-bottom: 32px;
     &::after {
       content: "";
       position: absolute;
-      left: 18px;
+      left: 15px;
       top: 50%;
-      transform: translateY(-50%);
+      transform: translateY(-55%);
       width: 16px;
       height: 17px;
       background-image: url(../img/general-add-disease-icon.svg);
       background-repeat: no-repeat;
+      opacity: 1;
       background-position: center;
     }
 

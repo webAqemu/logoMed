@@ -245,26 +245,40 @@ textarea::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 199px;
+  min-width: 199px;
+  width: fit-content;
   height: 56px;
+  padding: 13px 15px 15px;
   position: relative;
   transition: all 0.3s;
   cursor: pointer;
-  background-color: transparent;
-  background-image: url(../img/main-btn-200.svg);
-  background-repeat: no-repeat;
+  background-color: #68a9fe;
+  border-radius: 10px;
   font-size: 20px;
   color: #ffffff; }
   .btn span {
-    color: #ffffff;
+    color: white;
     pointer-events: none;
-    transition: all 0.3s; }
+    transition: all 0.3s;
+    z-index: 2; }
   .btn--inactive {
     opacity: 0.5;
     pointer-events: none; }
+  .btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-image: linear-gradient(135deg, #5ba4e5 0%, #7384fe 100%);
+    opacity: 0;
+    transition: opacity 0.3s; }
   .btn:hover {
-    box-shadow: 0px 0px 10px rgba(175, 196, 255, 0.8);
-    background-image: url(../img/main-btn-200-hover.svg); }
+    box-shadow: 0px 0px 10px rgba(175, 196, 255, 0.8); }
+    .btn:hover::after {
+      opacity: 1; }
   @media (max-width: 768px) {
     .btn {
       width: 100%;
@@ -277,45 +291,50 @@ textarea::placeholder {
       .btn:hover {
         background-image: none;
         background: linear-gradient(135deg, #5ba4e5 0%, #7384fe 100%); } }
-  .btn--shadow {
-    background-image: url(../img/main-btn-200-hover.svg); }
-    .btn--shadow:hover {
-      background-image: url(../img/shadow-btn-200-hover.svg);
-      box-shadow: 0px 0px 15px #fe9393; }
-    @media (max-width: 768px) {
-      .btn--shadow {
-        background-image: none;
-        background: linear-gradient(135deg, #5ba4e5 0%, #7384fe 100%); }
-        .btn--shadow:hover {
-          background: #fe9393;
-          background-image: none; } }
+  .btn--shadow::after {
+    opacity: 1; }
+  .btn--shadow:hover {
+    background-color: #fe9393;
+    box-shadow: 0px 0px 15px #fe9393; }
+    .btn--shadow:hover::after {
+      opacity: 0; }
+  @media (max-width: 768px) {
+    .btn--shadow {
+      background: linear-gradient(135deg, #5ba4e5 0%, #7384fe 100%); }
+      .btn--shadow:hover {
+        background: #fe9393;
+        background-image: none; } }
   .btn--stroke {
-    background-image: url(../img/stroke-btn-200.svg); }
+    background-color: transparent;
+    border: 1px solid #68a9fe; }
     .btn--stroke span {
       color: #444444; }
     .btn--stroke:hover {
       box-shadow: none;
-      background-image: url(../img/stroke-btn-200-hover.svg); }
+      background-color: #68a9fe; }
       .btn--stroke:hover span {
         color: #ffffff; }
+      .btn--stroke:hover::after {
+        opacity: 0; }
     @media (max-width: 768px) {
       .btn--stroke {
         border: 1px solid #68a9fe;
-        background-image: none;
         background-color: transparent; }
         .btn--stroke:hover {
           box-shadow: none;
-          background-image: none;
           background-color: #68a9fe; }
           .btn--stroke:hover span {
             color: #ffffff; } }
   .btn--stroke--white {
-    background-image: url(../img/stroke-white-btn-200.svg); }
+    border: 1px solid #fff;
+    background-color: transparent; }
     .btn--stroke--white:hover {
       box-shadow: none;
-      background-image: url(../img/stroke-white-btn-200-hover.svg); }
+      background-color: #fff; }
       .btn--stroke--white:hover span {
         color: #444444; }
+      .btn--stroke--white:hover::after {
+        opacity: 0; }
     @media (max-width: 768px) {
       .btn--stroke--white {
         width: 100%;
@@ -329,17 +348,18 @@ textarea::placeholder {
           background-color: white !important;
           color: #444444; } }
   .btn--black {
-    background-image: url(../img/black-btn-200.svg); }
+    background-color: black; }
     .btn--black:hover {
       box-shadow: 0px 0px 15px #7c9af2;
-      background-image: url(../img/black-btn-200.svg); }
+      background-image: none;
+      background-color: black; }
+      .btn--black:hover::after {
+        opacity: 0; }
     @media (max-width: 768px) {
       .btn--black {
-        background-image: none;
         background-color: black; }
         .btn--black:hover {
-          background-color: black;
-          background-image: none; } }
+          background-color: black; } }
   @media (max-width: 768px) {
     .btn--stroke-mobile {
       background-color: #fff;
@@ -3276,23 +3296,21 @@ textarea::placeholder {
     margin: 40px 0 0; }
   .general__btn {
     cursor: pointer;
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
     margin: 0;
     position: relative;
-    padding-left: 21px;
+    padding-left: 36px;
     margin-bottom: 32px; }
     .general__btn::after {
       content: "";
       position: absolute;
-      left: 18px;
+      left: 15px;
       top: 50%;
-      transform: translateY(-50%);
+      transform: translateY(-55%);
       width: 16px;
       height: 17px;
       background-image: url(../img/general-add-disease-icon.svg);
       background-repeat: no-repeat;
+      opacity: 1;
       background-position: center; }
     @media (max-width: 768px) {
       .general__btn {
