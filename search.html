@@ -16,26 +16,50 @@
   <body>
     <header class="header">
       <div class="container">
-        <div class="header__row">
+        <div class="header__row header__row--sb">
           <a class="header__logo logo" href="./index.html">
             <img src="./img/logo.svg" alt="logo" class="logo__icon" />
           </a>
-          <form action="" class="header__form">
-            <input type="text" class="header__input" placeholder="Поиск по сайту" />
-            <button class="header__btn"></button>
-          </form>
-          <div class="header__profile">
-            <img src="./img/profile-img.png" alt="Avatar" class="header__img" />
-            <div class="header__name">Константинопольский К. К.</div>
-
-            <ul class="header__profile-menu">
-              <li class="header__profile-item"><a href="./client-profile.html" class="header__link">Мой профиль</a></li>
-              <li class="header__profile-item"><a href="./client-profile.html" class="header__link">Мои анализы</a></li>
-              <li class="header__profile-item"><a href="./client-profile.html" class="header__link">Полезное</a></li>
-              <li class="header__profile-item"><a href="./client-profile.html" class="header__link">Редактировать профиль</a></li>
-              <li class="header__profile-item"><button class="header__profile-link">Выйти</button></li>
+          <nav class="header__nav">
+            <ul class="header__menu">
+              <li class="header__item">
+                <a href="./about.html" class="header__link title-h3">О сервисе</a>
+              </li>
+              <li class="header__item">
+                <a href="./login.html" class="header__link btn">
+                  <span>Личный кабинет</span>
+                </a>
+              </li>
             </ul>
+          </nav>
+          <div class="burger">
+            <span></span>
           </div>
+
+          <ul class="header__mobile-menu firstpage">
+            <li class="header__mobile-item">
+              <a href="./search-filters.html" class="header__mobile-link">Каталог врачей</a>
+            </li>
+            <li class="header__mobile-item">
+              <a href="./articles.html" class="header__mobile-link">Статьи</a>
+            </li>
+            <li class="header__mobile-item">
+              <a href="./about.html" class="header__mobile-link">О сервисе</a>
+            </li>
+            <li class="header__mobile-item">
+              <a href="./contacts.html" class="header__mobile-link">Контакты</a>
+            </li>
+            <li class="header__mobile-item">
+              <a href="./login.html" class="header__mobile-link btn">
+                <span>Войти</span>
+              </a>
+            </li>
+            <li class="header__mobile-item">
+              <a href="./registration-client.html" class="header__mobile-link btn">
+                <span>Регистрация</span>
+              </a>
+            </li>
+          </ul>
         </div>
         <nav class="header__nav">
           <ul class="header__menu">
@@ -46,40 +70,8 @@
             <li class="header__item"><a href="./contacts.html" class="header__link">Контакты</a></li>
           </ul>
         </nav>
-        <!-- <button class="notification__open mobileOnly"></button>
-          <div class="notification mobileOnly">
-            <div class="notification__title title-h3">Уведомления</div>
-            <button class="notification__close"></button>
-            <div class="notification__activate">
-              <input type="checkbox" name="notification" id="notification" checked />
-              <label for="notification">Включены</label>
-            </div>
-            <ul class="notification__list">
-              <li class="notification__item active">
-                <div class="notification__date">Сегодня, 26.06.2021</div>
-                <div class="notification__name title-h3">Назначены рекомендации</div>
-                <div class="notification__doctor">Назначил врач Петрова Н. Ю.</div>
-              </li>
-              <li class="notification__item active">
-                <div class="notification__date">Сегодня, 26.06.2021</div>
-                <div class="notification__name title-h3">Назначены анализы</div>
-                <div class="notification__doctor">Назначил врач Петрова Н. Ю.</div>
-              </li>
-              <li class="notification__item">
-                <div class="notification__date">Сегодня, 26.06.2021</div>
-                <div class="notification__name title-h3">Предстоящая консультация</div>
-                <div class="notification__doctor">Врач Красильников Ю. Ю. 15:00 – 15:30</div>
-              </li>
-            </ul>
-
-            <button class="notification__cancel">Отметить все как прочитанное</button>
-          </div> 
-          <button class="header__burger burger burger--main burger--white">
-            <span></span>
-          </button> -->
       </div>
     </header>
-    <div class="layer-header"></div>
     <main class="main">
       <div class="search">
         <div class="search__search">

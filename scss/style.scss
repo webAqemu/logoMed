@@ -3,86 +3,6 @@
 @import "vars";
 @import "global";
 
-.header-start {
-  &__inner {
-    margin-top: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    @include r {
-      position: static;
-    }
-  }
-
-  &__list {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  &__item + &__item {
-    margin-left: 55px;
-  }
-
-  &__link {
-    color: $text;
-    transition: all 0.3s;
-    &:hover {
-      color: $blue;
-    }
-  }
-
-  &__nav.mobile {
-    display: none;
-    z-index: 10;
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-height: 500px;
-    height: 100vh;
-    background-color: white;
-    width: 325px;
-    padding: 55px 0 0 30px;
-    transform: translateX(100%);
-    transition: transform 0.3s;
-    &.active {
-      transform: translateX(0);
-    }
-    .header-start {
-      &__list {
-        margin-top: 35px;
-        display: block;
-        flex-direction: column;
-        align-items: flex-start;
-        a {
-          display: block;
-          padding: 17px 0;
-          border-bottom: 1px solid #f1f1f1;
-        }
-      }
-      &__item {
-        display: block;
-        &:nth-last-child(1) a {
-          border-bottom: none;
-        }
-      }
-      &__link {
-        font-size: 17px;
-      }
-      &__btns {
-        margin: auto 25px 0 0;
-        a {
-          margin-bottom: 25px;
-        }
-      }
-    }
-  }
-}
-
 .burger {
   display: none;
   height: 24px;
@@ -176,33 +96,19 @@
   }
 }
 
-@media (max-width: 768px) {
-  .header-start {
-    &__inner {
-      margin-top: 50px;
-    }
-    &__nav {
-      display: none;
-      &.mobile {
-        display: flex;
-        flex-direction: column;
-      }
-    }
-
-    &__item + &__item {
-      margin-left: 0;
-    }
-  }
-}
-
 .preview {
-  margin: 140px 0 300px;
+  padding: 100px 0;
 
-  &.about-preview &__inner {
-    padding-bottom: 200px;
-    & .preview__img {
-      top: auto;
-      bottom: -60px;
+  &.about-preview {
+    .preview__inner {
+      padding-top: 200px;
+      @include r {
+        padding-top: 0;
+      }
+      & .preview__img {
+        top: auto;
+        bottom: -60px;
+      }
     }
   }
 
@@ -277,7 +183,7 @@
 
 @media (max-width: 768px) {
   .preview {
-    margin: 60px 0;
+    padding: 80px 0 60px;
     &__inner {
       flex-direction: column;
       align-items: center;
@@ -1272,13 +1178,9 @@
 
 /*Registration and Login*/
 .login {
-  min-height: 100vh;
-  margin-top: -136px;
-  padding-top: 136px;
   background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
-
+  padding: 50px 0;
   &__inner {
-    margin-top: 215px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1380,16 +1282,12 @@
 
 @media (max-width: 768px) {
   .login {
-    min-height: calc(100vh + 30px);
-    margin-top: -106px;
-    padding-top: 106px;
     &__title,
     &__reg {
       display: none;
     }
     &__inner {
-      margin-top: 100px;
-      padding-bottom: 60px;
+      padding-top: 100px;
       justify-content: center;
       position: relative;
     }
@@ -1453,7 +1351,7 @@
       position: absolute;
       margin: 0;
       left: 0;
-      top: -55px;
+      top: 0;
       color: $text;
       padding-left: 20px;
       &::before {
@@ -1477,9 +1375,7 @@
 }
 
 .reg {
-  min-height: 100vh;
-  margin-top: -136px;
-  padding-top: 136px;
+  padding: 50px 0;
   background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
 
   @include r {
@@ -1488,12 +1384,10 @@
   }
 
   &__inner {
-    margin-top: 100px;
     width: 100%;
     display: flex;
     @include r {
       flex-direction: column;
-      margin-top: 30px;
     }
   }
 
@@ -2308,7 +2202,7 @@
       content: "";
       height: 100%;
       width: 20%;
-      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.7) 60%);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 60%);
       position: absolute;
       top: 0;
       right: 0;
@@ -2436,24 +2330,41 @@
 
 /*client profile*/
 .header {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  padding: 40px;
+  padding: 40px 0;
   background-color: white;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  @include r {
+    padding: 20px 0;
+  }
 
   &__row {
     display: flex;
     align-items: center;
-    padding-bottom: 40px;
-    margin-bottom: 32px;
+    padding: 0 15px 40px;
+    margin: 0 -15px 32px;
     border-bottom: 1px solid #bdbdbd;
+
+    &--sb {
+      justify-content: space-between;
+    }
+
+    @include r {
+      border-bottom: none;
+      justify-content: space-between;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
   }
 
   &__logo {
     margin-right: 48px;
+    position: relative;
+    z-index: 11;
+    display: flex;
+    @include r {
+      width: 95px;
+    }
   }
 
   &__logo img {
@@ -2464,6 +2375,10 @@
     max-width: 585px;
     width: 100%;
     position: relative;
+
+    @include r {
+      display: none;
+    }
   }
 
   &__input {
@@ -2501,6 +2416,10 @@
     align-items: center;
     position: relative;
     padding-bottom: 10px;
+
+    @include r {
+      display: none;
+    }
 
     &:hover &-menu {
       opacity: 1;
@@ -2593,10 +2512,61 @@
   &__menu {
     display: flex;
     align-items: center;
+
+    &--sb {
+      justify-content: space-between;
+    }
+
+    @include r {
+      display: none;
+    }
   }
 
   &__item:not(:last-child) {
     margin-right: 64px;
+  }
+
+  &__mobile {
+    &-menu {
+      padding: 30px;
+      background-color: #fff;
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-height: 450px;
+      height: 100vh;
+      width: 100%;
+      z-index: 10;
+      display: none;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      clip-path: circle(30px at calc(100% - 40px) 30px);
+      transition: clip-path 0.3s;
+      overflow: scroll;
+
+      @include r {
+        display: flex;
+      }
+
+      &.active {
+        clip-path: circle(100% at 50% 50%);
+      }
+
+      &.firstpage .header__mobile-item:first-child,
+      &.firstpage .header__mobile-item:nth-last-child(2) {
+        margin-top: auto;
+      }
+    }
+
+    &-item:not(:last-child) {
+      margin-bottom: 25px;
+    }
+
+    &-item {
+      width: 100%;
+    }
   }
 }
 
@@ -2763,14 +2733,13 @@
 }
 
 .menu {
-  min-height: 685px;
   background: linear-gradient(97.21deg, #48c6ef 0.97%, #6f86d6 99.06%);
-  padding: 330px 0 20px;
+  padding: 70px 0 20px;
   display: flex;
   flex-direction: column;
   @include r {
     min-height: auto;
-    padding: 140px 0 0;
+    padding: 40px 0 0;
   }
   &__person {
     color: $white;
@@ -6233,7 +6202,6 @@
 }
 
 .search {
-  padding-top: 225px;
   @include r {
     padding-bottom: 32px;
   }
@@ -6250,9 +6218,9 @@
   }
 
   &__search {
-    margin-top: 115px;
+    padding-top: 115px;
     @include r {
-      margin-top: 25px;
+      padding-top: 25px;
     }
   }
 
@@ -6759,10 +6727,9 @@
 }
 
 .articles {
-  padding: 225px 0 60px;
+  padding: 60px 0;
 
   &__forYou {
-    margin-top: 125px;
     display: flex;
     .articles__col:nth-child(1) {
       max-width: 100%;
@@ -8668,10 +8635,10 @@
 }
 
 .contacts {
-  padding: 270px 0 80px;
+  padding: 80px 0;
   background-color: $bg;
   @include r {
-    padding: 135px 0 30px;
+    padding: 30px 0;
     background-color: $bg-mobile;
   }
 
@@ -8905,10 +8872,10 @@
 }
 
 .docs {
-  padding: 220px 0 120px;
+  padding: 120px 0;
   background-color: $bg;
   @include r {
-    padding: 135px 0 30px;
+    padding: 30px 0;
     background-color: $bg-mobile;
   }
   &__title {
@@ -8971,6 +8938,7 @@
         top: 17px;
         transition: all 0.3s;
         @include r {
+          right: 0;
           top: 10px;
           width: 16px;
           height: 2px;
@@ -8987,6 +8955,7 @@
         transform: rotate(90deg);
         transition: all 0.3s;
         @include r {
+          right: 0;
           top: 10px;
           width: 16px;
           height: 2px;
@@ -9051,10 +9020,7 @@
     padding: 48px 0;
   }
   &:first-of-type {
-    padding-top: 220px;
-    @include r {
-      padding-top: 190px;
-    }
+    padding-top: 100px;
   }
 
   &:nth-child(odd) {
@@ -9066,7 +9032,7 @@
 
   &__back {
     position: absolute;
-    top: 136px;
+    top: 95px;
     left: 24px;
     padding-left: 25px;
     color: $blue;

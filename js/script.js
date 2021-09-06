@@ -95,41 +95,14 @@ if (document.querySelector(".login__inner")) {
 }
 
 // burger on other pages
-if (document.querySelector(".burger--main")) {
+if (document.querySelector(".burger")) {
   const burger = document.querySelector(".burger");
-  const bg = document.querySelector(".layer-header");
-  const menu = document.querySelector(".header__profile");
-  const notificationBtn = document.querySelector(".notification__open");
-  const notificationClose = document.querySelector(".notification__close");
-  const notificationList = document.querySelector(".notification");
-  const notificationRead = document.querySelector(".notification__cancel");
+  const menu = document.querySelector(".header__mobile-menu");
 
   burger.addEventListener("click", function () {
     burger.classList.toggle("active");
     menu.classList.toggle("active");
-    bg.classList.toggle("active");
     document.querySelector("body").classList.toggle("active");
-  });
-
-  notificationBtn.addEventListener("click", function () {
-    notificationList.classList.add("active");
-    document.querySelector("body").classList.add("active-notifications");
-  });
-
-  notificationClose.addEventListener("click", function () {
-    notificationList.classList.remove("active");
-    document.querySelector("body").classList.remove("active-notifications");
-  });
-
-  bg.addEventListener("click", function (e) {
-    burger.classList.remove("active");
-    menu.classList.remove("active");
-    bg.classList.remove("active");
-    document.querySelector("body").classList.remove("active");
-  });
-
-  notificationRead.addEventListener("click", function () {
-    notificationList.querySelectorAll(".notification__item.active").forEach((item) => item.classList.remove("active"));
   });
 }
 

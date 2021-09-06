@@ -9,66 +9,64 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <header class="header-start">
+    <header class="header">
       <div class="container">
-        <div class="header-start__inner">
-          <a class="logo" href="./index.html">
+        <div class="header__row header__row--sb">
+          <a class="header__logo logo" href="./index.html">
             <img src="./img/logo.svg" alt="logo" class="logo__icon" />
           </a>
-          <nav class="header-start__nav">
-            <ul class="header-start__list">
-              <li class="header-start__item">
-                <a href="#" class="header-start__link title-h3">Скачать приложение</a>
+          <nav class="header__nav">
+            <ul class="header__menu">
+              <li class="header__item">
+                <a href="./about.html" class="header__link title-h3">О сервисе</a>
               </li>
-              <li class="header-start__item">
-                <a href="./about.html" class="header-start__link title-h3">О сервисе</a>
-              </li>
-              <li class="header-start__item">
-                <a href="./login.html" class="header-start__link btn">
+              <li class="header__item">
+                <a href="./login.html" class="header__link btn">
                   <span>Личный кабинет</span>
                 </a>
               </li>
             </ul>
           </nav>
-          <nav class="header-start__nav mobile">
-            <a class="logo" href="./index.html">
-              <img src="./img/logo.svg" alt="logo" class="logo__icon" />
-            </a>
-            <ul class="header-start__list">
-              <li class="header-start__item">
-                <a href="./about.html" class="header-start__link title-h3">О сервисе</a>
-              </li>
-              <li class="header-start__item">
-                <a href="./contacts.html" class="header-start__link title-h3">Контакты клиники</a>
-              </li>
-              <li class="header-start__item">
-                <a href="./docs.html" class="header-start__link title-h3">Лицензии и документы</a>
-              </li>
-              <li class="header-start__item">
-                <a href="./docs.html" class="header-start__link title-h3">Политика конфеденциальности</a>
-              </li>
-            </ul>
-            <div class="header-start__btns">
-              <a href="#" class="header-start__link btn btn--black">
-                <span>
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.9226 3.0396C13.6752 2.23395 14.1842 1.11539 14.0449 0C12.9607 0.0386914 11.6467 0.636418 10.8685 1.44201C10.1709 2.15519 9.56011 3.29501 9.72311 4.38852C10.9329 4.47036 12.1688 3.84396 12.9226 3.0396ZM15.2316 10.7425C15.2084 8.24194 17.2113 7.04093 17.3 6.9829C16.174 5.2848 14.4203 5.05245 13.7958 5.02624C12.3025 4.86948 10.8842 5.93055 10.1261 5.93055C9.37105 5.93055 8.20317 5.04682 6.96471 5.07056C5.33658 5.09738 3.8364 6.04546 3.00021 7.54804C1.30891 10.5708 2.56672 15.0487 4.21481 17.5006C5.02047 18.7009 5.97972 20.0474 7.23939 19.9987C8.45535 19.95 8.91375 19.19 10.3808 19.19C11.8485 19.19 12.2594 19.9987 13.5434 19.9743C14.8499 19.95 15.6768 18.7509 16.4756 17.5468C17.3998 16.1547 17.7809 14.807 17.8027 14.7389C17.7746 14.7227 15.2584 13.7328 15.2316 10.7425Z" fill="white" />
-                  </svg>
-                  App Store
-                </span>
-              </a>
-              <a href="./registration-client.html" class="header-start__link btn-text btn">
-                <span>Регистрация</span>
-              </a>
-            </div>
-          </nav>
           <div class="burger">
             <span></span>
           </div>
+
+          <ul class="header__mobile-menu firstpage">
+            <li class="header__mobile-item">
+              <a href="./search-filters.html" class="header__mobile-link">Каталог врачей</a>
+            </li>
+            <li class="header__mobile-item">
+              <a href="./articles.html" class="header__mobile-link">Статьи</a>
+            </li>
+            <li class="header__mobile-item">
+              <a href="./about.html" class="header__mobile-link">О сервисе</a>
+            </li>
+            <li class="header__mobile-item">
+              <a href="./contacts.html" class="header__mobile-link">Контакты</a>
+            </li>
+            <li class="header__mobile-item">
+              <a href="./login.html" class="header__mobile-link btn">
+                <span>Войти</span>
+              </a>
+            </li>
+            <li class="header__mobile-item">
+              <a href="./registration-client.html" class="header__mobile-link btn">
+                <span>Регистрация</span>
+              </a>
+            </li>
+          </ul>
         </div>
+        <nav class="header__nav">
+          <ul class="header__menu">
+            <li class="header__item"><a href="./search-filters.html" class="header__link">Каталог врачей</a></li>
+            <li class="header__item"><a href="./client-profile.html" class="header__link">Мои задачи</a></li>
+            <li class="header__item"><a href="./articles.html" class="header__link">Статьи</a></li>
+            <li class="header__item"><a href="./about.html" class="header__link">О сервисе</a></li>
+            <li class="header__item"><a href="./contacts.html" class="header__link">Контакты</a></li>
+          </ul>
+        </nav>
       </div>
     </header>
-    <div class="layer-header"></div>
     <main class="main main--white">
       <section class="preview">
         <div class="container">
