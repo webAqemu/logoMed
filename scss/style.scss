@@ -13,6 +13,7 @@
   justify-content: center;
   cursor: pointer;
   padding: 5px;
+
   span {
     display: block;
     width: 16px;
@@ -21,6 +22,7 @@
     transition: all 0.3s;
     pointer-events: none;
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -31,6 +33,7 @@
     background-color: $blue;
     transition: all 0.3s;
   }
+
   &::before {
     content: "";
     position: absolute;
@@ -41,6 +44,7 @@
     background-color: $blue;
     transition: all 0.3s;
   }
+
   &--dark {
     span,
     &::before,
@@ -48,12 +52,14 @@
       background-color: $text;
     }
   }
+
   &--white {
     span,
     &::before,
     &::after {
       background-color: white;
     }
+
     &.active {
       &::after,
       &::before {
@@ -61,19 +67,23 @@
       }
     }
   }
+
   &.active {
     span {
       opacity: 0;
     }
+
     &::after {
       top: 11px;
       transform: rotate(45deg);
     }
+
     &::before {
       bottom: 11px;
       transform: rotate(-45deg);
     }
   }
+
   &.dark {
     span,
     &::after,
@@ -81,33 +91,41 @@
       background-color: $text;
     }
   }
-}
 
-@media (max-width: 768px) {
-  .burger {
+  @include r {
     display: flex;
-  }
-  .logo {
-    width: 126px;
-    display: flex;
-    img {
-      width: 100% !important;
-    }
   }
 }
 
 .preview {
   padding: 100px 0;
 
+  @include r {
+    padding: 80px 0 60px;
+  }
+
   &.about-preview {
     .preview__inner {
       padding-top: 200px;
+
       @include r {
         padding-top: 0;
+        padding-bottom: 0;
       }
-      & .preview__img {
+
+      .preview__img {
         top: auto;
         bottom: -60px;
+
+        @include r {
+          display: none;
+        }
+      }
+    }
+
+    .preview__title {
+      @include r {
+        max-width: 100%;
       }
     }
   }
@@ -117,23 +135,50 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+
+    @include r {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   &__desc {
     max-width: 60%;
     width: 100%;
+
+    @include r {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+    }
   }
 
   &__title {
     margin-bottom: 50px;
     max-width: 700px;
     width: 100%;
+
+    @include r {
+      margin-bottom: 16px;
+      text-align: center;
+      max-width: 250px;
+      font-size: 34px;
+    }
   }
 
   &__text {
     margin-bottom: 140px;
     max-width: 575px;
     width: 100%;
+
+    @include r {
+      max-width: 325px;
+      margin-bottom: 205px;
+      text-align: center;
+    }
   }
 
   &__btns {
@@ -141,6 +186,19 @@
     justify-content: space-between;
     max-width: 432px;
     width: 100%;
+
+    @include r {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+    }
+  }
+
+  &__btn {
+    @include r {
+      margin-top: 30px;
+    }
   }
 
   &__img {
@@ -149,13 +207,23 @@
     top: -40px;
     right: -50px;
     z-index: -1;
+
+    @include r {
+      width: 370px;
+      top: auto;
+      bottom: 55px;
+      right: auto;
+    }
   }
 
-  // about.html
   &__advantages {
     list-style: none;
     padding: 0;
     margin: 70px 0 0;
+
+    @include r {
+      margin-top: 0;
+    }
   }
 
   &__advantage {
@@ -164,11 +232,25 @@
     width: 100%;
     display: flex;
     align-items: center;
+
+    @include r {
+      box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      padding: 55px 40px 45px 75px;
+      position: relative;
+
+      span {
+        max-width: 245px;
+      }
+    }
+
     &:nth-child(2) {
       margin-top: -10px;
+
       & .preview__icon {
         margin-left: 0;
       }
+
       @include r {
         margin-top: 0;
       }
@@ -178,105 +260,66 @@
   &__icon {
     margin-left: 6px;
     margin-right: 30px;
-  }
-}
 
-@media (max-width: 768px) {
-  .preview {
-    padding: 80px 0 60px;
-    &__inner {
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    &__desc {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      max-width: 100%;
-    }
-    &__title {
-      margin-bottom: 16px;
-      text-align: center;
-      max-width: 250px;
-      font-size: 34px;
-    }
-    &__text {
-      max-width: 325px;
-      margin-bottom: 205px;
-      text-align: center;
-    }
-    &__btns {
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      max-width: 100%;
-    }
-    &__btn {
-      margin-top: 30px;
-    }
-    &__img {
-      width: 370px;
-      top: auto;
-      bottom: 55px;
-      right: auto;
-    }
-    &__advantages {
-      margin-top: 0;
-    }
-    &__advantage {
-      box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 20px;
-      padding: 55px 40px 45px 75px;
-      position: relative;
-      span {
-        max-width: 245px;
-      }
-    }
-    &__icon {
+    @include r {
       position: absolute;
       left: 20px;
       top: 20px;
       width: 34px;
-    }
-    &.about-preview {
-      .preview__title {
-        max-width: 100%;
-      }
-      .preview__img {
-        display: none;
-      }
-      .preview__inner {
-        padding-bottom: 0;
-      }
     }
   }
 }
 
 .important {
   @include main-gradient;
+
+  @include r {
+    padding: 50px 0 100px;
+  }
+
   &__inner {
     display: flex;
     align-items: center;
     padding: 150px 0 170px;
+
+    @include r {
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
   }
 
   &__desc {
     max-width: 790px;
     width: 100%;
+
+    @include r {
+      max-width: 370px;
+      margin-top: 30px;
+    }
   }
 
   &__title {
     margin-bottom: 40px;
     color: $white;
+
+    @include r {
+      display: none;
+    }
   }
 
   &__text {
     color: $white;
     margin: 0;
+
     &--peach {
       color: $peach;
+    }
+
+    @include r {
+      margin-bottom: 25px;
+      text-align: center;
     }
   }
 
@@ -286,81 +329,64 @@
 
   &__img {
     margin: 0 auto;
-  }
-}
 
-@media (max-width: 768px) {
-  .important {
-    padding: 50px 0 100px;
-    &__inner {
-      flex-direction: column-reverse;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-    }
-    &__img {
+    @include r {
       max-width: 150px;
-    }
-    &__title {
-      display: none;
-    }
-    &__desc {
-      max-width: 370px;
-      margin-top: 30px;
-    }
-    &__text {
-      margin-bottom: 25px;
-      text-align: center;
     }
   }
 }
 
 .promo {
   margin: 200px 0 300px;
+  @include r {
+    margin: 80px 0 100px;
+  }
+
   &__inner {
     display: flex;
     align-items: start;
     justify-content: space-between;
+
+    @include r {
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   &__img {
     max-width: 500px;
     width: 100%;
+
+    @include r {
+      max-width: 215px;
+    }
   }
 
   &__desc {
     max-width: 600px;
     width: 100%;
     padding-top: 150px;
+
+    @include r {
+      padding-top: 0;
+    }
+  }
+
+  &__title {
+    @include r {
+      text-align: center;
+      font-size: 34px;
+    }
   }
 
   &__text {
     margin: 30px 0 0;
-  }
-}
 
-@media (max-width: 768px) {
-  .promo {
-    margin: 80px 0 100px;
-    &__inner {
-      flex-direction: column-reverse;
-      align-items: center;
-      justify-content: center;
-    }
-    &__desc {
-      padding-top: 0;
-    }
-    &__title {
-      text-align: center;
-      font-size: 34px;
-    }
-    &__text {
+    @include r {
       max-width: 300px;
       text-align: center;
       margin: 25px auto 90px;
-    }
-    &__img {
-      max-width: 215px;
     }
   }
 }
@@ -369,7 +395,7 @@
   background-color: #ffffff;
 
   @include r {
-    padding: 56px 0;
+    display: none;
   }
 
   &__inner {
@@ -390,15 +416,19 @@
   &__item {
     position: relative;
     margin: 0 10px 10px;
+
     &:hover .specialists__hover {
       opacity: 1;
+
       @include r {
         opacity: 0;
       }
     }
+
     &:hover .specialists__text {
       left: 50%;
       transform: translateX(-50%);
+
       @include r {
         left: 24px;
         transform: translateX(0);
@@ -419,6 +449,7 @@
     color: $white;
     z-index: 3;
     transition: all 0.5s;
+
     @include r {
       top: 32px;
       left: 24px;
@@ -437,6 +468,7 @@
     position: absolute;
     left: 0;
     top: 0;
+
     @include r {
       width: 100%;
       height: 100%;
@@ -450,6 +482,7 @@
     padding: 115px 15px 15px;
     transition: all 0.5s;
     opacity: 0;
+
     @include r {
       width: 100%;
       height: 100%;
@@ -458,16 +491,19 @@
       align-items: center;
       justify-content: center;
     }
+
     &-bg {
       position: absolute;
       left: 0;
       top: 0;
       z-index: 2;
+
       @include r {
         width: 100%;
         height: 100%;
       }
     }
+
     &-text {
       position: relative;
       font-size: 18px;
@@ -475,6 +511,7 @@
       color: $white;
       z-index: 3;
       margin: 0;
+
       @include r {
         font-size: 16px;
         margin-top: 24px;
@@ -483,10 +520,7 @@
   }
 }
 
-@media (max-width: 768px) {
-  .specialists {
-    display: none;
-  }
+@include r {
   .search__search + .specialists {
     display: block;
   }
@@ -494,6 +528,11 @@
 
 .symptoms {
   margin-top: 150px;
+
+  @include r {
+    display: none;
+  }
+
   &__inner {
     margin-top: 90px;
   }
@@ -527,15 +566,19 @@
     top: calc(50% - 20px);
     transition: all 0.3s;
     cursor: pointer;
+
     &--left {
       left: -65px;
     }
+
     &--right {
       right: -65px;
     }
+
     & svg path {
       transition: all 0.3s;
     }
+
     &:hover {
       background-color: $white;
       & svg path {
@@ -545,20 +588,32 @@
   }
 }
 
-@media (max-width: 768px) {
-  .symptoms {
-    display: none;
-  }
-}
-
 .about-specialists {
   margin-top: 280px;
   @include main-gradient;
+
+  @include r {
+    margin-top: 0;
+    background: none;
+  }
+
   &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 145px 0 100px;
+
+    @include r {
+      flex-direction: column;
+      padding: 0;
+    }
+  }
+
+  &__desc {
+    @include r {
+      margin: 0 -10px;
+      margin-bottom: 50px;
+    }
   }
 
   &__title {
@@ -566,26 +621,51 @@
     max-width: 485px;
     width: 100%;
     margin-bottom: 40px;
+
+    @include r {
+      color: $title;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 34px;
+    }
   }
 
   &__text {
     color: $white;
     max-width: 615px;
     width: 100%;
+
+    @include r {
+      color: $text;
+      text-align: center;
+      width: 100%;
+      margin: 0 auto;
+    }
   }
 
   &__slider {
     max-width: 660px;
     width: 100%;
     max-height: 744px;
+
+    @include r {
+      width: calc(100% + 48px);
+      margin: 0 -24px;
+    }
   }
 
   &__slide {
     outline: none;
     transition: all 0.5s;
     opacity: 0;
+
     &.slick-current {
       opacity: 1;
+    }
+
+    @include r {
+      opacity: 1;
+      margin: 0 24px;
     }
   }
 
@@ -603,16 +683,34 @@
     justify-content: center;
     padding: 50px;
     text-align: center;
+
+    @include r {
+      padding: 30px 16px;
+      background-image: url(../img/mobile/about-specialists-bg.png);
+      background-repeat: no-repeat;
+      min-height: 380px;
+      max-width: 365px;
+      margin: 0 auto;
+    }
   }
 
   &__img {
     border-radius: 50%;
     margin-bottom: 25px;
+
+    @include r {
+      height: 72px;
+      width: 72px;
+    }
   }
 
   &__name {
     text-align: center;
     margin-bottom: 15px;
+
+    @include r {
+      margin-bottom: 5px;
+    }
   }
 
   &__lastname {
@@ -623,6 +721,13 @@
     margin-top: 20px;
     color: $light-text;
     max-width: 505px;
+
+    @include r {
+      max-width: 305px;
+      width: 100%;
+      margin: 20px auto 0;
+      color: $text;
+    }
   }
 
   &__services {
@@ -635,6 +740,10 @@
     margin: 25px -10px 0;
     max-width: 555px;
     width: calc(100% + 20px);
+
+    @include r {
+      display: none;
+    }
   }
 
   &__service {
@@ -644,11 +753,19 @@
     min-width: 155px;
     padding: 8px 10px 12px;
     color: $peach;
+
     &:nth-child(1) {
       margin: 3px 10px 3px 30px;
     }
+
     &:nth-child(2) {
       margin: 10px 30px 10px 10px;
+    }
+  }
+
+  &__exp {
+    @include r {
+      display: none;
     }
   }
 
@@ -661,13 +778,37 @@
     transform: translateX(-50%);
     bottom: -50px;
     display: flex;
+
+    @include r {
+      position: static;
+      left: auto;
+      transform: translateX(0);
+      bottom: auto;
+      display: flex;
+      margin-top: 25px;
+      margin-bottom: 30px;
+    }
+
     & li {
       margin: 0 10px;
       padding: 0;
+
+      @include r {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       &.slick-active button {
         background-color: $peach;
+
+        @include r {
+          border: 3px solid #68a9fe;
+          background-color: white;
+        }
       }
     }
+
     & li button {
       width: 12px;
       height: 12px;
@@ -676,6 +817,13 @@
       border: none;
       box-shadow: none;
       cursor: pointer;
+
+      @include r {
+        width: 10px;
+        height: 10px;
+        border: 2px solid #e3eaff;
+        padding: 0;
+      }
     }
   }
 
@@ -692,6 +840,7 @@
     justify-content: center;
     width: 100%;
   }
+
   &__star {
     width: 16px;
     height: 16px;
@@ -703,115 +852,38 @@
       margin-right: 0;
     }
   }
+
   &__special,
-  &__feedback,
+  &__feedback {
+    display: none;
+
+    @include r {
+      display: block;
+    }
+  }
+
   &__rating {
     display: none;
+
+    @include r {
+      display: flex;
+    }
+  }
+
+  .about-specialists__lastname {
+    @include r {
+      display: inline-block;
+    }
   }
 }
 
 .about-specialists + .app {
   margin-top: 0;
+
   @include r {
     padding: 56px 0;
     background-color: $bg-mobile;
     margin-bottom: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .about-specialists {
-    margin-top: 0;
-    background: none;
-    &__inner {
-      flex-direction: column;
-      padding: 0;
-    }
-    &__desc {
-      margin: 0 -10px;
-      margin-bottom: 50px;
-    }
-    &__title {
-      color: $title;
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 34px;
-    }
-    &__text {
-      color: $text;
-      text-align: center;
-      width: 100%;
-      margin: 0 auto;
-    }
-    &__slider {
-      width: calc(100% + 48px);
-      margin: 0 -24px;
-    }
-    &__slide {
-      opacity: 1;
-      margin: 0 24px;
-    }
-    &__item {
-      padding: 30px 16px;
-      background-image: url(../img/mobile/about-specialists-bg.png);
-      background-repeat: no-repeat;
-      min-height: 380px;
-      max-width: 365px;
-      margin: 0 auto;
-    }
-    &__services {
-      display: none;
-    }
-    &__img {
-      height: 72px;
-      width: 72px;
-    }
-    &__name {
-      margin-bottom: 5px;
-    }
-    .about-specialists__lastname {
-      display: inline-block;
-    }
-    &__exp {
-      display: none;
-    }
-    &__special,
-    &__feedback {
-      display: block;
-    }
-    &__rating {
-      display: flex;
-    }
-    &__about {
-      max-width: 305px;
-      width: 100%;
-      margin: 20px auto 0;
-      color: $text;
-    }
-    .slick-dots {
-      position: static;
-      left: auto;
-      transform: translateX(0);
-      bottom: auto;
-      display: flex;
-      margin-top: 25px;
-      margin-bottom: 30px;
-      & li {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        &.slick-active button {
-          border: 3px solid #68a9fe;
-          background-color: white;
-        }
-      }
-      & li button {
-        width: 10px;
-        height: 10px;
-        border: 2px solid #e3eaff;
-        padding: 0;
-      }
-    }
   }
 }
 
@@ -1180,6 +1252,8 @@
 .login {
   background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
   padding: 50px 0;
+  min-height: calc(100vh - 237px);
+
   &__inner {
     display: flex;
     align-items: center;
@@ -1377,6 +1451,7 @@
 .reg {
   padding: 50px 0;
   background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
+  min-height: calc(100vh - 237px);
 
   @include r {
     min-height: auto;
@@ -1785,7 +1860,7 @@
     @include r {
       font-size: 0;
       height: 48px;
-      &::after {
+      &::before {
         content: "Следующий шаг";
         font-size: 17px;
         position: absolute;
@@ -1795,7 +1870,7 @@
         width: 100%;
         text-align: center;
       }
-      &--finish::after {
+      &--finish::before {
         content: "Перейти в личный кабинет";
       }
     }
@@ -2807,6 +2882,7 @@
     }
   }
 }
+
 .container--flex {
   .tabs__list {
     margin-top: auto;
@@ -2815,6 +2891,7 @@
     }
   }
 }
+
 .tabs {
   &__list {
     margin-top: 110px;
@@ -4095,7 +4172,7 @@
   }
 }
 
-.change + .profile {
+.active.change + .profile {
   display: block;
 }
 
@@ -4487,8 +4564,33 @@
   max-width: 430px;
   width: 100%;
   margin-left: 35px;
+
   @include r {
     display: none;
+  }
+
+  &.doctor {
+    .tasks__dates {
+      display: none;
+    }
+
+    & > .tasks__title {
+      display: none;
+    }
+
+    .tasks__inner {
+      display: none;
+    }
+
+    .tasks__doctor-inner {
+      display: block;
+    }
+  }
+
+  &__wrapper {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 40px 50px;
   }
 
   &__title {
@@ -4504,8 +4606,10 @@
     height: 40px;
     background-image: url(../img/tasks-calendar.svg);
     overflow: hidden;
+
     &:hover {
       overflow: visible;
+
       .tasks__datepicker {
         opacity: 1;
       }
@@ -4517,6 +4621,7 @@
     padding-bottom: 175px;
     margin-bottom: 40px;
     border-bottom: 1px solid #f1f1f1;
+
     &.active {
       display: block;
     }
@@ -4529,9 +4634,11 @@
 
   &__rec {
     display: none;
+
     @include r {
       display: block;
       margin-bottom: 30px;
+
       li {
         font-size: 22px;
         color: $blue;
@@ -4558,18 +4665,22 @@
     margin: 25px auto 15px;
     color: $text;
     transition: all 0.3s;
+
     &--cancel,
     &--rec,
     &--doctor {
       margin: 0 0 15px;
     }
+
     &:nth-last-child(2) {
       margin-top: 30px;
     }
+
     &--pink {
       margin-top: 10px;
       background: $peach;
     }
+
     &--inactive {
       opacity: 0.5;
       pointer-events: none;
@@ -4601,6 +4712,15 @@
     margin-bottom: 40px;
     border-bottom: 1px solid #f1f1f1;
     position: relative;
+
+    @include r {
+      &--rec {
+        .tasks__time,
+        .tasks__timer {
+          display: none;
+        }
+      }
+    }
   }
 
   &__date {
@@ -4608,6 +4728,8 @@
     margin-bottom: 15px;
     padding-left: 32px;
     position: relative;
+    font-size: 20px;
+
     &::before {
       content: "";
       width: 16px;
@@ -4623,25 +4745,35 @@
   &__subtitle {
     margin-bottom: 15px;
     display: inline-block;
+
     @include r {
       padding-right: 100px;
     }
   }
 
-  &__item {
-    @include r {
-      &--rec {
-        .tasks__time,
-        .tasks__timer {
-          display: none;
-        }
-      }
-    }
-  }
-
   &__doctor {
     color: $light-text;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
+
+    &-inner {
+      display: none;
+    }
+
+    &-img {
+      width: 134px;
+      height: 134px;
+      border-radius: 100%;
+      margin-bottom: 24px;
+    }
+
+    &-name {
+      max-width: 300px;
+      margin-bottom: 24px;
+    }
+
+    &-skills li:not(:last-child) {
+      margin-bottom: 16px;
+    }
   }
 
   &__time {
@@ -4656,9 +4788,12 @@
     color: $light-text;
     margin-left: 30px;
   }
+
   &__task-date {
-    display: inline-block;
-    margin-left: 16px;
+    position: absolute;
+    top: 0;
+    right: 0;
+
     @include r {
       display: block;
       color: $light-text;
@@ -4676,7 +4811,8 @@
   }
 
   &__tabs-btns {
-    margin-bottom: 80px;
+    display: flex;
+
     @include r {
       display: flex;
       justify-content: space-between;
@@ -4686,9 +4822,69 @@
 
   &__tabs-btn {
     cursor: pointer;
-    display: inline-block;
     color: $light-text;
+    padding: 24px 36px;
     transition: all 0.3s;
+    background-color: $bg;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: relative;
+    width: 100%;
+    min-width: fit-content;
+    text-align: center;
+
+    &:first-child::before {
+      content: "";
+      width: 20px;
+      height: 40px;
+      background-color: white;
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+
+      @include r {
+        display: none;
+      }
+    }
+
+    &:last-child::before {
+      content: "";
+      width: 20px;
+      height: 40px;
+      background-color: white;
+      position: absolute;
+      bottom: -20px;
+      right: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+
+      @include r {
+        display: none;
+      }
+    }
+
+    &:nth-child(2) {
+      margin: 0 10px;
+    }
+
+    &.active {
+      background-color: white;
+
+      &:first-child::before,
+      &:last-child::before {
+        opacity: 1;
+      }
+
+      .circle {
+        opacity: 1;
+        height: 40px;
+        transition: opacity 0.3s;
+      }
+    }
+
+    &:hover,
     &.active {
       color: $text;
       @include r {
@@ -4696,29 +4892,65 @@
         background-color: $blue;
       }
     }
-    & + & {
-      margin-left: 100px;
-      @include r {
-        margin-left: 0;
+
+    @include r {
+      padding: 8px 15px 10px;
+      border-radius: 30px;
+      font-size: 17px;
+      &:not(:last-child) {
+        margin-bottom: 15px;
+        margin-right: 15px;
       }
     }
 
-    @include r {
-      padding: 8px 35px 10px;
-      border-radius: 30px;
-      font-size: 17px;
+    .circle {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      bottom: 0;
+      right: -40px;
+      z-index: 2;
+      background-color: #fff;
+
+      &::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        border-bottom-left-radius: 20px;
+        background-color: $bg;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      &--left {
+        right: 100%;
+
+        &::after {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 20px;
+          left: auto;
+          right: 0;
+        }
+      }
+
+      opacity: 0;
+      height: 0;
     }
   }
 
   &__list {
     display: none;
+
     &.active {
       display: block;
+      margin-bottom: 32px;
     }
   }
 
   &__all {
     display: none;
+
     &.active {
       display: block;
     }
@@ -8094,17 +8326,12 @@
   }
 
   &__btn {
-    &--finish {
-      position: static;
-    }
-
     &--back:not(:first-child) {
       margin-left: 32px;
     }
 
     @include r {
       width: 100%;
-      position: static;
       margin-top: 50px;
     }
   }

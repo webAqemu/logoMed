@@ -1091,7 +1091,9 @@ if (document.querySelector(".general")) {
       document.querySelector(".tasks__all").classList.add("active");
       document.querySelector(".tasks__tabs-btn[data-tasks='1']").classList.add("active");
       document.querySelector(".tasks__list[data-tasks='1']").classList.add("active");
+      this.closest(".tasks").classList.add("doctor");
     });
+
     // переключение на мобилке
     document.querySelector(".tasksMobile").addEventListener("click", function () {
       if (document.querySelector(".tabs__item.active")) {
@@ -1211,6 +1213,7 @@ if (document.querySelector(".tabs__list")) {
         document.querySelector(".tasks__all.active").classList.remove("active");
         document.querySelector(".tasks__tabs-btn.active").classList.remove("active");
         document.querySelector(".tasks__list.active").classList.remove("active");
+        document.querySelector(".tasks").classList.remove("doctor");
       }
 
       e.target.classList.add("active");
