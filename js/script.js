@@ -278,16 +278,14 @@ if (document.querySelector(".reg")) {
     arrows: false,
     variableWidth: true,
     infinity: false,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          dots: true,
-          variableWidth: false,
-        },
+    responsive: [{
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        dots: true,
+        variableWidth: false,
       },
-    ],
+    }, ],
   });
 
   if (window.innerWidth < 768) {
@@ -1344,15 +1342,13 @@ if (document.querySelector(".doctor__info")) {
     dots: true,
     arrows: false,
     variableWidth: true,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
+    responsive: [{
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
       },
-    ],
+    }, ],
   });
   // открытие настроек порфиля по кнопке
   document.querySelector(".doctor__change--profile").addEventListener("click", function (e) {
@@ -1600,13 +1596,45 @@ if (document.querySelector(".appointment")) {
       document.querySelector(".appointment__tabs-content.active").classList.remove("active");
       document.querySelector(`.appointment__tabs-content[data-tab="${curTab}"]`).classList.add("active");
     }
+
     if (e.target.classList.contains("appointment__btn--next")) {
-      document.querySelector(".appointment__tabs-btn.active").classList.remove("active");
-      document.querySelector(".appointment__tabs-content.active").classList.remove("active");
-      document.querySelector(`.appointment__tabs-btn[data-tab="${curTab}"]`).classList.add("complete");
-      document.querySelector(`.appointment__tabs-btn[data-tab="${curTab + 1}"]`).classList.add("active");
-      document.querySelector(`.appointment__tabs-btn[data-tab="${curTab + 1}"]`).classList.remove("disable");
-      document.querySelector(`.appointment__tabs-content[data-tab="${curTab + 1}"]`).classList.add("active");
+      const parent = e.target.closest(".appointment__tabs-content")
+      if (parent.querySelector("input[type='radio']")) {
+        let check = false
+        parent.querySelectorAll("input[type='radio']").forEach(radio => {
+          if (radio.checked) {
+            check = true
+          }
+        })
+        if (check) {
+          document.querySelector(".appointment__tabs-btn.active").classList.remove("active");
+          document.querySelector(".appointment__tabs-content.active").classList.remove("active");
+          document.querySelector(`.appointment__tabs-btn[data-tab="${curTab}"]`).classList.add("complete");
+          document.querySelector(`.appointment__tabs-btn[data-tab="${curTab + 1}"]`).classList.add("active");
+          document.querySelector(`.appointment__tabs-btn[data-tab="${curTab + 1}"]`).classList.remove("disable");
+          document.querySelector(`.appointment__tabs-content[data-tab="${curTab + 1}"]`).classList.add("active");
+        }
+
+      } else {
+        document.querySelector(".appointment__tabs-btn.active").classList.remove("active");
+        document.querySelector(".appointment__tabs-content.active").classList.remove("active");
+        document.querySelector(`.appointment__tabs-btn[data-tab="${curTab}"]`).classList.add("complete");
+        document.querySelector(`.appointment__tabs-btn[data-tab="${curTab + 1}"]`).classList.add("active");
+        document.querySelector(`.appointment__tabs-btn[data-tab="${curTab + 1}"]`).classList.remove("disable");
+        document.querySelector(`.appointment__tabs-content[data-tab="${curTab + 1}"]`).classList.add("active");
+      }
+
+    }
+
+    console.log(e.target);
+
+    if (e.target.getAttribute("type") === "radio") {
+      if (e.target.closest(".appointment__tabs-content")) {
+
+        e.target.closest(".appointment__tabs-content").querySelector(".appointment__btn--next").classList.remove("btn--inactive")
+      } else if (e.target.closest(".appointment__days")) {
+        e.target.closest(".appointment__days").querySelector(".appointment__btn--finish").classList.remove("btn--inactive")
+      }
     }
 
     if (e.target.classList.contains("appointment__btn--back")) {
@@ -1623,13 +1651,23 @@ if (document.querySelector(".appointment")) {
     }
 
     if (e.target.classList.contains("appointment__btn--finish")) {
-      document.querySelector(".appointment__tabs").classList.remove("active");
-      let data = document.querySelector(".appointment__days-title").innerHTML.split(" ").slice(-2).join(" ");
-      data += ", " + document.querySelector(".appointment__days-time input:checked + div").innerHTML;
-      document.querySelector(".appointment__finish-time").innerHTML = data;
-      document.querySelector(".appointment__finish").classList.add("active");
-      document.querySelector(".appointment__finish-title").classList.add("active");
-      document.querySelector(".appointment__days").classList.remove("active");
+      const parent = e.target.closest(".appointment__days")
+      let check = false
+      parent.querySelectorAll(".appointment__days-time input").forEach(radio => {
+        if (radio.checked) {
+          check = true
+        }
+      })
+      if (check) {
+        document.querySelector(".appointment__tabs").classList.remove("active");
+        let data = document.querySelector(".appointment__days-title").innerHTML.split(" ").slice(-2).join(" ");
+        data += ", " + document.querySelector(".appointment__days-time input:checked + div").innerHTML;
+        document.querySelector(".appointment__finish-time").innerHTML = data;
+        document.querySelector(".appointment__finish").classList.add("active");
+        document.querySelector(".appointment__finish-title").classList.add("active");
+        document.querySelector(".appointment__days").classList.remove("active");
+      }
+
     }
 
     if (e.target.classList.contains("appointment__return")) {
