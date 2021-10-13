@@ -46,6 +46,7 @@
   }
 
   &--dark {
+
     span,
     &::before,
     &::after {
@@ -54,6 +55,7 @@
   }
 
   &--white {
+
     span,
     &::before,
     &::after {
@@ -61,6 +63,7 @@
     }
 
     &.active {
+
       &::after,
       &::before {
         background-color: $blue;
@@ -85,6 +88,7 @@
   }
 
   &.dark {
+
     span,
     &::after,
     &::before {
@@ -326,7 +330,7 @@
     }
   }
 
-  &__text + &__text {
+  &__text+&__text {
     margin-top: 25px;
   }
 
@@ -341,6 +345,7 @@
 
 .promo {
   margin: 200px 0 300px;
+
   @include r {
     margin: 80px 0 100px;
   }
@@ -525,7 +530,7 @@
 }
 
 @include r {
-  .search__search + .specialists {
+  .search__search+.specialists {
     display: block;
   }
 }
@@ -586,6 +591,7 @@
 
     &:hover {
       background-color: $white;
+
       & svg path {
         stroke: $peach;
       }
@@ -851,6 +857,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     margin-right: 10px;
+
     &:nth-last-child(1) {
       margin-right: 0;
     }
@@ -880,7 +887,7 @@
   }
 }
 
-.about-specialists + .app {
+.about-specialists+.app {
   margin-top: 0;
 
   @include r {
@@ -892,6 +899,7 @@
 
 .steps {
   margin-top: 250px;
+
   &__inner {
     margin: 100px -10px 0;
     width: calc(100% + 20px);
@@ -900,7 +908,7 @@
     align-items: flex-start;
     flex-wrap: wrap;
 
-    & + & {
+    &+& {
       margin-top: 150px;
       margin-bottom: 260px;
     }
@@ -946,37 +954,45 @@
 @media (max-width: 768px) {
   .steps {
     margin-top: 100px;
+
     h1 {
       font-size: 34px;
     }
+
     &__title {
       margin: 0 auto;
       max-width: 390px;
       text-align: center;
     }
+
     &__inner {
       margin-top: 60px;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      & + & {
+
+      &+& {
         margin-top: 60px;
         margin-bottom: 80px;
       }
     }
+
     &__item {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       margin: 0;
-      & + & {
+
+      &+& {
         margin-top: 30px;
       }
     }
+
     &__icon {
       width: 100px;
     }
+
     &__text {
       text-align: center;
       max-width: 280px;
@@ -986,6 +1002,7 @@
     &__desc {
       margin: 0;
       max-width: 100%;
+
       .steps__text {
         display: none;
       }
@@ -1002,6 +1019,7 @@
   margin-top: 200px;
   position: relative;
   padding: 180px 0 200px;
+
   &::after {
     content: "";
     position: absolute;
@@ -1034,6 +1052,7 @@
 
   &__wrapper {
     position: relative;
+
     &::before {
       content: "";
       position: absolute;
@@ -1045,6 +1064,7 @@
       background-color: $pink;
       z-index: 2;
     }
+
     &::after {
       content: "";
       position: absolute;
@@ -1069,32 +1089,40 @@
   .app {
     margin: 90px 0;
     padding: 0;
+
     &::after {
       height: 430px;
       top: 50%;
       transform: translateY(-50%);
     }
+
     &__inner {
       position: relative;
       flex-direction: column;
     }
+
     &__desc {
       z-index: 10;
     }
+
     &__title {
       text-align: center;
       max-width: 445px;
       margin: 0 auto 540px;
       font-size: 34px;
     }
+
     &__btns {
       flex-direction: column;
     }
+
     &__wrapper {
       position: static;
+
       &::after {
         display: none;
       }
+
       &::before {
         width: 270px;
         height: 270px;
@@ -1104,6 +1132,7 @@
         @include pink-gradient;
       }
     }
+
     &__img {
       height: 430px;
       margin: 0;
@@ -1112,11 +1141,13 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
+
     &__btns {
       justify-content: center;
       align-items: center;
       margin: 0 auto;
-      a + a {
+
+      a+a {
         margin-top: 30px;
       }
     }
@@ -1135,9 +1166,11 @@
 
   &__item {
     margin: 0;
-    & + & {
+
+    &+& {
       margin-left: 60px;
     }
+
     &:nth-last-child(1) {
       margin-left: auto;
     }
@@ -1156,6 +1189,7 @@
 
 .accordion {
   margin-top: 220px;
+
   &__title {
     margin-left: 50%;
   }
@@ -1168,19 +1202,24 @@
     padding: 40px 0 0;
     border-top: 1px solid $light-text;
     cursor: pointer;
+
     &.active {
       padding: 40px 0;
+
       .accordion__question::after {
         background-color: $blue;
       }
+
       .accordion__question::before {
         transform: rotate(-90deg);
         opacity: 0;
       }
+
       .accordion__text {
         height: 120px;
       }
     }
+
     &:nth-last-child(1) {
       border-bottom: 1px solid $light-text;
     }
@@ -1191,6 +1230,7 @@
     position: relative;
     margin-bottom: 40px;
     padding-right: 45px;
+
     &::before {
       content: "";
       position: absolute;
@@ -1200,6 +1240,7 @@
       background-color: $peach;
       transition: all 0.3s;
     }
+
     &::after {
       content: "";
       position: absolute;
@@ -1220,44 +1261,53 @@
   }
 }
 
-.accordion + .about-specialists {
+.accordion+.about-specialists {
   margin-top: 200px;
 }
 
 @media (max-width: 768px) {
   .accordion {
     margin-top: 70px;
+
     &__inner {
       margin-top: 50px;
     }
+
     &__title {
       margin-left: 0;
       text-align: center;
+
       div {
         display: inline-block;
       }
     }
+
     &__item {
       padding: 20px 15px 0;
       margin: 0 -15px;
       border-color: #f1f1f1;
+
       &:nth-last-child(1) {
         border-color: #f1f1f1;
       }
     }
+
     &__item.active {
       padding: 20px 15px;
     }
+
     &__question {
       margin-bottom: 20px;
       font-family: "SFProDisplay-Regular", sans-serif;
       font-weight: 400;
       font-size: 17px;
+
       &::after {
         width: 2px;
         height: 16px;
         top: 6px;
       }
+
       &::before {
         width: 2px;
         height: 16px;
@@ -1265,7 +1315,8 @@
       }
     }
   }
-  .accordion + .about-specialists {
+
+  .accordion+.about-specialists {
     margin-top: 70px;
   }
 }
@@ -1287,7 +1338,7 @@
     text-decoration: none;
     margin-top: 24px;
 
-    & + & {
+    &+& {
       margin-top: 16px;
     }
   }
@@ -1299,6 +1350,7 @@
     max-width: 430px;
     width: 100%;
     display: none;
+
     &.active {
       display: inline-block;
     }
@@ -1316,7 +1368,8 @@
     display: inline-block;
     width: 32px;
     height: 32px;
-    & + & {
+
+    &+& {
       margin-left: 15px;
     }
   }
@@ -1326,8 +1379,10 @@
     flex-direction: column;
     max-width: 270px;
     width: 100%;
+
     &--recover {
       margin-top: 40px;
+
       & .login__btn {
         margin-top: 40px;
       }
@@ -1342,10 +1397,12 @@
     padding: 9px 24px 11px;
     outline: none;
     box-shadow: none;
+
     &::placeholder {
       color: $light-text;
     }
-    & + & {
+
+    &+& {
       margin-top: 30px;
     }
   }
@@ -1378,15 +1435,18 @@
 
 @media (max-width: 768px) {
   .login {
+
     &__title,
     &__reg {
       display: none;
     }
+
     &__inner {
       padding-top: 100px;
       justify-content: center;
       position: relative;
     }
+
     &__window {
       max-width: 370px;
       height: 666px;
@@ -1398,48 +1458,59 @@
       background-position: center;
       border-radius: 30px;
     }
+
     &__img {
       position: absolute;
       width: 320px;
       top: 40px;
     }
+
     &__subtitle {
       text-align: center;
     }
+
     &__icons {
       display: none;
     }
+
     &__form {
       max-width: 320px;
       margin: 0 auto;
       justify-content: center;
       align-items: center;
     }
+
     &__forgot-link {
       order: 1;
       color: $text;
     }
+
     &__btn {
       margin-top: 30px;
     }
+
     &__input {
       width: 100%;
     }
+
     &__desc {
       text-align: center;
       margin-bottom: 30px;
     }
+
     .btn {
       width: 100%;
       height: 48px;
       font-size: 17px;
       margin: 30px 0px 0;
       background-image: url(../img/mobile/btn-main-336.svg);
+
       &:hover {
         @include blue-shadow;
         background-image: url(../img/mobile/btn-main-336-hover.svg);
       }
     }
+
     &__back,
     &__return {
       font-size: 16px;
@@ -1450,6 +1521,7 @@
       top: 0;
       color: $text;
       padding-left: 20px;
+
       &::before {
         content: "";
         position: absolute;
@@ -1460,6 +1532,7 @@
         background-image: url(../img/mobile/login-back-arrow.svg);
       }
     }
+
     &__reg-mobile {
       font-size: 16px;
       margin-top: 30px;
@@ -1483,6 +1556,7 @@
   &__inner {
     width: 100%;
     display: flex;
+
     @include r {
       flex-direction: column;
     }
@@ -1492,8 +1566,10 @@
     margin-right: auto;
     position: relative;
     margin-bottom: 25px;
+
     &.active {
       padding-left: 20px;
+
       &::before {
         content: "";
         position: absolute;
@@ -1528,12 +1604,14 @@
   &__tabs-btn {
     margin-bottom: 23px;
     cursor: pointer;
+
     &-text {
       margin-top: 10px;
       color: $light-text;
       transition: all 0.3s;
       position: relative;
       pointer-events: none;
+
       &::after {
         content: "";
         width: 25px;
@@ -1546,18 +1624,22 @@
         opacity: 0;
       }
     }
+
     &.active,
     &:hover {
       & .reg__tabs-btn-text {
         color: $text;
       }
+
       & .reg__tabs-icon {
         background-color: $peach;
+
         & svg path {
           fill: $white;
         }
       }
     }
+
     &.complete &-text::after {
       opacity: 1;
       transition: all 1s;
@@ -1574,6 +1656,7 @@
     justify-content: center;
     pointer-events: none;
     transition: all 0.3s;
+
     & svg path {
       transition: all 0.3s;
     }
@@ -1591,6 +1674,7 @@
     padding: 50px 45px;
     position: relative;
     overflow-x: hidden;
+
     @include r {
       margin-left: 0;
       height: 100%;
@@ -1603,6 +1687,7 @@
 
   &__steps-count {
     margin-bottom: 20px;
+
     @include r {
       text-align: center;
     }
@@ -1612,6 +1697,7 @@
     height: 0;
     overflow: hidden;
     position: relative;
+
     &.active {
       height: calc(100% - 61px);
       overflow: visible;
@@ -1622,6 +1708,7 @@
     max-width: 710px;
     width: 100%;
     margin-bottom: 40px;
+
     @include r {
       text-align: center;
     }
@@ -1630,6 +1717,7 @@
   &__social {
     display: inline-block;
     margin-bottom: 40px;
+
     @include r {
       display: none;
     }
@@ -1642,6 +1730,7 @@
     margin-left: 25px;
     margin-bottom: -8px;
     text-decoration: none;
+
     @include r {
       display: none;
     }
@@ -1649,6 +1738,7 @@
 
   &__form {
     width: 100%;
+
     &--doctor {
       .reg__input--mail {
         margin-right: 40px;
@@ -1673,10 +1763,12 @@
     margin-bottom: 40px;
     display: inline-block;
     position: relative;
+
     @include r {
       font-size: 16px;
       margin-bottom: 30px;
     }
+
     input {
       width: 100%;
       padding: 14px 25px;
@@ -1691,20 +1783,23 @@
       border-color: $blue;
     }
 
-    input:focus + label,
-    input:valid + label {
+    input:focus+label,
+    input:valid+label {
       top: -15px;
       left: 0;
       font-size: 14px;
     }
+
     &--name {
       max-width: 730px;
       width: 100%;
     }
+
     &--tags {
       max-width: 730px;
       width: 100%;
     }
+
     &--phone,
     &--mail,
     &--special,
@@ -1712,23 +1807,28 @@
       max-width: 267px;
       width: 100%;
       margin-right: 40px;
+
       @include r {
         max-width: 100%;
         margin-right: 0;
       }
     }
+
     &--mail {
       margin-right: 160px;
+
       @include r {
         margin-right: 0;
       }
     }
+
     &--weight,
     &--height,
     &--exp {
       max-width: 115px;
       width: 100%;
       margin-right: 40px;
+
       @include r {
         margin-right: 30px;
       }
@@ -1753,6 +1853,7 @@
 
   &__form-line {
     position: relative;
+
     @include r {
       display: flex;
       flex-wrap: wrap;
@@ -1786,6 +1887,7 @@
     margin-bottom: 40px;
     font-family: "OpenSans-Regular", sans-serif;
     font-weight: 400;
+
     &::placeholder {
       color: $light-text;
       max-width: 480px;
@@ -1805,6 +1907,7 @@
   &__sex {
     display: inline-block;
     margin-right: 25px;
+
     @include r {
       display: block;
       width: 100%;
@@ -1819,6 +1922,7 @@
     font-size: 24px;
     pointer-events: none;
     transition: all 0.3s;
+
     &::after {
       content: "";
       position: absolute;
@@ -1833,6 +1937,7 @@
       pointer-events: none;
       transition: all 0.3s;
     }
+
     &--adds::after {
       right: auto;
       left: 10px;
@@ -1843,9 +1948,11 @@
     position: relative;
     display: inline-block;
     margin-left: 30px;
+
     @include r {
       margin-left: 10px;
     }
+
     input {
       width: 100%;
       height: 100%;
@@ -1853,10 +1960,11 @@
       opacity: 0;
       cursor: pointer;
     }
-    input:checked + label::after,
-    input:checked + label,
-    input:hover + label::after,
-    input:hover + label {
+
+    input:checked+label::after,
+    input:checked+label,
+    input:hover+label::after,
+    input:hover+label {
       opacity: 1;
     }
   }
@@ -1868,6 +1976,7 @@
     position: absolute;
     width: 100%;
     bottom: 0;
+
     @include r {
       position: relative;
       bottom: auto;
@@ -1879,9 +1988,11 @@
 
   &__btn {
     font-size: 20px;
+
     @include r {
       font-size: 0;
       height: 48px;
+
       &::before {
         content: "Следующий шаг";
         font-size: 17px;
@@ -1892,6 +2003,7 @@
         width: 100%;
         text-align: center;
       }
+
       &--finish::before {
         content: "Перейти в личный кабинет";
       }
@@ -1901,6 +2013,7 @@
   &__adds-text {
     position: relative;
     padding-left: 30px;
+
     &::before {
       content: "";
       width: 13px;
@@ -1912,6 +2025,7 @@
       opacity: 0;
       transition: all 0.3s;
     }
+
     &::after {
       content: "";
       width: 16px;
@@ -1933,21 +2047,24 @@
     opacity: 0;
   }
 
-  &__checkbox:checked + &__adds-text::before {
+  &__checkbox:checked+&__adds-text::before {
     opacity: 1;
   }
 
   &__pass {
     color: $blue;
     cursor: pointer;
+
     &--false {
       opacity: 0.5;
       pointer-events: none;
+
       @include r {
         opacity: 1;
         color: $title;
       }
     }
+
     @include r {
       margin-top: 25px;
     }
@@ -1958,6 +2075,7 @@
       position: relative;
       padding: 6px 0px 6px 50px;
       width: fit-content;
+
       &.hidden {
         display: none;
       }
@@ -1975,6 +2093,7 @@
 
     &-label {
       color: $blue;
+
       &::before {
         content: "";
         position: absolute;
@@ -1998,6 +2117,7 @@
       height: fit-content;
       max-height: 250px;
       overflow: auto;
+
       @include r {
         margin: 25px -10px;
       }
@@ -2009,6 +2129,7 @@
       align-items: flex-end;
       margin: 0 10px 30px;
       padding-top: 10px;
+
       @include r {
         margin-bottom: 15px;
       }
@@ -2055,6 +2176,7 @@
       position: absolute;
       top: 0;
       left: 40px;
+
       @include r {
         left: auto;
         right: 0;
@@ -2064,6 +2186,7 @@
 
     &-formats {
       color: $light-text;
+
       @include r {
         display: none;
       }
@@ -2077,6 +2200,7 @@
           flex-direction: column-reverse;
         }
       }
+
       &-input {
         padding: 10px 24px;
         color: $text;
@@ -2087,10 +2211,12 @@
         font-family: "OpenSans-Regular", sans-serif;
         font-weight: 400;
         width: 100%;
+
         &::placeholder {
           color: $light-text;
         }
       }
+
       &-label {
         color: $light-text;
         margin-bottom: 15px;
@@ -2100,6 +2226,7 @@
     &-list-text {
       @include mobileBold;
       opacity: 0;
+
       &.active {
         opacity: 1;
       }
@@ -2118,9 +2245,11 @@
     margin-bottom: 30px;
     display: inline-block;
     width: 45%;
+
     @include r {
       width: 100%;
     }
+
     &-desc {
       margin-bottom: 20px;
     }
@@ -2128,6 +2257,7 @@
     &-item {
       display: flex;
       align-items: center;
+
       @include r {
         margin-left: -10px;
       }
@@ -2149,6 +2279,7 @@
     display: flex;
     align-items: flex-start;
     width: 100%;
+
     @include r {
       display: block;
     }
@@ -2158,9 +2289,11 @@
     display: inline-block;
     max-width: 270px;
     width: 100%;
+
     @include r {
       display: block;
     }
+
     &-title {
       margin-bottom: 25px;
     }
@@ -2189,6 +2322,7 @@
 
     &-link {
       color: $blue;
+
       & svg {
         margin-left: 10px;
       }
@@ -2206,15 +2340,19 @@
   &__buds {
     display: inline-block;
     margin: 0 auto;
+
     @include r {
       display: block;
       margin: 0 0 40px;
+
       .slick-list {
         overflow: visible;
       }
     }
+
     &-title {
       margin: 0 0 25px 27px;
+
       @include r {
         margin-left: 0;
       }
@@ -2235,6 +2373,7 @@
       width: 100%;
       text-align: center;
       color: $text;
+
       @include r {
         padding: 10px 45px 30px;
         max-width: 270px;
@@ -2256,6 +2395,7 @@
       background-size: cover;
       border-radius: 5px;
       margin: 0 auto 15px;
+
       @include r {
         width: 120px;
         height: 106px;
@@ -2274,6 +2414,7 @@
       position: absolute;
       top: 15px;
       right: -10px;
+
       & span {
         margin-right: 5px;
       }
@@ -2295,6 +2436,7 @@
     position: relative;
     margin-left: -5px;
     margin-right: -45px;
+
     &::after {
       content: "";
       height: 100%;
@@ -2303,6 +2445,7 @@
       position: absolute;
       top: 0;
       right: 0;
+
       @include r {
         display: none;
       }
@@ -2329,6 +2472,7 @@
     border-radius: 10px;
     padding: 25px 30px;
     margin: 5px 30px 5px 5px;
+
     @include r {
       max-width: 400px;
       width: 100%;
@@ -2338,6 +2482,7 @@
       flex-direction: column;
       margin: 0px auto;
     }
+
     &-img {
       width: 60px;
       height: 60px;
@@ -2354,6 +2499,7 @@
 
     &-desc {
       margin-bottom: 25px;
+
       @include r {
         text-align: center;
         margin-bottom: 10px;
@@ -2369,6 +2515,7 @@
       top: 40px;
       right: 30px;
       display: flex;
+
       @include r {
         position: static;
         margin-bottom: 30px;
@@ -2382,7 +2529,8 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      & + & {
+
+      &+& {
         margin-left: 10px;
       }
 
@@ -2400,21 +2548,26 @@
       top: 0;
     }
   }
+
   .slick-dots {
     display: flex;
     justify-content: center;
+
     & li {
       display: flex;
       align-items: center;
       justify-content: center;
+
       &.slick-active button {
         border: 3px solid #68a9fe;
         background-color: white;
       }
+
       &:not(:last-child) {
         margin-right: 15px;
       }
     }
+
     & li button {
       width: 10px;
       height: 10px;
@@ -2431,6 +2584,7 @@
   padding: 40px 0;
   background-color: white;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+
   @include r {
     padding: 20px 0;
   }
@@ -2459,6 +2613,7 @@
     position: relative;
     z-index: 11;
     display: flex;
+
     @include r {
       width: 95px;
     }
@@ -2567,6 +2722,7 @@
     &-link {
       color: inherit;
       transition: color 0.3s;
+
       &:hover {
         color: $blue;
       }
@@ -2675,6 +2831,7 @@
     background-size: cover;
     margin-left: auto;
     margin-right: 25px;
+
     &--blue {
       background-image: url(../img/notification-icon--blue.svg);
     }
@@ -2691,6 +2848,7 @@
   z-index: 100000;
   transform: translateX(100%);
   transition: all 0.3s;
+
   &.active {
     transform: translateX(0);
   }
@@ -2701,6 +2859,7 @@
     position: absolute;
     right: 25px;
     top: 72px;
+
     &::before {
       content: "";
       position: absolute;
@@ -2711,6 +2870,7 @@
       background-color: $blue;
       transform: rotate(-45deg);
     }
+
     &::after {
       content: "";
       position: absolute;
@@ -2730,6 +2890,7 @@
   &__activate {
     position: relative;
     margin-bottom: 40px;
+
     label {
       display: inline-block;
       height: 24px;
@@ -2737,6 +2898,7 @@
       position: relative;
       color: $light-text;
       cursor: pointer;
+
       &::before {
         content: "";
         width: 50px;
@@ -2748,6 +2910,7 @@
         right: 0;
         transition: all 0.3s;
       }
+
       &::after {
         content: "";
         width: 20px;
@@ -2770,10 +2933,11 @@
       opacity: 0;
     }
 
-    input:checked + label {
+    input:checked+label {
       &::before {
         background: $blue;
       }
+
       &::after {
         right: 2px;
       }
@@ -2788,6 +2952,7 @@
     position: relative;
     padding-bottom: 25px;
     border-bottom: 1px solid #f1f1f1;
+
     &::before {
       content: "";
       position: absolute;
@@ -2834,13 +2999,16 @@
   padding: 70px 0 20px;
   display: flex;
   flex-direction: column;
+
   @include r {
     min-height: auto;
     padding: 40px 0 0;
   }
+
   &__person {
     color: $white;
     margin-bottom: 30px;
+
     @include r {
       display: flex;
       flex-direction: column-reverse;
@@ -2855,6 +3023,7 @@
 
     @include r {
       margin-bottom: 15px;
+
       li {
         font-family: "SFProDisplay-Regular", sans-serif;
         font-weight: 400;
@@ -2866,12 +3035,15 @@
     color: $white;
     padding: 0;
     margin: 0;
-    & + & {
+
+    &+& {
       margin-left: 55px;
+
       @include r {
         margin-left: 20px;
       }
     }
+
     @include r {
       font-size: 17px;
     }
@@ -2879,6 +3051,7 @@
 
   &__btns {
     display: flex;
+
     @include r {
       margin-top: 40px;
     }
@@ -2888,7 +3061,8 @@
     position: relative;
     color: $white;
     transition: all 0.3s;
-    & + & {
+
+    &+& {
       margin-left: 25px;
     }
   }
@@ -2896,6 +3070,7 @@
   &__timetable {
     color: $white;
     margin-top: 30px;
+
     @include r {
       font-family: "SFProDisplay-Regular", sans-serif;
       font-weight: 400;
@@ -2908,6 +3083,7 @@
 .container--flex {
   .tabs__list {
     margin-top: auto;
+
     @include r {
       margin-top: 50px;
     }
@@ -2919,10 +3095,13 @@
     margin-top: 110px;
     display: flex;
     width: 100%;
+
     &--small {
       justify-content: flex-start;
-      & .tabs__item + .tabs__item {
+
+      & .tabs__item+.tabs__item {
         margin-left: 20px;
+
         @include r {
           margin-left: 0;
         }
@@ -2953,6 +3132,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     &::before {
       content: "";
       position: absolute;
@@ -2965,12 +3145,15 @@
       opacity: 0;
       transition: all 0.3s;
     }
+
     &:hover::before,
     &.active::before {
       opacity: 1;
     }
+
     & svg {
       margin-right: 15px;
+
       @include r {
         height: 16px;
         width: 16px;
@@ -2978,6 +3161,7 @@
         margin-top: -3px;
       }
     }
+
     & span {
       pointer-events: none;
     }
@@ -2997,10 +3181,12 @@
   &-block {
     background-color: $bg;
     padding: 30px 0 140px;
+
     @include r {
       padding: 30px 0 60px;
       background-color: $bg-mobile;
     }
+
     .container {
       position: relative;
     }
@@ -3008,13 +3194,16 @@
     &__inner {
       height: 0;
       overflow: hidden;
+
       &.active {
         height: auto;
         overflow: visible;
       }
+
       &--general {
         align-items: flex-start;
         justify-content: space-between;
+
         &.active {
           display: flex;
         }
@@ -3025,6 +3214,7 @@
       position: absolute;
       top: 0;
       right: 0;
+
       @include r {
         display: none;
       }
@@ -3056,8 +3246,10 @@
     height: 0;
     overflow: hidden;
     transition: all 0.3s;
+
     &.active {
       height: 100%;
+
       @include r {
         height: auto;
         margin-top: -20px;
@@ -3071,6 +3263,7 @@
       align-items: flex-start;
       justify-content: space-between;
       display: none;
+
       &.active {
         display: flex;
       }
@@ -3149,6 +3342,7 @@
       &:hover,
       &.active {
         color: $text;
+
         @include r {
           color: white;
           background-color: $blue;
@@ -3159,6 +3353,7 @@
         padding: 8px 15px 10px;
         border-radius: 30px;
         font-size: 17px;
+
         &:not(:last-child) {
           margin-bottom: 15px;
           margin-right: 15px;
@@ -3206,6 +3401,7 @@
     &--inline {
       display: inline-block;
     }
+
     @include r {
       margin-bottom: 15px;
     }
@@ -3224,7 +3420,8 @@
       background-color: #fff;
       border-radius: 20px;
       padding: 48px;
-      & + & {
+
+      &+& {
         margin-top: 20px;
       }
     }
@@ -3232,9 +3429,11 @@
     &-item {
       margin: 24px -32px 0;
       padding: 0 32px 24px;
+
       &:nth-child(2) {
         margin-top: 55px;
       }
+
       &:not(:last-child) {
         border-bottom: 1px solid #f1f1f1;
       }
@@ -3243,10 +3442,12 @@
     &-disease {
       margin-bottom: 10px;
     }
+
     &-date {
       color: $light-text;
       margin-bottom: 8px;
     }
+
     &-rec {
       color: $blue;
     }
@@ -3327,6 +3528,7 @@
     padding: 15px;
     margin: 0 -15px;
     border-bottom: 1px solid #f1f1f1;
+
     &:nth-last-child(1) {
       border: none;
     }
@@ -3341,6 +3543,7 @@
       max-width: 285px;
       width: 100%;
       margin-right: 15px;
+
       @include r {
         max-width: fit-content;
       }
@@ -3374,7 +3577,7 @@
       }
     }
 
-    &-var + &-var {
+    &-var+&-var {
       margin-top: 15px;
     }
 
@@ -3403,19 +3606,23 @@
     margin: 40px 0;
     padding-bottom: 45px;
     border-bottom: 1px solid #f1f1f1;
+
     &:nth-last-child(1),
     &:nth-last-child(2) {
       border: none;
       padding-bottom: 0;
       margin-bottom: 0;
+
       @include r {
         border-bottom: 1px solid #f1f1f1;
       }
     }
+
     &--man .general__symptom {
       display: block;
       max-width: fit-content !important;
     }
+
     &--more {
       display: flex;
       align-items: flex-start;
@@ -3432,6 +3639,7 @@
       overflow: hidden;
       margin: 0 0 20px;
       padding-bottom: 0;
+
       &.active {
         padding-bottom: 24px;
         height: auto;
@@ -3440,9 +3648,11 @@
 
     &-title {
       position: relative;
+
       @include r {
         cursor: pointer;
         margin-bottom: 24px;
+
         &::after {
           content: "";
           width: 18px;
@@ -3456,19 +3666,22 @@
           background-repeat: no-repeat;
           transition: all 0.3s;
         }
+
         &.active::after {
           transform: rotate(180deg);
         }
+
         &.for-doctor::after {
           display: none;
         }
       }
-      & + .general__symptoms-wrapper {
+
+      &+.general__symptoms-wrapper {
         margin-top: 16px;
       }
     }
 
-    &-wrapper + &-title {
+    &-wrapper+&-title {
       border-top: 1px solid #d8d8d8;
       padding-top: 16px;
     }
@@ -3486,6 +3699,7 @@
     &-item {
       color: $light-text;
       width: 100%;
+
       &:not(:last-child) {
         margin-bottom: 8px;
       }
@@ -3579,14 +3793,17 @@
     width: 100%;
     margin-bottom: 30px;
     position: relative;
+
     &:nth-child(odd) {
       max-width: 314px;
       margin-right: 10px;
+
       @include r {
         max-width: 100%;
         margin-right: 0;
       }
     }
+
     &:nth-last-child(1) {
       margin-bottom: 0;
     }
@@ -3602,6 +3819,7 @@
       padding-right: 20px;
       cursor: pointer;
       width: fit-content;
+
       &::after {
         content: "";
         position: absolute;
@@ -3610,6 +3828,7 @@
         border: 7px solid transparent;
         border-top: 7px solid $blue;
       }
+
       &.active .general__symptom-list {
         display: block;
       }
@@ -3640,13 +3859,16 @@
       max-width: fit-content;
       display: none;
     }
+
     &-item {
       margin-bottom: 10px;
       color: $text;
       transition: color 0.3s;
+
       &:nth-last-child(1) {
         margin-bottom: 0;
       }
+
       &:hover {
         color: $blue;
       }
@@ -3662,7 +3884,7 @@
     opacity: 0;
     margin: 0;
 
-    &:checked + &-label {
+    &:checked+&-label {
       color: $text;
 
       &::before {
@@ -3673,6 +3895,7 @@
         opacity: 1;
       }
     }
+
     &:checked {
       background: #000;
     }
@@ -3685,9 +3908,11 @@
     color: $light-text;
     position: relative;
     pointer-events: none;
+
     @include r {
       padding-left: 32px;
     }
+
     &::before {
       content: "";
       position: absolute;
@@ -3697,10 +3922,12 @@
       height: 16px;
       border: 1px solid $light-text;
       transition: all 0.3s;
+
       @include r {
         top: 3px;
       }
     }
+
     &::after {
       content: "";
       position: absolute;
@@ -3713,6 +3940,7 @@
       background-repeat: no-repeat;
       transition: all 0.3s;
       opacity: 0;
+
       @include r {
         top: 4px;
       }
@@ -3723,11 +3951,13 @@
     display: inline-block;
     max-width: 340px;
     width: 100%;
+
     &:nth-child(2) .general__input {
       max-width: 125px;
     }
+
     @include r {
-      & + & {
+      &+& {
         margin-top: 30px;
       }
     }
@@ -3760,6 +3990,7 @@
       max-width: 615px;
       resize: none;
       height: 120px;
+
       &-name {
         height: 50px;
       }
@@ -3776,6 +4007,7 @@
       line-height: 21px;
       margin-bottom: 10px;
       border-color: #d7d7d7;
+
       &:focus {
         border-color: $blue;
       }
@@ -3789,6 +4021,7 @@
 
   &__input-wrapper {
     position: relative;
+
     span {
       position: absolute;
       bottom: 36px;
@@ -3805,6 +4038,7 @@
   &__disease {
     height: 0;
     overflow: hidden;
+
     &.active {
       height: auto;
     }
@@ -3812,6 +4046,7 @@
     &-text {
       max-width: 725px;
       margin: 32px 0 40px;
+
       @include r {
         margin: 0;
       }
@@ -3828,6 +4063,7 @@
       width: 100%;
       margin: 15px 0;
       font-weight: 600;
+
       @include r {
         font-family: "SFProDisplay-Medium", sans-serif;
         font-weight: 500;
@@ -3842,6 +4078,7 @@
     &-item {
       padding: 28px 0 17px;
       border-top: 1px solid #f1f1f1;
+
       &.active {
         .general__disease-title::after {
           transform: rotate(180deg);
@@ -3860,6 +4097,7 @@
         .general__change {
           display: none;
         }
+
         .general__disease-date {
           display: none;
         }
@@ -3920,6 +4158,7 @@
 
       &--column li {
         width: 100%;
+
         &:nth-child(odd) {
           padding-left: 0;
         }
@@ -3938,6 +4177,7 @@
     position: relative;
     padding-left: 36px;
     margin-bottom: 32px;
+
     &::after {
       content: "";
       position: absolute;
@@ -3955,6 +4195,7 @@
     @include r {
       top: auto;
       right: auto;
+
       &--add {
         color: white;
         text-align: center;
@@ -3964,6 +4205,7 @@
         border-radius: 10px;
         background-color: $blue;
         margin: 30px 0 40px;
+
         &::after {
           background-image: none;
           width: 17px;
@@ -3997,9 +4239,11 @@
       &::after {
         display: none;
       }
+
       &.active {
         opacity: 1;
       }
+
       @include r {
         font-size: 0;
         width: 16px;
@@ -4009,6 +4253,7 @@
         position: relative;
         right: auto;
         left: calc(100% - 17px);
+
         &::after {
           right: 0;
           top: 0;
@@ -4022,6 +4267,7 @@
 
   &__save {
     padding-left: 21px;
+
     &::after {
       content: "";
       position: absolute;
@@ -4048,6 +4294,7 @@
       align-items: center;
       flex-wrap: wrap;
       width: 100%;
+
       @include r {
         flex-direction: column;
         margin: 45px 0 0;
@@ -4055,15 +4302,18 @@
         align-items: flex-start;
       }
     }
+
     &-item {
       display: flex;
       align-items: flex-end;
       margin: 0 10px 20px;
+
       @include r {
         max-width: 100%;
         margin: 0 0 20px;
       }
     }
+
     &-name {
       display: inline-block;
       margin-left: 15px;
@@ -4072,6 +4322,7 @@
 
   &__history {
     margin-bottom: 15px;
+
     &:not(:first-child) {
       padding-top: 25px;
       border-top: 1px solid #f1f1f1;
@@ -4086,6 +4337,7 @@
       padding-bottom: 10px;
       position: relative;
       font-weight: 700;
+
       &::after {
         content: "";
         position: absolute;
@@ -4122,9 +4374,11 @@
       & .general__history-name::after {
         transform: rotate(180deg);
       }
+
       & .general__history-date {
         opacity: 0;
       }
+
       & .general__form {
         height: auto;
       }
@@ -4194,7 +4448,7 @@
   }
 }
 
-.active.change + .profile {
+.active.change+.profile {
   display: block;
 }
 
@@ -4288,8 +4542,8 @@
     transition: all 0.3s;
   }
 
-  &__radio:checked + &__male::before,
-  &__radio:checked + &__female::before {
+  &__radio:checked+&__male::before,
+  &__radio:checked+&__female::before {
     border-width: 4px;
     border-color: $blue;
   }
@@ -4311,6 +4565,7 @@
     label {
       position: relative;
       padding-left: 32px;
+
       &::before {
         content: "";
         position: absolute;
@@ -4336,7 +4591,7 @@
       }
     }
 
-    input:checked + label::after {
+    input:checked+label::after {
       opacity: 1;
     }
   }
@@ -4361,7 +4616,7 @@
       width: 100%;
     }
 
-    & + & {
+    &+& {
       margin-left: 24px;
 
       @include r {
@@ -4400,8 +4655,8 @@
       pointer-events: none;
     }
 
-    input:focus + label,
-    input:valid + label {
+    input:focus+label,
+    input:valid+label {
       font-size: 14px;
       left: 0;
       top: -22px;
@@ -4445,7 +4700,7 @@
     }
   }
 
-  &__btn + &__btn {
+  &__btn+&__btn {
     margin-left: 24px;
   }
 }
@@ -4462,10 +4717,12 @@
   box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.110659);
   border-radius: 20px;
   border: none;
+
   @include r {
     padding: 80px 0 0;
     width: 100%;
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -4481,6 +4738,7 @@
 
   &--days-names {
     margin: 0 -15px;
+
     @include r {
       margin: 0;
       display: grid;
@@ -4495,6 +4753,7 @@
     margin: 0 15px;
     text-transform: lowercase;
     width: fit-content;
+
     &.-weekend- {
       color: $peach;
     }
@@ -4533,6 +4792,7 @@
 
   &--cells {
     margin: 0 -13px;
+
     @include r {
       margin: 0;
     }
@@ -4550,14 +4810,15 @@
     &.-weekend- {
       color: $peach;
     }
+
     &.-current- {
       color: inherit;
     }
+
     &.-selected-,
     &.-focus- {
-      background-color: transparent;
-      color: white;
-      background-color: $blue;
+      color: white !important;
+      background-color: $blue !important;
     }
 
     &.-current- {
@@ -4573,6 +4834,7 @@
       font-size: 17px;
     }
   }
+
   &--cell-day.-other-month- {
     opacity: 0;
   }
@@ -4596,7 +4858,7 @@
       display: none;
     }
 
-    & > .tasks__title {
+    &>.tasks__title {
       display: none;
     }
 
@@ -4742,6 +5004,7 @@
 
     @include r {
       &--rec {
+
         .tasks__time,
         .tasks__timer {
           display: none;
@@ -4923,6 +5186,7 @@
     &:hover,
     &.active {
       color: $text;
+
       @include r {
         color: white;
         background-color: $blue;
@@ -4933,6 +5197,7 @@
       padding: 8px 15px 10px;
       border-radius: 30px;
       font-size: 17px;
+
       &:not(:last-child) {
         margin-bottom: 15px;
         margin-right: 15px;
@@ -4994,6 +5259,7 @@
     .tasks__item {
       padding-bottom: 40px;
       margin-top: 40px;
+
       &:nth-last-child(1) {
         border: none;
         padding-bottom: 0;
@@ -5005,6 +5271,7 @@
       position: absolute;
       top: 0;
       right: 0;
+
       &.inactive {
         color: $light-text;
       }
@@ -5019,9 +5286,11 @@
       top: 38px;
       right: 0;
       color: $blue;
+
       &.inactive {
         color: $light-text;
       }
+
       @include r {
         position: static;
       }
@@ -5029,9 +5298,11 @@
 
     .tasks__btn {
       margin-top: 10px;
+
       &--cancel {
         margin-left: 40px;
       }
+
       &--doctor {
         margin-left: 40px;
       }
@@ -5047,6 +5318,7 @@
       top: 0;
       right: 0;
       color: $text;
+
       &::before {
         display: none;
       }
@@ -5073,6 +5345,7 @@
     background-position: center;
     position: relative;
     margin-bottom: 30px;
+
     @include r {
       background-image: none;
       background-color: white;
@@ -5098,6 +5371,7 @@
     color: $blue;
     padding-right: 50px;
     position: relative;
+
     &::after {
       content: "";
       width: 32px;
@@ -5107,6 +5381,7 @@
       top: 0;
       right: 0;
     }
+
     @include r {
       &::after {
         top: -5px;
@@ -5128,6 +5403,7 @@
     background-position: center;
     margin-top: 30px;
     padding: 50px 45px;
+
     @include r {
       background-image: none;
       background-color: white;
@@ -5135,9 +5411,11 @@
       padding: 35px 15px;
       margin: 0 24px;
     }
+
     &--flex {
       display: flex;
       align-items: stretch;
+
       @include r {
         flex-direction: column;
       }
@@ -5168,6 +5446,7 @@
       padding-bottom: 35px;
       margin-bottom: 35px;
       border-bottom: 1px solid #f1f1f1;
+
       &.for-doctor {
         border-bottom: none;
         padding-bottom: 0;
@@ -5179,6 +5458,7 @@
   &__date {
     color: $light-text;
     margin-bottom: 50px;
+
     @include r {
       margin-bottom: 10px;
     }
@@ -5186,6 +5466,7 @@
 
   &__title {
     margin-bottom: 25px;
+
     @include r {
       margin-bottom: 15px;
     }
@@ -5194,6 +5475,7 @@
   &__from {
     color: $light-text;
     margin-bottom: 30px;
+
     @include r {
       margin-bottom: 25px;
       font-size: 17px;
@@ -5208,6 +5490,7 @@
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
+
     @include r {
       width: 32px;
       margin-bottom: 0;
@@ -5221,6 +5504,7 @@
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
+
     @include r {
       max-width: 100%;
       justify-content: center;
@@ -5246,6 +5530,7 @@
     margin: 0 0 0 15px;
     max-width: 680px;
     width: 100%;
+
     @include r {
       max-width: 100%;
       margin: 0;
@@ -5256,37 +5541,48 @@
     margin: 15px 0;
     display: flex;
     width: 100%;
+
     @include r {
       margin: 0;
       padding: 10px 0;
       color: $light-text;
+
       &:not(:last-child) {
         border-bottom: 1px solid #f1f1f1;
       }
     }
+
     & span {
       width: 33.333333%;
+
       &:nth-child(1) {
         color: $title;
+
         @include r {
           color: $light-text;
         }
       }
+
       &:nth-last-child(1) {
         width: 240px;
       }
+
       @include r {
         width: 50%;
+
         &:nth-child(3n) {
           display: none;
         }
+
         &:nth-child(even) {
           text-align: right;
         }
       }
     }
+
     &.bold {
       font-weight: 600;
+
       @include r {
         span {
           color: $title;
@@ -5294,6 +5590,7 @@
         }
       }
     }
+
     &--title {
       color: $light-text;
       margin-bottom: 30px;
@@ -5332,6 +5629,7 @@
       background-repeat: no-repeat;
       transition: all 0.3s;
     }
+
     ul {
       margin: 0;
       background-color: white;
@@ -5348,23 +5646,28 @@
       height: fit-content;
       display: none;
       z-index: 10;
+
       @include r {
         width: calc(100% + 30px);
         left: -15px;
       }
     }
+
     &.active {
       &::after {
         transform: rotate(180deg);
       }
+
       ul {
         display: block;
       }
     }
+
     &-option {
       color: $text;
       transition: all 0.3s;
       margin-bottom: 10px;
+
       &:hover {
         color: $peach;
       }
@@ -5376,8 +5679,10 @@
     margin-top: 60px;
     align-items: flex-start;
     justify-content: space-between;
+
     &.active {
       display: flex;
+
       @include r {
         display: block;
       }
@@ -5419,6 +5724,7 @@
         transition: all 0.3s;
         pointer-events: none;
       }
+
       &.active::after {
         transform: rotate(180deg);
       }
@@ -5432,14 +5738,17 @@
       padding: 9px 25px 11px;
       border: 1px solid $blue;
       border-radius: 10px;
+
       &::placeholder {
         color: $light-text;
       }
+
       @include r {
         font-size: 17px;
         width: 100%;
         border-color: #d7d7d7;
         padding: 12px 15px 14px;
+
         &:focus {
           border-color: $blue;
         }
@@ -5459,6 +5768,7 @@
       border: 1px solid $blue;
       border-top: none;
       padding: 10px 8px 30px;
+
       &.active {
         display: block;
       }
@@ -5468,13 +5778,16 @@
       cursor: pointer;
       transition: all 0.3s;
       padding: 5px 17px;
+
       @include r {
         padding: 5px 7px;
       }
+
       &:nth-child(1) {
         padding-top: 15px;
         border-top: 1px solid $blue;
       }
+
       &:hover {
         color: $blue;
       }
@@ -5485,9 +5798,11 @@
       margin-bottom: 30px;
       padding: 5px 17px 0 0;
       display: none;
+
       &.active {
         display: block;
       }
+
       &:nth-child(1) {
         padding-top: 15px;
         border-top: 1px solid $blue;
@@ -5514,6 +5829,7 @@
       position: relative;
       padding-right: 20px;
       margin-bottom: 15px;
+
       & .delete {
         cursor: pointer;
         position: absolute;
@@ -5526,6 +5842,7 @@
         background-position: center;
         background-size: cover;
       }
+
       @include r {
         color: black;
         font-family: "SFProDisplay-Medium", sans-serif;
@@ -5536,6 +5853,7 @@
 
     &-save {
       margin-top: 60px;
+
       @include r {
         position: absolute;
         bottom: 0;
@@ -5554,6 +5872,7 @@
       color: $text;
       resize: none;
       outline: none;
+
       &::placeholder {
         color: $light-text;
       }
@@ -5562,6 +5881,7 @@
         font-size: 17px;
         border-color: #d7d7d7;
         height: 152px;
+
         &:focus {
           border-color: $blue;
         }
@@ -5574,10 +5894,12 @@
     display: block;
     height: 0;
     overflow: hidden;
+
     &.active {
       margin-top: 60px;
       height: auto;
       overflow: visible;
+
       @include r {
         margin-top: 16px;
       }
@@ -5592,9 +5914,11 @@
       position: relative;
       margin-bottom: 40px;
       cursor: pointer;
+
       @include r {
         display: block;
       }
+
       span {
         display: inline-block;
         outline: none;
@@ -5605,11 +5929,13 @@
         border: 1px solid $blue;
         border-radius: 10px;
         pointer-events: none;
+
         @include r {
           width: 100%;
           font-size: 17px;
         }
       }
+
       ul {
         background-color: #fff;
         z-index: 100;
@@ -5623,10 +5949,12 @@
         border: 1px solid $blue;
         border-top: none;
         padding: 10px 8px 30px;
+
         &.active {
           display: block;
         }
       }
+
       &::after {
         content: "";
         position: absolute;
@@ -5640,6 +5968,7 @@
         background-repeat: no-repeat;
         transition: all 0.3s;
       }
+
       &.active::after {
         transform: rotate(180deg);
       }
@@ -5649,10 +5978,12 @@
       cursor: pointer;
       transition: all 0.3s;
       padding: 5px 17px;
+
       &:nth-child(1) {
         padding-top: 15px;
         border-top: 1px solid $blue;
       }
+
       &:hover {
         color: $blue;
       }
@@ -5663,20 +5994,25 @@
       height: 0;
       overflow: hidden;
       flex-wrap: wrap;
+
       &.active {
         height: auto;
+
         @include r {
           padding-bottom: 30px;
           margin-bottom: 30px;
         }
       }
+
       @include r {
         display: block;
         position: relative;
+
         .slick-arrow {
           position: absolute;
           bottom: -5px;
         }
+
         .slick-prev {
           left: calc(50% - 36px);
         }
@@ -5696,10 +6032,12 @@
       margin-right: 10px;
       position: relative;
       margin-bottom: 10px;
+
       @include r {
         margin-right: 0;
         width: 100%;
       }
+
       & input {
         cursor: pointer;
         position: absolute;
@@ -5709,13 +6047,16 @@
         width: 70%;
         height: 100%;
         opacity: 0;
-        &:checked + span {
+
+        &:checked+span {
           color: $text;
         }
-        &:checked + span::before {
+
+        &:checked+span::before {
           border-color: $peach;
         }
-        &:checked + span::after {
+
+        &:checked+span::after {
           opacity: 1;
         }
       }
@@ -5736,10 +6077,12 @@
           top: 6px;
           border: 1px solid $light-text;
           transition: all 0.3s;
+
           @include r {
             top: 2px;
           }
         }
+
         &::after {
           content: " ";
           position: absolute;
@@ -5752,6 +6095,7 @@
           background-repeat: no-repeat;
           opacity: 0;
           transition: all 0.3s;
+
           @include r {
             top: 5px;
           }
@@ -5761,6 +6105,7 @@
 
     &-btn {
       margin-top: 50px;
+
       @include r {
         margin-top: 0;
       }
@@ -5774,15 +6119,18 @@
       padding-left: 150px;
       max-width: 600px;
       width: 100%;
+
       @include r {
         display: none;
       }
+
       div {
         font-size: 24px;
         position: absolute;
         top: 0;
         left: 0;
       }
+
       span {
         margin: 0 12.5px 8px;
         display: inline-block;
@@ -5803,6 +6151,7 @@
   background-position: center;
   position: relative;
   margin: 0 2px;
+
   @include r {
     background-image: none;
     border-radius: 10px;
@@ -5810,6 +6159,7 @@
     max-width: 100%;
     margin: 0;
   }
+
   &__img {
     width: 100%;
     height: 160px;
@@ -5819,6 +6169,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+
     @include r {
       height: 90px;
       mask-image: none;
@@ -5835,6 +6186,7 @@
     padding: 0 30px;
     margin: 25px 0 30px;
     width: 100%;
+
     @include r {
       margin: 0 auto;
       padding: 25px 15px;
@@ -5851,6 +6203,7 @@
   &__title {
     margin-bottom: 15px;
     color: $title;
+
     @include r {
       font-size: 17px;
     }
@@ -5860,6 +6213,7 @@
     position: absolute;
     bottom: 30px;
     left: 30px;
+
     & span {
       display: inline-block;
       width: 152px;
@@ -5870,9 +6224,11 @@
       background-size: auto 100%;
       padding-right: 110px;
       transition: all 0.3s;
+
       @include r {
         width: 144px;
         height: 24px;
+
         &::after {
           content: "В избранное";
           font-size: 16px;
@@ -5906,23 +6262,30 @@
     height: 100%;
     opacity: 0;
   }
-  &__checkbox:hover + span {
+
+  &__checkbox:hover+span {
     background-image: url(../img/star-32-yellow.svg);
+
     &::after {
       color: #ffc95a;
     }
+
     @include r {
       background-image: url(../img/star-32-grey.svg);
+
       &::after {
         color: $blue;
       }
     }
   }
-  &__checkbox:checked + span {
+
+  &__checkbox:checked+span {
     background-image: url(../img/star-32-yellow.svg);
+
     &::after {
       color: #ffc95a;
     }
+
     @include r {
       &::after {
         content: "В избранном";
@@ -5943,18 +6306,22 @@
     position: relative;
     margin: 0 4px;
     padding: 40px 30px;
+
     & .article__title {
       max-width: 370px;
       width: 100%;
       margin: 0 0 15px;
+
       @include r {
         max-width: 100%;
         padding: 0 15px;
       }
     }
+
     & .article__text {
       max-width: 465px;
       width: 100%;
+
       @include r {
         max-width: 100%;
         padding: 0 15px;
@@ -5963,6 +6330,7 @@
 
     & .article__img {
       display: none;
+
       @include r {
         display: block;
         margin-bottom: 25px;
@@ -5983,6 +6351,7 @@
       padding: 0 0 25px;
     }
   }
+
   svg {
     width: 100%;
   }
@@ -6026,6 +6395,7 @@
     padding-right: 40px;
     position: relative;
     width: fit-content;
+
     @include r {
       text-align: center;
       font-size: 17px;
@@ -6064,13 +6434,14 @@
     opacity: 0;
   }
 
-  &__checkbox:checked + span {
+  &__checkbox:checked+span {
     background-image: url(../img/star-24-yellow.svg);
   }
 
   &__stats {
     margin-bottom: 24px;
     color: $light-text;
+
     @include r {
       display: none;
     }
@@ -6080,6 +6451,7 @@
     font-size: 32px;
     line-height: 32px;
     color: $title;
+
     @include r {
       margin-bottom: 25px;
       font-size: 17px;
@@ -6097,6 +6469,7 @@
       align-items: flex-start;
       padding: 25px 180px 35px 20px;
     }
+
     .bud__img {
       @include r {
         position: absolute;
@@ -6106,6 +6479,7 @@
         right: 16px;
       }
     }
+
     .bud__title {
       @include r {
         position: static;
@@ -6124,12 +6498,14 @@
         display: block;
         top: 16px;
         right: 21px;
+
         span {
           height: 16px;
           width: 16px;
         }
       }
     }
+
     .bud__stats {
       @include r {
         display: none;
@@ -6154,6 +6530,7 @@
   background-position: center;
   position: relative;
   margin-bottom: 100px;
+
   &::after {
     content: "";
     position: absolute;
@@ -6172,6 +6549,7 @@
     background-image: none;
     border-radius: 30px;
     background-color: white;
+
     &::after {
       width: 220px;
       height: 185px;
@@ -6186,6 +6564,7 @@
     max-width: 640px;
     width: 100%;
     margin: 25px 0 60px;
+
     @include r {
       margin: 15px 0 0;
     }
@@ -6197,6 +6576,7 @@
     justify-content: space-between;
     max-width: 860px;
     width: 100%;
+
     @include r {
       flex-wrap: wrap;
       margin-top: 200px;
@@ -6212,6 +6592,7 @@
     padding: 9px 16px 11px;
     border: 1px solid #68a9fe;
     border-radius: 10px;
+
     &::placeholder {
       color: $light-text;
     }
@@ -6222,6 +6603,7 @@
       padding-top: 12px;
       padding-bottom: 14px;
       border-color: #d7d7d7;
+
       &:focus {
         border-color: $blue;
       }
@@ -6238,6 +6620,7 @@
 .useful {
   &__item {
     margin-top: 60px;
+
     @include r {
       margin: 30px 0 0;
     }
@@ -6273,6 +6656,7 @@
     align-items: stretch;
     min-height: 580px;
     position: relative;
+
     @include r {
       min-height: auto;
       flex-direction: column;
@@ -6300,6 +6684,7 @@
 
   &__date {
     margin-bottom: 40px;
+
     @include r {
       margin-bottom: 10px;
       color: $light-text;
@@ -6312,6 +6697,7 @@
     margin-bottom: 25px;
     padding-right: 40px;
     position: relative;
+
     @include r {
       width: 100%;
       padding-right: 0;
@@ -6323,6 +6709,7 @@
     position: absolute;
     right: 0;
     top: -15px;
+
     & span {
       display: inline-block;
       height: 24px;
@@ -6332,6 +6719,7 @@
       background-position: center;
       transition: all 0.3s;
     }
+
     @include r {
       top: -40px;
     }
@@ -6347,13 +6735,14 @@
     opacity: 0;
   }
 
-  &__checkbox:checked + span {
+  &__checkbox:checked+span {
     background-image: url(../img/star-24-yellow.svg);
   }
 
   &__text {
     max-width: 600px;
     width: 100%;
+
     @include r {
       max-width: 100%;
     }
@@ -6361,6 +6750,7 @@
 
   &__btn-read {
     margin-top: auto;
+
     @include r {
       margin: 35px 0 50px;
     }
@@ -6370,9 +6760,11 @@
     max-width: 415px;
     width: 100%;
     position: relative;
+
     @include r {
       max-width: 100%;
       position: static;
+
       & .recommendations__subtitle {
         margin-bottom: 15px;
       }
@@ -6381,6 +6773,7 @@
 
   &__from {
     margin-bottom: 40px;
+
     @include r {
       color: $light-text;
       position: absolute;
@@ -6424,21 +6817,26 @@
     @include r {
       &-wrapper {
         margin-top: 36px;
+
         &.slick-active .bud {
           opacity: 1;
         }
       }
+
       width: 270px;
       margin: 0 16px 0 0;
       padding: 10px 32px 32px;
       opacity: 0.8;
+
       .bud__img {
         width: 120px;
       }
+
       .bud__btn {
         max-width: 170px;
         margin: auto auto 0;
       }
+
       .bud__price {
         text-align: center;
         line-height: 17px;
@@ -6485,6 +6883,7 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-top: 120px;
+
     @include r {
       margin-top: 0;
       display: block;
@@ -6493,6 +6892,7 @@
 
   &__search {
     padding-top: 115px;
+
     @include r {
       padding-top: 25px;
     }
@@ -6523,6 +6923,7 @@
     padding: 9px 16px 11px;
     border: 1px solid #68a9fe;
     border-radius: 10px;
+
     &::placeholder {
       color: $light-text;
     }
@@ -6532,6 +6933,7 @@
       padding: 12px 16px 14px;
       margin-bottom: 32px;
       border-color: #d7d7d7;
+
       &:focus {
         border-color: $blue;
       }
@@ -6555,6 +6957,7 @@
       margin: 40px 0 0;
       width: 100%;
       padding-bottom: 60px;
+
       .slick-list {
         overflow: visible;
       }
@@ -6564,8 +6967,10 @@
   &__option {
     padding: 0;
     margin: 0 20px;
+
     @include r {
       margin: 0;
+
       a {
         background-color: white;
         border: none;
@@ -6577,10 +6982,12 @@
         font-family: "SFProDisplay-Medium", sans-serif;
         font-weight: 500;
         color: $title;
+
         &:hover {
           background-color: white;
           background-image: none;
           box-shadow: none;
+
           span {
             color: $text;
           }
@@ -6595,6 +7002,7 @@
 
   & .specialists {
     padding-bottom: 200px;
+
     @include r {
       padding-bottom: 56px;
       margin-bottom: 56px;
@@ -6603,6 +7011,7 @@
 
   & .specialists__title {
     padding-top: 100px;
+
     @include r {
       padding-top: 0;
     }
@@ -6649,6 +7058,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     &-title {
       font-size: 24px;
       color: $title;
@@ -6659,6 +7069,7 @@
   &__checkbox {
     position: relative;
     margin-bottom: 10px;
+
     & input {
       cursor: pointer;
       position: absolute;
@@ -6668,13 +7079,16 @@
       width: 100%;
       height: 100%;
       opacity: 0;
-      &:checked + span {
+
+      &:checked+span {
         color: $text;
       }
-      &:checked + span::before {
+
+      &:checked+span::before {
         border-color: $peach;
       }
-      &:checked + span::after {
+
+      &:checked+span::after {
         opacity: 1;
       }
     }
@@ -6695,6 +7109,7 @@
         border: 1px solid $light-text;
         transition: all 0.3s;
       }
+
       &::after {
         content: " ";
         position: absolute;
@@ -6713,6 +7128,7 @@
 
   &__filter-btn {
     color: $text;
+
     &:hover {
       color: $white;
     }
@@ -6726,6 +7142,7 @@
   &__input-from,
   &__input-to {
     position: relative;
+
     & input {
       outline: none;
       width: 80px;
@@ -6737,6 +7154,7 @@
       border-bottom: 2px solid $blue;
       margin-right: 15px;
     }
+
     span {
       position: absolute;
       left: 0;
@@ -6787,6 +7205,7 @@
     padding: 55px 40px 55px 175px;
     margin-bottom: 30px;
     position: relative;
+
     @include r {
       background-image: none;
       background-color: white;
@@ -6798,6 +7217,7 @@
       justify-content: center;
       max-width: 100%;
     }
+
     &.hidden {
       display: none;
     }
@@ -6812,6 +7232,7 @@
       position: absolute;
       top: 40px;
       left: 40px;
+
       @include r {
         position: static;
         width: 72px;
@@ -6825,6 +7246,7 @@
       top: 155px;
       left: 30px;
       display: flex;
+
       @include r {
         position: static;
         margin-bottom: 16px;
@@ -6838,7 +7260,8 @@
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-      & + & {
+
+      &+& {
         margin-left: 9px;
       }
     }
@@ -6846,6 +7269,7 @@
     &-name {
       display: inline-block;
       margin: 0 50px 15px 0;
+
       @include r {
         margin: 16px 0 8px;
         text-align: center;
@@ -6855,6 +7279,7 @@
     &-price {
       font-size: 32px;
       color: $blue;
+
       @include r {
         font-size: 17px;
         position: absolute;
@@ -6879,11 +7304,14 @@
     &-stat {
       display: inline-block;
       font-size: 24px;
-      & + & {
+
+      &+& {
         margin-left: 35px;
       }
+
       &.reviews {
         color: $peach;
+
         @include r {
           color: $light-text;
           display: block;
@@ -6893,6 +7321,7 @@
           margin-top: 8px;
         }
       }
+
       @include r {
         font-size: 17px;
       }
@@ -6901,6 +7330,7 @@
     &-timetable {
       font-size: 24px;
       margin-bottom: 30px;
+
       @include r {
         font-size: 17px;
         margin-bottom: 75px;
@@ -6911,6 +7341,7 @@
       font-size: 24px;
       color: $title;
       margin-bottom: 15px;
+
       @include r {
         display: none;
       }
@@ -6920,6 +7351,7 @@
       max-width: 650px;
       width: 100%;
       margin-bottom: 15px;
+
       @include r {
         display: none;
       }
@@ -6928,6 +7360,7 @@
     &-more {
       display: inline-block;
       color: $blue;
+
       @include r {
         display: none;
       }
@@ -6935,6 +7368,7 @@
 
     &-btn {
       margin-top: 50px;
+
       @include r {
         margin-top: 0;
       }
@@ -6946,15 +7380,18 @@
     display: flex;
     width: 100%;
     justify-content: flex-end;
+
     @include r {
       display: none;
     }
+
     & button {
       display: inline-block;
       margin-left: 5px;
       color: $blue;
       position: relative;
       padding-right: 25px;
+
       &::after {
         content: "";
         position: absolute;
@@ -6982,7 +7419,7 @@
         left: -25px;
       }
 
-      li + li {
+      li+li {
         margin-top: 10px;
       }
 
@@ -6992,6 +7429,7 @@
           border-top: 6px solid transparent;
           border-bottom: 6px solid $blue;
         }
+
         ul {
           display: block;
         }
@@ -7005,9 +7443,11 @@
 
   &__forYou {
     display: flex;
+
     .articles__col:nth-child(1) {
       max-width: 100%;
     }
+
     @include r {
       margin-top: 0;
       flex-direction: column;
@@ -7017,6 +7457,7 @@
   &__col {
     max-width: 850px;
     width: 100%;
+
     &:nth-last-child(1) {
       max-width: 516px;
     }
@@ -7026,6 +7467,7 @@
     max-width: 650px;
     width: 100%;
     margin: 40px 0 60px;
+
     @include r {
       margin: 22px 0 18px;
     }
@@ -7054,6 +7496,7 @@
     padding: 9px 16px 11px;
     border: 1px solid #68a9fe;
     border-radius: 10px;
+
     &::placeholder {
       color: $light-text;
     }
@@ -7071,6 +7514,7 @@
 
   &__btn {
     margin-left: 30px;
+
     @include r {
       display: none;
     }
@@ -7078,6 +7522,7 @@
 
   &__tags {
     display: none;
+
     @include r {
       display: block;
       margin: 32px 0 12px;
@@ -7089,12 +7534,14 @@
 
   &__tags-list {
     display: none;
+
     @include r {
       width: calc(100% + 15px);
       margin-left: -15px;
       display: block;
       font-family: "SFProDisplay-Medium", sans-serif;
       font-weight: 500;
+
       .slick-list {
         overflow: visible;
       }
@@ -7118,8 +7565,10 @@
 
   &__recommendations {
     margin: 120px 0 100px;
+
     @include r {
       margin: 20px 0;
+
       &-title {
         display: none;
       }
@@ -7132,12 +7581,15 @@
     flex-wrap: wrap;
     width: calc(100% + 14px);
     margin: 0 -7px;
+
     @include r {
       width: 100%;
       margin: 0;
+
       &--block {
         display: none;
       }
+
       &.slick-slider {
         @include r {
           width: calc(100% + 48px);
@@ -7150,6 +7602,7 @@
 
   &__item {
     margin-top: 50px;
+
     @include r {
       margin-top: 30px;
     }
@@ -7162,6 +7615,7 @@
       max-width: 895px;
       font-size: 24px;
       display: flex;
+
       @include r {
         align-items: flex-start;
         flex-wrap: wrap;
@@ -7237,6 +7691,7 @@
       &:hover,
       &.active {
         color: $text;
+
         @include r {
           color: white;
           background-color: $blue;
@@ -7247,6 +7702,7 @@
         padding: 8px 15px 10px;
         border-radius: 30px;
         font-size: 17px;
+
         &:not(:last-child) {
           margin-bottom: 15px;
           margin-right: 15px;
@@ -7323,6 +7779,7 @@
   }
 
   &__info {
+
     .general__file-list,
     .reg__file-wrapper {
       display: none;
@@ -7342,7 +7799,7 @@
     width: 100%;
     position: relative;
 
-    & + & {
+    &+& {
       margin-top: 16px;
     }
 
@@ -7393,6 +7850,7 @@
         left: 30px;
         bottom: 30px;
         font-size: 24px;
+
         & div {
           text-align: left;
         }
@@ -7468,9 +7926,11 @@
     border-radius: 20px;
     position: relative;
     padding: 180px 40px 100px;
+
     @include r {
       display: none;
     }
+
     &-img {
       width: 245px;
       height: 245px;
@@ -7496,6 +7956,7 @@
       font-size: 24px;
       margin-bottom: 15px;
     }
+
     &-reviews {
       font-size: 24px;
       margin-bottom: 15px;
@@ -7519,7 +7980,8 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      & + & {
+
+      &+& {
         margin-left: 15px;
       }
     }
@@ -7547,6 +8009,7 @@
 
     &-title {
       margin-bottom: 35px;
+
       @include r {
         margin-bottom: 15px;
       }
@@ -7557,6 +8020,7 @@
       width: 100%;
       margin: 0 0 25px 0;
       padding: 0;
+
       &:nth-last-child(1) {
         margin: 0;
       }
@@ -7570,6 +8034,7 @@
       position: absolute;
       top: 0;
       right: 0;
+
       @include r {
         display: none;
       }
@@ -7577,6 +8042,7 @@
 
     &-slide {
       margin-right: 30px;
+
       @include r {
         margin: 0 15px 15px 0;
         display: inline-block;
@@ -7591,17 +8057,22 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       @include r {
         margin: 10px 0 20px;
       }
-      li + li {
+
+      li+li {
         margin-left: 25px;
+
         @include r {
           margin-left: 0;
         }
       }
+
       .slick-active button {
         background-color: $peach;
+
         @include r {
           background-color: #fff;
         }
@@ -7618,6 +8089,7 @@
       background-color: $blue;
       border: none;
       box-shadow: none;
+
       @include r {
         border: 2px solid #e3eaff;
         background-color: #fff;
@@ -7626,6 +8098,7 @@
 
     &-mobile {
       display: none;
+
       @include r {
         display: block;
         margin-bottom: 40px;
@@ -7669,6 +8142,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+
       &:not(:last-child) {
         margin-right: 10px;
       }
@@ -7678,6 +8152,7 @@
   &__reviews {
     max-width: 895px;
     width: 100%;
+
     @include r {
       background-image: none;
       background-color: white;
@@ -7694,12 +8169,14 @@
       position: relative;
       padding-right: 35px;
       margin-bottom: 30px;
+
       & span {
         font-size: 20px;
         color: $peach;
         position: absolute;
         top: 0;
         right: 0;
+
         @include r {
           font-size: 17px;
           font-family: "SFProDisplay-Regular", sans-serif;
@@ -7723,6 +8200,7 @@
       position: absolute;
       top: 10px;
       left: 0;
+
       @include r {
         display: none;
       }
@@ -7731,6 +8209,7 @@
     &-name {
       margin-left: 80px;
       margin-bottom: 5px;
+
       @include r {
         margin-left: 0;
       }
@@ -7740,6 +8219,7 @@
       color: $light-text;
       margin-left: 80px;
       margin-bottom: 15px;
+
       @include r {
         margin-left: 0;
       }
@@ -7767,12 +8247,15 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      & + & {
+
+      &+& {
         margin-left: 15px;
+
         @include r {
           margin-left: 10px;
         }
       }
+
       @include r {
         width: 16px;
         height: 16px;
@@ -7793,6 +8276,7 @@
   &__requests {
     &-title {
       margin-bottom: 50px;
+
       @include r {
         margin-top: 10px;
       }
@@ -7802,10 +8286,12 @@
       padding-bottom: 50px;
       border-bottom: 1px solid #f1f1f1;
       position: relative;
+
       &:nth-last-child(1) {
         border: none;
         padding-bottom: 0;
       }
+
       @include r {
         padding-bottom: 35px;
         margin-bottom: 30px;
@@ -7815,6 +8301,7 @@
 
     &-name {
       margin-bottom: 25px;
+
       @include r {
         margin-bottom: 12px;
       }
@@ -7825,6 +8312,7 @@
       position: absolute;
       right: 0;
       top: 10px;
+
       @include r {
         position: static;
         font-size: 15px;
@@ -7836,6 +8324,7 @@
       color: $title;
       margin-bottom: 15px;
       font-size: 24px;
+
       @include r {
         margin-bottom: 15px;
       }
@@ -7845,6 +8334,7 @@
       max-width: 665px;
       width: 100%;
       margin-bottom: 15px;
+
       @include r {
         color: $light-text;
       }
@@ -7860,14 +8350,16 @@
       margin-top: 30px;
       display: flex;
       width: 100%;
+
       @include r {
         flex-direction: column;
         margin-top: 40px;
       }
     }
 
-    &-btn + &-btn {
+    &-btn+&-btn {
       margin-left: 25px;
+
       @include r {
         margin-left: 0;
         margin-top: 15px;
@@ -7905,6 +8397,7 @@
         cursor: pointer;
         display: none;
         padding-right: 30px;
+
         &::after {
           content: "";
           position: absolute;
@@ -7957,6 +8450,7 @@
     &-item {
       width: 100%;
       padding-left: 95px;
+
       &:nth-last-child(1) {
         border: none;
         margin-bottom: 0;
@@ -7980,6 +8474,7 @@
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
+
       @include r {
         display: none;
       }
@@ -7989,6 +8484,7 @@
       color: $title;
       font-size: 24px;
       margin-bottom: 10px;
+
       @include r {
         font-family: "SFProDisplay-Medium", sans-serif;
         font-weight: 500;
@@ -7999,6 +8495,7 @@
     &-text {
       margin-bottom: 15px;
       max-width: 390px;
+
       @include r {
         margin-bottom: 10px;
       }
@@ -8016,10 +8513,12 @@
       right: 50px;
       top: 30px;
       font-size: 24px;
+
       & div {
         text-align: right;
         font-size: 20px;
         margin-bottom: 5px;
+
         @include r {
           text-align: left;
           font-size: 16px;
@@ -8036,6 +8535,7 @@
 
     &-date {
       color: $blue;
+
       @include r {
         font-family: "SFProDisplay-Medium", sans-serif;
         font-weight: 500;
@@ -8046,6 +8546,7 @@
     &-time {
       color: $blue;
       margin-left: 15px;
+
       @include r {
         font-family: "SFProDisplay-Medium", sans-serif;
         font-weight: 500;
@@ -8063,6 +8564,7 @@
       box-shadow: none;
       font-size: 20px;
       cursor: pointer;
+
       @include r {
         position: static;
         text-align: center;
@@ -8073,6 +8575,7 @@
         cursor: pointer;
         transition: all 0.3s;
         color: $text;
+
         &:hover {
           color: white;
           background-color: $blue;
@@ -8083,7 +8586,7 @@
 }
 
 @include r {
-  .content-block__inner.active[data-tab="2"] + .content-block__fixed {
+  .content-block__inner.active[data-tab="2"]+.content-block__fixed {
     display: none;
   }
 }
@@ -8097,6 +8600,7 @@
     padding-top: 220px;
     min-height: 100vh;
     height: fit-content;
+
     @include r {
       padding: 160px 0 60px;
       background-color: $bg-mobile;
@@ -8109,11 +8613,13 @@
 
   &__doctor {
     display: flex;
+
     @include r {
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
+
     &-img {
       width: 90px;
       height: 90px;
@@ -8122,6 +8628,7 @@
       background-size: cover;
       background-repeat: no-repeat;
       margin-right: 45px;
+
       @include r {
         margin-right: 0;
         margin-bottom: 25px;
@@ -8130,6 +8637,7 @@
 
     &-name {
       margin-bottom: 20px;
+
       @include r {
         text-align: center;
         margin-bottom: 15px;
@@ -8140,13 +8648,14 @@
       display: flex;
     }
 
-    &-stat + &-stat {
+    &-stat+&-stat {
       margin-left: 35px;
     }
   }
 
   &__inner {
     margin-bottom: 90px;
+
     @include r {
       margin-bottom: 0;
     }
@@ -8214,6 +8723,10 @@
         transition: opacity 0.3s;
       }
 
+      &.inactive {
+        pointer-events: none;
+      }
+
       &:hover,
       &.active {
         color: $text;
@@ -8242,6 +8755,7 @@
 
         .appointment__tabs-icon {
           background-color: #ededed;
+
           &::after {
             filter: invert(72%) sepia(2%) saturate(5%) hue-rotate(334deg) brightness(91%) contrast(92%);
           }
@@ -8297,6 +8811,7 @@
     &-title {
       margin-bottom: 60px;
       pointer-events: none;
+
       @include r {
         margin: 15px 0 30px;
       }
@@ -8308,14 +8823,17 @@
       border-radius: 20px;
       position: relative;
       display: none;
+
       &.active {
         display: block;
         width: 100%;
+
         @include r {
           height: auto;
           overflow: visible;
         }
       }
+
       @include r {
         width: 100%;
         padding: 0;
@@ -8346,6 +8864,7 @@
       padding-left: 30px;
       color: $light-text;
       transition: all 0.3s;
+
       &::before {
         content: "";
         position: absolute;
@@ -8357,19 +8876,20 @@
         border-radius: 100%;
         opacity: 0.5;
         transition: all 0.3s;
+
         @include r {
           top: 2px;
         }
       }
     }
 
-    input:checked + span,
-    input:hover + span {
+    input:checked+span,
+    input:hover+span {
       color: $text;
     }
 
-    input:checked + span::before,
-    input:hover + span::before {
+    input:checked+span::before,
+    input:hover+span::before {
       border-width: 4px;
       opacity: 1;
     }
@@ -8419,6 +8939,7 @@
     @include r {
       margin: 0 -24px 40px;
       width: calc(100% + 48px);
+
       .slick-dots {
         margin-top: 0;
       }
@@ -8452,6 +8973,7 @@
         position: relative;
         pointer-events: none;
         display: inline-block;
+
         &::before {
           content: "";
           position: absolute;
@@ -8461,6 +8983,7 @@
           height: 16px;
           border: 1px solid $light-text;
           transition: all 0.3s;
+
           @include r {
             top: 1px;
           }
@@ -8478,6 +9001,7 @@
           background-repeat: no-repeat;
           transition: all 0.3s;
           opacity: 0;
+
           @include r {
             top: 2px;
           }
@@ -8494,16 +9018,16 @@
         cursor: pointer;
       }
 
-      input:checked + span,
-      input:hover + span {
+      input:checked+span,
+      input:hover+span {
         color: $text;
       }
 
-      input:checked + span::after {
+      input:checked+span::after {
         opacity: 1;
       }
 
-      input:checked + span::before {
+      input:checked+span::before {
         border-color: $peach;
       }
     }
@@ -8548,6 +9072,7 @@
     left: 280px;
     top: 154px;
     color: $light-text;
+
     @include r {
       display: none;
     }
@@ -8557,10 +9082,12 @@
     position: relative;
     height: 0;
     overflow: hidden;
+
     &.active {
       margin: 90px 0 130px;
       height: auto;
       overflow: visible;
+
       @include r {
         margin-bottom: 0;
       }
@@ -8574,6 +9101,7 @@
 
   &__date-mobile {
     display: none;
+
     &.active {
       display: block;
       margin-top: 30px;
@@ -8582,13 +9110,16 @@
 
   &__wrapper {
     display: flex;
+
     @include r {
       display: block;
       width: calc(100% + 48px);
       margin: 0 -24px;
+
       .slick-dots {
         margin-top: -5px;
       }
+
       &.hidden {
         display: none;
       }
@@ -8599,6 +9130,7 @@
     cursor: pointer;
     margin-left: 56px;
     color: $light-text;
+
     @include r {
       margin-left: 0;
       position: absolute;
@@ -8613,12 +9145,15 @@
     border-right: 1px solid #f1f1f1;
     display: inline-block;
     width: 50%;
+
     @include r {
       padding-right: 0;
       border: none;
     }
+
     & .appointment__calendar {
       display: inline-block;
+
       @include r {
         width: calc(100% - 48px);
         margin: 0 24px;
@@ -8637,9 +9172,10 @@
       display: inline-block;
     }
 
-    & + & {
+    &+& {
       margin-left: 120px;
       border: none;
+
       @include r {
         margin-left: 0;
       }
@@ -8653,6 +9189,7 @@
       border-radius: 0;
       width: 420px;
       margin: 0 auto;
+
       &::after {
         display: none;
       }
@@ -8660,6 +9197,7 @@
 
     .datepicker--cells {
       justify-content: center;
+
       @include r {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -8668,12 +9206,15 @@
 
     .datepicker--cell {
       margin: 4px 32px 4px 0;
+
       &.-weekend- {
         margin-right: 0;
+
         @include r {
           margin-right: auto;
         }
       }
+
       @include r {
         margin: 4px auto;
       }
@@ -8757,7 +9298,7 @@
     }
   }
 
-  &__radio + &__btns {
+  &__radio+&__btns {
     margin-top: 80px;
   }
 
@@ -8823,8 +9364,8 @@
         transition: all 0.3s;
       }
 
-      input:checked + div,
-      input:hover + div {
+      input:checked+div,
+      input:hover+div {
         background-color: $peach;
         color: $white;
         border-color: $peach;
@@ -8836,9 +9377,11 @@
     display: none;
     margin-top: 60px;
     position: relative;
+
     @include r {
       margin-top: 32px;
     }
+
     &::after {
       content: "";
       position: absolute;
@@ -8850,6 +9393,7 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
+
       @include r {
         width: 250px;
         height: 205px;
@@ -8867,6 +9411,7 @@
     &-title {
       margin-bottom: 40px;
       display: none;
+
       &.active {
         display: block;
       }
@@ -8876,6 +9421,7 @@
     &-text {
       color: $light-text;
       margin-bottom: 15px;
+
       @include r {
         color: $title;
         text-align: center;
@@ -8884,6 +9430,7 @@
 
     &-text {
       margin-bottom: 120px;
+
       @include r {
         margin-bottom: 250px;
       }
@@ -8894,6 +9441,7 @@
     font-family: "SFProDisplay-Medium", sans-serif;
     font-weight: 500;
     display: none;
+
     @include r {
       display: inline-block;
       height: 25px;
@@ -8905,6 +9453,7 @@
     color: $blue;
     margin-left: 20px;
     display: none;
+
     @include r {
       display: inline-block;
     }
@@ -8914,6 +9463,7 @@
 .contacts {
   padding: 80px 0;
   background-color: $bg;
+
   @include r {
     padding: 30px 0;
     background-color: $bg-mobile;
@@ -8921,6 +9471,7 @@
 
   &__title {
     margin-bottom: 25px;
+
     @include r {
       font-size: 22px;
       margin-bottom: 30px;
@@ -8977,6 +9528,7 @@
     display: inline-block;
     max-width: 650px;
     width: 100%;
+
     @include r {
       height: 330px;
     }
@@ -8984,9 +9536,11 @@
 
   &__contact {
     padding-bottom: 130px;
+
     @include r {
       padding-bottom: 40px;
     }
+
     &-inner {
       display: flex;
       align-items: flex-end;
@@ -9002,6 +9556,7 @@
   &__form {
     max-width: 550px;
     width: 100%;
+
     &-choose {
       width: 100%;
       padding: 8px 25px 12px;
@@ -9010,10 +9565,12 @@
       position: relative;
       margin-bottom: 40px;
       cursor: pointer;
+
       @include r {
         margin-bottom: 25px;
         border-color: #d7d7d7;
       }
+
       &::after {
         content: "";
         position: absolute;
@@ -9034,6 +9591,7 @@
 
       @include r {
         padding: 12px 25px 14px;
+
         &.active {
           border-color: $blue;
         }
@@ -9056,6 +9614,7 @@
       list-style: none;
       background-color: #fff;
       display: none;
+
       &.active {
         display: block;
       }
@@ -9066,6 +9625,7 @@
       padding: 10px 0;
       cursor: pointer;
       transition: all 0.3s;
+
       &:hover {
         color: $text;
       }
@@ -9086,6 +9646,7 @@
       border: 1px solid $blue;
       border-top: none;
       padding: 10px 8px 30px;
+
       &.active {
         display: block;
       }
@@ -9096,10 +9657,12 @@
       transition: all 0.3s;
 
       padding: 5px 17px;
+
       &:nth-child(1) {
         padding-top: 15px;
         border-top: 1px solid $blue;
       }
+
       &:hover {
         color: $blue;
       }
@@ -9116,6 +9679,7 @@
       min-height: 170px;
       height: fit-content;
       resize: none;
+
       &::placeholder {
         color: $light-text;
       }
@@ -9124,13 +9688,16 @@
         font-size: 17px;
         padding: 15px 25px;
         border-color: #d7d7d7;
+
         &:focus {
           border-color: $blue;
         }
       }
     }
+
     &-btn {
       margin-top: 50px;
+
       @include r {
         margin-top: 30px;
       }
@@ -9139,6 +9706,7 @@
 
   &__img {
     width: 580px;
+
     @include r {
       max-width: calc(100% - 100px);
       width: 100%;
@@ -9151,12 +9719,15 @@
 .docs {
   padding: 120px 0;
   background-color: $bg;
+
   @include r {
     padding: 30px 0;
     background-color: $bg-mobile;
   }
+
   &__title {
     margin-bottom: 70px;
+
     @include r {
       font-size: 22px;
       margin-bottom: 30px;
@@ -9168,13 +9739,16 @@
       width: calc(100% + 48px);
       margin-left: -24px;
     }
+
     &-item {
       padding: 35px 0 40px;
       border-top: 1px solid #d3d3d3;
+
       @include r {
         width: 100%;
         padding: 25px 24px 30px;
       }
+
       &:nth-last-child(1) {
         border-bottom: 1px solid #d3d3d3;
       }
@@ -9195,6 +9769,7 @@
         &::after {
           background-color: $blue;
         }
+
         &::before {
           transform: rotate(45deg);
           opacity: 0;
@@ -9205,6 +9780,7 @@
     &-title {
       cursor: pointer;
       position: relative;
+
       &::after {
         content: "";
         width: 40px;
@@ -9214,6 +9790,7 @@
         right: 20px;
         top: 17px;
         transition: all 0.3s;
+
         @include r {
           right: 0;
           top: 10px;
@@ -9221,6 +9798,7 @@
           height: 2px;
         }
       }
+
       &::before {
         content: "";
         width: 40px;
@@ -9231,6 +9809,7 @@
         top: 17px;
         transform: rotate(90deg);
         transition: all 0.3s;
+
         @include r {
           right: 0;
           top: 10px;
@@ -9247,10 +9826,12 @@
     &-text {
       margin-top: 70px;
       max-width: 1185px;
+
       p {
         margin: 0;
         padding: 0;
       }
+
       a {
         color: $text;
       }
@@ -9262,6 +9843,7 @@
       padding-left: 70px;
       padding-bottom: 10px;
       position: relative;
+
       &::before {
         content: "";
         width: 48px;
@@ -9273,6 +9855,7 @@
         position: absolute;
         left: 0;
         bottom: 10px;
+
         @include r {
           width: 40px;
           height: 40px;
@@ -9293,15 +9876,18 @@
 .art {
   padding-bottom: 120px;
   padding-top: 120px;
+
   @include r {
     padding: 48px 0;
   }
+
   &:first-of-type {
     padding-top: 100px;
   }
 
   &:nth-child(odd) {
     background-color: $bg;
+
     @include r {
       background-color: $bg-mobile;
     }
@@ -9313,6 +9899,7 @@
     left: 24px;
     padding-left: 25px;
     color: $blue;
+
     &::after {
       content: "";
       position: absolute;
@@ -9330,6 +9917,7 @@
   &__doctor {
     display: flex;
     margin-bottom: 25px;
+
     &-img {
       height: 55px;
       width: 55px;
@@ -9338,6 +9926,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+
       @include r {
         height: 40px;
         width: 40px;
@@ -9348,6 +9937,7 @@
     &-name {
       font-size: 24px;
       margin-bottom: 5px;
+
       @include r {
         font-size: 17px;
       }
@@ -9371,6 +9961,7 @@
     width: 100%;
     border-radius: 20px;
     margin-bottom: 50px;
+
     @include r {
       min-height: 200px;
       object-fit: cover;
@@ -9381,8 +9972,10 @@
 
   &__text {
     max-width: 910px;
+
     p:not(:last-child) {
       margin-bottom: 30px;
+
       @include r {
         margin-bottom: 16px;
       }
@@ -9413,9 +10006,11 @@
       padding-left: 55px;
       color: $blue;
       position: relative;
+
       @include r {
         padding-left: 40px;
       }
+
       &::before {
         content: "";
         width: 32px;
@@ -9427,6 +10022,7 @@
         left: 0;
         top: -2px;
         transition: all 0.3s;
+
         @include r {
           height: 24px;
           width: 25px;
@@ -9434,13 +10030,15 @@
       }
     }
 
-    input:hover + span::before {
+    input:hover+span::before {
       background-image: url(../img/star-32-yellow.svg);
+
       @include r {
         background-image: url(../img/star-32-grey.svg);
       }
     }
-    input:checked + span::before {
+
+    input:checked+span::before {
       background-image: url(../img/star-32-yellow.svg);
     }
   }
@@ -9460,6 +10058,7 @@
   background-size: 100% 100%;
   background-position: center;
   padding: 50px 40px;
+
   @include r {
     background-image: none;
     background-color: #fff;
@@ -9467,12 +10066,14 @@
     max-width: calc(100% - 48px);
     padding: 35px 16px;
   }
+
   &.active {
     display: block;
   }
 
   &__slide {
     display: none;
+
     &.active {
       display: block;
     }
@@ -9482,6 +10083,7 @@
       background-image: url(../img/popup-img.svg);
       background-position: right bottom;
       background-repeat: no-repeat;
+
       .popup__text {
         max-width: 380px;
       }
@@ -9503,6 +10105,7 @@
   &__text {
     width: 100%;
     margin-bottom: 15px;
+
     &--light {
       color: $light-text;
     }
@@ -9523,6 +10126,7 @@
     background-position: center;
     background-size: cover;
     cursor: pointer;
+
     @include r {
       right: 16px;
       top: 16px;
@@ -9533,6 +10137,7 @@
     display: inline-block;
     width: 40%;
     margin-bottom: 15px;
+
     @include r {
       width: calc(50% - 5px);
     }
@@ -9541,6 +10146,7 @@
   &__btns {
     display: flex;
     align-items: center;
+
     @include r {
       flex-wrap: wrap;
     }
@@ -9548,6 +10154,7 @@
 
   .btn--stroke {
     margin-left: 25px;
+
     @include r {
       margin-left: 0;
       margin-top: 16px;
@@ -9565,6 +10172,7 @@
     height: 170px;
     resize: none;
     margin-bottom: 15px;
+
     &::placeholder {
       color: $light-text;
     }
@@ -9572,6 +10180,7 @@
     @include r {
       border-color: #d7d7d7;
       font-size: 17px;
+
       &:focus {
         border-color: $blue;
       }
@@ -9598,13 +10207,15 @@
     width: 24px;
     height: 24px;
     transition: all 0.3s;
-    & + & {
+
+    &+& {
       margin-right: 16px;
     }
+
     &:hover,
-    &:hover ~ button,
+    &:hover~button,
     &.active,
-    &.active ~ button {
+    &.active~button {
       background-image: url(../img/star-24-yellow.svg);
     }
   }
@@ -9621,6 +10232,7 @@
 
   background-color: rgba(84, 153, 222, 0.5);
   backdrop-filter: blur(5px);
+
   &.active {
     display: block;
   }

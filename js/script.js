@@ -396,10 +396,9 @@ if (document.querySelector(".appointment")) {
       }
     });
   } else {
-    document.querySelector(".appointment__tabs-content[data-tab='5']").addEventListener("mousedown", function (e) {
+    document.querySelector(".appointment__tabs-content[data-tab='5']").addEventListener("mouseup", function (e) {
       if (e.target.classList.contains("datepicker--cell-day")) {
         document.querySelector(".appointment__days").classList.add("active");
-        e.target.closest(".appointment__tabs-content").querySelector(".appointment__btns").classList.add("hidden");
         // заполняем нужной датой
         const day = e.target.innerHTML;
         const monthsList = ["Янаварь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
@@ -1406,6 +1405,13 @@ if (document.querySelector(".doctor__info")) {
       }
     });
 
+    document.querySelector(".doctor__clients-wrapper").addEventListener("click", function (e) {
+      if (e.target.classList.contains("doctor__clients-cancel")) {
+        document.querySelector(".popup").classList.add("active")
+        document.querySelector(".layer").classList.add("active")
+      }
+    })
+
     document.querySelector(".doctor__requests").addEventListener("click", function (e) {
       if (e.target.classList.contains("doctor__requests-more")) {
         e.target.closest(".doctor__requests-text").innerHTML = "Здравствуйте! Беспокоит сильная боль в желудке каждое утро. Рацион у меня обыкновенный, никаких особых препаратов не принимаю, год назад была операция, а сейчас все топчик! :)";
@@ -1624,9 +1630,11 @@ if (document.querySelector(".appointment")) {
         document.querySelector(`.appointment__tabs-content[data-tab="${curTab + 1}"]`).classList.add("active");
       }
 
-    }
+      if (e.target.dataset.tab === "4") {
+        document.querySelectorAll(".appointment__tabs-btn.complete").forEach(btn => btn.classList.add("inactive"))
+      }
 
-    console.log(e.target);
+    }
 
     if (e.target.getAttribute("type") === "radio") {
       if (e.target.closest(".appointment__tabs-content")) {
@@ -1750,6 +1758,9 @@ if (document.querySelector(".popup")) {
       if (curTab == "add") {
         e.target.closest(".popup__slide").classList.remove("active");
         document.querySelector(`.popup__slide[data-popup="add"]`).classList.add("active");
+      } else if (curTab == "close") {
+        e.target.closest(".popup").classList.remove("active");
+        document.querySelector(`.layer`).classList.remove("active");
       } else if (+curTab != 3) {
         e.target.closest(".popup__slide").classList.remove("active");
         document.querySelector(`.popup__slide[data-popup="${+curTab + 1}"]`).classList.add("active");

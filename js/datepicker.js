@@ -1814,7 +1814,9 @@
 
       _render: function () {
         var title = this._getTitle(this.d.currentDate),
-          html = dp.template(template, $.extend({ title: title }, this.opts));
+          html = dp.template(template, $.extend({
+            title: title
+          }, this.opts));
         this.d.$nav.html(html);
         if (this.d.view == "years") {
           $(".datepicker--nav-title", this.d.$nav).addClass("-disabled-");

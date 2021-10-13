@@ -3763,9 +3763,8 @@ textarea::placeholder {
     .datepicker-inline .datepicker--cell.-current- {
       color: inherit; }
     .datepicker-inline .datepicker--cell.-selected-, .datepicker-inline .datepicker--cell.-focus- {
-      background-color: transparent;
-      color: white;
-      background-color: #68a9fe; }
+      color: white !important;
+      background-color: #68a9fe !important; }
     .datepicker-inline .datepicker--cell.-current- {
       color: inherit; }
     .datepicker-inline .datepicker--cell.disable {
@@ -6627,6 +6626,8 @@ textarea::placeholder {
         background-size: 100% 100%;
         opacity: 0;
         transition: opacity 0.3s; }
+      .appointment__tabs-btn.inactive {
+        pointer-events: none; }
       .appointment__tabs-btn:hover, .appointment__tabs-btn.active {
         color: #444444;
         background-color: #fbfbfb; }
