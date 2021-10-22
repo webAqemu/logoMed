@@ -4840,6 +4840,8 @@
   }
 }
 
+
+
 .tasks {
   position: relative;
   padding: 40px;
@@ -10219,6 +10221,40 @@
       background-image: url(../img/star-24-yellow.svg);
     }
   }
+
+  &[data-popup="moveRecord"] {
+    max-width: 900px;
+
+    .datepicker-inline .datepicker {
+      box-shadow: none;
+      margin: 0 auto;
+  
+      &::after {
+        display: none;
+      }
+    }
+
+    .btn {
+      margin-top: 0;
+    }
+
+    .popup__text {
+      max-width: 100%;
+    }
+
+    .appointment__days {
+      display: none;
+      background-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  
 }
 
 .layer {

@@ -1770,7 +1770,7 @@ if (document.querySelector(".popup")) {
       }
     }
     if (e.target.classList.contains("popup__close")) {
-      document.querySelector(".popup__notice").classList.remove("active");
+      e.target.closest(".popup").classList.remove("active");
       document.querySelector(".layer").classList.remove("active");
     }
   });
@@ -1789,6 +1789,8 @@ if (document.querySelector(".popup")) {
       }
     });
   }
+
+
 }
 
 if (document.querySelector(".articles")) {
@@ -1812,4 +1814,39 @@ if (document.querySelector(".search__search")) {
       variableWidth: true,
     });
   }
+}
+
+if (document.querySelector(".tasks__all")) {
+  document.querySelector(".tasks__all").addEventListener("click", e => {
+    if (e.target.classList.contains("tasks__btn--rec")) {
+      document.querySelector(".popup[data-popup='moveRecord']").classList.add("active")
+      document.querySelector(`.layer`).classList.add("active");
+    }
+  })
+  const freeDays = [10, 11, 12, 25, 26];
+  $(".popup .datepicker-here").datepicker({
+    showOtherMonths: false,
+    weekends: [0],
+    onRenderCell: function (date, cellType) {
+      if (cellType == "day" && freeDays.indexOf(date.getDate()) != -1) {
+        return {
+          classes: "disable",
+        };
+      }
+    },
+  });
+
+  document.querySelector(".popup[data-popup='moveRecord']").addEventListener("mouseup", e => {
+    if(e.target.classList.contains("datepicker--cell")) {
+      e.target.closest(".popup").querySelector(".appointment__days").classList.add("active")
+    }
+    if(e.target.parentElement.classList.contains("appointment__days-time")) {
+      e.target.closest(".popup").querySelector(".btn").classList.remove("btn--inactive")
+    }
+    if(e.target.classList.contains("btn")) {
+      e.target.closest(".popup").classList.remove("active");
+      document.querySelector(`.layer`).classList.remove("active");
+    }
+
+  })
 }

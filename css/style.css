@@ -7680,6 +7680,24 @@ textarea::placeholder {
     .popup__star:hover ~ button, .popup__star.active,
     .popup__star.active ~ button {
       background-image: url(../img/star-24-yellow.svg); }
+  .popup[data-popup="moveRecord"] {
+    max-width: 900px; }
+    .popup[data-popup="moveRecord"] .datepicker-inline .datepicker {
+      box-shadow: none;
+      margin: 0 auto; }
+      .popup[data-popup="moveRecord"] .datepicker-inline .datepicker::after {
+        display: none; }
+    .popup[data-popup="moveRecord"] .btn {
+      margin-top: 0; }
+    .popup[data-popup="moveRecord"] .popup__text {
+      max-width: 100%; }
+    .popup[data-popup="moveRecord"] .appointment__days {
+      display: none;
+      background-color: transparent;
+      padding-left: 0;
+      padding-right: 0; }
+      .popup[data-popup="moveRecord"] .appointment__days.active {
+        display: block; }
 
 .layer {
   position: fixed;
