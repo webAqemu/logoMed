@@ -279,6 +279,7 @@ textarea::placeholder {
   @media (max-width: 768px) {
     .btn {
       width: 100%;
+      min-width: auto;
       font-size: 17px;
       background-image: none;
       background: #68a9fe;
@@ -2780,6 +2781,9 @@ textarea::placeholder {
       background-color: #fff;
       opacity: 0;
       height: 0; }
+      @media (max-width: 768px) {
+        .general__tabs-btn .circle {
+          display: none; } }
       .general__tabs-btn .circle::after {
         content: "";
         width: 40px;

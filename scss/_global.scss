@@ -220,6 +220,7 @@ textarea::placeholder {
 
   @include r {
     width: 100%;
+    min-width: auto;
     font-size: 17px;
     background-image: none;
     background: $blue;

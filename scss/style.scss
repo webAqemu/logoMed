@@ -3369,6 +3369,11 @@
         z-index: 2;
         background-color: #fff;
 
+        @include r {
+          display: none;
+        }
+
+
         &::after {
           content: "";
           width: 40px;
