@@ -1,3 +1,110 @@
+class Calendar {
+    year = "";
+    yearNow = "";
+    month = "";
+    monthNow = "";
+    day = "";
+    daysInMonth = "";
+    firstDayOfMonth = "";
+    freeDays = [2, 13, 15, 18];
+
+    constructor(id) {
+        this.id = id;
+        this.monthsArray = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+        this.date = new Date();
+        this.year = this.date.getFullYear();
+        this.yearNow = this.date.getFullYear();
+        this.month = this.date.getMonth();
+        this.monthNow = this.date.getMonth();
+        this.day = this.date.getDate();
+        this.daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
+        this.firstDayOfMonth = new Date(this.year, this.month).getDay();
+    }
+
+    init() {
+        this._generateMarkup()
+        this.calendarEvents(this._calendarPrevMonth.bind(this), this._calendarNextMonth.bind(this))
+    }
+
+    _setDate() {
+        this.daysInMonth = new Date(this.year, this.month + 1, 0).getDate()
+        this.firstDayOfMonth = new Date(this.year, this.month).getDay()
+    }
+    
+    _generateMarkup() {
+        const daysOfMonthArray = []
+
+        for (let i = 1; i < this.firstDayOfMonth; i++) {
+            daysOfMonthArray.push("")
+        }
+
+        for (let i = 1; i < this.daysInMonth + 1; i++) {
+            daysOfMonthArray.push(`${i}`)
+        }
+
+        while (daysOfMonthArray.length < 34) {
+            daysOfMonthArray.push("")
+        }
+
+        const markup = `
+        <div class="calendar">
+            <div class="calendar__top">
+                <button class="calendar__btn calendar__btn--prev">${this.monthsArray[this.month - 1 == -1 ? 11 : this.month - 1]}</button>
+                <div class="calendar__title">${this.monthsArray[this.month]}</div>
+                <button class="calendar__btn calendar__btn--next">${this.monthsArray[this.month + 1 == 12 ? 0 : this.month + 1]}</button>
+            </div>
+            <ul class="calendar__days">
+                <li class="calendar__day">пн</li>
+                <li class="calendar__day">вт</li>
+                <li class="calendar__day">ср</li>
+                <li class="calendar__day">чт</li>
+                <li class="calendar__day">пт</li>
+                <li class="calendar__day">сб</li>
+                <li class="calendar__day">вс</li>
+                ${daysOfMonthArray.map(day => `<li class="calendar__cell ${this.freeDays.includes(+day) ? 'calendar__cell--free' : ''} ${this.day === +day && this.month === this.monthNow && this.year === this.yearNow ? 'calendar__cell--today' : ''} ${day == ''  ? 'calendar__cell--empty' : ''}" data-month='${this.month}' data-year='${this.year}'>${day}</li>`).join("")}
+            </ul>
+        </div>
+        `
+
+        document.getElementById(this.id).innerHTML = markup;
+    }
+
+    _calendarPrevMonth() {
+        this.freeDays = [1, 14, 18]
+        if(this.month - 1 >= 0) {
+            this.month = this.month - 1
+        } else {
+            this.month = 11
+            this.year = this.year - 1
+        }
+        this._setDate()
+        this._generateMarkup(this.freeDays)
+    }
+
+    _calendarNextMonth() {
+        this.freeDays = [1, 14, 18]
+        if(this.month + 1 === 12) {
+            this.month = 0
+            this.year = this.year + 1
+        } else {
+            this.month = this.month + 1
+        }
+        this._setDate()
+        this._generateMarkup(this.freeDays)
+    }
+
+    calendarEvents(handlerPrev, handlerNext) {
+        document.getElementById(this.id).addEventListener("click", function(e) {
+            if(e.target.classList.contains("calendar__btn--prev")) {
+                handlerPrev()
+            }
+            if(e.target.classList.contains("calendar__btn--next")) {
+                handlerNext()
+            }
+        })
+    }
+}
+
 $(".symptoms__inner").slick({
   infinite: true,
   slidesToShow: 6,
@@ -20,7 +127,7 @@ $(".about-specialists__slider").slick({
 
 document.querySelectorAll(".about-specialists__slider .slick-dots li button").forEach((btn) => (btn.innerHTML = ""));
 
-// функция для обертки айтеов, чтобы после сделать слайдер
+// функция для обертки айтемов, чтобы после сделать слайдер
 
 const concatForSlides = function (itemsNumPerSlide, itemsClass, slideClass, parentClass) {
   let items;
@@ -335,31 +442,6 @@ if (document.querySelector(".appointment")) {
       item.remove();
     }
   });
-  const freeDays = [10, 11, 12, 25, 26];
-  $(".appointment__datepicker").datepicker({
-    showOtherMonths: false,
-    weekends: [0],
-    onRenderCell: function (date, cellType) {
-      if (cellType == "day" && freeDays.indexOf(date.getDate()) != -1) {
-        console.log("gg");
-        return {
-          classes: "disable",
-        };
-      }
-    },
-  });
-
-  const calendar = document.querySelectorAll(".datepicker--cell");
-  const monthsList = ["Янаварь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-  const curMonth = monthsList.indexOf(document.querySelector(".datepicker--nav-title").innerHTML);
-  setTimeout(() => {
-    calendar.forEach((cell) => {
-      if (freeDays.indexOf(+cell.dataset.date) != -1 && cell.dataset.month == curMonth) {
-        console.log(cell);
-        cell.setAttribute("available", "true");
-      }
-    });
-  }, 1000);
 
   // активация календарей
   if (window.innerWidth < 768) {
@@ -396,15 +478,17 @@ if (document.querySelector(".appointment")) {
       }
     });
   } else {
-    document.querySelector(".appointment__tabs-content[data-tab='5']").addEventListener("mouseup", function (e) {
-      if (e.target.classList.contains("datepicker--cell-day")) {
+    document.querySelector(".appointment__tabs-content[data-tab='5']").addEventListener("click", function (e) {
+      if (e.target.classList.contains("calendar__cell--free")) {
+          if (document.querySelector(".calendar__cell.choosed")) {
+            document.querySelector(".calendar__cell.choosed").classList.remove("choosed")
+          }
+          e.target.classList.add("choosed")
         document.querySelector(".appointment__days").classList.add("active");
         // заполняем нужной датой
         const day = e.target.innerHTML;
-        const monthsList = ["Янаварь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
         const monthsListMobile = ["Янаваря", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
 
-        const month = monthsList[+e.target.dataset.month];
         const monthMobile = monthsListMobile[+e.target.dataset.month];
         document.querySelector(`.appointment__days-title`).innerHTML = "Свободное время " + day + " " + monthMobile;
         document.querySelectorAll(".appointment__days-time input").forEach((input) => {
@@ -990,12 +1074,6 @@ if (document.querySelector(".general")) {
     }
   });
 
-  // кастомизация календаря
-  $(".tasks__datepicker").datepicker({
-    showOtherMonths: false,
-    weekends: [0],
-  });
-
   // динамичный инпут с мл. и раз
   const inputElements = document.querySelectorAll(".general__input");
 
@@ -1077,47 +1155,6 @@ if (document.querySelector(".general")) {
   if (document.querySelector(".general__symptoms")) {
     // добавляем воозможность выбрать уточнение для жалобы (список)
     document.querySelector(".general__symptoms").addEventListener("click", function (e) {});
-  }
-
-  // переключение на все задачи по ссылке
-  if (document.querySelector(".tasks__all")) {
-    document.querySelector("#allTasks").addEventListener("click", function () {
-      document.querySelector(".tabs__item.active").classList.remove("active");
-      document.querySelector(".general__tabs-content.active").classList.remove("active");
-      document.querySelector(".general__tabs-btns.active").classList.remove("active");
-      document.querySelector(".tasks__all").classList.add("active");
-      document.querySelector(".tasks__tabs-btn[data-tasks='1']").classList.add("active");
-      document.querySelector(".tasks__list[data-tasks='1']").classList.add("active");
-      this.closest(".tasks").classList.add("doctor");
-    });
-
-    // переключение на мобилке
-    document.querySelector(".tasksMobile").addEventListener("click", function () {
-      if (document.querySelector(".tabs__item.active")) {
-        document.querySelector(".tabs__item.active").classList.remove("active");
-      }
-      document.querySelector(".content-block__inner.active").classList.remove("active");
-      document.querySelector(".content-block__inner--general").classList.add("active");
-      if (document.querySelector(".general__tabs-content.active")) {
-        document.querySelector(".general__tabs-content.active").classList.remove("active");
-        document.querySelector(".general__tabs-btns.active").classList.remove("active");
-      }
-
-      document.querySelector(".tasks__all").classList.add("active");
-      document.querySelector(".tasks__tabs-btn[data-tasks='1']").classList.add("active");
-      document.querySelector(".tasks__list[data-tasks='1']").classList.add("active");
-    });
-
-    // табы для задача (сегодня, на неделю)
-    document.querySelector(".tasks__all").addEventListener("click", function (e) {
-      if (e.target.classList.contains("tasks__tabs-btn")) {
-        const curTab = e.target.dataset.tasks;
-        document.querySelector(".tasks__tabs-btn.active").classList.remove("active");
-        e.target.classList.add("active");
-        document.querySelector(".tasks__list.active").classList.remove("active");
-        document.querySelector(`.tasks__list[data-tasks="${curTab}"]`).classList.add("active");
-      }
-    });
   }
 
   if (window.innerWidth < 768) {
@@ -1594,6 +1631,8 @@ if (document.querySelector(".tests__add")) {
 }
 
 if (document.querySelector(".appointment")) {
+    const appointmentCalendar = new Calendar("appointment-calendar")
+    appointmentCalendar.init()
   document.querySelector(".appointment").addEventListener("click", function (e) {
     const curTab = +e.target.dataset.tab;
     if (e.target.classList.contains("appointment__tabs-btn")) {
@@ -1751,48 +1790,6 @@ if (document.querySelector(".docs")) {
   });
 }
 
-if (document.querySelector(".popup")) {
-  document.querySelector(".popup__notice").addEventListener("click", function (e) {
-    if (e.target.classList.contains("popup__btn")) {
-      const curTab = e.target.dataset.popup;
-      if (curTab == "add") {
-        e.target.closest(".popup__slide").classList.remove("active");
-        document.querySelector(`.popup__slide[data-popup="add"]`).classList.add("active");
-      } else if (curTab == "close") {
-        e.target.closest(".popup").classList.remove("active");
-        document.querySelector(`.layer`).classList.remove("active");
-      } else if (+curTab != 3) {
-        e.target.closest(".popup__slide").classList.remove("active");
-        document.querySelector(`.popup__slide[data-popup="${+curTab + 1}"]`).classList.add("active");
-      } else {
-        document.querySelector(".popup__notice").classList.remove("active");
-        document.querySelector(".layer").classList.remove("active");
-      }
-    }
-    if (e.target.classList.contains("popup__close")) {
-      e.target.closest(".popup").classList.remove("active");
-      document.querySelector(".layer").classList.remove("active");
-    }
-  });
-  document.querySelector(".layer").addEventListener("click", function (e) {
-    document.querySelector(".popup__notice").classList.remove("active");
-    document.querySelector(".layer").classList.remove("active");
-  });
-
-  if (document.querySelector(".popup__rating")) {
-    document.querySelector(".popup__rating").addEventListener("click", function (e) {
-      if (e.target.classList.contains("popup__star")) {
-        if (document.querySelector(".popup__star.active")) {
-          document.querySelectorAll(".popup__star.active").forEach((star) => star.classList.remove("active"));
-        }
-        e.target.classList.add("active");
-      }
-    });
-  }
-
-
-}
-
 if (document.querySelector(".articles")) {
   if (window.innerWidth < 768) {
     $(".articles__tags-list").slick({
@@ -1817,36 +1814,172 @@ if (document.querySelector(".search__search")) {
 }
 
 if (document.querySelector(".tasks__all")) {
-  document.querySelector(".tasks__all").addEventListener("click", e => {
-    if (e.target.classList.contains("tasks__btn--rec")) {
-      document.querySelector(".popup[data-popup='moveRecord']").classList.add("active")
-      document.querySelector(`.layer`).classList.add("active");
-    }
-  })
-  const freeDays = [10, 11, 12, 25, 26];
-  $(".popup .datepicker-here").datepicker({
-    showOtherMonths: false,
-    weekends: [0],
-    onRenderCell: function (date, cellType) {
-      if (cellType == "day" && freeDays.indexOf(date.getDate()) != -1) {
-        return {
-          classes: "disable",
-        };
+    const tasksCalendar = new Calendar("tasks-calendar")
+    tasksCalendar.init()
+    const moveRecordCalendar = new Calendar("moveRecordCalendar")
+    moveRecordCalendar.init()
+
+    // выбор даты на которую нцжно показывать задачки в профиле клиента 
+    // + открытие всех задачек
+    document.querySelector(".tasks").addEventListener("click", function(e) {
+        if(e.target.classList.contains("calendar__cell")) {
+            if(e.target.closest(".calendar").querySelector(".choosed")) {
+                e.target.closest(".calendar").querySelector(".choosed").classList.remove("choosed");
+            }
+            e.target.classList.add("choosed");
+
+            const dataYear = e.target.dataset.year;
+            const dataMonth = e.target.dataset.month;
+            const dataDay = e.target.innerHTML;
+
+            const tasks = [
+                {
+                    type: "Консультация",
+                    doctor: "Врач-аллерголог Петрова Н. Ю.",
+                    alreadyAppointment: false,
+                    time: ""
+                },
+                {
+                    type: "Консультация",
+                    doctor: "Врач-аллерголог Петрова Н. Ю.",
+                    alreadyAppointment: true,
+                    time: "15:00 — 16:00",
+                    timer: "1:56"
+                }
+            ]
+
+            markup = tasks.map(task => (
+                `
+                <div class="tasks__item">
+                    <div class="tasks__date">Сегодня, ${dataDay}.${dataMonth}.${dataYear}</div>
+                    <div class="tasks__subtitle title-h3">${task.type}</div>
+                    <div class="tasks__doctor">${task.doctor}</div>
+                    
+                    ${
+                        task.alreadyAppointment 
+                        ? 
+                        `<div class="tasks__time title-h3">${task.time}</div><div class="tasks__timer title-h3">Через ${task.timer}</div><a href="#" class="tasks__btn tasks__btn--rec btn"><span>Чат с врачом</span></a><button class="tasks__btn tasks__btn--cancel btn btn--stroke"><span>Отменить запись</span></button>`
+                        :
+                        `<a href="./articles.html" class="tasks__btn tasks__btn--rec btn"><span>Рекомендации</span></a><a href="./appointment.html" class="tasks__btn tasks__btn--doctor btn"><span>Запись к врачу</span></a>`
+                    }
+                    
+                </div>
+                `
+            )).join("")
+            markup += '<span class="tasks__btn btn btn--stroke" id="allTasks"><span>Все задачи</span></span>'
+            document.querySelector(".tasks__inner").innerHTML = markup
+            console.log("gg");
+        }
+        if(e.target.getAttribute("id") === "allTasks") {
+            document.querySelector(".tabs__item.active").classList.remove("active");
+            document.querySelector(".general__tabs-content.active").classList.remove("active");
+            document.querySelector(".general__tabs-btns.active").classList.remove("active");
+            document.querySelector(".tasks__all").classList.add("active");
+            document.querySelector(".tasks__tabs-btn[data-tasks='1']").classList.add("active");
+            document.querySelector(".tasks__list[data-tasks='1']").classList.add("active");
+            this.classList.add("doctor");
+        }
+    })
+    // открытие попапа для изменения даты приема
+    document.querySelector(".tasks__all").addEventListener("click", e => {
+        if (e.target.classList.contains("tasks__btn--move")) {
+            document.querySelector(".popup[data-popup='moveRecord']").classList.add("active")
+            document.querySelector(`.layer`).classList.add("active");
+        }
+        if(e.target.classList.contains("tasks__btn--review")) {
+            document.querySelector(".popup[data-popup='review']").classList.add("active")
+            document.querySelector(".layer").classList.add("active")
+        }
+    })
+
+
+    document.querySelector(".popup[data-popup='moveRecord']").addEventListener("click", e => {
+        if(e.target.classList.contains("calendar__cell")) {
+            e.target.closest(".popup").querySelector(".appointment__days").classList.add("active")
+        }
+        if(e.target.parentElement.classList.contains("appointment__days-time")) {
+            e.target.closest(".popup").querySelector(".btn").classList.remove("btn--inactive")
+        }
+        if(e.target.classList.contains("btn")) {
+            e.target.closest(".popup").classList.remove("active");
+            document.querySelector(`.layer`).classList.remove("active");
+        }
+    })
+
+
+    // переключение на мобилке
+    document.querySelector(".tasksMobile").addEventListener("click", function () {
+      if (document.querySelector(".tabs__item.active")) {
+        document.querySelector(".tabs__item.active").classList.remove("active");
       }
-    },
-  });
+      document.querySelector(".content-block__inner.active").classList.remove("active");
+      document.querySelector(".content-block__inner--general").classList.add("active");
+      if (document.querySelector(".general__tabs-content.active")) {
+        document.querySelector(".general__tabs-content.active").classList.remove("active");
+        document.querySelector(".general__tabs-btns.active").classList.remove("active");
+      }
 
-  document.querySelector(".popup[data-popup='moveRecord']").addEventListener("mouseup", e => {
-    if(e.target.classList.contains("datepicker--cell")) {
-      e.target.closest(".popup").querySelector(".appointment__days").classList.add("active")
-    }
-    if(e.target.parentElement.classList.contains("appointment__days-time")) {
-      e.target.closest(".popup").querySelector(".btn").classList.remove("btn--inactive")
-    }
-    if(e.target.classList.contains("btn")) {
-      e.target.closest(".popup").classList.remove("active");
-      document.querySelector(`.layer`).classList.remove("active");
-    }
+      document.querySelector(".tasks__all").classList.add("active");
+      document.querySelector(".tasks__tabs-btn[data-tasks='1']").classList.add("active");
+      document.querySelector(".tasks__list[data-tasks='1']").classList.add("active");
+    });
 
-  })
+    // табы для задача (сегодня, на неделю)
+    document.querySelector(".tasks__all").addEventListener("click", function (e) {
+      if (e.target.classList.contains("tasks__tabs-btn")) {
+        const curTab = e.target.dataset.tasks;
+        document.querySelector(".tasks__tabs-btn.active").classList.remove("active");
+        e.target.classList.add("active");
+        document.querySelector(".tasks__list.active").classList.remove("active");
+        document.querySelector(`.tasks__list[data-tasks="${curTab}"]`).classList.add("active");
+      }
+    });
+  
 }
+
+
+if (document.querySelector(".popup")) {
+    document.querySelectorAll(".popup").forEach(popup => {
+
+        popup.addEventListener("click", function (e) {
+            if (e.target.classList.contains("popup__btn")) {
+                const curTab = e.target.dataset.popup;
+                if (curTab == "add") {
+                    e.target.closest(".popup__slide").classList.remove("active");
+                    document.querySelector(`.popup__slide[data-popup="add"]`).classList.add("active");
+                } else if (curTab == "close") {
+                    e.target.closest(".popup").classList.remove("active");
+                    document.querySelector(`.layer`).classList.remove("active");
+                } else if (+curTab != 3) {
+                    e.target.closest(".popup__slide").classList.remove("active");
+                    document.querySelector(`.popup__slide[data-popup="${+curTab + 1}"]`).classList.add("active");
+                } else {
+                    document.querySelector(".popup").classList.remove("active");
+                    document.querySelector(".layer").classList.remove("active");
+                }
+            }
+            if (e.target.classList.contains("popup__close")) {
+                e.target.closest(".popup").classList.remove("active");
+                document.querySelector(".layer").classList.remove("active");
+            }
+    });
+    })
+
+    document.querySelector(".layer").addEventListener("click", function (e) {
+      document.querySelector(".popup.active").classList.remove("active");
+      document.querySelector(".layer").classList.remove("active");
+    });
+  
+    if (document.querySelector(".popup__rating")) {
+      document.querySelector(".popup__rating").addEventListener("click", function (e) {
+        if (e.target.classList.contains("popup__star")) {
+          if (document.querySelector(".popup__star.active")) {
+            document.querySelectorAll(".popup__star.active").forEach((star) => star.classList.remove("active"));
+          }
+          e.target.classList.add("active");
+        }
+      });
+    }
+  
+  
+  }

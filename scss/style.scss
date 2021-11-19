@@ -1,7 +1,8 @@
-@import "fonts";
-@import "reset";
-@import "vars";
-@import "global";
+@import "./base/fonts";
+@import "./base/reset";
+@import "./base/vars";
+@import "./base/global";
+@import "./blocks/calendar";
 
 .burger {
   display: none;
@@ -4710,143 +4711,6 @@
   }
 }
 
-.datepicker-inline .datepicker {
-  position: relative;
-  box-sizing: border-box;
-  width: 500px;
-  display: flex;
-  flex-direction: column-reverse;
-  padding: 90px 75px 45px;
-  font-family: "OpenSans-Regular", sans-serif;
-  font-weight: 400;
-  box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.110659);
-  border-radius: 20px;
-  border: none;
-
-  @include r {
-    padding: 80px 0 0;
-    width: 100%;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -53px;
-    right: 35px;
-    width: 73px;
-    height: 53px;
-    background-image: url(../img/calendar-polygon.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-  &--days-names {
-    margin: 0 -15px;
-
-    @include r {
-      margin: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
-  }
-
-  &--day-name {
-    font-size: 20px;
-    display: inline-block;
-    color: $light-text;
-    margin: 0 15px;
-    text-transform: lowercase;
-    width: fit-content;
-
-    &.-weekend- {
-      color: $peach;
-    }
-
-    @include r {
-      margin: 0 auto;
-      font-size: 17px;
-    }
-  }
-
-  &--nav {
-    border: none;
-    padding: 0 4px;
-    max-width: 350px;
-    font-size: 20px;
-  }
-
-  &--nav-action {
-    width: auto;
-    color: $blue;
-  }
-
-  &--nav-title {
-    pointer-events: none;
-    position: absolute;
-    top: 45px;
-    left: 0;
-    right: 0;
-    text-align: center;
-  }
-
-  &--nav-action:hover,
-  &--nav-title:hover {
-    background: transparent;
-  }
-
-  &--cells {
-    margin: 0 -13px;
-
-    @include r {
-      margin: 0;
-    }
-  }
-
-  &--cell {
-    height: 32px;
-    width: 32px;
-    margin: 4px 10.29px;
-    font-size: 20px;
-    text-align: center;
-    transition: all 0.3s;
-    pointer-events: none;
-
-    &.-weekend- {
-      color: $peach;
-    }
-
-    &.-current- {
-      color: inherit;
-    }
-
-    &.-selected-,
-    &.-focus- {
-      color: white !important;
-      background-color: $blue !important;
-    }
-
-    &.-current- {
-      color: inherit;
-    }
-
-    &.disable {
-      border: 1px solid $blue;
-      pointer-events: inherit;
-    }
-
-    @include r {
-      font-size: 17px;
-    }
-  }
-
-  &--cell-day.-other-month- {
-    opacity: 0;
-  }
-}
-
-
-
 .tasks {
   position: relative;
   padding: 40px;
@@ -4954,13 +4818,14 @@
     position: relative;
     transition: all 0.3s;
     cursor: pointer;
-    margin: 25px auto 15px;
+    margin: 25px auto 15px 0;
     color: $text;
     transition: all 0.3s;
 
     &--cancel,
-    &--rec,
-    &--doctor {
+    &--move,
+    &--doctor,
+    &--explore {
       margin: 0 0 15px;
     }
 
@@ -4980,13 +4845,77 @@
   }
 
   &__datepicker {
+      cursor: default;
     position: absolute;
-    bottom: 30px;
+    bottom: 85px;
     right: -10px;
-    padding-bottom: 53px;
+    padding: 60px 60px 90px;
+    font-family: "OpenSans-Regular", sans-serif;
+    font-weight: 400;
+    box-shadow: 0px 2px 14px rgb(0 0 0 / 11%);
+    border-radius: 20px;
     z-index: 10;
     opacity: 0;
     transition: opacity 0.3s;
+    background-color: #fff;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -53px;
+        right: 35px;
+        width: 73px;
+        height: 53px;
+        background-image: url(../img/calendar-polygon.png);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .calendar__btn {
+        position: absolute;
+        bottom: 50px;
+        color: $blue;
+
+        &--prev {
+            left: 70px;
+        }
+
+        &--next {
+            right: 70px;
+        }
+    }
+
+    .calendar__top {
+        justify-content: center;
+    }
+
+    .calendar__cell {
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+        border-radius: 4px;
+
+        &--free {
+            border: 1px solid transparent;
+
+            &:hover {
+                color: inherit;
+                background-color: #fff;
+                border-color: #68a9fe;
+            }
+        }
+
+        &--today {
+            border: 1px solid #68a9fe;
+        }
+
+        &:hover {
+            color: inherit;
+            background-color: #fff;
+            border-color: #68a9fe;
+        }
+    }
   }
 
   &__months {
@@ -5006,7 +4935,13 @@
     position: relative;
 
     &--archived {
-      opacity: 0.5;
+      & > * {
+          opacity: 0.5;
+      }
+
+      .tasks__btns {
+          opacity: 1;
+      }
     }
 
     @include r {
@@ -5105,7 +5040,8 @@
       color: $light-text;
       position: absolute;
       top: 5px;
-      right: 0;
+      right: auto;
+      left: 0;
     }
   }
 
@@ -5123,6 +5059,7 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: 40px;
+      overflow-x: scroll;
     }
   }
 
@@ -5244,6 +5181,10 @@
 
       opacity: 0;
       height: 0;
+
+      @include r {
+          display: none;
+      }
     }
   }
 
@@ -5271,6 +5212,10 @@
         border: none;
         padding-bottom: 0;
         margin-bottom: 0;
+      }
+
+      @include r {
+          padding-top: 25px;
       }
     }
 
@@ -5328,6 +5273,12 @@
 
       &::before {
         display: none;
+      }
+
+      @include r {
+          right: auto;
+          left: 0;
+          top: -10px;
       }
     }
   }
@@ -8599,8 +8550,8 @@
 }
 
 .appointment {
-  padding: 295px 0 50px;
-  min-height: calc(100vh + 295px);
+  padding: 50px 0;
+  min-height: calc(100vh - 200px);
 
   &--blue {
     background-color: $bg;
@@ -9189,111 +9140,6 @@
     }
   }
 
-  .datepicker-inline {
-    .datepicker {
-      box-shadow: none;
-      padding: 50px 0 0;
-      border-radius: 0;
-      width: 420px;
-      margin: 0 auto;
-
-      &::after {
-        display: none;
-      }
-    }
-
-    .datepicker--cells {
-      justify-content: center;
-
-      @include r {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-      }
-    }
-
-    .datepicker--cell {
-      margin: 4px 32px 4px 0;
-
-      &.-weekend- {
-        margin-right: 0;
-
-        @include r {
-          margin-right: auto;
-        }
-      }
-
-      @include r {
-        margin: 4px auto;
-      }
-    }
-
-    .datepicker--nav-title {
-      right: 20px;
-      font-family: "NotoSans-Regular", sans-serif;
-      font-weight: 400;
-      font-size: 32px;
-      line-height: 1.3;
-      margin: 0;
-      padding: 0;
-      color: $title;
-      top: 0;
-      position: static;
-
-      @include r {
-        font-size: 22px;
-        font-family: "SFProDisplay-Medium", sans-serif;
-        font-weight: 500;
-        right: 0;
-        top: 40px;
-      }
-    }
-
-    .datepicker--nav {
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 100%;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      &-action {
-        font-size: 0;
-        width: 24px;
-        height: 24px;
-        border-radius: 100%;
-        background-color: $bg;
-        margin: 0 5px;
-        position: relative;
-        border: 1px solid $bg;
-        transition: border-color 0.3s;
-
-        &::before {
-          content: "";
-          position: absolute;
-          width: 7px;
-          height: 12px;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          background-image: url(../img/appointment-arrow-left.svg);
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-
-        &[data-action="next"] {
-          transform: rotate(180deg);
-        }
-
-        &:hover {
-          background-color: #fff;
-          border-color: $blue;
-        }
-      }
-    }
-  }
 
   &__btns {
     display: flex;
@@ -9305,7 +9151,7 @@
     }
   }
 
-  &__radio+&__btns {
+  &__radio + &__btns {
     margin-top: 80px;
   }
 
@@ -9380,6 +9226,62 @@
     }
   }
 
+  &__datepicker {
+      display: flex;
+      justify-content: center;
+
+      .calendar__title {
+          font-size: 32px;
+      }
+
+    .calendar__btn {
+        font-size: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        background-color: rgba(104, 169, 254, 0.5);
+        border: 1px solid rgba(104, 169, 254, 0);
+        position: relative;
+        transition: background-color 0.3s, border-color 0.3s;
+
+        &::after,
+        &::before {
+            content: "";
+            width: 11px;
+            height: 2px;
+            background-color: #68a9fe;
+            position: absolute;
+            transform: rotate(45deg);
+            left: 9px;
+            top: 10px;
+        }
+
+        &::after {
+            transform: rotate(-45deg);
+            top: auto;
+            bottom: 9px;
+        }
+
+        &--prev::before {
+            left: 9px;
+            top: auto;
+            bottom: 10px;
+        }
+        
+        &--prev::after {
+            left: 9px;
+            bottom: auto;
+            top: 9px;
+        }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0);
+            border-color: rgba(104, 169, 254, 0.5);
+        }
+
+    }
+  }
+
   &__finish {
     display: none;
     margin-top: 60px;
@@ -9401,7 +9303,12 @@
       background-size: cover;
       background-position: center;
 
+      @media (max-width: 1200px) {
+          opacity: 0;
+      }
+
       @include r {
+        opacity: 1;
         width: 250px;
         height: 205px;
         left: 50%;
@@ -10257,6 +10164,13 @@
         display: block;
       }
     }
+  }
+
+  .calendar__cell {
+      pointer-events: none;
+      &--free {
+          pointer-events: inherit;
+      }
   }
 
   

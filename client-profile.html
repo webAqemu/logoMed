@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="./css/datepicker.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script defer src="./js/datepicker.js"></script>
     <script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script defer src="./js/script.js"></script>
   </head>
@@ -993,7 +992,7 @@
                       <div class="tasks__time title-h3">15:00 — 16:00</div>
                       <div class="tasks__timer title-h3">Через 3 дня 15 часов</div>
                       <div class="tasks__btns">
-                        <a href="#" class="tasks__btn tasks__btn--rec btn btn--stroke">
+                        <a href="#" class="tasks__btn tasks__btn--move btn btn--stroke">
                           <span>Перенести запись</span>
                         </a>
                         <button class="tasks__btn tasks__btn--cancel btn btn--stroke tasks__btn-border">
@@ -1012,7 +1011,7 @@
                       <div class="tasks__task-date">28.12.2022 14:30</div>
                       <div class="tasks__timer title-h3">Через 3 дня 15 часов</div>
                       <div class="tasks__btns">
-                        <a href="#" class="tasks__btn tasks__btn--rec btn btn--stroke">
+                        <a href="#" class="tasks__btn tasks__btn--move btn btn--stroke">
                           <span>Перенести запись</span>
                         </a>
                         <button class="tasks__btn tasks__btn--cancel btn btn--stroke tasks__btn-border">
@@ -1026,7 +1025,7 @@
                       <div class="tasks__task-date">28.12.2022 14:30</div>
                       <div class="tasks__timer title-h3">Через 3 дня 15 часов</div>
                       <div class="tasks__btns">
-                        <a href="#" class="tasks__btn tasks__btn--rec btn btn--stroke">
+                        <a href="#" class="tasks__btn tasks__btn--move btn btn--stroke">
                           <span>Перенести запись</span>
                         </a>
                         <button class="tasks__btn tasks__btn--cancel btn btn--stroke tasks__btn-border">
@@ -1044,7 +1043,7 @@
                       <div class="tasks__task-date">28.12.2022 14:30</div>
                       <div class="tasks__doctor">Врач-аллерголог Петрова Н. Ю.</div>
                       <div class="tasks__btns">
-                        <a href="#" class="tasks__btn tasks__btn--rec btn btn--stroke">
+                        <a href="#" class="tasks__btn tasks__btn--move btn btn--stroke">
                           <span>Перенести запись</span>
                         </a>
                         <button class="tasks__btn tasks__btn--cancel btn btn--stroke tasks__btn-border">
@@ -1063,9 +1062,9 @@
                       <div class="tasks__task-date">28.12.2022 14:30</div>
                       
                       <div class="tasks__btns">
-                        <a href="#" class="tasks__btn tasks__btn--rec btn btn--stroke">
+                        <button class="tasks__btn tasks__btn--review btn">
                           <span>Оставить отзыв</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -1081,7 +1080,7 @@
                       <li>Стол №6</li>
                     </ul>
                     <div class="tasks__btns">
-                      <a href="./articles.html" class="tasks__btn tasks__btn--rec btn btn--stroke">
+                      <a href="./articles.html" class="tasks__btn tasks__btn--explore btn btn--stroke">
                         <span>Ознакомиться</span>
                       </a>
                     </div>
@@ -1096,7 +1095,7 @@
                       <li>Стол №6</li>
                     </ul>
                     <div class="tasks__btns">
-                      <a href="./articles.html" class="tasks__btn tasks__btn--rec btn btn--stroke">
+                      <a href="./articles.html" class="tasks__btn tasks__btn--explore btn btn--stroke">
                         <span>Ознакомиться</span>
                       </a>
                     </div>
@@ -1108,7 +1107,7 @@
             <div class="tasks">
               <div class="tasks__title subtitle">Задачи</div>
               <div class="tasks__dates" data-date="1">
-                <div class="tasks__datepicker datepicker-here"></div>
+                <div class="tasks__datepicker" id="tasks-calendar"></div>
               </div>
               <div class="tasks__empty">
                 <p class="tasks__text">Здесь будут отображаться ваши задачи, касающиеся ближайщих приемов к врачу, приема лекарственных препаратов, а также отслеживания рекомендаций от специалистов.</p>
@@ -1630,7 +1629,7 @@
       </div>
     </footer>
     <div class="layer"></div>
-    <div class="popup popup__notice">
+    <div class="popup popup__notice" data-popup="review">
       <div class="popup__slide active" data-popup="1">
         <div class="popup__title subtitle">Отзыв для врача</div>
         <p class="popup__text">Врач хирург Панова Е. А</p>
@@ -1662,7 +1661,7 @@
       <div class="popup__slide popup__slide--first active" data-popup="1">
         <div class="popup__title subtitle">Уточняем!</div>
         <p class="popup__text">На какую дату вы хотите перенести запись?</p>
-        <div class="datepicker-here"></div>
+        <div id="moveRecordCalendar"></div>
         <div class="appointment__days">
 
           <div class="appointment__days-time">
