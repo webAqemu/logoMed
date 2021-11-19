@@ -590,6 +590,215 @@ textarea::placeholder {
   background-color: #68a9fe;
 }
 
+.popup {
+  z-index: 11;
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 650px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  padding: 50px 40px;
+}
+@media (max-width: 768px) {
+  .popup {
+    background-image: none;
+    background-color: #fff;
+    border-radius: 10px;
+    max-width: calc(100% - 48px);
+    padding: 35px 16px;
+  }
+}
+.popup.active {
+  display: block;
+}
+.popup__slide {
+  display: none;
+}
+.popup__slide.active {
+  display: block;
+}
+.popup__slide--first, .popup__slide--last {
+  background-image: url(../img/popup-img.svg);
+  background-position: right bottom;
+  background-repeat: no-repeat;
+}
+.popup__slide--first .popup__text, .popup__slide--last .popup__text {
+  max-width: 380px;
+}
+.popup__slide--third {
+  max-width: 510px;
+}
+.popup__title {
+  margin-bottom: 15px;
+}
+.popup__subtitle {
+  margin-bottom: 15px;
+}
+.popup__text {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.popup__text--light {
+  color: #7d7d7d;
+}
+.popup__btn {
+  margin-top: 60px;
+}
+.popup__btn + .popup__btn {
+  margin-left: 15px;
+}
+.popup__close {
+  position: absolute;
+  right: 40px;
+  top: 50px;
+  width: 17px;
+  height: 16px;
+  background-image: url(../img/popup-close.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .popup__close {
+    right: 16px;
+    top: 16px;
+  }
+}
+.popup__symptom {
+  display: inline-block;
+  width: 40%;
+  margin-bottom: 15px;
+}
+@media (max-width: 768px) {
+  .popup__symptom {
+    width: calc(50% - 5px);
+  }
+}
+.popup__btns {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .popup__btns {
+    flex-wrap: wrap;
+  }
+}
+.popup .btn--stroke {
+  margin-left: 25px;
+}
+@media (max-width: 768px) {
+  .popup .btn--stroke {
+    margin-left: 0;
+    margin-top: 16px;
+  }
+}
+.popup__textarea {
+  outline: none;
+  width: 100%;
+  border: 1px solid #68a9fe;
+  border-radius: 10px;
+  padding: 15px;
+  color: #444444;
+  font-size: 20px;
+  height: 170px;
+  resize: none;
+  margin-bottom: 15px;
+}
+.popup__textarea::placeholder {
+  color: #7d7d7d;
+}
+@media (max-width: 768px) {
+  .popup__textarea {
+    border-color: #d7d7d7;
+    font-size: 17px;
+  }
+  .popup__textarea:focus {
+    border-color: #68a9fe;
+  }
+}
+.popup__mark {
+  margin-top: 40px;
+}
+.popup__rating {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin: 16px auto 40px 0;
+}
+.popup__star {
+  background-image: url(../img/star-24-grey.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s;
+}
+.popup__star + .popup__star {
+  margin-right: 16px;
+}
+.popup__star:hover, .popup__star:hover ~ button, .popup__star.active, .popup__star.active ~ button {
+  background-image: url(../img/star-24-yellow.svg);
+}
+.popup[data-popup=moveRecord] {
+  max-width: 900px;
+}
+.popup[data-popup=moveRecord] .datepicker-inline .datepicker {
+  box-shadow: none;
+  margin: 0 auto;
+}
+.popup[data-popup=moveRecord] .datepicker-inline .datepicker::after {
+  display: none;
+}
+.popup[data-popup=moveRecord] .btn {
+  margin-top: 0;
+}
+.popup[data-popup=moveRecord] .popup__text {
+  max-width: 100%;
+}
+.popup[data-popup=moveRecord] .appointment__days {
+  display: none;
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+.popup[data-popup=moveRecord] .appointment__days.active {
+  display: block;
+}
+.popup .calendar {
+  margin: 15px 0;
+}
+.popup .calendar__cell {
+  pointer-events: none;
+}
+.popup .calendar__cell--free {
+  pointer-events: inherit;
+}
+
+.layer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  display: none;
+  background-color: rgba(84, 153, 222, 0.5);
+  backdrop-filter: blur(5px);
+}
+.layer.active {
+  display: block;
+}
+
 .burger {
   display: none;
   height: 24px;
@@ -9582,208 +9791,6 @@ textarea::placeholder {
 }
 .art__add input:checked + span::before {
   background-image: url(../img/star-32-yellow.svg);
-}
-
-.popup {
-  z-index: 11;
-  display: none;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 650px;
-  width: 100%;
-  background-image: url(../img/popup-bg.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center;
-  padding: 50px 40px;
-}
-@media (max-width: 768px) {
-  .popup {
-    background-image: none;
-    background-color: #fff;
-    border-radius: 10px;
-    max-width: calc(100% - 48px);
-    padding: 35px 16px;
-  }
-}
-.popup.active {
-  display: block;
-}
-.popup__slide {
-  display: none;
-}
-.popup__slide.active {
-  display: block;
-}
-.popup__slide--first, .popup__slide--last {
-  background-image: url(../img/popup-img.svg);
-  background-position: right bottom;
-  background-repeat: no-repeat;
-}
-.popup__slide--first .popup__text, .popup__slide--last .popup__text {
-  max-width: 380px;
-}
-.popup__slide--third {
-  max-width: 510px;
-}
-.popup__title {
-  margin-bottom: 15px;
-}
-.popup__subtitle {
-  margin-bottom: 15px;
-}
-.popup__text {
-  width: 100%;
-  margin-bottom: 15px;
-}
-.popup__text--light {
-  color: #7d7d7d;
-}
-.popup__btn {
-  margin-top: 60px;
-}
-.popup__close {
-  position: absolute;
-  right: 40px;
-  top: 50px;
-  width: 17px;
-  height: 16px;
-  background-image: url(../img/popup-close.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  cursor: pointer;
-}
-@media (max-width: 768px) {
-  .popup__close {
-    right: 16px;
-    top: 16px;
-  }
-}
-.popup__symptom {
-  display: inline-block;
-  width: 40%;
-  margin-bottom: 15px;
-}
-@media (max-width: 768px) {
-  .popup__symptom {
-    width: calc(50% - 5px);
-  }
-}
-.popup__btns {
-  display: flex;
-  align-items: center;
-}
-@media (max-width: 768px) {
-  .popup__btns {
-    flex-wrap: wrap;
-  }
-}
-.popup .btn--stroke {
-  margin-left: 25px;
-}
-@media (max-width: 768px) {
-  .popup .btn--stroke {
-    margin-left: 0;
-    margin-top: 16px;
-  }
-}
-.popup__textarea {
-  outline: none;
-  width: 100%;
-  border: 1px solid #68a9fe;
-  border-radius: 10px;
-  padding: 15px;
-  color: #444444;
-  font-size: 20px;
-  height: 170px;
-  resize: none;
-  margin-bottom: 15px;
-}
-.popup__textarea::placeholder {
-  color: #7d7d7d;
-}
-@media (max-width: 768px) {
-  .popup__textarea {
-    border-color: #d7d7d7;
-    font-size: 17px;
-  }
-  .popup__textarea:focus {
-    border-color: #68a9fe;
-  }
-}
-.popup__mark {
-  margin-top: 40px;
-}
-.popup__rating {
-  width: 100%;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  margin: 16px auto 40px 0;
-}
-.popup__star {
-  background-image: url(../img/star-24-grey.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 24px;
-  height: 24px;
-  transition: all 0.3s;
-}
-.popup__star + .popup__star {
-  margin-right: 16px;
-}
-.popup__star:hover, .popup__star:hover ~ button, .popup__star.active, .popup__star.active ~ button {
-  background-image: url(../img/star-24-yellow.svg);
-}
-.popup[data-popup=moveRecord] {
-  max-width: 900px;
-}
-.popup[data-popup=moveRecord] .datepicker-inline .datepicker {
-  box-shadow: none;
-  margin: 0 auto;
-}
-.popup[data-popup=moveRecord] .datepicker-inline .datepicker::after {
-  display: none;
-}
-.popup[data-popup=moveRecord] .btn {
-  margin-top: 0;
-}
-.popup[data-popup=moveRecord] .popup__text {
-  max-width: 100%;
-}
-.popup[data-popup=moveRecord] .appointment__days {
-  display: none;
-  background-color: transparent;
-  padding-left: 0;
-  padding-right: 0;
-}
-.popup[data-popup=moveRecord] .appointment__days.active {
-  display: block;
-}
-.popup .calendar__cell {
-  pointer-events: none;
-}
-.popup .calendar__cell--free {
-  pointer-events: inherit;
-}
-
-.layer {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 11;
-  display: none;
-  background-color: rgba(84, 153, 222, 0.5);
-  backdrop-filter: blur(5px);
-}
-.layer.active {
-  display: block;
 }
 
 .footer {

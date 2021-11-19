@@ -1879,6 +1879,10 @@ if (document.querySelector(".tasks__all")) {
             document.querySelector(".tasks__list[data-tasks='1']").classList.add("active");
             this.classList.add("doctor");
         }
+        if(e.target.classList.contains("tasks__btn--cancel")) {
+            document.querySelector(".popup[data-popup='cancel']").classList.add("active")
+            document.querySelector(".layer").classList.add("active")
+        }
     })
     // открытие попапа для изменения даты приема
     document.querySelector(".tasks__all").addEventListener("click", e => {
@@ -1890,12 +1894,20 @@ if (document.querySelector(".tasks__all")) {
             document.querySelector(".popup[data-popup='review']").classList.add("active")
             document.querySelector(".layer").classList.add("active")
         }
+        if(e.target.classList.contains("tasks__btn--cancel")) {
+            document.querySelector(".popup[data-popup='cancel']").classList.add("active")
+            document.querySelector(".layer").classList.add("active")
+        }
     })
 
 
     document.querySelector(".popup[data-popup='moveRecord']").addEventListener("click", e => {
         if(e.target.classList.contains("calendar__cell")) {
             e.target.closest(".popup").querySelector(".appointment__days").classList.add("active")
+            if(e.target.closest(".calendar").querySelector(".choosed")) {
+                e.target.closest(".calendar").querySelector(".choosed").classList.remove("choosed");
+            }
+            e.target.classList.add("choosed");
         }
         if(e.target.parentElement.classList.contains("appointment__days-time")) {
             e.target.closest(".popup").querySelector(".btn").classList.remove("btn--inactive")
