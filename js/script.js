@@ -1085,12 +1085,16 @@ if (document.querySelector(".general")) {
         input.parentElement.querySelector("span").style.left = width + 18 + "px";
         input.parentElement.querySelector("span").style.color = "#333333";
       }
+      if(input.parentElement.querySelector("span").innerHTML === "мл.") {
+          input.parentElement.querySelector("span").innerHTML = checkNum(input, false, true);
+      } else {
+          input.parentElement.querySelector("span").innerHTML = checkNum(input);
+      }
 
-      input.parentElement.querySelector("span").innerHTML = checkNum(input);
     })
   );
 
-  function checkNum(input, num = false) {
+  function checkNum(input, num = false, ml = false) {
     let number;
     if (num) {
       number = +input;
@@ -1132,6 +1136,10 @@ if (document.querySelector(".general")) {
       case 14:
         value = "раз";
         break;
+    }
+
+    if (ml) {
+        value = "мл."
     }
 
     return value;
